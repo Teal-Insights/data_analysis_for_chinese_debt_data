@@ -1,9 +1,10 @@
 project:
   type: book
+  output-dir: docs
 
 book:
-  title: "data_analysis_for_chinese_debt_data"
-  author: "Norah Jones"
+  title: "Applied Data Analysis for Chinese Lending Data Using R & LLMs"
+  author: "Teal Emery"
   date: "1/14/2025"
   chapters:
     - index.qmd
