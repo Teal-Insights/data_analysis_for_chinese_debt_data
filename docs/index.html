@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -175,7 +141,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <ul class="collapse">
+  <li><a href="#our-promise-to-you" id="toc-our-promise-to-you" class="nav-link" data-scroll-target="#our-promise-to-you">Our Promise to You</a></li>
+  <li><a href="#our-teaching-philosophy" id="toc-our-teaching-philosophy" class="nav-link" data-scroll-target="#our-teaching-philosophy">Our Teaching Philosophy</a></li>
+  <li><a href="#what-makes-this-course-different" id="toc-what-makes-this-course-different" class="nav-link" data-scroll-target="#what-makes-this-course-different">What Makes This Course Different</a></li>
+  <li><a href="#week-by-week-journey" id="toc-week-by-week-journey" class="nav-link" data-scroll-target="#week-by-week-journey">Week-by-Week Journey</a>
+  <ul class="collapse">
+  <li><a href="#week-1-first-steps-with-r" id="toc-week-1-first-steps-with-r" class="nav-link" data-scroll-target="#week-1-first-steps-with-r">Week 1: First Steps with R</a></li>
+  <li><a href="#week-2-data-visualization-mastery" id="toc-week-2-data-visualization-mastery" class="nav-link" data-scroll-target="#week-2-data-visualization-mastery">Week 2: Data Visualization Mastery</a></li>
+  <li><a href="#week-3-data-transformation" id="toc-week-3-data-transformation" class="nav-link" data-scroll-target="#week-3-data-transformation">Week 3: Data Transformation</a></li>
+  <li><a href="#week-4-advanced-topics" id="toc-week-4-advanced-topics" class="nav-link" data-scroll-target="#week-4-advanced-topics">Week 4: Advanced Topics</a></li>
+  <li><a href="#in-person-session" id="toc-in-person-session" class="nav-link" data-scroll-target="#in-person-session">In-Person Session</a></li>
+  </ul></li>
+  <li><a href="#being-realistic-about-learning" id="toc-being-realistic-about-learning" class="nav-link" data-scroll-target="#being-realistic-about-learning">Being Realistic About Learning</a></li>
+  <li><a href="#your-ai-learning-assistant" id="toc-your-ai-learning-assistant" class="nav-link" data-scroll-target="#your-ai-learning-assistant">Your AI Learning Assistant</a></li>
+  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to Use This Book</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -215,16 +197,121 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="preface" class="level1 unnumbered">
 <h1 class="unnumbered">Preface</h1>
-<p>This is a Quarto book.</p>
-<p>To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
+<p>This textbook accompanies the intensive month-long course <strong><em>Applied Data Analysis For Chinese Overseas Lending Data Using R &amp; LLMs</em></strong> developed for AidData research analysts. The course combines four weekly 90-minute online sessions with a full day of in-person instruction, designed to equip analysts with powerful new tools for data analysis, visualization, and automation.</p>
+<p><img src="images/course_logo.png" class="img-fluid" alt="Course Logo"></p>
+<section id="our-promise-to-you" class="level2">
+<h2 class="anchored" data-anchor-id="our-promise-to-you">Our Promise to You</h2>
+<p>By the end of this course, you will be able to:</p>
+<ul>
+<li>Transform complex datasets into compelling visual stories</li>
+<li>Automate those repetitive tasks that consume hours of your week</li>
+<li>Create analyses that update automatically when new data arrives</li>
+<li>Generate professional reports that combine narrative, code, and visuals</li>
+<li>Leverage AI tools to enhance your analytical capabilities</li>
+<li>Solve common data challenges more efficiently</li>
+</ul>
+</section>
+<section id="our-teaching-philosophy" class="level2">
+<h2 class="anchored" data-anchor-id="our-teaching-philosophy">Our Teaching Philosophy</h2>
+<p>Think of R not as a programming language to master, but as a powerful toolkit that helps you tell stories with data. Just as you don’t need to be a mechanic to drive a car effectively, you don’t need to be a programmer to use R powerfully. This course focuses on giving you practical tools that will immediately enhance your analytical capabilities.</p>
+<p>We embrace two key advantages that make this possible:</p>
+<ol type="1">
+<li><strong>Modern Tools</strong>: The tidyverse ecosystem transforms R from a statistical programming language into an intuitive data analysis toolkit</li>
+<li><strong>AI Assistance</strong>: Large Language Models (LLMs) act as your personal guide, helping you find and implement the right tools for each task</li>
+</ol>
+</section>
+<section id="what-makes-this-course-different" class="level2">
+<h2 class="anchored" data-anchor-id="what-makes-this-course-different">What Makes This Course Different</h2>
+<p>Traditional R courses often get bogged down in programming concepts before getting to practical applications. We flip this approach:</p>
+<ul>
+<li>Start with practical tools you can use immediately</li>
+<li>Focus on real AidData challenges and solutions</li>
+<li>Use AI tools to overcome technical hurdles</li>
+<li>Build from practical application to deeper understanding</li>
+</ul>
+</section>
+<section id="week-by-week-journey" class="level2">
+<h2 class="anchored" data-anchor-id="week-by-week-journey">Week-by-Week Journey</h2>
+<section id="week-1-first-steps-with-r" class="level3">
+<h3 class="anchored" data-anchor-id="week-1-first-steps-with-r">Week 1: First Steps with R</h3>
+<ul>
+<li>Set up R &amp; R Studio on your computer</li>
+<li>Create your first data visualization</li>
+<li>Learn to use AI tools for coding assistance</li>
+<li>Begin working with Quarto for reproducible reports</li>
+</ul>
+</section>
+<section id="week-2-data-visualization-mastery" class="level3">
+<h3 class="anchored" data-anchor-id="week-2-data-visualization-mastery">Week 2: Data Visualization Mastery</h3>
+<ul>
+<li>Create publication-ready plots with ggplot2</li>
+<li>Master the grammar of graphics</li>
+<li>Build interactive visualizations</li>
+<li>Design effective data presentations</li>
+</ul>
+</section>
+<section id="week-3-data-transformation" class="level3">
+<h3 class="anchored" data-anchor-id="week-3-data-transformation">Week 3: Data Transformation</h3>
+<ul>
+<li>Clean and reshape real development finance data</li>
+<li>Master key data manipulation verbs</li>
+<li>Replicate analyses from AidData reports</li>
+<li>Automate repetitive data tasks</li>
+</ul>
+</section>
+<section id="week-4-advanced-topics" class="level3">
+<h3 class="anchored" data-anchor-id="week-4-advanced-topics">Week 4: Advanced Topics</h3>
+<ul>
+<li>Handle complex data cleaning challenges</li>
+<li>Create reproducible workflows</li>
+<li>Generate automated reports</li>
+<li>Build functions for common tasks</li>
+</ul>
+</section>
+<section id="in-person-session" class="level3">
+<h3 class="anchored" data-anchor-id="in-person-session">In-Person Session</h3>
+<ul>
+<li>Work on your own projects with expert guidance</li>
+<li>Tackle advanced visualization challenges</li>
+<li>Learn to extract structured data from text using AI</li>
+<li>Build confidence through hands-on practice</li>
+</ul>
+</section>
+</section>
+<section id="being-realistic-about-learning" class="level2">
+<h2 class="anchored" data-anchor-id="being-realistic-about-learning">Being Realistic About Learning</h2>
+<p>You won’t become an R expert in four weeks—and that’s okay. What you will achieve:</p>
+<ul>
+<li>Master enough R to make your daily work easier and more efficient</li>
+<li>Get past the steepest part of the learning curve</li>
+<li>Build confidence in your ability to learn more</li>
+<li>Develop a foundation for continued learning</li>
+</ul>
+</section>
+<section id="your-ai-learning-assistant" class="level2">
+<h2 class="anchored" data-anchor-id="your-ai-learning-assistant">Your AI Learning Assistant</h2>
+<p>Learning R in 2025 is fundamentally different from even a few years ago. Modern AI tools serve as 24/7 tutors that can:</p>
+<ul>
+<li>Explain complex code in plain English</li>
+<li>Help debug your problems</li>
+<li>Suggest improvements to your code</li>
+<li>Answer your questions any time</li>
+</ul>
+<p>Think of these AI tools as having a knowledgeable colleague always ready to help—they won’t do the work for you, but they’ll help you learn faster and overcome obstacles more efficiently.</p>
+</section>
+<section id="how-to-use-this-book" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-this-book">How to Use This Book</h2>
+<p>This book serves multiple purposes:</p>
+<ol type="1">
+<li>A reference during the course</li>
+<li>A guide for self-paced learning</li>
+<li>A resource for future consultation</li>
+</ol>
+<p>Each chapter includes: - Clear learning objectives - Practical examples using real data - Exercises to reinforce learning - Tips for using AI tools effectively - Resources for deeper learning</p>
+<p>Let’s begin this journey together. By the end of the course, you’ll have new tools and skills to analyze Chinese development finance data more effectively and efficiently than ever before.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -4,7 +4,77 @@
     "href": "index.html",
     "title": "Applied Data Analysis for Chinese Lending Data Using R & LLMs",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2",
+    "text": "Preface\nThis textbook accompanies the intensive month-long course Applied Data Analysis For Chinese Overseas Lending Data Using R & LLMs developed for AidData research analysts. The course combines four weekly 90-minute online sessions with a full day of in-person instruction, designed to equip analysts with powerful new tools for data analysis, visualization, and automation.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#our-promise-to-you",
+    "href": "index.html#our-promise-to-you",
+    "title": "Applied Data Analysis for Chinese Lending Data Using R & LLMs",
+    "section": "Our Promise to You",
+    "text": "Our Promise to You\nBy the end of this course, you will be able to:\n\nTransform complex datasets into compelling visual stories\nAutomate those repetitive tasks that consume hours of your week\nCreate analyses that update automatically when new data arrives\nGenerate professional reports that combine narrative, code, and visuals\nLeverage AI tools to enhance your analytical capabilities\nSolve common data challenges more efficiently",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#our-teaching-philosophy",
+    "href": "index.html#our-teaching-philosophy",
+    "title": "Applied Data Analysis for Chinese Lending Data Using R & LLMs",
+    "section": "Our Teaching Philosophy",
+    "text": "Our Teaching Philosophy\nThink of R not as a programming language to master, but as a powerful toolkit that helps you tell stories with data. Just as you don’t need to be a mechanic to drive a car effectively, you don’t need to be a programmer to use R powerfully. This course focuses on giving you practical tools that will immediately enhance your analytical capabilities.\nWe embrace two key advantages that make this possible:\n\nModern Tools: The tidyverse ecosystem transforms R from a statistical programming language into an intuitive data analysis toolkit\nAI Assistance: Large Language Models (LLMs) act as your personal guide, helping you find and implement the right tools for each task",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#what-makes-this-course-different",
+    "href": "index.html#what-makes-this-course-different",
+    "title": "Applied Data Analysis for Chinese Lending Data Using R & LLMs",
+    "section": "What Makes This Course Different",
+    "text": "What Makes This Course Different\nTraditional R courses often get bogged down in programming concepts before getting to practical applications. We flip this approach:\n\nStart with practical tools you can use immediately\nFocus on real AidData challenges and solutions\nUse AI tools to overcome technical hurdles\nBuild from practical application to deeper understanding",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#week-by-week-journey",
+    "href": "index.html#week-by-week-journey",
+    "title": "Applied Data Analysis for Chinese Lending Data Using R & LLMs",
+    "section": "Week-by-Week Journey",
+    "text": "Week-by-Week Journey\n\nWeek 1: First Steps with R\n\nSet up R & R Studio on your computer\nCreate your first data visualization\nLearn to use AI tools for coding assistance\nBegin working with Quarto for reproducible reports\n\n\n\nWeek 2: Data Visualization Mastery\n\nCreate publication-ready plots with ggplot2\nMaster the grammar of graphics\nBuild interactive visualizations\nDesign effective data presentations\n\n\n\nWeek 3: Data Transformation\n\nClean and reshape real development finance data\nMaster key data manipulation verbs\nReplicate analyses from AidData reports\nAutomate repetitive data tasks\n\n\n\nWeek 4: Advanced Topics\n\nHandle complex data cleaning challenges\nCreate reproducible workflows\nGenerate automated reports\nBuild functions for common tasks\n\n\n\nIn-Person Session\n\nWork on your own projects with expert guidance\nTackle advanced visualization challenges\nLearn to extract structured data from text using AI\nBuild confidence through hands-on practice",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#being-realistic-about-learning",
+    "href": "index.html#being-realistic-about-learning",
+    "title": "Applied Data Analysis for Chinese Lending Data Using R & LLMs",
+    "section": "Being Realistic About Learning",
+    "text": "Being Realistic About Learning\nYou won’t become an R expert in four weeks—and that’s okay. What you will achieve:\n\nMaster enough R to make your daily work easier and more efficient\nGet past the steepest part of the learning curve\nBuild confidence in your ability to learn more\nDevelop a foundation for continued learning",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#your-ai-learning-assistant",
+    "href": "index.html#your-ai-learning-assistant",
+    "title": "Applied Data Analysis for Chinese Lending Data Using R & LLMs",
+    "section": "Your AI Learning Assistant",
+    "text": "Your AI Learning Assistant\nLearning R in 2025 is fundamentally different from even a few years ago. Modern AI tools serve as 24/7 tutors that can:\n\nExplain complex code in plain English\nHelp debug your problems\nSuggest improvements to your code\nAnswer your questions any time\n\nThink of these AI tools as having a knowledgeable colleague always ready to help—they won’t do the work for you, but they’ll help you learn faster and overcome obstacles more efficiently.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use-this-book",
+    "href": "index.html#how-to-use-this-book",
+    "title": "Applied Data Analysis for Chinese Lending Data Using R & LLMs",
+    "section": "How to Use This Book",
+    "text": "How to Use This Book\nThis book serves multiple purposes:\n\nA reference during the course\nA guide for self-paced learning\nA resource for future consultation\n\nEach chapter includes: - Clear learning objectives - Practical examples using real data - Exercises to reinforce learning - Tips for using AI tools effectively - Resources for deeper learning\nLet’s begin this journey together. By the end of the course, you’ll have new tools and skills to analyze Chinese development finance data more effectively and efficiently than ever before.",
     "crumbs": [
       "Preface"
     ]
