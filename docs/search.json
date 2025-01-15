@@ -164,7 +164,17 @@
     "href": "week_1_preclass.html#installation-steps",
     "title": "2  Pre-Class Preparation",
     "section": "2.7 Installation Steps",
-    "text": "2.7 Installation Steps\n\n2.7.1 1. Install R First\n\nGo to CRAN\nClick on your operating system\nDownload and run the installer\n\n\n\n2.7.2 2. Install RStudio Second\n\nGo to RStudio Download\nDownload and run the installer\n\n\n\n2.7.3 Need More Help?\nIf you run into any issues, you have two great options:\nTry our interactive tutorial: learnr-examples.shinyapps.io/ex-setup-r\nThis will walk you through each step with detailed instructions Includes screenshots and troubleshooting tips\nAsk an AI Assistant:\nUse ChatGPT or Claude Try questions like: “I’m having trouble installing R on [your OS]. Here’s what I’ve tried…” The AI can provide customized help for your specific situation\n\n\n2.7.4 Verify Your Installation\nAfter installing both R and RStudio:\n\nOpen RStudio (not R)\nType 2 + 2 in the Console (bottom left)\nPress Enter\n\nIf you see [1] 4, you’re ready to go!\nIf not, ask your favorite LLM. Describe what your issue. Upload a screenshot if you are unsure.",
+    "text": "2.7 Installation Steps\n\n2.7.1 1. Install R First\n\nGo to CRAN\nClick on your operating system\nDownload and run the installer\n\n\n\n2.7.2 2. Install RStudio Second\n\nGo to RStudio Download\nDownload and run the installer\n\n\n\n2.7.3 Need More Help?\nIf you run into any issues, you have two great options:\n\nTry an interactive tutorial\n\nThis will walk you through each step with detailed instructions\nIncludes screenshots and troubleshooting tips\n\nAsk a friendly LLM\n\nUse ChatGPT or Claude\nTry questions like: “I’m having trouble installing R on [your OS]. Here’s what I’ve tried…”\nThe LLM can provide customized help for your specific situation\n\n\n\n\n2.7.4 Verify Your Installation\nAfter installing both R and RStudio:\n\nOpen RStudio (not R)\nType 2 + 2 in the Console (bottom left)\nPress Enter\n\nIf you see [1] 4, you’re ready to go!\nIf not, ask your favorite LLM. Describe what your issue. Upload a screenshot if you are unsure.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
+    ]
+  },
+  {
+    "objectID": "week_1_preclass.html#the-rstudio-interface",
+    "href": "week_1_preclass.html#the-rstudio-interface",
+    "title": "2  Pre-Class Preparation",
+    "section": "2.8 The RStudio Interface",
+    "text": "2.8 The RStudio Interface\n\n\n\nR Studio\n\n\nWhen you first open RStudio, you’ll likely see three panels. To see all four panels, click the “New File” icon in the top left corner and select “R Script”. Here’s what each panel does:\n\nSource Editor (top left): This is where you write and edit your R code files\n\nLike a text editor for your R scripts\nWhere you’ll write code you want to save and reuse\n\nConsole (bottom left): This is where you run R commands\n\nThink of it as R’s command center\nWhere you can try out code immediately\n\nEnvironment/History (top right): Shows your active variables and command history\n\nEnvironment tab lists all variables you’ve created\nHistory tab shows commands you’ve run\n\nFiles/Plots/Packages/Help (bottom right): A multi-purpose viewing area\n\nBrowse your files\nView plots and visualizations\nManage R packages\nAccess help documentation\n\n\n\n\n\n\n\n\nTip\n\n\n\nWant to learn more about RStudio’s features? Check out the RStudio IDE Cheat Sheet.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
     ]
@@ -173,8 +183,18 @@
     "objectID": "week_1_preclass.html#basic-r-console-practice",
     "href": "week_1_preclass.html#basic-r-console-practice",
     "title": "2  Pre-Class Preparation",
-    "section": "2.8 Basic R Console Practice",
-    "text": "2.8 Basic R Console Practice\nOnce you have R and RStudio installed, try these commands in your RStudio console:\n\n2.8.1 R as a calculator\n\n#|eval: false\n2 * 3 + 4\n\n[1] 10\n\n10 / 2\n\n[1] 5\n\n2^3   # This means 2 to the power of 3\n\n[1] 8\n\n### Creating variables (we call this \"assignment\")\nx &lt;- 10    # The arrow means \"assign 10 to x\"\ny &lt;- 5\nx + y\n\n[1] 15\n\n### Using functions\nsum(1, 2, 3, 4, 5)\n\n[1] 15\n\nmean(c(1, 2, 3, 4, 5))    # c() combines numbers into a list\n\n[1] 3",
+    "section": "2.9 Basic R Console Practice",
+    "text": "2.9 Basic R Console Practice\nOnce you have R and RStudio installed, try these commands in your RStudio console:\n\n2.9.1 R as a calculator\n\n2 * 3 + 4\n\n[1] 10\n\n10 / 2\n\n[1] 5\n\n2^3   # This means 2 to the power of 3\n\n[1] 8\n\n### Creating variables (we call this \"assignment\")\nx &lt;- 10    # The arrow means \"assign 10 to x\"\ny &lt;- 5\nx + y\n\n[1] 15\n\n### Using functions\nsum(1, 2, 3, 4, 5)\n\n[1] 15\n\nmean(c(1, 2, 3, 4, 5))    # c() combines numbers into a list\n\n[1] 3",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
+    ]
+  },
+  {
+    "objectID": "week_1_preclass.html#installing-your-first-package-the-tidyverse",
+    "href": "week_1_preclass.html#installing-your-first-package-the-tidyverse",
+    "title": "2  Pre-Class Preparation",
+    "section": "2.10 Installing Your First Package: The Tidyverse",
+    "text": "2.10 Installing Your First Package: The Tidyverse\nJust as installing Microsoft Office gives you a whole suite of programs (Word, Excel, PowerPoint) at once, installing the tidyverse gives you a collection of R packages designed to work together seamlessly for data analysis. Let’s install it:\n\nType this command in your console:\n\n\ninstall.packages(\"tidyverse\")\n\nYou’ll see quite a bit of text appear as R downloads and installs multiple packages. This is normal! The tidyverse includes packages for:\nMaking plots (ggplot2) Working with data (dplyr) Reading data files (readr) And several others we’ll use throughout the course\nAfter installation completes, load the tidyverse:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nYou’ll see some messages about which packages were loaded. Don’t worry about understanding all of them now - we’ll learn about each one as we need it. ::: {.callout-note} You only need to install a package once on your computer (like installing Microsoft Office), but you need to load it with library() each time you start R (like opening Excel when you want to use it). :::",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
     ]
@@ -183,8 +203,8 @@
     "objectID": "week_1_preclass.html#try-using-ai-to-learn-r",
     "href": "week_1_preclass.html#try-using-ai-to-learn-r",
     "title": "2  Pre-Class Preparation",
-    "section": "2.9 Try Using AI to Learn R",
-    "text": "2.9 Try Using AI to Learn R\nAI can be your extra-attentive tutor. Here’s a piece of code to ask an LLM about:\n\nflights |&gt;\n  group_by(carrier) |&gt;\n  summarize(\n    avg_delay = mean(dep_delay, na.rm = TRUE),\n    n = n()\n  ) |&gt;\n  arrange(desc(avg_delay))\n\nTry this prompt with ChatGPT or Claude:\n\n“I’m new to R. Can you explain what each line of this code does? Please explain it like you’re talking to someone who has never programmed before.”\n\nLLMs’ coding ability improves rapidly, so it’s worth using the frontier models. If you don’t already have access to the paid version of either Claude or ChatGPT, it is $20 a month well spent1.",
+    "section": "2.11 Try Using AI to Learn R",
+    "text": "2.11 Try Using AI to Learn R\nAI can be your extra-attentive tutor. Here’s a piece of code to ask an LLM about:\n\nflights |&gt;\n  group_by(carrier) |&gt;\n  summarize(\n    avg_delay = mean(dep_delay, na.rm = TRUE),\n    n = n()\n  ) |&gt;\n  arrange(desc(avg_delay))\n\nTry this prompt with ChatGPT or Claude:\n\n“I’m new to R. Can you explain what each line of this code does? Please explain it like you’re talking to someone who has never programmed before.”\n\nLLMs’ coding ability improves rapidly, so it’s worth using the frontier models. If you don’t already have access to the paid version of either Claude or ChatGPT, it is $20 a month well spent1.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
     ]
@@ -193,8 +213,8 @@
     "objectID": "week_1_preclass.html#resources-for-learning-more",
     "href": "week_1_preclass.html#resources-for-learning-more",
     "title": "2  Pre-Class Preparation",
-    "section": "2.10 Resources for Learning More",
-    "text": "2.10 Resources for Learning More\nHere are some excellent resources if you want to learn more:\n\nR for Data Science (2e) - The best comprehensive introduction\nRStudio Primers - Interactive tutorials\nModern Data Science with R - More academic approach\nR-Ladies Community - Supportive learning community\n#rstats on Bluesky - Active community sharing tips",
+    "section": "2.12 Resources for Learning More",
+    "text": "2.12 Resources for Learning More\nHere are some excellent resources if you want to learn more:\n\nR for Data Science (2e) - The best comprehensive introduction\nRStudio Primers - Interactive tutorials\nModern Data Science with R - More academic approach\nR-Ladies Community - Supportive learning community\n#rstats on Bluesky - Active community sharing tips",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
     ]
@@ -203,8 +223,8 @@
     "objectID": "week_1_preclass.html#success-checklist",
     "href": "week_1_preclass.html#success-checklist",
     "title": "2  Pre-Class Preparation",
-    "section": "2.11 Success Checklist",
-    "text": "2.11 Success Checklist\nBefore coming to class, you should be able to:\n\nOpen RStudio\nPerform a calculation in the console\nCreate a variable\nUse a basic function\nAsk an AI to explain R code",
+    "section": "2.13 Success Checklist",
+    "text": "2.13 Success Checklist\nBefore coming to class, you should be able to:\n\nOpen RStudio\nPerform a calculation in the console\nCreate a variable\nUse a basic function\nAsk an AI to explain R code",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
     ]

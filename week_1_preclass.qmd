@@ -58,13 +58,19 @@ These tools are designed to be more intuitive and user-friendly than base R.
 
 If you run into any issues, you have two great options:
 
-Try our interactive tutorial: learnr-examples.shinyapps.io/ex-setup-r
+1.  Try an [interactive tutorial](https://learnr-examples.shinyapps.io/ex-setup-r/)
 
-This will walk you through each step with detailed instructions Includes screenshots and troubleshooting tips
+    -   This will walk you through each step with detailed instructions
 
-Ask an AI Assistant:
+    -   Includes screenshots and troubleshooting tips
 
-Use ChatGPT or Claude Try questions like: "I'm having trouble installing R on \[your OS\]. Here's what I've tried..." The AI can provide customized help for your specific situation
+2.  Ask a friendly LLM
+
+    -   Use ChatGPT or Claude
+
+    -   Try questions like: "I'm having trouble installing R on \[your OS\]. Here's what I've tried..."
+
+    -   The LLM can provide customized help for your specific situation
 
 ### Verify Your Installation
 
@@ -80,6 +86,31 @@ If you see `[1] 4`, you're ready to go!
 
 If not, ask your favorite LLM. Describe what your issue. Upload a screenshot if you are unsure.
 
+## The RStudio Interface
+
+![R Studio](images/r_studio_4panes.png){fig-alt="A screenshot of R Studio four panes"}
+
+When you first open RStudio, you'll likely see three panels. To see all four panels, click the "New File" icon in the top left corner and select "R Script". Here's what each panel does:
+
+1.  **Source Editor** (top left): This is where you write and edit your R code files
+    -   Like a text editor for your R scripts
+    -   Where you'll write code you want to save and reuse
+2.  **Console** (bottom left): This is where you run R commands
+    -   Think of it as R's command center
+    -   Where you can try out code immediately
+3.  **Environment/History** (top right): Shows your active variables and command history
+    -   Environment tab lists all variables you've created
+    -   History tab shows commands you've run
+4.  **Files/Plots/Packages/Help** (bottom right): A multi-purpose viewing area
+    -   Browse your files
+    -   View plots and visualizations
+    -   Manage R packages
+    -   Access help documentation
+
+::: callout-tip
+Want to learn more about RStudio's features? Check out the [RStudio IDE Cheat Sheet](https://rstudio.github.io/cheatsheets/rstudio-ide.pdf).
+:::
+
 ## Basic R Console Practice
 
 Once you have R and RStudio installed, try these commands in your RStudio console:
@@ -87,7 +118,6 @@ Once you have R and RStudio installed, try these commands in your RStudio consol
 ### R as a calculator
 
 ```{r}
-#|eval: false
 2 * 3 + 4
 10 / 2
 2^3   # This means 2 to the power of 3
@@ -101,6 +131,29 @@ x + y
 sum(1, 2, 3, 4, 5)
 mean(c(1, 2, 3, 4, 5))    # c() combines numbers into a list
 ```
+
+## Installing Your First Package: The Tidyverse
+
+Just as installing Microsoft Office gives you a whole suite of programs (Word, Excel, PowerPoint) at once, installing the tidyverse gives you a collection of R packages designed to work together seamlessly for data analysis. Let's install it:
+
+1.  Type this command in your console:
+
+```{r}
+#| eval: false
+install.packages("tidyverse")
+```
+
+You'll see quite a bit of text appear as R downloads and installs multiple packages. This is normal! The tidyverse includes packages for:
+
+Making plots (ggplot2) Working with data (dplyr) Reading data files (readr) And several others we'll use throughout the course
+
+After installation completes, load the tidyverse:
+
+```{r}
+library(tidyverse)
+```
+
+You'll see some messages about which packages were loaded. Don't worry about understanding all of them now - we'll learn about each one as we need it. ::: {.callout-note} You only need to install a package once on your computer (like installing Microsoft Office), but you need to load it with library() each time you start R (like opening Excel when you want to use it). :::
 
 ## Try Using AI to Learn R
 

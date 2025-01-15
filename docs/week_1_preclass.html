@@ -193,13 +193,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#need-more-help" id="toc-need-more-help" class="nav-link" data-scroll-target="#need-more-help"><span class="header-section-number">2.7.3</span> Need More Help?</a></li>
   <li><a href="#verify-your-installation" id="toc-verify-your-installation" class="nav-link" data-scroll-target="#verify-your-installation"><span class="header-section-number">2.7.4</span> Verify Your Installation</a></li>
   </ul></li>
-  <li><a href="#basic-r-console-practice" id="toc-basic-r-console-practice" class="nav-link" data-scroll-target="#basic-r-console-practice"><span class="header-section-number">2.8</span> Basic R Console Practice</a>
+  <li><a href="#the-rstudio-interface" id="toc-the-rstudio-interface" class="nav-link" data-scroll-target="#the-rstudio-interface"><span class="header-section-number">2.8</span> The RStudio Interface</a></li>
+  <li><a href="#basic-r-console-practice" id="toc-basic-r-console-practice" class="nav-link" data-scroll-target="#basic-r-console-practice"><span class="header-section-number">2.9</span> Basic R Console Practice</a>
   <ul class="collapse">
-  <li><a href="#r-as-a-calculator" id="toc-r-as-a-calculator" class="nav-link" data-scroll-target="#r-as-a-calculator"><span class="header-section-number">2.8.1</span> R as a calculator</a></li>
+  <li><a href="#r-as-a-calculator" id="toc-r-as-a-calculator" class="nav-link" data-scroll-target="#r-as-a-calculator"><span class="header-section-number">2.9.1</span> R as a calculator</a></li>
   </ul></li>
-  <li><a href="#try-using-ai-to-learn-r" id="toc-try-using-ai-to-learn-r" class="nav-link" data-scroll-target="#try-using-ai-to-learn-r"><span class="header-section-number">2.9</span> Try Using AI to Learn R</a></li>
-  <li><a href="#resources-for-learning-more" id="toc-resources-for-learning-more" class="nav-link" data-scroll-target="#resources-for-learning-more"><span class="header-section-number">2.10</span> Resources for Learning More</a></li>
-  <li><a href="#success-checklist" id="toc-success-checklist" class="nav-link" data-scroll-target="#success-checklist"><span class="header-section-number">2.11</span> Success Checklist</a></li>
+  <li><a href="#installing-your-first-package-the-tidyverse" id="toc-installing-your-first-package-the-tidyverse" class="nav-link" data-scroll-target="#installing-your-first-package-the-tidyverse"><span class="header-section-number">2.10</span> Installing Your First Package: The Tidyverse</a></li>
+  <li><a href="#try-using-ai-to-learn-r" id="toc-try-using-ai-to-learn-r" class="nav-link" data-scroll-target="#try-using-ai-to-learn-r"><span class="header-section-number">2.11</span> Try Using AI to Learn R</a></li>
+  <li><a href="#resources-for-learning-more" id="toc-resources-for-learning-more" class="nav-link" data-scroll-target="#resources-for-learning-more"><span class="header-section-number">2.12</span> Resources for Learning More</a></li>
+  <li><a href="#success-checklist" id="toc-success-checklist" class="nav-link" data-scroll-target="#success-checklist"><span class="header-section-number">2.13</span> Success Checklist</a></li>
   </ul>
 </nav>
     </div>
@@ -288,10 +290,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="need-more-help" class="level3" data-number="2.7.3">
 <h3 data-number="2.7.3" class="anchored" data-anchor-id="need-more-help"><span class="header-section-number">2.7.3</span> Need More Help?</h3>
 <p>If you run into any issues, you have two great options:</p>
-<p>Try our interactive tutorial: learnr-examples.shinyapps.io/ex-setup-r</p>
-<p>This will walk you through each step with detailed instructions Includes screenshots and troubleshooting tips</p>
-<p>Ask an AI Assistant:</p>
-<p>Use ChatGPT or Claude Try questions like: “I’m having trouble installing R on [your OS]. Here’s what I’ve tried…” The AI can provide customized help for your specific situation</p>
+<ol type="1">
+<li><p>Try an <a href="https://learnr-examples.shinyapps.io/ex-setup-r/">interactive tutorial</a></p>
+<ul>
+<li><p>This will walk you through each step with detailed instructions</p></li>
+<li><p>Includes screenshots and troubleshooting tips</p></li>
+</ul></li>
+<li><p>Ask a friendly LLM</p>
+<ul>
+<li><p>Use ChatGPT or Claude</p></li>
+<li><p>Try questions like: “I’m having trouble installing R on [your OS]. Here’s what I’ve tried…”</p></li>
+<li><p>The LLM can provide customized help for your specific situation</p></li>
+</ul></li>
+</ol>
 </section>
 <section id="verify-your-installation" class="level3" data-number="2.7.4">
 <h3 data-number="2.7.4" class="anchored" data-anchor-id="verify-your-installation"><span class="header-section-number">2.7.4</span> Verify Your Installation</h3>
@@ -305,14 +316,60 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If not, ask your favorite LLM. Describe what your issue. Upload a screenshot if you are unsure.</p>
 </section>
 </section>
-<section id="basic-r-console-practice" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="basic-r-console-practice"><span class="header-section-number">2.8</span> Basic R Console Practice</h2>
+<section id="the-rstudio-interface" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="the-rstudio-interface"><span class="header-section-number">2.8</span> The RStudio Interface</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/r_studio_4panes.png" class="img-fluid figure-img" alt="A screenshot of R Studio four panes"></p>
+<figcaption>R Studio</figcaption>
+</figure>
+</div>
+<p>When you first open RStudio, you’ll likely see three panels. To see all four panels, click the “New File” icon in the top left corner and select “R Script”. Here’s what each panel does:</p>
+<ol type="1">
+<li><strong>Source Editor</strong> (top left): This is where you write and edit your R code files
+<ul>
+<li>Like a text editor for your R scripts</li>
+<li>Where you’ll write code you want to save and reuse</li>
+</ul></li>
+<li><strong>Console</strong> (bottom left): This is where you run R commands
+<ul>
+<li>Think of it as R’s command center</li>
+<li>Where you can try out code immediately</li>
+</ul></li>
+<li><strong>Environment/History</strong> (top right): Shows your active variables and command history
+<ul>
+<li>Environment tab lists all variables you’ve created</li>
+<li>History tab shows commands you’ve run</li>
+</ul></li>
+<li><strong>Files/Plots/Packages/Help</strong> (bottom right): A multi-purpose viewing area
+<ul>
+<li>Browse your files</li>
+<li>View plots and visualizations</li>
+<li>Manage R packages</li>
+<li>Access help documentation</li>
+</ul></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Want to learn more about RStudio’s features? Check out the <a href="https://rstudio.github.io/cheatsheets/rstudio-ide.pdf">RStudio IDE Cheat Sheet</a>.</p>
+</div>
+</div>
+</section>
+<section id="basic-r-console-practice" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="basic-r-console-practice"><span class="header-section-number">2.9</span> Basic R Console Practice</h2>
 <p>Once you have R and RStudio installed, try these commands in your RStudio console:</p>
-<section id="r-as-a-calculator" class="level3" data-number="2.8.1">
-<h3 data-number="2.8.1" class="anchored" data-anchor-id="r-as-a-calculator"><span class="header-section-number">2.8.1</span> R as a calculator</h3>
+<section id="r-as-a-calculator" class="level3" data-number="2.9.1">
+<h3 data-number="2.9.1" class="anchored" data-anchor-id="r-as-a-calculator"><span class="header-section-number">2.9.1</span> R as a calculator</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|eval: false</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
 </div>
@@ -343,17 +400,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="try-using-ai-to-learn-r" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="try-using-ai-to-learn-r"><span class="header-section-number">2.9</span> Try Using AI to Learn R</h2>
+<section id="installing-your-first-package-the-tidyverse" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="installing-your-first-package-the-tidyverse"><span class="header-section-number">2.10</span> Installing Your First Package: The Tidyverse</h2>
+<p>Just as installing Microsoft Office gives you a whole suite of programs (Word, Excel, PowerPoint) at once, installing the tidyverse gives you a collection of R packages designed to work together seamlessly for data analysis. Let’s install it:</p>
+<ol type="1">
+<li>Type this command in your console:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You’ll see quite a bit of text appear as R downloads and installs multiple packages. This is normal! The tidyverse includes packages for:</p>
+<p>Making plots (ggplot2) Working with data (dplyr) Reading data files (readr) And several others we’ll use throughout the course</p>
+<p>After installation completes, load the tidyverse:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+</div>
+<p>You’ll see some messages about which packages were loaded. Don’t worry about understanding all of them now - we’ll learn about each one as we need it. ::: {.callout-note} You only need to install a package once on your computer (like installing Microsoft Office), but you need to load it with library() each time you start R (like opening Excel when you want to use it). :::</p>
+</section>
+<section id="try-using-ai-to-learn-r" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="try-using-ai-to-learn-r"><span class="header-section-number">2.11</span> Try Using AI to Learn R</h2>
 <p>AI can be your extra-attentive tutor. Here’s a piece of code to ask an LLM about:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(carrier) <span class="sc">|&gt;</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_delay))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(carrier) <span class="sc">|&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_delay))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Try this prompt with ChatGPT or Claude:</p>
 <blockquote class="blockquote">
@@ -361,8 +447,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 <p>LLMs’ coding ability improves rapidly, so it’s worth using the frontier models. If you don’t already have access to the paid version of either Claude or ChatGPT, it is $20 a month well spent<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 </section>
-<section id="resources-for-learning-more" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="resources-for-learning-more"><span class="header-section-number">2.10</span> Resources for Learning More</h2>
+<section id="resources-for-learning-more" class="level2" data-number="2.12">
+<h2 data-number="2.12" class="anchored" data-anchor-id="resources-for-learning-more"><span class="header-section-number">2.12</span> Resources for Learning More</h2>
 <p>Here are some excellent resources if you want to learn more:</p>
 <ul>
 <li><p><a href="https://r4ds.hadley.nz/">R for Data Science (2e)</a> - The best comprehensive introduction</p></li>
@@ -372,8 +458,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><a href="https://bsky.app/hashtag/rstats">#rstats on Bluesky</a> - Active community sharing tips</p></li>
 </ul>
 </section>
-<section id="success-checklist" class="level2" data-number="2.11">
-<h2 data-number="2.11" class="anchored" data-anchor-id="success-checklist"><span class="header-section-number">2.11</span> Success Checklist</h2>
+<section id="success-checklist" class="level2" data-number="2.13">
+<h2 data-number="2.13" class="anchored" data-anchor-id="success-checklist"><span class="header-section-number">2.13</span> Success Checklist</h2>
 <p>Before coming to class, you should be able to:</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Open RStudio</label></li>
