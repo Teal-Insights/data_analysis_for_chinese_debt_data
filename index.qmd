@@ -88,7 +88,9 @@ Learning R in 2025 is fundamentally different from even a few years ago. Modern 
 -   Suggest improvements to your code
 -   Answer your questions any time
 
-Think of these AI tools as having a knowledgeable colleague always ready to help—they won't do the work for you, but they'll help you learn faster and overcome obstacles more efficiently.
+Think of these AI tools as having a knowledgeable colleague[^index-1] always ready to help—they won't do the work for you, but they'll help you learn faster and overcome obstacles more efficiently.
+
+[^index-1]: Sometimes that knowledgeable colleague is overconfident and incorrect. Use your human judgment.
 
 ## How to Use This Book
 
@@ -98,6 +100,16 @@ This book serves multiple purposes:
 2.  A guide for self-paced learning
 3.  A resource for future consultation
 
-Each chapter includes: - Clear learning objectives - Practical examples using real data - Exercises to reinforce learning - Tips for using AI tools effectively - Resources for deeper learning
+Each chapter includes:
+
+-   Clear learning objectives
+
+-   Practical examples using real data
+
+-   Exercises to reinforce learning
+
+-   Tips for using AI tools effectively
+
+-   Resources for deeper learning
 
 Let's begin this journey together. By the end of the course, you'll have new tools and skills to analyze Chinese development finance data more effectively and efficiently than ever before.

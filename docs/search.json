@@ -64,7 +64,7 @@
     "href": "index.html#your-ai-learning-assistant",
     "title": "Applied Data Analysis for Chinese Lending Data Using R & LLMs",
     "section": "Your AI Learning Assistant",
-    "text": "Your AI Learning Assistant\nLearning R in 2025 is fundamentally different from even a few years ago. Modern AI tools serve as 24/7 tutors that can:\n\nExplain complex code in plain English\nHelp debug your problems\nSuggest improvements to your code\nAnswer your questions any time\n\nThink of these AI tools as having a knowledgeable colleague always ready to help—they won’t do the work for you, but they’ll help you learn faster and overcome obstacles more efficiently.",
+    "text": "Your AI Learning Assistant\nLearning R in 2025 is fundamentally different from even a few years ago. Modern AI tools serve as 24/7 tutors that can:\n\nExplain complex code in plain English\nHelp debug your problems\nSuggest improvements to your code\nAnswer your questions any time\n\nThink of these AI tools as having a knowledgeable colleague1 always ready to help—they won’t do the work for you, but they’ll help you learn faster and overcome obstacles more efficiently.",
     "crumbs": [
       "Preface"
     ]
@@ -74,7 +74,17 @@
     "href": "index.html#how-to-use-this-book",
     "title": "Applied Data Analysis for Chinese Lending Data Using R & LLMs",
     "section": "How to Use This Book",
-    "text": "How to Use This Book\nThis book serves multiple purposes:\n\nA reference during the course\nA guide for self-paced learning\nA resource for future consultation\n\nEach chapter includes: - Clear learning objectives - Practical examples using real data - Exercises to reinforce learning - Tips for using AI tools effectively - Resources for deeper learning\nLet’s begin this journey together. By the end of the course, you’ll have new tools and skills to analyze Chinese development finance data more effectively and efficiently than ever before.",
+    "text": "How to Use This Book\nThis book serves multiple purposes:\n\nA reference during the course\nA guide for self-paced learning\nA resource for future consultation\n\nEach chapter includes:\n\nClear learning objectives\nPractical examples using real data\nExercises to reinforce learning\nTips for using AI tools effectively\nResources for deeper learning\n\nLet’s begin this journey together. By the end of the course, you’ll have new tools and skills to analyze Chinese development finance data more effectively and efficiently than ever before.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "Applied Data Analysis for Chinese Lending Data Using R & LLMs",
+    "section": "",
+    "text": "Sometimes that knowledgeable colleague is overconfident and incorrect. Use your human judgment.↩︎",
     "crumbs": [
       "Preface"
     ]
@@ -90,13 +100,133 @@
     ]
   },
   {
+    "objectID": "week_1_preclass.html",
+    "href": "week_1_preclass.html",
+    "title": "2  Pre-Class Preparation",
+    "section": "",
+    "text": "2.1 Overview\nBefore our first class meeting, you’ll need to install some software and familiarize yourself with a few basic concepts. This preparation will ensure you can participate fully in class activities. While the steps are straightforward, please allow 45-60 minutes to complete everything comfortably.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
+    ]
+  },
+  {
+    "objectID": "week_1_preclass.html#learning-objectives",
+    "href": "week_1_preclass.html#learning-objectives",
+    "title": "2  Pre-Class Preparation",
+    "section": "2.2 Learning Objectives",
+    "text": "2.2 Learning Objectives\nBy completing this pre-class work, you will be able to:\n\nInstall R and RStudio on your computer\nExplain the difference between R and RStudio\nPerform basic calculations in R\nCreate simple variables\nUse basic R functions\nUse AI tools to help understand R code",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
+    ]
+  },
+  {
+    "objectID": "week_1_preclass.html#what-is-r",
+    "href": "week_1_preclass.html#what-is-r",
+    "title": "2  Pre-Class Preparation",
+    "section": "2.3 What is R?",
+    "text": "2.3 What is R?\nThink of R as two things working together: a powerful calculator designed specifically for data analysis, and a collection of tools that make that calculator more useful. R was created by statisticians in the 1990s to make data analysis more accessible and reproducible. Today, it’s one of the most popular tools for data analysis worldwide.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
+    ]
+  },
+  {
+    "objectID": "week_1_preclass.html#what-is-rstudio",
+    "href": "week_1_preclass.html#what-is-rstudio",
+    "title": "2  Pre-Class Preparation",
+    "section": "2.4 What is RStudio?",
+    "text": "2.4 What is RStudio?\nRStudio is like a workshop for R – it’s where you’ll actually do your work. If R is a powerful calculator, RStudio is the desk, notepad, file organizer, and reference library that makes using that calculator much easier. It’s called an IDE (Integrated Development Environment), but you can think of it as your data analysis workspace.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
+    ]
+  },
+  {
+    "objectID": "week_1_preclass.html#what-are-r-packages",
+    "href": "week_1_preclass.html#what-are-r-packages",
+    "title": "2  Pre-Class Preparation",
+    "section": "2.5 What are R Packages?",
+    "text": "2.5 What are R Packages?\nPackages in R are like apps on your phone:\n\nYour phone comes with some basic apps (like R’s built-in functions)\nYou can install new apps (packages) to do specific tasks\nOnce installed, you need to open (load) an app to use it",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
+    ]
+  },
+  {
+    "objectID": "week_1_preclass.html#what-is-the-tidyverse",
+    "href": "week_1_preclass.html#what-is-the-tidyverse",
+    "title": "2  Pre-Class Preparation",
+    "section": "2.6 What is the tidyverse?",
+    "text": "2.6 What is the tidyverse?\nThe tidyverse is like a bundle of the most useful data analysis apps, all designed to work together seamlessly. It includes tools for:\n\nCreating beautiful visualizations\nCleaning and organizing data\nImporting data from various sources\n\nThese tools are designed to be more intuitive and user-friendly than base R.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
+    ]
+  },
+  {
+    "objectID": "week_1_preclass.html#installation-steps",
+    "href": "week_1_preclass.html#installation-steps",
+    "title": "2  Pre-Class Preparation",
+    "section": "2.7 Installation Steps",
+    "text": "2.7 Installation Steps\n\n2.7.1 1. Install R First\n\nGo to CRAN\nClick on your operating system\nDownload and run the installer\n\n\n\n2.7.2 2. Install RStudio Second\n\nGo to RStudio Download\nDownload and run the installer\n\n\n\n2.7.3 Need More Help?\nIf you run into any issues, you have two great options:\nTry our interactive tutorial: learnr-examples.shinyapps.io/ex-setup-r\nThis will walk you through each step with detailed instructions Includes screenshots and troubleshooting tips\nAsk an AI Assistant:\nUse ChatGPT or Claude Try questions like: “I’m having trouble installing R on [your OS]. Here’s what I’ve tried…” The AI can provide customized help for your specific situation\n\n\n2.7.4 Verify Your Installation\nAfter installing both R and RStudio:\n\nOpen RStudio (not R)\nType 2 + 2 in the Console (bottom left)\nPress Enter\n\nIf you see [1] 4, you’re ready to go!\nIf not, ask your favorite LLM. Describe what your issue. Upload a screenshot if you are unsure.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
+    ]
+  },
+  {
+    "objectID": "week_1_preclass.html#basic-r-console-practice",
+    "href": "week_1_preclass.html#basic-r-console-practice",
+    "title": "2  Pre-Class Preparation",
+    "section": "2.8 Basic R Console Practice",
+    "text": "2.8 Basic R Console Practice\nOnce you have R and RStudio installed, try these commands in your RStudio console:\n\n2.8.1 R as a calculator\n\n#|eval: false\n2 * 3 + 4\n\n[1] 10\n\n10 / 2\n\n[1] 5\n\n2^3   # This means 2 to the power of 3\n\n[1] 8\n\n### Creating variables (we call this \"assignment\")\nx &lt;- 10    # The arrow means \"assign 10 to x\"\ny &lt;- 5\nx + y\n\n[1] 15\n\n### Using functions\nsum(1, 2, 3, 4, 5)\n\n[1] 15\n\nmean(c(1, 2, 3, 4, 5))    # c() combines numbers into a list\n\n[1] 3",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
+    ]
+  },
+  {
+    "objectID": "week_1_preclass.html#try-using-ai-to-learn-r",
+    "href": "week_1_preclass.html#try-using-ai-to-learn-r",
+    "title": "2  Pre-Class Preparation",
+    "section": "2.9 Try Using AI to Learn R",
+    "text": "2.9 Try Using AI to Learn R\nAI can be your extra-attentive tutor. Here’s a piece of code to ask an LLM about:\n\nflights |&gt;\n  group_by(carrier) |&gt;\n  summarize(\n    avg_delay = mean(dep_delay, na.rm = TRUE),\n    n = n()\n  ) |&gt;\n  arrange(desc(avg_delay))\n\nTry this prompt with ChatGPT or Claude:\n\n“I’m new to R. Can you explain what each line of this code does? Please explain it like you’re talking to someone who has never programmed before.”\n\nLLMs’ coding ability improves rapidly, so it’s worth using the frontier models. If you don’t already have access to the paid version of either Claude or ChatGPT, it is $20 a month well spent1.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
+    ]
+  },
+  {
+    "objectID": "week_1_preclass.html#resources-for-learning-more",
+    "href": "week_1_preclass.html#resources-for-learning-more",
+    "title": "2  Pre-Class Preparation",
+    "section": "2.10 Resources for Learning More",
+    "text": "2.10 Resources for Learning More\nHere are some excellent resources if you want to learn more:\n\nR for Data Science (2e) - The best comprehensive introduction\nRStudio Primers - Interactive tutorials\nModern Data Science with R - More academic approach\nR-Ladies Community - Supportive learning community\n#rstats on Bluesky - Active community sharing tips",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
+    ]
+  },
+  {
+    "objectID": "week_1_preclass.html#success-checklist",
+    "href": "week_1_preclass.html#success-checklist",
+    "title": "2  Pre-Class Preparation",
+    "section": "2.11 Success Checklist",
+    "text": "2.11 Success Checklist\nBefore coming to class, you should be able to:\n\nOpen RStudio\nPerform a calculation in the console\nCreate a variable\nUse a basic function\nAsk an AI to explain R code",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
+    ]
+  },
+  {
+    "objectID": "week_1_preclass.html#footnotes",
+    "href": "week_1_preclass.html#footnotes",
+    "title": "2  Pre-Class Preparation",
+    "section": "",
+    "text": "As of the time of writing in January of 2025, Claude is the best for R, but ChatGPT 4o (and above) aren’t too far behind. This will change quickly as new models come out.↩︎",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
+    ]
+  },
+  {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "2  Summary",
+    "title": "3  Summary",
     "section": "",
     "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Summary</span>"
     ]
   },
   {

@@ -1,0 +1,150 @@
+# Pre-Class Preparation {#sec-preclass}
+
+## Overview
+
+Before our first class meeting, you'll need to install some software and familiarize yourself with a few basic concepts. This preparation will ensure you can participate fully in class activities. While the steps are straightforward, please allow 45-60 minutes to complete everything comfortably.
+
+## Learning Objectives
+
+By completing this pre-class work, you will be able to:
+
+-   Install R and RStudio on your computer
+-   Explain the difference between R and RStudio
+-   Perform basic calculations in R
+-   Create simple variables
+-   Use basic R functions
+-   Use AI tools to help understand R code
+
+## What is R?
+
+Think of R as two things working together: a powerful calculator designed specifically for data analysis, and a collection of tools that make that calculator more useful. R was created by statisticians in the 1990s to make data analysis more accessible and reproducible. Today, it's one of the most popular tools for data analysis worldwide.
+
+## What is RStudio?
+
+RStudio is like a workshop for R – it's where you'll actually do your work. If R is a powerful calculator, RStudio is the desk, notepad, file organizer, and reference library that makes using that calculator much easier. It's called an IDE (Integrated Development Environment), but you can think of it as your data analysis workspace.
+
+## What are R Packages?
+
+Packages in R are like apps on your phone:
+
+-   Your phone comes with some basic apps (like R's built-in functions)
+-   You can install new apps (packages) to do specific tasks
+-   Once installed, you need to open (load) an app to use it
+
+## What is the tidyverse?
+
+The tidyverse is like a bundle of the most useful data analysis apps, all designed to work together seamlessly. It includes tools for:
+
+-   Creating beautiful visualizations
+-   Cleaning and organizing data
+-   Importing data from various sources
+
+These tools are designed to be more intuitive and user-friendly than base R.
+
+## Installation Steps
+
+### 1. Install R First
+
+1.  Go to [CRAN](https://cran.r-project.org/)
+2.  Click on your operating system
+3.  Download and run the installer
+
+### 2. Install RStudio Second
+
+1.  Go to [RStudio Download](https://posit.co/download/rstudio-desktop/)
+2.  Download and run the installer
+
+### Need More Help?
+
+If you run into any issues, you have two great options:
+
+Try our interactive tutorial: learnr-examples.shinyapps.io/ex-setup-r
+
+This will walk you through each step with detailed instructions Includes screenshots and troubleshooting tips
+
+Ask an AI Assistant:
+
+Use ChatGPT or Claude Try questions like: "I'm having trouble installing R on \[your OS\]. Here's what I've tried..." The AI can provide customized help for your specific situation
+
+### Verify Your Installation
+
+After installing both R and RStudio:
+
+1.  Open RStudio (not R)
+
+2.  Type `2 + 2` in the Console (bottom left)
+
+3.  Press Enter
+
+If you see `[1] 4`, you're ready to go!
+
+If not, ask your favorite LLM. Describe what your issue. Upload a screenshot if you are unsure.
+
+## Basic R Console Practice
+
+Once you have R and RStudio installed, try these commands in your RStudio console:
+
+### R as a calculator
+
+```{r}
+#|eval: false
+2 * 3 + 4
+10 / 2
+2^3   # This means 2 to the power of 3
+
+### Creating variables (we call this "assignment")
+x <- 10    # The arrow means "assign 10 to x"
+y <- 5
+x + y
+
+### Using functions
+sum(1, 2, 3, 4, 5)
+mean(c(1, 2, 3, 4, 5))    # c() combines numbers into a list
+```
+
+## Try Using AI to Learn R
+
+AI can be your extra-attentive tutor. Here's a piece of code to ask an LLM about:
+
+```{r}
+#| eval: false
+flights |>
+  group_by(carrier) |>
+  summarize(
+    avg_delay = mean(dep_delay, na.rm = TRUE),
+    n = n()
+  ) |>
+  arrange(desc(avg_delay))
+```
+
+Try this prompt with ChatGPT or Claude:
+
+> "I'm new to R. Can you explain what each line of this code does? Please explain it like you're talking to someone who has never programmed before."
+
+LLMs' coding ability improves rapidly, so it's worth using the frontier models. If you don't already have access to the paid version of either Claude or ChatGPT, it is \$20 a month well spent[^week_1_preclass-1].
+
+[^week_1_preclass-1]: As of the time of writing in January of 2025, Claude is the best for R, but ChatGPT 4o (and above) aren't too far behind. This will change quickly as new models come out.
+
+## Resources for Learning More
+
+Here are some excellent resources if you want to learn more:
+
+-   [R for Data Science (2e)](https://r4ds.hadley.nz/) - The best comprehensive introduction
+
+-   [RStudio Primers](https://posit.cloud/learn/primers) - Interactive tutorials
+
+-   [Modern Data Science with R](https://mdsr-book.github.io/) - More academic approach
+
+-   [R-Ladies Community](https://rladies.org/) - Supportive learning community
+
+-   [#rstats on Bluesky](https://bsky.app/hashtag/rstats) - Active community sharing tips
+
+## Success Checklist
+
+Before coming to class, you should be able to:
+
+-   [ ] Open RStudio
+-   [ ] Perform a calculation in the console
+-   [ ] Create a variable
+-   [ ] Use a basic function
+-   [ ] Ask an AI to explain R code
