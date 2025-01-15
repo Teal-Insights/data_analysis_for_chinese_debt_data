@@ -17,7 +17,7 @@ By completing this pre-class work, you will be able to:
 
 ## What is R?
 
-Think of R as two things working together: a powerful calculator designed specifically for data analysis, and a collection of tools that make that calculator more useful. R was created by statisticians in the 1990s to make data analysis more accessible and reproducible. Today, it's one of the most popular tools for data analysis worldwide.
+Think of R as two things working together: a powerful calculator designed specifically for data analysis, and a collection of tools that make that calculator more useful. R was created by statisticians in the 1990s to make data analysis more accessible and reproducible. Today, it's one of the most popular tools for data analysis worldwide. It is free and open source.
 
 ## What is RStudio?
 
@@ -178,19 +178,41 @@ LLMs' coding ability improves rapidly, so it's worth using the frontier models. 
 
 [^week_1_preclass-1]: As of the time of writing in January of 2025, Claude is the best for R, but ChatGPT 4o (and above) aren't too far behind. This will change quickly as new models come out.
 
-## Resources for Learning More
+## Learning Resources
 
-Here are some excellent resources if you want to learn more:
+One of R's greatest strengths is its welcoming, active community that creates high-quality learning resources in many different formats. Everyone learns differently, so we've provided options to suit different learning styles. Remember: our course will get you started, but these resources can help you continue your journey.
 
--   [R for Data Science (2e)](https://r4ds.hadley.nz/) - The best comprehensive introduction
+### THE Textbook
 
--   [RStudio Primers](https://posit.cloud/learn/primers) - Interactive tutorials
+[R for Data Science (2e)](https://r4ds.hadley.nz/) is the definitive guide to modern data analysis in R, and it's completely free online. Much of this course's approach is inspired by this book, but with a key difference: while R4DS teaches concepts using general datasets (like diamond prices and penguin measurements), we'll apply these same concepts directly to Chinese development finance data.
 
--   [Modern Data Science with R](https://mdsr-book.github.io/) - More academic approach
+Think of R4DS as your comprehensive reference manual. When you want to: - Understand a concept more deeply - Learn additional approaches - Explore beyond what we cover in class - Review fundamentals
 
--   [R-Ladies Community](https://rladies.org/) - Supportive learning community
+This should be your first stop. The authors (Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund) have a gift for clear explanation, and the book is constantly updated to reflect modern best practices.
 
--   [#rstats on Bluesky](https://bsky.app/hashtag/rstats) - Active community sharing tips
+::: callout-tip
+Bookmark [R for Data Science](https://r4ds.hadley.nz/) now - you'll be referring to it often!
+:::
+
+### Video Learning
+
+If you prefer to learn by watching, check out "[R Programming for ABSOLUTE Beginners](https://youtu.be/FY8BISK5DpM?si=nFRDZafjOc_fvVaJ)" (14 minutes). This gentle introduction is perfect if you're feeling uncertain about where to start.
+
+### Interactive Learning
+
+[DataCamp's Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) provides hands-on practice in an online environment with immediate feedback. While DataCamp is generally a paid platform, this introductory course is free. This format worked particularly well for me when I was learning R.
+
+### Community Resources
+
+The R community is known for being friendly and supportive. Here's where to find help:
+
+-   [#rstats on Bluesky](https://bsky.app/hashtag/rstats): The active R community shares tips, resources, and help
+-   [R-Ladies](https://rladies.org/): A worldwide organization promoting gender diversity in the R community
+-   [R-bloggers](https://www.r-bloggers.com/): An aggregator of R-related blogs and tutorials
+
+::: callout-note
+We'll provide a comprehensive resource list in Chapter X, but these should get you started. The R community's commitment to sharing knowledge means you'll never lack for learning materials!
+:::
 
 ## Success Checklist
 
@@ -200,4 +222,5 @@ Before coming to class, you should be able to:
 -   [ ] Perform a calculation in the console
 -   [ ] Create a variable
 -   [ ] Use a basic function
+-   [ ] Install and load packages
 -   [ ] Ask an AI to explain R code

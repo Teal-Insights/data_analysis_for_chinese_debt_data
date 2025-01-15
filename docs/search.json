@@ -124,7 +124,7 @@
     "href": "week_1_preclass.html#what-is-r",
     "title": "2  Pre-Class Preparation",
     "section": "2.3 What is R?",
-    "text": "2.3 What is R?\nThink of R as two things working together: a powerful calculator designed specifically for data analysis, and a collection of tools that make that calculator more useful. R was created by statisticians in the 1990s to make data analysis more accessible and reproducible. Today, it’s one of the most popular tools for data analysis worldwide.",
+    "text": "2.3 What is R?\nThink of R as two things working together: a powerful calculator designed specifically for data analysis, and a collection of tools that make that calculator more useful. R was created by statisticians in the 1990s to make data analysis more accessible and reproducible. Today, it’s one of the most popular tools for data analysis worldwide. It is free and open source.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
     ]
@@ -210,11 +210,11 @@
     ]
   },
   {
-    "objectID": "week_1_preclass.html#resources-for-learning-more",
-    "href": "week_1_preclass.html#resources-for-learning-more",
+    "objectID": "week_1_preclass.html#learning-resources",
+    "href": "week_1_preclass.html#learning-resources",
     "title": "2  Pre-Class Preparation",
-    "section": "2.12 Resources for Learning More",
-    "text": "2.12 Resources for Learning More\nHere are some excellent resources if you want to learn more:\n\nR for Data Science (2e) - The best comprehensive introduction\nRStudio Primers - Interactive tutorials\nModern Data Science with R - More academic approach\nR-Ladies Community - Supportive learning community\n#rstats on Bluesky - Active community sharing tips",
+    "section": "2.12 Learning Resources",
+    "text": "2.12 Learning Resources\nOne of R’s greatest strengths is its welcoming, active community that creates high-quality learning resources in many different formats. Everyone learns differently, so we’ve provided options to suit different learning styles. Remember: our course will get you started, but these resources can help you continue your journey.\n\n2.12.1 THE Textbook\nR for Data Science (2e) is the definitive guide to modern data analysis in R, and it’s completely free online. Much of this course’s approach is inspired by this book, but with a key difference: while R4DS teaches concepts using general datasets (like diamond prices and penguin measurements), we’ll apply these same concepts directly to Chinese development finance data.\nThink of R4DS as your comprehensive reference manual. When you want to: - Understand a concept more deeply - Learn additional approaches - Explore beyond what we cover in class - Review fundamentals\nThis should be your first stop. The authors (Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund) have a gift for clear explanation, and the book is constantly updated to reflect modern best practices.\n\n\n\n\n\n\nTip\n\n\n\nBookmark R for Data Science now - you’ll be referring to it often!\n\n\n\n\n2.12.2 Video Learning\nIf you prefer to learn by watching, check out “R Programming for ABSOLUTE Beginners” (14 minutes). This gentle introduction is perfect if you’re feeling uncertain about where to start.\n\n\n2.12.3 Interactive Learning\nDataCamp’s Introduction to R provides hands-on practice in an online environment with immediate feedback. While DataCamp is generally a paid platform, this introductory course is free. This format worked particularly well for me when I was learning R.\n\n\n2.12.4 Community Resources\nThe R community is known for being friendly and supportive. Here’s where to find help:\n\n#rstats on Bluesky: The active R community shares tips, resources, and help\nR-Ladies: A worldwide organization promoting gender diversity in the R community\nR-bloggers: An aggregator of R-related blogs and tutorials\n\n\n\n\n\n\n\nNote\n\n\n\nWe’ll provide a comprehensive resource list in Chapter X, but these should get you started. The R community’s commitment to sharing knowledge means you’ll never lack for learning materials!",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
     ]
@@ -224,7 +224,7 @@
     "href": "week_1_preclass.html#success-checklist",
     "title": "2  Pre-Class Preparation",
     "section": "2.13 Success Checklist",
-    "text": "2.13 Success Checklist\nBefore coming to class, you should be able to:\n\nOpen RStudio\nPerform a calculation in the console\nCreate a variable\nUse a basic function\nAsk an AI to explain R code",
+    "text": "2.13 Success Checklist\nBefore coming to class, you should be able to:\n\nOpen RStudio\nPerform a calculation in the console\nCreate a variable\nUse a basic function\nInstall and load packages\nAsk an AI to explain R code",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Class Preparation</span>"
     ]
