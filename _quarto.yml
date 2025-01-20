@@ -6,10 +6,29 @@ book:
   title: "Applied Data Analysis for Chinese Lending Data Using R & LLMs"
   author: "Teal Emery"
   date: "1/14/2025"
+  favicon: "images/course_logo.png"
+  twitter-card: true
+  open-graph: true
   chapters:
     - index.qmd
     - intro.qmd
-    - week_1_preclass.qmd
+    
+    - part: "Part 1: Data Analysis Bootcamp"
+      chapters:
+        - week_1_pre_class.qmd
+        - week_1_in_class.qmd
+        - week_2_pre_class.qmd
+        - week_2_in_class.qmd
+        - week_3_pre_class.qmd
+        - week_3_in_class.qmd
+        - week_4_pre_class.qmd
+        - week_4_in_class.qmd
+    
+    - part: "Part 2: Further Resources"
+      chapters:
+        - part_2_resources.qmd
+
+
     - summary.qmd
     - references.qmd
 
