@@ -272,5 +272,38 @@
     "crumbs": [
       "References"
     ]
+  },
+  {
+    "objectID": "week_1_in_class.html",
+    "href": "week_1_in_class.html",
+    "title": "3  Week 1: Getting Started (In-Class)",
+    "section": "",
+    "text": "3.1 Setting Up Your Work Environment",
+    "crumbs": [
+      "Part 1: Data Analysis Bootcamp",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Week 1: Getting Started (In-Class)</span>"
+    ]
+  },
+  {
+    "objectID": "week_1_in_class.html#setting-up-your-work-environment",
+    "href": "week_1_in_class.html#setting-up-your-work-environment",
+    "title": "3  Week 1: Getting Started (In-Class)",
+    "section": "",
+    "text": "3.1.1 Creating a Project Structure\nFirst, let’s create an organized workspace for this course:\n\nIn RStudio, click File → New Project → New Directory\nClick “New Project”\nName it “data_analysis_bootcamp”\nChoose where to save it (remember this location!)\nClick “Create Project”\n\nNow let’s create an organized folder structure:\n\ndir.create(\"week_1\")\ndir.create(\"week_1/data\")\ndir.create(\"week_1/scripts\")\ndir.create(\"week_1/outputs\")\n\nYou can also create new folders using the button on the top left of the files pane in the bottom right of your R Studio console.\n\n\n3.1.2 Introduction to Quarto\nQuarto is a powerful tool that lets us combine:\n\nText (like this explanation)\nCode (and its output)\nVisualizations\nTables\n\nAll in one document that can be converted to HTML, Word, PDF, and more!\n\n\n3.1.3 Your First Quarto Document\n\nClick File → New File → Quarto Document\nFill in:\n\nTitle: “Week 1: Getting Started”\nAuthor: Your name\nClick “Create”\n\n\nYou’ll see a template document with some example content. Let’s modify it:\n---\ntitle: \"Week 1: Getting Started\"\nauthor: \"Your Name\"\nformat:\n  html: default\n  docx: default\n   pdf: default\n---\n\n\n3.1.4 Basic Markdown\nTry adding some text with basic formatting:\n## About This Course\n\nThis course will teach me to:\n\n- Create **beautiful** visualizations\n- Write *efficient* code\n- Generate professional reports\n\n1. First, we'll learn about projects\n2. Then we'll explore functions\n3. Finally, we'll create visualizations\n\n\n3.1.5 Adding Code\nClick the “Insert” button or press Ctrl+Alt+I (Cmd+Option+I on Mac) to insert a code chunk:\n\n# Let's do a simple calculation\n2 + 2\n\n[1] 4\n\n\n\n\n3.1.6 Rendering Your Document\n\nClick the “Render” button\nQuarto will create three versions:\n\nHTML (great for web sharing)\nWord (for collaborating with non-R users)\nPDF (for formal documents)\n\n\n\n\n\n\n\n\nWarning\n\n\n\nIf PDF rendering fails, you’ll need to install TinyTeX:\n\ninstall.packages(\"tinytex\")\ntinytex::install_tinytex()\n\n\n\n\n\n3.1.7 Practice Time\n\nAdd a section about what you hope to learn\nInsert a code chunk with a simple calculation\nTry different heading levels (## and ###)\nAdd some bold and italic text\nRender to all formats\n\n\n\n\n\n\n\nTip\n\n\n\nKeep this document! We’ll add to it throughout the class.",
+    "crumbs": [
+      "Part 1: Data Analysis Bootcamp",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Week 1: Getting Started (In-Class)</span>"
+    ]
+  },
+  {
+    "objectID": "week_1_in_class.html#why-use-quarto",
+    "href": "week_1_in_class.html#why-use-quarto",
+    "title": "3  Week 1: Getting Started (In-Class)",
+    "section": "3.2 Why Use Quarto?",
+    "text": "3.2 Why Use Quarto?\nQuarto documents are: 1. Reproducible: Code and results stay in sync 2. Professional: Beautiful output in multiple formats 3. Flexible: One source, many outputs 4. Version-controlled: Easy to track changes 5. Shareable: Others can see your code and results\n\n3.2.1 Real-World Use Cases\nQuarto shines in several different scenarios:\n\n3.2.1.1 1. Lab Notebook / Exploratory Analysis\n\nWrite text and execute code in the same document\nTrack your thought process and decisions\nDocument what worked (and what didn’t)\nKeep a record of your exploration\nThis follows the tradition of “literate programming” introduced by Donald Knuth\n\n\n# Example of documenting your exploration\n## Question: Do loan commitments vary by region?\n\n# First, let's look at East Asia\nget_gcdf3_dataset() |&gt; \n  calculate_yearly_commitments(\"Vietnam\")\n\n# Interesting spike in 2017. Let's check another country...\n\n\n\n3.2.1.2 2. Professional Documents\n\nTurn your analysis directly into reports\nCreate presentations\nBuild websites and books\nGenerate multiple formats from one source\n\nIn fact, this course book itself is written in Quarto! You can see exactly how this page was created by looking at the source code here: week_1_in_class.qmd\nThis means: - You can see how we practice what we preach - You can learn from the actual code we use - You have examples to reference for your own work\n\n\n\n\n\n\nTip\n\n\n\nAs you work through this course, try viewing the source code for different pages. It’s a great way to learn Quarto techniques!\n\n\nNext, we’ll start adding some real analysis to our document!",
+    "crumbs": [
+      "Part 1: Data Analysis Bootcamp",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Week 1: Getting Started (In-Class)</span>"
+    ]
   }
 ]
