@@ -1,36 +1,195 @@
 # Week 1: Getting Started (In-Class) {#sec-week1_in_class}
 
+## Welcome & Course Overview
+
+Welcome to Applied Data Analysis for Chinese Lending Data! Before we dive into R, let's cover some course logistics:
+
+- **Course Structure**: 4 weekly online sessions + 1 full day in-person
+- **Online Sessions**: 90 minutes each, combining instruction and hands-on practice. 
+- **Materials**: All course materials available in Quarto format
+- **Support**: Using AI tools (Claude, ChatGPT) for learning assistance. Slack channel. 1x1 support for any cool projects you want to pursue.
+- **Questions**: Ask questions anytime - no question is too basic!
+
+## Today's Agenda (90 minutes)
+
+1. **Welcome & Course Overview** (15 min)
+   - Course logistics
+   - Learning approach
+   - Setting expectations
+
+2. **Project Setup** (20 min)
+   - Creating organized folder structure
+   - Installing key packages
+   - Understanding RStudio's layout
+
+3. **First Steps with R** (25 min)
+   - Writing your first function
+   - Building analysis pipelines
+   - Creating visualizations
+
+4. **Automated Reporting** (25 min)
+   - Setting up report templates
+   - Generating multiple reports
+   - Hands-on practice
+
+5. **Wrap-up & Preview** (5 min)
+   - Review key takeaways
+   - Preview next week
+   - Additional resources
+
+## Today's Focus: Practical Tools for Real Work
+
+At AidData, you spend countless hours analyzing development finance data and creating reports. Today's session focuses on three key areas that will help make this work more efficient:
+
+1. **Working in RStudio**
+   - Get comfortable with the RStudio interface
+   - Understand how to organize your projects
+   - Learn where to find help when you need it
+
+2. **Using Quarto for Better Documentation**
+   - Keep track of your analysis process (like a lab notebook)
+   - Create professional-quality reports
+   - Combine code, text, and visualizations seamlessly
+
+3. **Productivity-Enhancing Tools**
+   - Write functions to avoid repetitive work
+   - Use map functions to process multiple countries efficiently
+   - Create parameterized reports that save time and reduce errors
+
+## Learning Objectives: First Steps Toward Efficiency
+
+By the end of today's session, you'll begin to:
+
+1. **Get Started with Automated Reports**
+   - See how to transform manual reporting tasks into automated processes
+   - Create your first parameterized report template
+   - Understand how to generate reports for multiple countries
+
+2. **Learn About Analysis Pipelines**
+   - See how to make your analysis steps clear and reproducible
+   - Start building reusable analysis workflows
+   - Get introduced to tools for consistent results
+
+3. **Take First Steps with Visualization**
+   - Create your first plots in R
+   - See how to standardize visualizations across reports
+   - Understand how automated plotting can save time
+
+4. **Start Working Smarter**
+   - Begin reducing repetitive copy-paste work
+   - See how automation can prevent common errors
+   - Take first steps toward reproducible analysis
+
+Most importantly, you'll get hands-on experience with tools that can eventually save you hours of work each week. While mastering these tools takes time and practice, today you'll see enough practical applications to understand their value. You'll leave with working examples that you can build upon and adapt for your own work.
+
+Think of today as learning to drive a car - you won't be a race car driver after one lesson, but you'll understand the basics and see why it's worth learning more. As the course progresses, we'll build on these foundations and develop your skills further.
+
+Let's get started!
+
+## Why "Cool Things First"?
+
+Traditional programming courses often start with fundamentals: variables, loops, conditionals. That's like learning about internal combustion before driving a car! Instead, we'll:
+
+1.  Start with exciting, practical applications
+2.  Build motivation to learn fundamental concepts as we need them
+3.  Use AI tools to help us understand the details and learn faster
+
+Our goal is to show you what's possible, then help you understand how it works.
+
 ## Setting Up Your Work Environment
+
+Let's create an organized workspace for this course. We'll do this together - follow along on your computer:
 
 ### Creating a Project Structure
 
-First, let's create an organized workspace for this course:
+1.  In RStudio, click File → New File → New Project
+2.  Click "New Directory"
+3.  Click "New Project"
+4.  Name it "data_analysis_bootcamp"
+5.  Choose where to save it (remember this location!)
+6.  Click "Create Project"
 
-1.  In RStudio, click File → New Project → New Directory
-2.  Click "New Project"
-3.  Name it "data_analysis_bootcamp"
-4.  Choose where to save it (remember this location!)
-5.  Click "Create Project"
-
-Now let's create an organized folder structure:
+Now let's create an organized folder structure. Copy and paste this code into your R console:
 
 ```{r}
 #| eval: false
-dir.create("week_1")
-dir.create("week_1/data")
-dir.create("week_1/scripts")
-dir.create("week_1/outputs")
+# Create week folders and their subfolders
+for (week in 1:4) {
+  week_folder <- paste0("week_", week)
+  dir.create(week_folder)
+  
+  # Create standard subfolders
+  dir.create(file.path(week_folder, "R"))        # Scripts and Quarto documents
+  dir.create(file.path(week_folder, "data-raw")) # Original data files
+  dir.create(file.path(week_folder, "data"))     # Processed data
+  dir.create(file.path(week_folder, "outputs"))  # Generated reports and figures
+}
 ```
 
-You can also create new folders using the button on the top left of the files pane in the bottom right of your R Studio console.
+This will create:
+
+``` text
+data_analysis_bootcamp/
+├── week_1/
+│   ├── R/         # R scripts and Quarto documents
+│   ├── data-raw/  # Original data files
+│   ├── data/      # Processed data
+│   └── outputs/   # Generated reports and figures
+├── week_2/
+│   ├── R/
+│   ├── data-raw/
+│   ├── data/
+│   └── outputs/
+├── week_3/
+│   ├── R/
+│   ├── data-raw/
+│   ├── data/
+│   └── outputs/
+└── week_4/
+    ├── R/
+    ├── data-raw/
+    ├── data/
+    └── outputs/
+```
+
+::: callout-tip
+Use the Files pane in RStudio (bottom right) to verify that all folders were created correctly.
+:::
+
+Each week's folder has:
+
+-   `R/`: Scripts and Quarto documents
+-   `data-raw/`: Original, unmodified data
+-   `data/`: Processed, analysis-ready data
+-   `outputs/`: Generated reports, figures, and other results
+
+For this week's automated reporting project, we'll use:
+
+-   `week_1/R/` for our report template and functions
+-   `week_1/data-raw/` for any raw data we need to process
+-   `week_1/data/` for cleaned, ready-to-analyze data
+-   `week_1/outputs/` for our generated reports
+
+::: callout-note
+You can also create folders using the Files pane in RStudio (bottom right) by clicking "New Folder".
+:::
 
 ### Install & Load Packages
 
-Think of R packages like apps for your phone. Just as you need to: 1. Install an app (once) 2. Open the app (each time you want to use it)
+Think of R packages like apps for your phone:
 
-With R, you need to: 1. Install a package (once) 2. Load the package with `library()` (each time you start R)
+-   You install an app once
+-   You open the app each time you want to use it
 
-There are two main "app stores" for R packages: - CRAN: The official R app store. Like the Apple App Store or Google Play Store, packages here go through review and testing - GitHub: More like downloading apps directly from developers' websites. Newer features, but less formal review
+Similarly with R:
+
+-   You install a package once
+-   You load it with `library()` each time you start R
+
+There are two main "app stores" for R packages:
+
+-   CRAN: The official R app store. Like the Apple App Store or Google Play Store, packages here go through review and testing
+-   GitHub: More like downloading apps directly from developers' websites. Newer features, but less formal review
 
 Let's install what we need:
 
@@ -41,11 +200,12 @@ install.packages("pak")
 
 # Now use pak to install everything else
 pak::pkg_install(
-  c( # c() combines multiple items into a list (technically called a vector)
-    # It's like putting multiple things in a shopping cart
-    "t-emery/chinadevfin3", # From GitHub - our GCDF 3.0 tools
-    "tinytex",              # From CRAN, for working with PDFs
-    "glue"                  # From CRAN, for working with text
+  c(
+    "quarto",            # For report generation
+    "t-emery/chinadevfin3",  # From GitHub, GCDF 3.0 data package that I made
+    "glue",              # For working with text
+    "tinytex",           # For rendering pdfs
+    "here"               # For relative file paths
   )
 )
 
@@ -57,31 +217,119 @@ tinytex::install_tinytex()
 ```
 
 ::: callout-tip
-The `c()` function is one of R's most basic tools - it just combines things together. We'll use it often when we want to work with multiple items at once, like: - Lists of countries to analyze - Variables to summarize - Files to process
+The `c()` function combines things together. We'll use it often!
 :::
 
-Now let's load the packages we'll use. Don't worry about the start-up messages:
+Now let's load the packages we'll use:
 
 ```{r}
 library(tidyverse)      # Load core tools
 library(chinadevfin3)   # Load GCDF 3.0 tools
 library(glue)           # Load text tools
+library(here)           # Load relative file paths
 ```
 
 ::: callout-note
-You only need to install packages once on your computer, but you need to load them with `library()` each time you start R.
+Don't worry about the startup messages - they're just telling us what was loaded.
 :::
 
-### Introduction to Quarto
+## Your First Analysis: A Preview
 
-Quarto is a powerful tool that lets us combine:
+Before we dive into details, let's see what we're working toward. Copy and paste this code into RStudio:
 
--   Text (like this explanation)
--   Code (and its output)
--   Visualizations
--   Tables
+```{r}
+# Get data for Angola
+get_gcdf3_dataset() |>
+  filter(
+    recommended_for_aggregates == "Yes",
+    country_name == "Angola"
+  ) |>
+  group_by(commitment_year) |>
+  summarize(
+    total_usd_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 10^9
+  ) |>
+  ggplot(aes(x = commitment_year, y = total_usd_bn)) +
+  geom_col(fill = "steelblue") +
+  labs(
+    title = "Chinese Development Finance to Angola",
+    x = "Year",
+    y = "Commitments (2021 USD, Billions)"
+  ) +
+  theme_minimal()
+```
 
-All in one document that can be converted to HTML, Word, PDF, and more!
+Don't worry if this looks intimidating - by the end of today:
+
+1.  You'll understand what each part does
+2.  You'll be able to modify it for your needs
+3.  You'll know how to get AI help when stuck
+
+Next, we'll break this down into reusable pieces and learn how to automate it for any country!
+
+## Introduction to Quarto
+
+Quarto is a modern scientific and technical publishing system built for the way we work today. Think of it as a powerful document creator that lets you combine your narrative (text), code, and results all in one place. When you make changes to your analysis, everything updates automatically - no more copying and pasting results into Word! You can write once and publish to multiple formats like HTML, PDF, Word, and presentations. It's like having a Swiss Army knife for creating data-driven documents.
+
+::: callout-note
+## Getting Started Resources
+
+-   Follow along with the official [Getting Started with Quarto in RStudio tutorial](https://quarto.org/docs/get-started/hello/rstudio.html)
+-   Keep the handy [Quarto Cheatsheet](https://rstudio.github.io/cheatsheets/quarto.pdf) nearby for quick reference
+:::
+
+### Why Use Quarto?
+
+Quarto documents are:
+
+1.  **Reproducible**: Code and results stay in sync
+2.  **Professional**: Beautiful output in multiple formats
+3.  **Flexible**: One source, many outputs
+4.  **Version-controlled**: Easy to track changes
+5.  **Shareable**: Others can see your code and results
+
+### Real-World Use Cases
+
+Quarto shines in several different scenarios:
+
+#### 1. Lab Notebook / Exploratory Analysis
+
+-   Write text and execute code in the same document
+-   Track your thought process and decisions
+-   Document what worked (and what didn't)
+-   Keep a record of your exploration
+-   This follows the tradition of ["literate programming"](https://en.wikipedia.org/wiki/Literate_programming) introduced by Donald Knuth
+
+Here's an example of documenting your exploration:
+
+```` markdown
+## Question: Do loan commitments vary by region?
+
+```{{r}}
+# First, let's look at Africa
+get_gcdf3_dataset() |> 
+  calculate_yearly_commitments("Angola")
+```
+Interesting spike in 2016. Let's check another country...
+````
+
+#### 2. Professional Documents
+
+-   Turn your analysis directly into reports
+-   Create presentations
+-   Build websites and books
+-   Generate multiple formats from one source
+
+In fact, this textbook itself is written in Quarto! You can see exactly how this page was created by looking at the source code on GitHub: [week_1_in_class.qmd](https://github.com/Teal-Insights/data_analysis_for_chinese_debt_data/blob/main/week_1_in_class.qmd)
+
+This means:
+
+-   You can see how we practice what we preach
+-   You can learn from the actual code we use
+-   You have examples to reference for your own work
+
+::: callout-tip
+As you work through this course, try viewing the source code for different pages. It's a great way to learn Quarto techniques!
+:::
 
 ### Your First Quarto Document
 
@@ -97,22 +345,32 @@ You'll see a template document with some example content. Let's modify it:
 ---
 title: "Week 1: Getting Started"
 author: "Your Name"
-format:
-  html: default
+format: 
+  html:
+    embed-resources: true # Makes HTML easily shareable
   docx: default
-   pdf: default
+  pdf: default
 ---
 ```
 
+::: callout-tip
+## Sharing HTML Documents
+Using `embed-resources: true` ensures your HTML document can be shared and opened by anyone. The file will be a bit larger, but this is only noticeable when working with very large datasets. For most purposes, the convenience of easy sharing is worth it!
+:::
+
 ### Basic Markdown
+Markdown is a simple way to format text that's easy to read and write. Think of it as a set of formatting shortcuts: instead of clicking buttons like in Word, you add special characters around your text. Here are the basics you'll see in our example:
 
-Try adding some text with basic formatting:
+- Use `#` for headers (more `#` means smaller headers)
+- Wrap words in `**bold**` to make them **bold**
+- Wrap words in `*italics*` to make them *italics*
+- Start lines with `-` or numbers for lists
 
-``` markdown
+Try this example:
+```markdown
 ## About This Course
 
 This course will teach me to:
-
 - Create **beautiful** visualizations
 - Write *efficient* code
 - Generate professional reports
@@ -122,16 +380,40 @@ This course will teach me to:
 3. Finally, we'll create visualizations
 ```
 
-Try toggling through the `Source` and `Visual` editors on the top left of your R Studio console. While the `Visual` editor can be useful, I'd challenge you to try to get used to the `Source` editor so you understand what is happening.
+Try toggling between the `Source` and `Visual` editors at the top left of your RStudio window. The `Visual` editor shows formatting like Word, but we encourage using the `Source` editor to better understand how markdown works.
+
+::: callout-tip
+There's much more you can do with markdown! Check out the [Quarto Markdown Basics](https://quarto.org/docs/authoring/markdown-basics.html) guide when you're ready to explore.
+:::
 
 ### Adding Code
 
+A code chunk is like a special container in your document where you can write and run R code. Think of it as a mini R console embedded right in your document - anything between the \`\`\` markers will be treated as R code, run by R, and the results will appear right below it. This lets you mix explanatory text with working code and see the results all in one place.
+
 Click the "Insert" button or press Ctrl+Alt+I (Cmd+Option+I on Mac) to insert a code chunk:
 
-```{r}
+```` markdown
+```{{r}}
 # Let's do a simple calculation
 2 + 2
 ```
+````
+
+To run this code, you have two easy options:
+
+1.  Click the small green "play" button ▶️ in the top-right corner of the code chunk
+2.  Use keyboard shortcuts:
+    -   Windows/Linux: Ctrl+Shift+Enter to run the entire chunk
+    -   Mac: Cmd+Shift+Enter to run the entire chunk
+
+::: callout-tip
+You can also run a single line by placing your cursor on that line and pressing:
+
+-   Windows/Linux: Ctrl+Enter
+-   Mac: Cmd+Enter
+:::
+
+Save your Quarto document as `week_1_in_class` in the `week_1/R` folder. It will save your Quarto document with a `.qmd` extension.
 
 ### Rendering Your Document
 
@@ -153,60 +435,18 @@ Click the "Insert" button or press Ctrl+Alt+I (Cmd+Option+I on Mac) to insert a 
 Keep this document! We'll add to it throughout the class.
 :::
 
-## Why Use Quarto?
-
-Quarto documents are:
-
-1.  **Reproducible**: Code and results stay in sync
-2.  **Professional**: Beautiful output in multiple formats
-3.  **Flexible**: One source, many outputs
-4.  **Version-controlled**: Easy to track changes
-5.  **Shareable**: Others can see your code and results
-
-### Real-World Use Cases
-
-Quarto shines in several different scenarios:
-
-#### 1. Lab Notebook / Exploratory Analysis
-
--   Write text and execute code in the same document
--   Track your thought process and decisions
--   Document what worked (and what didn't)
--   Keep a record of your exploration
--   This follows the tradition of "literate programming" introduced by Donald Knuth
-
-```{r}
-#| eval: false
-# Example of documenting your exploration
-## Question: Do loan commitments vary by region?
-
-# First, let's look at East Asia
-get_gcdf3_dataset() |> 
-  calculate_yearly_commitments("Vietnam")
-
-# Interesting spike in 2017. Let's check another country...
-```
-
-#### 2. Professional Documents
-
--   Turn your analysis directly into reports
--   Create presentations
--   Build websites and books
--   Generate multiple formats from one source
-
-In fact, this textbook itself is written in Quarto! You can see exactly how this page was created by looking at the source code here: [week_1_in_class.qmd](https://github.com/Teal-Insights/data_analysis_for_chinese_debt_data/blob/main/week_1_in_class.qmd)
-
-This means: - You can see how we practice what we preach - You can learn from the actual code we use - You have examples to reference for your own work
-
-::: callout-tip
-As you work through this course, try viewing the source code for different pages. It's a great way to learn Quarto techniques!
-:::
-
 Next, we'll start adding some real analysis to our document!
 
-# Week 1: Getting Started (In-Class)
+## Let's Start Building: Functions & Pipelines
 
-## Introduction to Functions: Making Your Code DRY and Error-Free
+Now that you've seen where we're headed, let's build this step by step. First, we'll learn about two key concepts that make automation possible:
+
+1.  **Functions**: Write code once, use it many times
+2.  **Pipes**: Chain operations together clearly
+
+Ready? Let's dive in!
+
+### Introduction to Functions: Making Your Code DRY and Error-Free
 
 One of the fundamental principles of data analysis is DRY: Don't Repeat Yourself. When you find yourself copying and pasting the same code multiple times, it's time for a function. Functions help us: - Write code once and reuse it many times - Reduce the chance of errors from copy-paste mistakes - Make our code more readable and maintainable
 
@@ -235,13 +475,12 @@ to_billions(2847594938)  # Returns 2.85
 to_billions(5938273847)  # Returns 5.94
 ```
 
-This simple function shows us two key ideas: 
+This simple function shows us two key ideas:
 
-1. Functions take an input and return an output 
-2. Functions help us do repetitive tasks easily
+1.  Functions take an input and return an output
+2.  Functions help us do repetitive tasks easily
 
-
-## Setting Up Our Analysis Tools
+### Setting Up Our Analysis Tools
 
 Now let's set up some more powerful functions for analyzing development finance data. Copy and paste this code block into RStudio:
 
@@ -261,7 +500,8 @@ calculate_yearly_commitments <- function(data, country) {
       amount_constant_usd_2021_bn = sum(
         amount_constant_usd_2021, 
         na.rm = TRUE
-      ) * 10^-9,
+      ) |> 
+        to_billions(),
       .groups = "drop"
     )
 }
@@ -291,37 +531,51 @@ plot_loan_commitments <- function(data, country) {
 
 Don't worry about understanding all this code yet! We'll break it down later.
 
-## Your First Analysis Pipeline
+### Your First Analysis Pipeline
 
 Now we can use these functions to analyze development finance:
 
-``` r
+```{r}
 # With pipes - clear and readable
 get_gcdf3_dataset() |> 
   calculate_yearly_commitments(country = "Angola") |> 
   plot_loan_commitments(country = "Angola")
 ```
 
-Let's read this pipeline using "and then": 1. Get the GCDF dataset AND THEN 2. Calculate yearly commitments for Angola AND THEN 3. Create a plot showing those commitments
+Let's read this pipeline using "and then":
+
+1.  Get the GCDF dataset AND THEN
+2.  Calculate yearly commitments for Angola AND THEN
+3.  Create a plot showing those commitments
 
 ### Why Pipes Make Life Easier
 
-Here's the same analysis without pipes:
+The pipe operator (`|>`) simply takes what comes before it and puts it into the first argument of what comes after it. It's that simple! Here's our analysis without pipes:
 
-``` r
-# Without pipes - harder to follow
-plot_loan_commitments(
-  calculate_yearly_commitments(
-    get_gcdf3_dataset(),
-    country = "Angola"
-  ),
-  country = "Angola"
-)
+```{r}
+# Without pipes - like Excel formulas, hard to read and debug!
+plot_loan_commitments(calculate_yearly_commitments(get_gcdf3_dataset(), country = "Angola"), country = "Angola")
 ```
 
-See how much harder that is to read? You have to read from the inside out!
+See how much harder that is to read? You have to read from the inside out, just like those nested Excel formulas that give everyone headaches! The pipe makes our code read like a story - first we do this, then we do that, then we do the next thing.
 
-## Understanding Our Code with AI
+::: callout-note
+### A Tale of Two Pipes: \|\> vs %\>%
+
+R has two pipe operators that both do the same basic job - they help make code more readable by passing data through a sequence of functions:
+
+-   `|>` is the native R pipe (added in R 4.1)
+-   `%>%` is the magrittr pipe (from the tidyverse)
+
+Either works fine, but we recommend using the native pipe `|>` since it's now built into R. You can set this as your default in RStudio under Tools → Global Options → Code → "Use native pipe operator".
+
+**Keyboard shortcut for adding a pipe:**
+
+-   Mac: Cmd+Shift+M
+-   Windows: Ctrl+Shift+M
+:::
+
+### Understanding Our Code with AI
 
 Let's use Claude or ChatGPT to understand our code better. Try these prompts:
 
@@ -331,7 +585,7 @@ Let's use Claude or ChatGPT to understand our code better. Try these prompts:
 "Can you explain how this function works?"
 
 to_billions <- function(amount) {
-  amount / 1000000000
+  amount / 10^9
 }"
 ```
 
@@ -344,24 +598,11 @@ get_gcdf3_dataset() |>
   calculate_yearly_commitments(country = 'Angola') |> 
   plot_loan_commitments(country = 'Angola')"
 ```
-
-## Practice Time
-
-Let's try some analyses:
-
-1.  Use `to_billions()` with some large numbers
-2.  Modify the country in our pipeline to analyze different countries
-3.  Use AI to help understand any patterns you see
-
-::: callout-tip
-When you see an interesting pattern in your visualization, try asking Claude: "Why might \[country\] show high commitments in \[year\]?"
-:::
-
-## Understanding Complex Functions with AI
+### Understanding Complex Functions with AI
 
 Now let's look at a more sophisticated function. We'll use AI to help us understand how it works:
 
-Try this prompt with Claude or ChatGPT:
+Try this prompt with Claude, ChatGPT, or DeepSeek:
 
 > "I'm new to R and trying to understand this function. Could you explain what each line does in simple terms? Please be specific about what each function (like filter, group_by, and summarize) is doing with our data.
 
@@ -380,94 +621,244 @@ calculate_yearly_commitments <- function(data, country) {
       amount_constant_usd_2021_bn = sum(
         amount_constant_usd_2021, 
         na.rm = TRUE
-      ) * 10^-9,
+      ) |> 
+        to_billions(),
       .groups = 'drop'
     )
 }
 ```
+### Practice Time
 
-## The Data Science Workflow (In Reverse!)
+Let's try some analyses:
 
-The data science workflow typically follows these steps: 
+1.  Use `to_billions()` with some large numbers
+2.  Modify the country in our pipeline to analyze different countries
+3.  Use AI to help understand any patterns you see
 
-1. **Get Data**: Import and clean your data 
-2. **Transform Data**: Calculate summaries and find patterns 
-3. **Communicate**: Create visualizations and reports
+::: callout-tip
+When you see an interesting pattern in your visualization, paste a screenshot into your favorite LLM and ask: "Why might \[country\] show high commitments in \[year\]?"
 
-Look at our analysis pipeline:
+This is a great way to test the limits of AI. As domain experts, you probably know exactly why commitments spiked in certain years. Compare what the AI says with your expert domain knowledge - you might be surprised by how often it makes confident but incorrect assertions! This is a valuable lesson in both the power and limitations of AI tools.
+:::
+
+
+
+## Work Smarter, Not Harder: Automating Repetitive Tasks with Map Functions
+
+### The Problem: Repetitive Analysis
+
+Let's say we want to analyze several countries. We could copy and paste our code:
 
 ```{r}
-get_gcdf3_dataset() |>                     # Step 1: Get Data
-  calculate_yearly_commitments("Angola") |> # Step 2: Transform
-  plot_loan_commitments("Angola")          # Step 3: Communicate
+# Analysis for Pakistan
+get_gcdf3_dataset() |> 
+  calculate_yearly_commitments("Pakistan") |> 
+  plot_loan_commitments("Pakistan")
+
+# Analysis for Ethiopia
+get_gcdf3_dataset() |> 
+  calculate_yearly_commitments("Ethiopia") |> 
+  plot_loan_commitments("Ethiopia")
+
+# Analysis for Sri Lanka...
 ```
 
-But here's the twist: we're learning these steps in reverse! Why?
+But this is: - Tedious to write - Easy to make mistakes - Hard to maintain - Not scalable (imagine doing this for 100 countries!)
 
--   Week 2: Data Visualization (Communication)
-    -   Because seeing your results is exciting!
-    -   Creates motivation to learn the underlying steps
--   Week 3: Data Transformation
-    -   Now that we know what we want to show
-    -   We'll learn how to wrangle data into shape
--   Week 4: Data Import & Cleaning
-    -   With clear goals in mind
-    -   We'll master the foundation of good analysis
+### A Better Way: Map Functions
 
-```{mermaid}
-graph TB
-    %% Standard Workflow
-    subgraph Traditional["Traditional Data Science Workflow"]
-        A["1. Get Data<br/>(Import & Clean)"] --> B["2. Transform Data<br/>(Analyze & Summarize)"]
-        B --> C["3. Communicate<br/>(Visualize & Report)"]
-    end
-    
-    %% Our Learning Path
-    subgraph Course["Our Learning Path"]
-        direction TB
-        W1["Week 1:<br/>Introduction to Quarto<br/>(Professional Reports)"]
-        W2["Week 2:<br/>Data Visualization<br/>(The Fun Part!)"]
-        W3["Week 3:<br/>Data Transformation<br/>(Making Data Useful)"]
-        W4["Week 4:<br/>Data Import & Cleaning<br/>(Building Strong Foundations)"]
-        W1 --> W2
-        W2 --> W3
-        W3 --> W4
-    end
+Instead of repeating ourselves, we can tell R to do something for each item in a list. Here's a simple example using our `to_billions()` function:
 
-    %% Connecting arrow with explanation
-    C -..-> W1
-    
-    %% Styles for better visualization
-    style C stroke:#4CAF50,stroke-width:2px
-    style W1 stroke:#4CAF50,stroke-width:2px
-    style W2 stroke:#4CAF50,stroke-width:2px
-    style W3 stroke:#2196F3,stroke-width:2px
-    style W4 stroke:#FF9800,stroke-width:2px
-    
-    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px
-    classDef highlight fill:#e1f5fe,stroke:#333,stroke-width:2px
-    class W1,W2,W3,W4 highlight
+```{r}
+# Some amounts to convert
+amounts <- c(1000000000, 2000000000, 3000000000)
+# Instead of:
+to_billions(amounts[1])
+to_billions(amounts[2])
+to_billions(amounts[3])
+# We can just write:
+map_dbl(
+    amounts,          # The list of values we want to work with
+    to_billions      # The function to apply to each value (no parentheses needed!)
+)
 ```
 
+The `map_dbl()` function:
 
-This "cool things first" approach helps you: - See the value of R immediately - Build motivation through quick wins - Understand why each step matters
+1.  Takes a list of things (our amounts)
+2.  Does something to each thing (applies to_billions)
+3.  Returns a list of results
 
-# Automating Reports {#sec-automating}
+::: callout-note
+### Map Functions vs For Loops
 
-Now that we understand how to create a basic analysis pipeline, let's see how we can automate report generation for multiple countries. This is where the real power of R and Quarto shines - taking a task that might normally take hours and reducing it to a few minutes.
+If you've programmed before, you might be familiar with for loops. Both map functions and for loops let you repeat tasks, but map functions are often clearer to read and harder to mess up. Compare these approaches:
 
-## Saving Our Functions
+```{{r}}
+# For loop approach
+results <- numeric(length(amounts))  # Have to pre-allocate
+for(i in seq_along(amounts)) {      # Need to manage indices
+    results[i] <- to_billions(amounts[i])
+}
 
-First, we need to save the functions we created earlier so we can reuse them. Create a new file called `R/functions.R`:
+# Map approach
+results <- map_dbl(amounts, to_billions)  # Clear and concise
+```
+
+Why tidyverse prefers map functions:
+
+- They're simpler to read and write
+- They protect your data from accidental modifications (a common pitfall with for loops)
+:::
+
+
+::: callout-note
+## Map Functions Family
+
+-   We use `map_dbl()` because we know we want numbers (doubles) back
+-   There's also `map()` for general use, `map_chr()` for text, etc.
+-   See the full [purrr map documentation](https://purrr.tidyverse.org/reference/map.html) for more mapping functions
+:::
+
+::: callout-tip
+Notice that when we use `to_billions` in `map_dbl()`, we don't include the parentheses. Think of it as giving R the recipe (the function) rather than the finished dish (the result of calling the function).
+:::
+
+
+
+### Analyzing Multiple Countries
+
+Let's apply this to our country analysis:
+
+```{r}
+# List of countries we want to analyze
+countries <- c("Pakistan", "Ethiopia", "Sri Lanka")
+
+# First, let's make a function that does our whole analysis
+analyze_country <- function(country) {
+  get_gcdf3_dataset() |> 
+    calculate_yearly_commitments(country) |> 
+    plot_loan_commitments(country)
+}
+
+# Now we can easily analyze any country
+analyze_country("Sri Lanka")
+
+# And we can use map to do many countries
+# map(data to work with, function to apply)
+plots <- map(
+  countries,        # First argument: list of countries
+  analyze_country   # Second argument: what to do with each country
+)
+```
+
+Let's break down what's happening:
+
+1.  We create a list of countries
+2.  `map()` takes each country and...
+3.  Runs our analysis pipeline for that country
+4.  Saves all the plots in a list
+
+### Why This Matters
+
+This approach:
+
+1.  Makes your code more concise and readable
+2.  Reduces chances for error
+3.  Makes it easy to add or remove countries
+4.  Scales effortlessly (100 countries takes the same amount of code)
+
+### Practice Time
+
+Let's try some exercises:
+
+1.  Basic mapping:
+
+```{r}
+# Convert these amounts to billions
+big_numbers <- c(1234567890, 9876543210, 5555555555)
+map_dbl(big_numbers, to_billions)
+```
+
+2.  Try with different countries:
+
+```{r}
+# Analyze your own list of countries
+your_countries <- c("Vietnam", "Indonesia", "Laos")
+map(your_countries, analyze_country)  # Simple and clear!
+```
+
+3.  Calculate total commitments:
+
+```{r}
+# First, make a function for the calculation
+get_total_commitments <- function(country) {
+  get_gcdf3_dataset() |> 
+    calculate_yearly_commitments(country) |> 
+    summarize(total = sum(amount_constant_usd_2021_bn)) |> 
+    pull(total)
+}
+
+# Then use it with map_dbl
+# map_dbl(data to work with, function to apply)
+map_dbl(
+  your_countries,        # First argument: list of countries
+  get_total_commitments  # Second argument: what to do with each country
+)
+```
+
+::: callout-tip
+### Getting Help from AI
+
+Try this prompt to understand map functions better:
+
+```` markdown
+"I'm new to R and trying to understand this code. Can you explain what map_dbl does and how it's different from a regular for loop?
+
+```{{r}}
+amounts <- c(1000000000, 2000000000, 3000000000)
+map_dbl(amounts, to_billions)
+```
+````
+:::
+
+### Next Steps
+
+Now that we can easily work with multiple countries at once, we're ready to learn how to generate automated reports. The same principles we just learned about doing things repeatedly will help us create professional reports for any country with just a few lines of code!
+
+## Creating Reports for Multiple Countries
+
+### The Problem: Manual Report Creation
+
+Imagine your boss asks for reports on Chinese development finance in:
+
+-   All countries in Southeast Asia
+-   Every country with commitments over \$1 billion
+-   The top 10 recipient countries
+
+Without automation, you'd need to:
+
+1.  Copy your Quarto template
+2.  Change the country name in multiple places
+3.  Render each report separately
+4.  Keep track of all the files
+
+Let's automate this!
+
+### Step 1: Save Our Functions
+
+First, let's save our functions in `week_1/R/functions.R`:
 
 ```{r}
 #| eval: false
-# Convert numbers to billions for readability
+# week_1/R/functions.R
+
+# Convert to billions for readability
 to_billions <- function(amount) {
-  amount / 1000000000
+  amount / 10^9
 }
 
-# Calculate yearly commitments by country
+# Calculate yearly commitments for a country
 calculate_yearly_commitments <- function(data, country) {
   data |> 
     filter(
@@ -482,12 +873,13 @@ calculate_yearly_commitments <- function(data, country) {
       amount_constant_usd_2021_bn = sum(
         amount_constant_usd_2021, 
         na.rm = TRUE
-      ) * 10^-9,
+      ) |> 
+        to_billions(),
       .groups = "drop"
     )
 }
 
-# Create standardized visualization
+# Create visualization
 plot_loan_commitments <- function(data, country) {
   data |> 
     ggplot(
@@ -510,146 +902,388 @@ plot_loan_commitments <- function(data, country) {
 }
 ```
 
-## Creating a Report Template
+### Step 2: Create a Report Template
 
-Now let's create a template that we can use for any country. Create a new Quarto document called `country_report.qmd`:
+Now create a new file called `week_1/R/country_report.qmd`:
 
 ``` yaml
 ---
-title: "Chinese Development Finance in {{< var country >}}"
+title: "Chinese Development Finance in `{{r}} params$country`"
 author: "Your Name"
 date: today
-format: html
+format: 
+  html:
+    theme: cosmo
+    toc: true
+    embed-resources: true
 params:
   country: "Angola"  # Default country
 ---
 ```
 
-::: callout-note
-The `params:` section in the YAML header defines variables that can change for each report. Think of these like fill-in-the-blank spaces in a template.
+::: callout-tip
+The `params:` section is like fill-in-the-blanks for our report. We can change these values when we render the report.
 :::
 
-## Adding Setup Code
+Add this content to the report template:
 
-We need to load our tools and functions at the start of the report:
-
-`````markdown
-```{r}
+```` markdown
+```{{r}}
 #| label: setup
 #| include: false
 
 # Load required packages
-library(tidyverse)    # For data manipulation and plotting
-library(chinadevfin3) # For accessing the GCDF dataset
-library(glue)         # For string interpolation
+library(tidyverse)
+library(chinadevfin3)
+library(glue)
+library(here)
 
 # Load our functions
-source("R/functions.R")
+source(here::here("week_1", "R", "functions.R"))
 ```
-`````
 
-## Creating the Report Content
-
-Add this content to your report:
-
-````markdown
 ## Overview
 
-This report analyzes Chinese development finance to `{r} params$country`.
+This report analyzes Chinese development finance commitments to `{{r}} params$country`.
 
-## Yearly Commitments
+## Visualization
 
-```{r}
-#| label: plot-commitments
+```{{r}}
+#| label: commitments-plot
 get_gcdf3_dataset() |> 
-  calculate_yearly_commitments(country = params$country) |> 
-  plot_loan_commitments(country = params$country)
+  calculate_yearly_commitments(params$country) |> 
+  plot_loan_commitments(params$country)
 ```
 
 ## Summary Statistics
 
-```{r}
+```{{r}}
 #| label: summary-stats
-commitments_data <- get_gcdf3_dataset() |> 
-  calculate_yearly_commitments(country = params$country)
+commitments <- get_gcdf3_dataset() |> 
+  calculate_yearly_commitments(params$country)
 
-total_commitment <- commitments_data |> 
+total_commitment <- commitments |> 
   summarize(total = sum(amount_constant_usd_2021_bn)) |> 
   pull(total) |> 
   round(2)
 ```
 
-Total commitments to `{r} params$country` from 2000-2021: $`{r} total_commitment` billion (2021 USD)
+Total commitments to `{{r}} params$country` from 2000-2021: 
+$`{{r}} total_commitment` billion (2021 USD)
 ````
 
-::: callout-tip
-Notice how we use `params$country` throughout the document. This allows us to generate reports for any country just by changing this one parameter.
+::: callout-important
+### The `{here}` Package: Making File Paths Work Everywhere
+
+Ever tried opening someone else's R project and gotten errors like "file not found" even though you can see the file right there? This happens because of absolute file paths like:
+
+- Windows: `"C:/Users/YourName/Documents/Project/data.csv"`
+- Mac: `"/Users/YourName/Documents/Project/data.csv"`
+
+These paths only work on the original computer! Even relative paths like `"../data/file.csv"` can break if you:
+
+- Open your project from a different folder
+- Share your code with colleagues
+- Move your files around
+
+The `{here}` package solves this by:
+
+1. Automatically finding your project root folder
+2. Building file paths that work everywhere
+
+Instead of:
+```r
+source("../R/functions.R")  # Fragile!
+```
+
+Use:
+```r
+source(here::here("week_1", "R", "functions.R"))  # Robust!
+```
+
+This works regardless of:
+
+- What computer you're on
+- Where you opened the project
+- What your working directory is
 :::
 
-## Automating Report Generation
+### Step 3: Create a Rendering Script
 
-Finally, let's create a script to generate reports for multiple countries. Create a new file called `render_reports.R`:
+Create a new file called `week_1/R/render_reports.R`:
 
 ```{r}
 #| eval: false
-# Load required package
-library(quarto)
+# week_1/R/render_reports.R
+library(tidyverse)  # For data manipulation and pipe operator
+library(quarto)     # For rendering Quarto documents
+library(here)       # For reliable file paths
+library(withr).     # For safe working with file paths
+library(fs)         # For file system operations
 
-# Countries we want to analyze
-countries <- c(
-  "Angola", 
-  "Ethiopia", 
-  "Pakistan"
+# List of countries to analyze
+sea_countries <- c(
+  "Vietnam", 
+  "Indonesia", 
+  "Thailand", 
+  "Malaysia"
 )
 
-# Create a reports folder if it doesn't exist
-dir.create("reports", showWarnings = FALSE)
-
-# Generate a report for each country
-for (country in countries) {
-  quarto::quarto_render(
-    "country_report.qmd",
-    output_file = str_glue("reports/{country}_analysis.html"),
-    execute_params = list(country = country)
+# Function to render a report for one country
+render_country_report <- function(country) {
+  # Create output directory if it doesn't exist
+  output_dir <- here::here("week_1", "outputs")
+  dir_create(output_dir)
+  
+  # We'll use withr::with_dir() instead of setwd()
+  # It automatically restores the working directory when done
+  withr::with_dir(
+    here::here("week_1", "R"),
+    {
+      # Render the Quarto document
+      quarto::quarto_render(
+        input = "country_report.qmd",
+        output_file = str_glue("{country}_analysis.html"),
+        execute_params = list(country = country)
+      )
+      
+      # Move the rendered file to outputs directory
+      file_move(
+        path = str_glue("{country}_analysis.html"),
+        new_path = path(output_dir, str_glue("{country}_analysis.html"))
+      )
+    }
   )
+}
+
+# Create a safer version of our render function that won't error
+safe_render <- possibly(
+  render_country_report,
+  otherwise = "Failed to render report" # What to return if there's an error
+)
+
+# Generate reports and capture results
+results <- map(
+  sea_countries,
+  safe_render
+)
+
+# Check for any failures
+failed_countries <- sea_countries[results == "Failed to render report"]
+if (length(failed_countries) > 0) {
+  message("Failed to render reports for: ", str_c(failed_countries, collapse = ", "))
 }
 ```
 
-## Running the Automation
+### Step 4: Generate Reports
 
-To generate all your reports, simply run:
+1.  Open `week_1/R/render_reports.R` in RStudio
+2.  Click "Source" (or press Cmd/Ctrl + Shift + S)
+3.  Check `week_1/outputs/` for your generated reports!
+
+You should see: 
+
+- `vietnam_analysis.html` 
+- `indonesia_analysis.html` 
+- `thailand_analysis.html` 
+- `malaysia_analysis.html`
+
+### Real-World Applications
+
+This approach is incredibly powerful for:
+
+1.  **Regular Reporting**
+    -   Weekly/monthly/quarterly updates
+    -   Reports for different stakeholders
+    -   Country monitoring
+2.  **Ad Hoc Analysis**
+    -   Quick responses to specific requests
+    -   Comparative analysis across regions
+    -   Deep dives into specific countries
+3.  **Quality Control**
+    -   Consistent analysis across reports
+    -   Easy to spot unusual patterns
+    -   Reproducible results
+
+### Practice Time
+
+Let's try some exercises:
+
+1.  Add a new visualization to `country_report.qmd`
+2.  Generate reports for a different set of countries
+3.  Add more summary statistics to the report
+
+::: callout-tip
+## File Organization
+
+Remember:
+
+-   R scripts and Quarto documents go in `R/`
+-   Generated reports go in `outputs/`
+-   Use relative paths (like `"R/functions.R"` and `"../outputs/"`)
+:::
+
+## Wrapping up: The Cool Things First Approach
+
+The data science workflow typically follows these steps:
+
+1.  **Get Data**: Import and clean your data
+2.  **Transform Data**: Calculate summaries and find patterns
+3.  **Communicate**: Create visualizations and reports
+
+Look at our analysis pipeline:
 
 ```{r}
-#| eval: false
-source("render_reports.R")
+get_gcdf3_dataset() |>                     # Step 1: Get Data
+  calculate_yearly_commitments("Angola") |> # Step 2: Transform
+  plot_loan_commitments("Angola")          # Step 3: Communicate
 ```
 
-Check your "reports" folder - you should see an HTML file for each country!
+But here's the twist: we're learning these steps in reverse! Why?
 
-## Practical Applications
+-   Week 1 & 2: **Communication** (Reporting & Data Visualization)
+    -   Because seeing your results is exciting!
+    -   Creates motivation to learn the underlying steps
+-   Week 3: **Data Transformation**
+    -   Now that we know what we want to show, we'll learn how to wrangle data into shape
+    -   Find actionable insights from dirty real world data
+-   Week 4: **Data Import & Cleaning**
+    -   The foundation of all good analysis
+    -   LLMs make data cleaning much easier
 
-This automated reporting approach has many real-world uses:
+```{mermaid}
+graph TB
+    %% Standard Workflow
+    subgraph Traditional["Data Science Workflow"]
+        A("Get Data<br>(Import & Clean)") --> B("Transform Data<br>(Analyze & Summarize)")
+        B --> C("Communicate<br>(Visualize & Report)")
+    end
+    
+    %% Our Learning Path
+    subgraph Course["Our Learning Path"]
+        direction TB
+        W1("Week 1:<br>Introduction to Quarto<br>(Professional Reports)")
+        W2("Week 2:<br>Data Visualization<br>(The Fun Part!)")
+        W3("Week 3:<br>Data Transformation<br>(Making Data Useful)")
+        W4("Week 4:<br>Data Import & Cleaning<br>(Building Strong Foundations)")
+        W1 --> W2
+        W2 --> W3
+        W3 --> W4
+    end
 
--   Create standardized reports for all countries in a region
--   Generate quarterly updates when new data arrives
--   Build a website with a page per country
--   Create briefing documents for different stakeholders
+    %% Connecting arrow with explanation
+    C -..-> W1
+    
+    %% Styles for better visualization - now with fill colors
+    style A fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    style B fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    style C fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    
+    style W1 fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    style W2 fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    style W3 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    style W4 fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+```
 
-More importantly, this approach:
+This **cool things first** approach helps you:
 
--   Ensures consistency across all reports
--   Saves significant time on repetitive tasks
--   Reduces the chance of errors
--   Makes updates easy when data changes
--   Produces professional output with minimal effort
+-   See the value of R immediately
+-   Build motivation through quick wins
+-   Understand why each step matters
+-   Provides the motivation to learn the details of why code works
 
-::: callout-note
-## Going Further
 
-In Part 2 of this book, we'll explore more advanced automation techniques, including:
+## Wrapping Up: What We've Accomplished
 
--   Adding more complex analyses
--   Customizing report formats
--   Creating executive summaries
--   Building interactive dashboards
-:::
+### Today's Achievements
+
+Let's look back at what we've accomplished in just 90 minutes:
+
+1. **Getting Comfortable with RStudio**
+   - Set up an organized project structure
+   - Learned to navigate the RStudio interface
+   - Created our first R scripts and Quarto documents
+
+2. **Taking First Steps with Quarto**
+   - Created our first Quarto document
+   - Combined code, text, and visualizations
+   - Generated reports in multiple formats
+
+3. **Building Efficiency Tools**
+   - Wrote our first function to avoid repetitive work
+   - Used map functions to process multiple countries
+   - Created a parameterized report template
+
+Most importantly, you've seen how these tools can make your work at AidData more efficient and reproducible. While it takes time to master these skills, you now have working examples that you can build upon and adapt for your own analysis needs.
+
+### Resources for Continued Learning
+
+#### R Fundamentals
+Even with AI assistance, a solid foundation in R basics will make you much more effective. Here are some excellent starting points:
+
+1. **Interactive Learning**
+   - [DataCamp's Free Introduction to R](https://app.datacamp.com/learn/courses/free-introduction-to-r)
+     - Recommended starting point
+     - Covers essential R concepts
+     - Interactive exercises with immediate feedback
+
+2. **Video Tutorial**
+   - [R Programming Crash Course (1 hour)](https://youtu.be/eR-XRSKsuR4?si=BtSvhACTU3bLnv6O)
+     - Quick overview of key concepts
+     - Good for visual learners
+     - Covers most common operations
+
+#### Quarto Documentation & Tutorials
+
+1. **Official Resources**
+   - [Quarto Documentation](https://quarto.org/)
+     - Comprehensive reference
+     - Many examples and tutorials
+   - [Getting Started with Quarto (Video)](https://youtu.be/_f3latmOhew)
+     - Excellent visual introduction
+     - Shows Quarto in action
+
+2. **Book Chapters**
+   - R for Data Science (2e):
+     - [Chapter 29: Quarto](https://r4ds.hadley.nz/communicate)
+     - [Chapter 30: Quarto Formats](https://r4ds.hadley.nz/quarto-formats.html)
+
+#### Functions & Iteration
+
+1. **R for Data Science Chapters**
+   - [Writing Functions](https://r4ds.hadley.nz/functions)
+     - Comprehensive guide to function writing
+     - Best practices and examples
+   - [Iteration](https://r4ds.hadley.nz/iteration)
+     - Deep dive into map functions
+     - Practical examples
+
+2. **Additional Resources**
+   - [purrr documentation](https://purrr.tidyverse.org/)
+     - Reference for map functions
+     - Comprehensive examples
+   - [Walk This Way: A gentle introduction to purrr](https://www.tidyverse.org/blog/2023/05/purrr-walk-this-way/)
+     - Beginner-friendly blog post
+     - Clear explanations and examples
+
+### Next Steps
+
+1. **Practice with Your Own Data**
+   - Try modifying today's examples for your specific needs
+   - Start small - maybe automate one regular task
+   - Use AI tools to help understand and adapt code
+
+2. **Prepare for Next Week**
+   - We'll dive deeper into data visualization
+   - Focus on creating compelling graphics for Chinese development finance data
+   - Build on the foundations we've established today
+
+3. **Get Help When Needed**
+   - Use AI tools (Claude, ChatGPT) for code explanation
+   - Reference the resources above
+   - Ask questions in our course forum
+   - Share challenges and solutions with colleagues
+
+Remember: Learning R is a journey. You don't need to memorize everything - knowing where to find help is often more important than memorizing syntax. Focus on understanding the concepts and how they can make your work easier and more reproducible.
+
+See you next week!
