@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
-<head>
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.37">
 
-<meta charset="utf-8" />
-<meta name="generator" content="quarto-1.6.37" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3  Week 1: Getting Started (In-Class) – Applied Data Analysis for Chinese Lending Data Using R & LLMs</title>
+<title>3&nbsp; Week 1: Getting Started (In-Class) – Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,7 +56,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-<!-- htmldependencies:E3FAD763 -->
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./week_2_pre_class.html" rel="next">
+<link href="./week_1_pre_class.html" rel="prev">
+<link href="./images/course_logo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-7580570a2e354cd56757c689413fca0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -86,29 +103,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script  src="site_libs/quarto-diagram/mermaid.min.js"></script>
-<script  src="site_libs/quarto-diagram/mermaid-init.js"></script>
-<link  href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet" />
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
+<meta property="og:title" content="3&nbsp; Week 1: Getting Started (In-Class) – Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs">
+<meta property="og:description" content="">
+<meta property="og:image" content="week_1_in_class_files/figure-html/unnamed-chunk-4-1.png">
+<meta property="og:site_name" content="Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs">
+<meta name="twitter:title" content="3&nbsp; Week 1: Getting Started (In-Class) – Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="week_1_in_class_files/figure-html/unnamed-chunk-4-1.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body>
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn"
-      data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" 
-      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
-      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"></h1>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" role="link"
-        aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
-        onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_1_pre_class.html">Part 1: Data Analysis Bootcamp</a></li><li class="breadcrumb-item"><a href="./week_1_in_class.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 1: Getting Started (In-Class)</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -122,9 +142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="/">
-      Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs
-      </a> 
+      <a href="./">Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -136,19 +154,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span></span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1"  role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Part 1: Data Analysis Bootcamp</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -157,57 +175,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/week_1_pre_class.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Course Preparation</span></span></a>
+  <a href="./week_1_pre_class.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pre-Course Preparation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/week_1_in_class.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class='chapter-number'>3</span>  <span class='chapter-title'>Week 1: Getting Started (In-Class)</span></span></a>
+  <a href="./week_1_in_class.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 1: Getting Started (In-Class)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/week_2_pre_class.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>4</span>  <span class='chapter-title'>Week 2: Make Cool Charts, Right Away (Pre-Class)</span></span></a>
+  <a href="./week_2_pre_class.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2: Make Cool Charts, Right Away (Pre-Class)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/week_2_in_class.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>5</span>  <span class='chapter-title'>Week 2: Make Cool Charts, Right Away (In-Class)</span></span></a>
+  <a href="./week_2_in_class.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 2: Make Cool Charts, Right Away (In-Class)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/week_3_pre_class.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>6</span>  <span class='chapter-title'>Week 3: Find Actionable Insights, Quickly (Pre-Class)</span></span></a>
+  <a href="./week_3_pre_class.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3: Find Actionable Insights, Quickly (Pre-Class)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/week_3_in_class.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>7</span>  <span class='chapter-title'>Week 3: Find Actionable Insights, Quickly (In-Class)</span></span></a>
+  <a href="./week_3_in_class.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Week 3: Find Actionable Insights, Quickly (In-Class)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/week_4_pre_class.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>8</span>  <span class='chapter-title'>Week 4: Import & Tidy Your Data (Pre-Class)</span></span></a>
+  <a href="./week_4_pre_class.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 4: Import &amp; Tidy Your Data (Pre-Class)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/week_4_in_class.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>9</span>  <span class='chapter-title'>Week 4: Import & Tidy Your Data (In-Class)</span></span></a>
+  <a href="./week_4_in_class.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Week 4: Import &amp; Tidy Your Data (In-Class)</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2"  role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Part 2: Further Resources</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -216,38 +234,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/part_2_resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>10</span>  <span class='chapter-title'>Resources</span></span></a>
+  <a href="./part_2_resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Resources</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>11</span>  <span class='chapter-title'>Summary</span></span></a>
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/references.html" class="sidebar-item-text sidebar-link">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" ></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <div id="quarto-toc-target"></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#todays-agenda-90-minutes" id="toc-todays-agenda-90-minutes" class="nav-link active" data-scroll-target="#todays-agenda-90-minutes"><span class="header-section-number">3.1</span> Today’s Agenda (90 minutes)</a></li>
+  <li><a href="#welcome-course-overview" id="toc-welcome-course-overview" class="nav-link" data-scroll-target="#welcome-course-overview"><span class="header-section-number">3.2</span> Welcome &amp; Course Overview</a></li>
+  <li><a href="#todays-focus-practical-tools-for-real-work" id="toc-todays-focus-practical-tools-for-real-work" class="nav-link" data-scroll-target="#todays-focus-practical-tools-for-real-work"><span class="header-section-number">3.3</span> Today’s Focus: Practical Tools for Real Work</a></li>
+  <li><a href="#learning-objectives-first-steps-toward-efficiency" id="toc-learning-objectives-first-steps-toward-efficiency" class="nav-link" data-scroll-target="#learning-objectives-first-steps-toward-efficiency"><span class="header-section-number">3.4</span> Learning Objectives: First Steps Toward Efficiency</a></li>
+  <li><a href="#why-cool-things-first" id="toc-why-cool-things-first" class="nav-link" data-scroll-target="#why-cool-things-first"><span class="header-section-number">3.5</span> Why “Cool Things First”?</a></li>
+  <li><a href="#setting-up-your-work-environment" id="toc-setting-up-your-work-environment" class="nav-link" data-scroll-target="#setting-up-your-work-environment"><span class="header-section-number">3.6</span> Setting Up Your Work Environment</a>
+  <ul class="collapse">
+  <li><a href="#creating-a-project-structure" id="toc-creating-a-project-structure" class="nav-link" data-scroll-target="#creating-a-project-structure"><span class="header-section-number">3.6.1</span> Creating a Project Structure</a></li>
+  <li><a href="#install-load-packages" id="toc-install-load-packages" class="nav-link" data-scroll-target="#install-load-packages"><span class="header-section-number">3.6.2</span> Install &amp; Load Packages</a></li>
+  </ul></li>
+  <li><a href="#your-first-analysis-a-preview" id="toc-your-first-analysis-a-preview" class="nav-link" data-scroll-target="#your-first-analysis-a-preview"><span class="header-section-number">3.7</span> Your First Analysis: A Preview</a></li>
+  <li><a href="#introduction-to-quarto" id="toc-introduction-to-quarto" class="nav-link" data-scroll-target="#introduction-to-quarto"><span class="header-section-number">3.8</span> Introduction to Quarto</a>
+  <ul class="collapse">
+  <li><a href="#why-use-quarto" id="toc-why-use-quarto" class="nav-link" data-scroll-target="#why-use-quarto"><span class="header-section-number">3.8.1</span> Why Use Quarto?</a></li>
+  <li><a href="#real-world-use-cases" id="toc-real-world-use-cases" class="nav-link" data-scroll-target="#real-world-use-cases"><span class="header-section-number">3.8.2</span> Real-World Use Cases</a></li>
+  <li><a href="#your-first-quarto-document" id="toc-your-first-quarto-document" class="nav-link" data-scroll-target="#your-first-quarto-document"><span class="header-section-number">3.8.3</span> Your First Quarto Document</a></li>
+  <li><a href="#basic-markdown" id="toc-basic-markdown" class="nav-link" data-scroll-target="#basic-markdown"><span class="header-section-number">3.8.4</span> Basic Markdown</a></li>
+  <li><a href="#adding-code" id="toc-adding-code" class="nav-link" data-scroll-target="#adding-code"><span class="header-section-number">3.8.5</span> Adding Code</a></li>
+  <li><a href="#rendering-your-document" id="toc-rendering-your-document" class="nav-link" data-scroll-target="#rendering-your-document"><span class="header-section-number">3.8.6</span> Rendering Your Document</a></li>
+  <li><a href="#practice-time" id="toc-practice-time" class="nav-link" data-scroll-target="#practice-time"><span class="header-section-number">3.8.7</span> Practice Time</a></li>
+  </ul></li>
+  <li><a href="#lets-start-building-functions-pipelines" id="toc-lets-start-building-functions-pipelines" class="nav-link" data-scroll-target="#lets-start-building-functions-pipelines"><span class="header-section-number">3.9</span> Let’s Start Building: Functions &amp; Pipelines</a>
+  <ul class="collapse">
+  <li><a href="#introduction-to-functions-making-your-code-dry-and-error-free" id="toc-introduction-to-functions-making-your-code-dry-and-error-free" class="nav-link" data-scroll-target="#introduction-to-functions-making-your-code-dry-and-error-free"><span class="header-section-number">3.9.1</span> Introduction to Functions: Making Your Code DRY and Error-Free</a></li>
+  <li><a href="#setting-up-our-analysis-tools" id="toc-setting-up-our-analysis-tools" class="nav-link" data-scroll-target="#setting-up-our-analysis-tools"><span class="header-section-number">3.9.2</span> Setting Up Our Analysis Tools</a></li>
+  <li><a href="#your-first-analysis-pipeline" id="toc-your-first-analysis-pipeline" class="nav-link" data-scroll-target="#your-first-analysis-pipeline"><span class="header-section-number">3.9.3</span> Your First Analysis Pipeline</a></li>
+  <li><a href="#why-pipes-make-life-easier" id="toc-why-pipes-make-life-easier" class="nav-link" data-scroll-target="#why-pipes-make-life-easier"><span class="header-section-number">3.9.4</span> Why Pipes Make Life Easier</a></li>
+  <li><a href="#understanding-our-code-with-ai" id="toc-understanding-our-code-with-ai" class="nav-link" data-scroll-target="#understanding-our-code-with-ai"><span class="header-section-number">3.9.5</span> Understanding Our Code with AI</a></li>
+  <li><a href="#understanding-complex-functions-with-ai" id="toc-understanding-complex-functions-with-ai" class="nav-link" data-scroll-target="#understanding-complex-functions-with-ai"><span class="header-section-number">3.9.6</span> Understanding Complex Functions with AI</a></li>
+  <li><a href="#practice-time-1" id="toc-practice-time-1" class="nav-link" data-scroll-target="#practice-time-1"><span class="header-section-number">3.9.7</span> Practice Time</a></li>
+  </ul></li>
+  <li><a href="#work-smarter-not-harder-automating-repetitive-tasks-with-map-functions" id="toc-work-smarter-not-harder-automating-repetitive-tasks-with-map-functions" class="nav-link" data-scroll-target="#work-smarter-not-harder-automating-repetitive-tasks-with-map-functions"><span class="header-section-number">3.10</span> Work Smarter, Not Harder: Automating Repetitive Tasks with Map Functions</a>
+  <ul class="collapse">
+  <li><a href="#the-problem-repetitive-analysis" id="toc-the-problem-repetitive-analysis" class="nav-link" data-scroll-target="#the-problem-repetitive-analysis"><span class="header-section-number">3.10.1</span> The Problem: Repetitive Analysis</a></li>
+  <li><a href="#a-better-way-map-functions" id="toc-a-better-way-map-functions" class="nav-link" data-scroll-target="#a-better-way-map-functions"><span class="header-section-number">3.10.2</span> A Better Way: Map Functions</a></li>
+  <li><a href="#analyzing-multiple-countries" id="toc-analyzing-multiple-countries" class="nav-link" data-scroll-target="#analyzing-multiple-countries"><span class="header-section-number">3.10.3</span> Analyzing Multiple Countries</a></li>
+  <li><a href="#why-this-matters" id="toc-why-this-matters" class="nav-link" data-scroll-target="#why-this-matters"><span class="header-section-number">3.10.4</span> Why This Matters</a></li>
+  <li><a href="#practice-time-2" id="toc-practice-time-2" class="nav-link" data-scroll-target="#practice-time-2"><span class="header-section-number">3.10.5</span> Practice Time</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps"><span class="header-section-number">3.10.6</span> Next Steps</a></li>
+  </ul></li>
+  <li><a href="#creating-reports-for-multiple-countries" id="toc-creating-reports-for-multiple-countries" class="nav-link" data-scroll-target="#creating-reports-for-multiple-countries"><span class="header-section-number">3.11</span> Creating Reports for Multiple Countries</a>
+  <ul class="collapse">
+  <li><a href="#the-problem-manual-report-creation" id="toc-the-problem-manual-report-creation" class="nav-link" data-scroll-target="#the-problem-manual-report-creation"><span class="header-section-number">3.11.1</span> The Problem: Manual Report Creation</a></li>
+  <li><a href="#step-1-save-our-functions" id="toc-step-1-save-our-functions" class="nav-link" data-scroll-target="#step-1-save-our-functions"><span class="header-section-number">3.11.2</span> Step 1: Save Our Functions</a></li>
+  <li><a href="#step-2-create-a-report-template" id="toc-step-2-create-a-report-template" class="nav-link" data-scroll-target="#step-2-create-a-report-template"><span class="header-section-number">3.11.3</span> Step 2: Create a Report Template</a></li>
+  <li><a href="#step-3-create-a-rendering-script" id="toc-step-3-create-a-rendering-script" class="nav-link" data-scroll-target="#step-3-create-a-rendering-script"><span class="header-section-number">3.11.4</span> Step 3: Create a Rendering Script</a></li>
+  <li><a href="#step-4-generate-reports" id="toc-step-4-generate-reports" class="nav-link" data-scroll-target="#step-4-generate-reports"><span class="header-section-number">3.11.5</span> Step 4: Generate Reports</a></li>
+  <li><a href="#real-world-applications" id="toc-real-world-applications" class="nav-link" data-scroll-target="#real-world-applications"><span class="header-section-number">3.11.6</span> Real-World Applications</a></li>
+  <li><a href="#practice-time-3" id="toc-practice-time-3" class="nav-link" data-scroll-target="#practice-time-3"><span class="header-section-number">3.11.7</span> Practice Time</a></li>
+  </ul></li>
+  <li><a href="#wrapping-up-the-cool-things-first-approach" id="toc-wrapping-up-the-cool-things-first-approach" class="nav-link" data-scroll-target="#wrapping-up-the-cool-things-first-approach"><span class="header-section-number">3.12</span> Wrapping up: The Cool Things First Approach</a></li>
+  <li><a href="#wrapping-up-what-weve-accomplished" id="toc-wrapping-up-what-weve-accomplished" class="nav-link" data-scroll-target="#wrapping-up-what-weve-accomplished"><span class="header-section-number">3.13</span> Wrapping Up: What We’ve Accomplished</a>
+  <ul class="collapse">
+  <li><a href="#todays-achievements" id="toc-todays-achievements" class="nav-link" data-scroll-target="#todays-achievements"><span class="header-section-number">3.13.1</span> Today’s Achievements</a></li>
+  <li><a href="#resources-for-continued-learning" id="toc-resources-for-continued-learning" class="nav-link" data-scroll-target="#resources-for-continued-learning"><span class="header-section-number">3.13.2</span> Resources for Continued Learning</a></li>
+  <li><a href="#next-steps-1" id="toc-next-steps-1" class="nav-link" data-scroll-target="#next-steps-1"><span class="header-section-number">3.13.3</span> Next Steps</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_1_pre_class.html">Part 1: Data Analysis Bootcamp</a></li><li class="breadcrumb-item"><a href="./week_1_in_class.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 1: Getting Started (In-Class)</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-week1_in_class" class="quarto-section-identifier"><span class="chapter-number">3</span>  <span class="chapter-title">Week 1: Getting Started (In-Class)</span></span></h1>
+<h1 class="title"><span id="sec-week1_in_class" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 1: Getting Started (In-Class)</span></span></h1>
 </div>
 
 
@@ -263,71 +343,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<nav id="TOC" role="doc-toc">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#todays-agenda-90-minutes" id="toc-todays-agenda-90-minutes"><span class="header-section-number">3.1</span> Today’s Agenda (90 minutes)</a></li>
-  <li><a href="#welcome-course-overview" id="toc-welcome-course-overview"><span class="header-section-number">3.2</span> Welcome &amp; Course Overview</a></li>
-  <li><a href="#todays-focus-practical-tools-for-real-work" id="toc-todays-focus-practical-tools-for-real-work"><span class="header-section-number">3.3</span> Today’s Focus: Practical Tools for Real Work</a></li>
-  <li><a href="#learning-objectives-first-steps-toward-efficiency" id="toc-learning-objectives-first-steps-toward-efficiency"><span class="header-section-number">3.4</span> Learning Objectives: First Steps Toward Efficiency</a></li>
-  <li><a href="#why-cool-things-first" id="toc-why-cool-things-first"><span class="header-section-number">3.5</span> Why “Cool Things First”?</a></li>
-  <li><a href="#setting-up-your-work-environment" id="toc-setting-up-your-work-environment"><span class="header-section-number">3.6</span> Setting Up Your Work Environment</a>
-  <ul>
-  <li><a href="#creating-a-project-structure" id="toc-creating-a-project-structure"><span class="header-section-number">3.6.1</span> Creating a Project Structure</a></li>
-  <li><a href="#install-load-packages" id="toc-install-load-packages"><span class="header-section-number">3.6.2</span> Install &amp; Load Packages</a></li>
-  </ul></li>
-  <li><a href="#your-first-analysis-a-preview" id="toc-your-first-analysis-a-preview"><span class="header-section-number">3.7</span> Your First Analysis: A Preview</a></li>
-  <li><a href="#introduction-to-quarto" id="toc-introduction-to-quarto"><span class="header-section-number">3.8</span> Introduction to Quarto</a>
-  <ul>
-  <li><a href="#why-use-quarto" id="toc-why-use-quarto"><span class="header-section-number">3.8.1</span> Why Use Quarto?</a></li>
-  <li><a href="#real-world-use-cases" id="toc-real-world-use-cases"><span class="header-section-number">3.8.2</span> Real-World Use Cases</a></li>
-  <li><a href="#your-first-quarto-document" id="toc-your-first-quarto-document"><span class="header-section-number">3.8.3</span> Your First Quarto Document</a></li>
-  <li><a href="#basic-markdown" id="toc-basic-markdown"><span class="header-section-number">3.8.4</span> Basic Markdown</a></li>
-  <li><a href="#adding-code" id="toc-adding-code"><span class="header-section-number">3.8.5</span> Adding Code</a></li>
-  <li><a href="#rendering-your-document" id="toc-rendering-your-document"><span class="header-section-number">3.8.6</span> Rendering Your Document</a></li>
-  <li><a href="#practice-time" id="toc-practice-time"><span class="header-section-number">3.8.7</span> Practice Time</a></li>
-  </ul></li>
-  <li><a href="#lets-start-building-functions-pipelines" id="toc-lets-start-building-functions-pipelines"><span class="header-section-number">3.9</span> Let’s Start Building: Functions &amp; Pipelines</a>
-  <ul>
-  <li><a href="#introduction-to-functions-making-your-code-dry-and-error-free" id="toc-introduction-to-functions-making-your-code-dry-and-error-free"><span class="header-section-number">3.9.1</span> Introduction to Functions: Making Your Code DRY and Error-Free</a></li>
-  <li><a href="#setting-up-our-analysis-tools" id="toc-setting-up-our-analysis-tools"><span class="header-section-number">3.9.2</span> Setting Up Our Analysis Tools</a></li>
-  <li><a href="#your-first-analysis-pipeline" id="toc-your-first-analysis-pipeline"><span class="header-section-number">3.9.3</span> Your First Analysis Pipeline</a></li>
-  <li><a href="#why-pipes-make-life-easier" id="toc-why-pipes-make-life-easier"><span class="header-section-number">3.9.4</span> Why Pipes Make Life Easier</a></li>
-  <li><a href="#understanding-our-code-with-ai" id="toc-understanding-our-code-with-ai"><span class="header-section-number">3.9.5</span> Understanding Our Code with AI</a></li>
-  <li><a href="#understanding-complex-functions-with-ai" id="toc-understanding-complex-functions-with-ai"><span class="header-section-number">3.9.6</span> Understanding Complex Functions with AI</a></li>
-  <li><a href="#practice-time-1" id="toc-practice-time-1"><span class="header-section-number">3.9.7</span> Practice Time</a></li>
-  </ul></li>
-  <li><a href="#work-smarter-not-harder-automating-repetitive-tasks-with-map-functions" id="toc-work-smarter-not-harder-automating-repetitive-tasks-with-map-functions"><span class="header-section-number">3.10</span> Work Smarter, Not Harder: Automating Repetitive Tasks with Map Functions</a>
-  <ul>
-  <li><a href="#the-problem-repetitive-analysis" id="toc-the-problem-repetitive-analysis"><span class="header-section-number">3.10.1</span> The Problem: Repetitive Analysis</a></li>
-  <li><a href="#a-better-way-map-functions" id="toc-a-better-way-map-functions"><span class="header-section-number">3.10.2</span> A Better Way: Map Functions</a></li>
-  <li><a href="#analyzing-multiple-countries" id="toc-analyzing-multiple-countries"><span class="header-section-number">3.10.3</span> Analyzing Multiple Countries</a></li>
-  <li><a href="#why-this-matters" id="toc-why-this-matters"><span class="header-section-number">3.10.4</span> Why This Matters</a></li>
-  <li><a href="#practice-time-2" id="toc-practice-time-2"><span class="header-section-number">3.10.5</span> Practice Time</a></li>
-  <li><a href="#next-steps" id="toc-next-steps"><span class="header-section-number">3.10.6</span> Next Steps</a></li>
-  </ul></li>
-  <li><a href="#creating-reports-for-multiple-countries" id="toc-creating-reports-for-multiple-countries"><span class="header-section-number">3.11</span> Creating Reports for Multiple Countries</a>
-  <ul>
-  <li><a href="#the-problem-manual-report-creation" id="toc-the-problem-manual-report-creation"><span class="header-section-number">3.11.1</span> The Problem: Manual Report Creation</a></li>
-  <li><a href="#step-1-save-our-functions" id="toc-step-1-save-our-functions"><span class="header-section-number">3.11.2</span> Step 1: Save Our Functions</a></li>
-  <li><a href="#step-2-create-a-report-template" id="toc-step-2-create-a-report-template"><span class="header-section-number">3.11.3</span> Step 2: Create a Report Template</a></li>
-  <li><a href="#step-3-create-a-rendering-script" id="toc-step-3-create-a-rendering-script"><span class="header-section-number">3.11.4</span> Step 3: Create a Rendering Script</a></li>
-  <li><a href="#step-4-generate-reports" id="toc-step-4-generate-reports"><span class="header-section-number">3.11.5</span> Step 4: Generate Reports</a></li>
-  <li><a href="#real-world-applications" id="toc-real-world-applications"><span class="header-section-number">3.11.6</span> Real-World Applications</a></li>
-  <li><a href="#practice-time-3" id="toc-practice-time-3"><span class="header-section-number">3.11.7</span> Practice Time</a></li>
-  </ul></li>
-  <li><a href="#wrapping-up-the-cool-things-first-approach" id="toc-wrapping-up-the-cool-things-first-approach"><span class="header-section-number">3.12</span> Wrapping up: The Cool Things First Approach</a></li>
-  <li><a href="#wrapping-up-what-weve-accomplished" id="toc-wrapping-up-what-weve-accomplished"><span class="header-section-number">3.13</span> Wrapping Up: What We’ve Accomplished</a>
-  <ul>
-  <li><a href="#todays-achievements" id="toc-todays-achievements"><span class="header-section-number">3.13.1</span> Today’s Achievements</a></li>
-  <li><a href="#resources-for-continued-learning" id="toc-resources-for-continued-learning"><span class="header-section-number">3.13.2</span> Resources for Continued Learning</a></li>
-  <li><a href="#next-steps-1" id="toc-next-steps-1"><span class="header-section-number">3.13.3</span> Next Steps</a></li>
-  </ul></li>
-  </ul>
-</nav>
+
 <section id="todays-agenda-90-minutes" class="level2" data-number="3.1">
-<h2 data-number="3.1"><span class="header-section-number">3.1</span> Today’s Agenda (90 minutes)</h2>
+<h2 data-number="3.1" class="anchored" data-anchor-id="todays-agenda-90-minutes"><span class="header-section-number">3.1</span> Today’s Agenda (90 minutes)</h2>
 <ol type="1">
 <li><strong>Welcome &amp; Course Overview</strong> (15 min)
 <ul>
@@ -362,7 +380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="welcome-course-overview" class="level2" data-number="3.2">
-<h2 data-number="3.2"><span class="header-section-number">3.2</span> Welcome &amp; Course Overview</h2>
+<h2 data-number="3.2" class="anchored" data-anchor-id="welcome-course-overview"><span class="header-section-number">3.2</span> Welcome &amp; Course Overview</h2>
 <p>Welcome to Applied Data Analysis for Chinese Lending Data! Before we dive into R, let’s cover some course logistics:</p>
 <ul>
 <li><strong>Course Structure</strong>: 4 weekly online sessions + 1 full day in-person</li>
@@ -373,7 +391,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="todays-focus-practical-tools-for-real-work" class="level2" data-number="3.3">
-<h2 data-number="3.3"><span class="header-section-number">3.3</span> Today’s Focus: Practical Tools for Real Work</h2>
+<h2 data-number="3.3" class="anchored" data-anchor-id="todays-focus-practical-tools-for-real-work"><span class="header-section-number">3.3</span> Today’s Focus: Practical Tools for Real Work</h2>
 <p>At AidData, you spend countless hours analyzing development finance data and creating reports. Today’s session focuses on three key areas that will help make this work more efficient:</p>
 <ol type="1">
 <li><strong>Working in RStudio</strong>
@@ -397,7 +415,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="learning-objectives-first-steps-toward-efficiency" class="level2" data-number="3.4">
-<h2 data-number="3.4"><span class="header-section-number">3.4</span> Learning Objectives: First Steps Toward Efficiency</h2>
+<h2 data-number="3.4" class="anchored" data-anchor-id="learning-objectives-first-steps-toward-efficiency"><span class="header-section-number">3.4</span> Learning Objectives: First Steps Toward Efficiency</h2>
 <p>By the end of today’s session, you’ll begin to:</p>
 <ol type="1">
 <li><strong>Get Started with Automated Reports</strong>
@@ -430,7 +448,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Let’s get started!</p>
 </section>
 <section id="why-cool-things-first" class="level2" data-number="3.5">
-<h2 data-number="3.5"><span class="header-section-number">3.5</span> Why “Cool Things First”?</h2>
+<h2 data-number="3.5" class="anchored" data-anchor-id="why-cool-things-first"><span class="header-section-number">3.5</span> Why “Cool Things First”?</h2>
 <p>Traditional programming courses often start with fundamentals: variables, loops, conditionals. That’s like learning about internal combustion before driving a car! Instead, we’ll:</p>
 <ol type="1">
 <li>Start with exciting, practical applications</li>
@@ -440,10 +458,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Our goal is to show you what’s possible, then help you understand how it works.</p>
 </section>
 <section id="setting-up-your-work-environment" class="level2" data-number="3.6">
-<h2 data-number="3.6"><span class="header-section-number">3.6</span> Setting Up Your Work Environment</h2>
+<h2 data-number="3.6" class="anchored" data-anchor-id="setting-up-your-work-environment"><span class="header-section-number">3.6</span> Setting Up Your Work Environment</h2>
 <p>Let’s create an organized workspace for this course. We’ll do this together - follow along on your computer:</p>
 <section id="creating-a-project-structure" class="level3" data-number="3.6.1">
-<h3 data-number="3.6.1"><span class="header-section-number">3.6.1</span> Creating a Project Structure</h3>
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="creating-a-project-structure"><span class="header-section-number">3.6.1</span> Creating a Project Structure</h3>
 <ol type="1">
 <li>In RStudio, click File → New File → New Project</li>
 <li>Click “New Directory”</li>
@@ -454,17 +472,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>Now let’s create an organized folder structure. Copy and paste this code into your R console:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create week folders and their subfolders</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create week folders and their subfolders</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (week <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  week_folder <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;week_&quot;</span>, week)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  week_folder <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"week_"</span>, week)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(week_folder)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create standard subfolders</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(<span class="fu">file.path</span>(week_folder, <span class="st">&quot;R&quot;</span>))        <span class="co"># Scripts and Quarto documents</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(<span class="fu">file.path</span>(week_folder, <span class="st">&quot;data-raw&quot;</span>)) <span class="co"># Original data files</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(<span class="fu">file.path</span>(week_folder, <span class="st">&quot;data&quot;</span>))     <span class="co"># Processed data</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(<span class="fu">file.path</span>(week_folder, <span class="st">&quot;outputs&quot;</span>))  <span class="co"># Generated reports and figures</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(<span class="fu">file.path</span>(week_folder, <span class="st">"R"</span>))        <span class="co"># Scripts and Quarto documents</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(<span class="fu">file.path</span>(week_folder, <span class="st">"data-raw"</span>)) <span class="co"># Original data files</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(<span class="fu">file.path</span>(week_folder, <span class="st">"data"</span>))     <span class="co"># Processed data</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(<span class="fu">file.path</span>(week_folder, <span class="st">"outputs"</span>))  <span class="co"># Generated reports and figures</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This will create:</p>
 <pre class="text"><code>data_analysis_bootcamp/
@@ -491,7 +509,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Tip
@@ -518,7 +536,7 @@ Tip
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Note
@@ -530,7 +548,7 @@ Note
 </div>
 </section>
 <section id="install-load-packages" class="level3" data-number="3.6.2">
-<h3 data-number="3.6.2"><span class="header-section-number">3.6.2</span> Install &amp; Load Packages</h3>
+<h3 data-number="3.6.2" class="anchored" data-anchor-id="install-load-packages"><span class="header-section-number">3.6.2</span> Install &amp; Load Packages</h3>
 <p>Think of R packages like apps for your phone:</p>
 <ul>
 <li>You install an app once</li>
@@ -548,30 +566,30 @@ Note
 </ul>
 <p>Let’s install what we need:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First, install pak - our package installer</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pak&quot;</span>)</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First, install pak - our package installer</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pak"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now use pak to install everything else</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pkg_install</span>(</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;quarto&quot;</span>,            <span class="co"># For report generation</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;t-emery/chinadevfin3&quot;</span>,  <span class="co"># From GitHub, GCDF 3.0 data package that I made</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;glue&quot;</span>,              <span class="co"># For working with text</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;tinytex&quot;</span>,           <span class="co"># For rendering pdfs</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;here&quot;</span>               <span class="co"># For relative file paths</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"quarto"</span>,            <span class="co"># For report generation</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"t-emery/chinadevfin3"</span>,  <span class="co"># From GitHub, GCDF 3.0 data package that I made</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"glue"</span>,              <span class="co"># For working with text</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tinytex"</span>,           <span class="co"># For rendering pdfs</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"here"</span>               <span class="co"># For relative file paths</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Special setup needed for PDF creation</span></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>() </span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># If you haven&#39;t installed tidyverse yet (from pre-class setup):</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># pak::pkg_install(&quot;tidyverse&quot;) # Core data science tools from CRAN</span></span></code></pre></div>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># If you haven't installed tidyverse yet (from pre-class setup):</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># pak::pkg_install("tidyverse") # Core data science tools from CRAN</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Tip
@@ -583,7 +601,7 @@ Tip
 </div>
 <p>Now let’s load the packages we’ll use:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)      <span class="co"># Load core tools</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)      <span class="co"># Load core tools</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
@@ -596,9 +614,9 @@ Tip
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(chinadevfin3)   <span class="co"># Load GCDF 3.0 tools</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(chinadevfin3)   <span class="co"># Load GCDF 3.0 tools</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)           <span class="co"># Load text tools</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)           <span class="co"># Load relative file paths</span></span></code></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)           <span class="co"># Load relative file paths</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>here() starts at /Users/teal_emery/Dropbox/DataScience/data_analysis_for_chinese_debt_data</code></pre>
 </div>
@@ -606,7 +624,7 @@ Tip
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Note
@@ -619,31 +637,31 @@ Note
 </section>
 </section>
 <section id="your-first-analysis-a-preview" class="level2" data-number="3.7">
-<h2 data-number="3.7"><span class="header-section-number">3.7</span> Your First Analysis: A Preview</h2>
+<h2 data-number="3.7" class="anchored" data-anchor-id="your-first-analysis-a-preview"><span class="header-section-number">3.7</span> Your First Analysis: A Preview</h2>
 <p>Before we dive into details, let’s see what we’re working toward. Copy and paste this code into RStudio:</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get data for Angola</span></span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get data for Angola</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    recommended_for_aggregates <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    country_name <span class="sc">==</span> <span class="st">&quot;Angola&quot;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    recommended_for_aggregates <span class="sc">==</span> <span class="st">"Yes"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    country_name <span class="sc">==</span> <span class="st">"Angola"</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(commitment_year) <span class="sc">|&gt;</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_usd_bn =</span> <span class="fu">sum</span>(amount_constant_usd_2021, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">9</span></span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> commitment_year, <span class="at">y =</span> total_usd_bn)) <span class="sc">+</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Chinese Development Finance to Angola&quot;</span>,</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Commitments (2021 USD, Billions)&quot;</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Chinese Development Finance to Angola"</span>,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Commitments (2021 USD, Billions)"</span></span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -657,12 +675,12 @@ Note
 <p>Next, we’ll break this down into reusable pieces and learn how to automate it for any country!</p>
 </section>
 <section id="introduction-to-quarto" class="level2" data-number="3.8">
-<h2 data-number="3.8"><span class="header-section-number">3.8</span> Introduction to Quarto</h2>
+<h2 data-number="3.8" class="anchored" data-anchor-id="introduction-to-quarto"><span class="header-section-number">3.8</span> Introduction to Quarto</h2>
 <p>Quarto is a modern scientific and technical publishing system built for the way we work today. Think of it as a powerful document creator that lets you combine your narrative (text), code, and results all in one place. When you make changes to your analysis, everything updates automatically - no more copying and pasting results into Word! You can write once and publish to multiple formats like HTML, PDF, Word, and presentations. It’s like having a Swiss Army knife for creating data-driven documents.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Getting Started Resources
@@ -676,7 +694,7 @@ Getting Started Resources
 </div>
 </div>
 <section id="why-use-quarto" class="level3" data-number="3.8.1">
-<h3 data-number="3.8.1"><span class="header-section-number">3.8.1</span> Why Use Quarto?</h3>
+<h3 data-number="3.8.1" class="anchored" data-anchor-id="why-use-quarto"><span class="header-section-number">3.8.1</span> Why Use Quarto?</h3>
 <p>Quarto documents are:</p>
 <ol type="1">
 <li><strong>Reproducible</strong>: Code and results stay in sync</li>
@@ -687,10 +705,10 @@ Getting Started Resources
 </ol>
 </section>
 <section id="real-world-use-cases" class="level3" data-number="3.8.2">
-<h3 data-number="3.8.2"><span class="header-section-number">3.8.2</span> Real-World Use Cases</h3>
+<h3 data-number="3.8.2" class="anchored" data-anchor-id="real-world-use-cases"><span class="header-section-number">3.8.2</span> Real-World Use Cases</h3>
 <p>Quarto shines in several different scenarios:</p>
 <section id="lab-notebook-exploratory-analysis" class="level4" data-number="3.8.2.1">
-<h4 data-number="3.8.2.1"><span class="header-section-number">3.8.2.1</span> 1. Lab Notebook / Exploratory Analysis</h4>
+<h4 data-number="3.8.2.1" class="anchored" data-anchor-id="lab-notebook-exploratory-analysis"><span class="header-section-number">3.8.2.1</span> 1. Lab Notebook / Exploratory Analysis</h4>
 <ul>
 <li>Write text and execute code in the same document</li>
 <li>Track your thought process and decisions</li>
@@ -699,17 +717,17 @@ Getting Started Resources
 <li>This follows the tradition of <a href="https://en.wikipedia.org/wiki/Literate_programming">“literate programming”</a> introduced by Donald Knuth</li>
 </ul>
 <p>Here’s an example of documenting your exploration:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Question: Do loan commitments vary by region?</span></span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Question: Do loan commitments vary by region?</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="in"># First, let&#39;s look at Africa</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="in"># First, let's look at Africa</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="in">get_gcdf3_dataset() |&gt; </span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="in">  calculate_yearly_commitments(&quot;Angola&quot;)</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="in">  calculate_yearly_commitments("Angola")</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>Interesting spike in 2016. Let&#39;s check another country...</span></code></pre></div>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>Interesting spike in 2016. Let's check another country...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="professional-documents" class="level4" data-number="3.8.2.2">
-<h4 data-number="3.8.2.2"><span class="header-section-number">3.8.2.2</span> 2. Professional Documents</h4>
+<h4 data-number="3.8.2.2" class="anchored" data-anchor-id="professional-documents"><span class="header-section-number">3.8.2.2</span> 2. Professional Documents</h4>
 <ul>
 <li>Turn your analysis directly into reports</li>
 <li>Create presentations</li>
@@ -726,7 +744,7 @@ Getting Started Resources
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Tip
@@ -739,7 +757,7 @@ Tip
 </section>
 </section>
 <section id="your-first-quarto-document" class="level3" data-number="3.8.3">
-<h3 data-number="3.8.3"><span class="header-section-number">3.8.3</span> Your First Quarto Document</h3>
+<h3 data-number="3.8.3" class="anchored" data-anchor-id="your-first-quarto-document"><span class="header-section-number">3.8.3</span> Your First Quarto Document</h3>
 <ol type="1">
 <li>Click File → New File → Quarto Document</li>
 <li>Fill in:
@@ -750,19 +768,19 @@ Tip
 </ul></li>
 </ol>
 <p>You’ll see a template document with some example content. Let’s modify it:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Week 1: Getting Started&quot;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Your Name&quot;</span></span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Week 1: Getting Started"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Your Name"</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">embed-resources</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # Makes HTML easily shareable</span></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">docx</span><span class="kw">:</span><span class="at"> default</span></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span><span class="at"> default</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Sharing HTML Documents
@@ -774,7 +792,7 @@ Sharing HTML Documents
 </div>
 </section>
 <section id="basic-markdown" class="level3" data-number="3.8.4">
-<h3 data-number="3.8.4"><span class="header-section-number">3.8.4</span> Basic Markdown</h3>
+<h3 data-number="3.8.4" class="anchored" data-anchor-id="basic-markdown"><span class="header-section-number">3.8.4</span> Basic Markdown</h3>
 <p>Markdown is a simple way to format text that’s easy to read and write. Think of it as a set of formatting shortcuts: instead of clicking buttons like in Word, you add special characters around your text. Here are the basics you’ll see in our example:</p>
 <ul>
 <li>Use <code>#</code> for headers (more <code>#</code> means smaller headers)</li>
@@ -783,21 +801,21 @@ Sharing HTML Documents
 <li>Start lines with <code>-</code> or numbers for lists</li>
 </ul>
 <p>Try this example:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## About This Course</span></span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## About This Course</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>This course will teach me to:</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Create **beautiful** visualizations</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Write *efficient* code</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Generate professional reports</span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>First, we&#39;ll learn about projects</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Then we&#39;ll explore functions</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Finally, we&#39;ll create visualizations</span></code></pre></div>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>First, we'll learn about projects</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Then we'll explore functions</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Finally, we'll create visualizations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Try toggling between the <code>Source</code> and <code>Visual</code> editors at the top left of your RStudio window. The <code>Visual</code> editor shows formatting like Word, but we encourage using the <code>Source</code> editor to better understand how markdown works.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Tip
@@ -809,13 +827,13 @@ Tip
 </div>
 </section>
 <section id="adding-code" class="level3" data-number="3.8.5">
-<h3 data-number="3.8.5"><span class="header-section-number">3.8.5</span> Adding Code</h3>
+<h3 data-number="3.8.5" class="anchored" data-anchor-id="adding-code"><span class="header-section-number">3.8.5</span> Adding Code</h3>
 <p>A code chunk is like a special container in your document where you can write and run R code. Think of it as a mini R console embedded right in your document - anything between the ``` markers will be treated as R code, run by R, and the results will appear right below it. This lets you mix explanatory text with working code and see the results all in one place.</p>
 <p>Click the “Insert” button or press Ctrl+Alt+I (Cmd+Option+I on Mac) to insert a code chunk:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="in"># Let&#39;s do a simple calculation</span></span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="in"># Let's do a simple calculation</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="in">2 + 2</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To run this code, you have two easy options:</p>
 <ol type="1">
 <li>Click the small green “play” button ▶️ in the top-right corner of the code chunk</li>
@@ -828,7 +846,7 @@ Tip
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Tip
@@ -845,7 +863,7 @@ Tip
 <p>Save your Quarto document as <code>week_1_in_class</code> in the <code>week_1/R</code> folder. It will save your Quarto document with a <code>.qmd</code> extension.</p>
 </section>
 <section id="rendering-your-document" class="level3" data-number="3.8.6">
-<h3 data-number="3.8.6"><span class="header-section-number">3.8.6</span> Rendering Your Document</h3>
+<h3 data-number="3.8.6" class="anchored" data-anchor-id="rendering-your-document"><span class="header-section-number">3.8.6</span> Rendering Your Document</h3>
 <ol type="1">
 <li>Click the “Render” button</li>
 <li>Quarto will create three versions:
@@ -857,7 +875,7 @@ Tip
 </ol>
 </section>
 <section id="practice-time" class="level3" data-number="3.8.7">
-<h3 data-number="3.8.7"><span class="header-section-number">3.8.7</span> Practice Time</h3>
+<h3 data-number="3.8.7" class="anchored" data-anchor-id="practice-time"><span class="header-section-number">3.8.7</span> Practice Time</h3>
 <ol type="1">
 <li>Add a section about what you hope to learn</li>
 <li>Insert a code chunk with a simple calculation</li>
@@ -868,7 +886,7 @@ Tip
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Tip
@@ -882,7 +900,7 @@ Tip
 </section>
 </section>
 <section id="lets-start-building-functions-pipelines" class="level2" data-number="3.9">
-<h2 data-number="3.9"><span class="header-section-number">3.9</span> Let’s Start Building: Functions &amp; Pipelines</h2>
+<h2 data-number="3.9" class="anchored" data-anchor-id="lets-start-building-functions-pipelines"><span class="header-section-number">3.9</span> Let’s Start Building: Functions &amp; Pipelines</h2>
 <p>Now that you’ve seen where we’re headed, let’s build this step by step. First, we’ll learn about two key concepts that make automation possible:</p>
 <ol type="1">
 <li><strong>Functions</strong>: Write code once, use it many times</li>
@@ -890,20 +908,20 @@ Tip
 </ol>
 <p>Ready? Let’s dive in!</p>
 <section id="introduction-to-functions-making-your-code-dry-and-error-free" class="level3" data-number="3.9.1">
-<h3 data-number="3.9.1"><span class="header-section-number">3.9.1</span> Introduction to Functions: Making Your Code DRY and Error-Free</h3>
+<h3 data-number="3.9.1" class="anchored" data-anchor-id="introduction-to-functions-making-your-code-dry-and-error-free"><span class="header-section-number">3.9.1</span> Introduction to Functions: Making Your Code DRY and Error-Free</h3>
 <p>One of the fundamental principles of data analysis is DRY: Don’t Repeat Yourself. When you find yourself copying and pasting the same code multiple times, it’s time for a function. Functions help us: - Write code once and reuse it many times - Reduce the chance of errors from copy-paste mistakes - Make our code more readable and maintainable</p>
 <p>Let’s see this in action with a common task: making large numbers more readable.</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Without a function - repetitive and error-prone</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1734483333</span> <span class="sc">/</span> <span class="dv">1000000000</span>  <span class="co"># Convert to billions</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Without a function - repetitive and error-prone</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1734483333</span> <span class="sc">/</span> <span class="dv">1000000000</span>  <span class="co"># Convert to billions</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.734483</code></pre>
 </div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2847594938</span> <span class="sc">/</span> <span class="dv">1000000000</span>  <span class="co"># Have to repeat the calculation</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2847594938</span> <span class="sc">/</span> <span class="dv">1000000000</span>  <span class="co"># Have to repeat the calculation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.847595</code></pre>
 </div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5938273847</span> <span class="sc">/</span> <span class="dv">100000000</span>  <span class="co"># Each repetition risks typos</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5938273847</span> <span class="sc">/</span> <span class="dv">100000000</span>  <span class="co"># Each repetition risks typos</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 59.38274</code></pre>
 </div>
@@ -911,21 +929,21 @@ Tip
 <p>Spot the error above. It’s easy to make, and won’t always be as obvious to spot. Order of magnitude errors are surprisingly common, and <a href="https://nationalpost.com/news/canada/black-plastic">quite embarrassing</a> if you catch them afterwards.</p>
 <p>Let’s work hard to be lazy (and accurate), and make a function to do this:</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With a function - write once, use many times</span></span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With a function - write once, use many times</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>to_billions <span class="ot">&lt;-</span> <span class="cf">function</span>(amount) {</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  amount <span class="sc">/</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">9</span> <span class="co"># 10^9 = 1 billion, harder to mess up.</span></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Now it&#39;s easy and safe to convert any number</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">to_billions</span>(<span class="dv">1734483333</span>)  <span class="co"># Returns 1.73</span></span></code></pre></div>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Now it's easy and safe to convert any number</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">to_billions</span>(<span class="dv">1734483333</span>)  <span class="co"># Returns 1.73</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.734483</code></pre>
 </div>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">to_billions</span>(<span class="dv">2847594938</span>)  <span class="co"># Returns 2.85</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">to_billions</span>(<span class="dv">2847594938</span>)  <span class="co"># Returns 2.85</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.847595</code></pre>
 </div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">to_billions</span>(<span class="dv">5938273847</span>)  <span class="co"># Returns 5.94</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">to_billions</span>(<span class="dv">5938273847</span>)  <span class="co"># Returns 5.94</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.938274</code></pre>
 </div>
@@ -937,14 +955,14 @@ Tip
 </ol>
 </section>
 <section id="setting-up-our-analysis-tools" class="level3" data-number="3.9.2">
-<h3 data-number="3.9.2"><span class="header-section-number">3.9.2</span> Setting Up Our Analysis Tools</h3>
+<h3 data-number="3.9.2" class="anchored" data-anchor-id="setting-up-our-analysis-tools"><span class="header-section-number">3.9.2</span> Setting Up Our Analysis Tools</h3>
 <p>Now let’s set up some more powerful functions for analyzing development finance data. Copy and paste this code block into RStudio:</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to calculate yearly commitments for a country</span></span>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to calculate yearly commitments for a country</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>calculate_yearly_commitments <span class="ot">&lt;-</span> <span class="cf">function</span>(data, country) {</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">|&gt;</span> </span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>      recommended_for_aggregates <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>      recommended_for_aggregates <span class="sc">==</span> <span class="st">"Yes"</span>,</span>
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>      country_name <span class="sc">==</span> country</span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
 <span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(</span>
@@ -957,7 +975,7 @@ Tip
 <span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
 <span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">|&gt;</span> </span>
 <span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">to_billions</span>(),</span>
-<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">.groups =</span> <span class="st">"drop"</span></span>
 <span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a></span>
@@ -973,30 +991,30 @@ Tip
 <span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
 <span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>() <span class="sc">+</span></span>
 <span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
-<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="fu">str_glue</span>(<span class="st">&quot;Chinese Development Finance Commitments to {country}&quot;</span>),</span>
-<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">subtitle =</span> <span class="st">&quot;By Flow Class, 2000-2021&quot;</span>,</span>
-<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Commitment Year&quot;</span>,</span>
-<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Commitments (Constant 2021 USD, Billions)&quot;</span>,</span>
-<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;Flow Class&quot;</span></span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="fu">str_glue</span>(<span class="st">"Chinese Development Finance Commitments to {country}"</span>),</span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">subtitle =</span> <span class="st">"By Flow Class, 2000-2021"</span>,</span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">"Commitment Year"</span>,</span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">"Commitments (Constant 2021 USD, Billions)"</span>,</span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">"Flow Class"</span></span>
 <span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
 <span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set2&quot;</span>)</span>
-<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>)</span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Don’t worry about understanding all this code yet! We’ll break it down later.</p>
 </section>
 <section id="your-first-analysis-pipeline" class="level3" data-number="3.9.3">
-<h3 data-number="3.9.3"><span class="header-section-number">3.9.3</span> Your First Analysis Pipeline</h3>
+<h3 data-number="3.9.3" class="anchored" data-anchor-id="your-first-analysis-pipeline"><span class="header-section-number">3.9.3</span> Your First Analysis Pipeline</h3>
 <p>Now we can use these functions to analyze development finance:</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With pipes - clear and readable</span></span>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With pipes - clear and readable</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate_yearly_commitments</span>(<span class="at">country =</span> <span class="st">&quot;Angola&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_loan_commitments</span>(<span class="at">country =</span> <span class="st">&quot;Angola&quot;</span>)</span></code></pre></div>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate_yearly_commitments</span>(<span class="at">country =</span> <span class="st">"Angola"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_loan_commitments</span>(<span class="at">country =</span> <span class="st">"Angola"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1009,15 +1027,15 @@ Tip
 </ol>
 </section>
 <section id="why-pipes-make-life-easier" class="level3" data-number="3.9.4">
-<h3 data-number="3.9.4"><span class="header-section-number">3.9.4</span> Why Pipes Make Life Easier</h3>
+<h3 data-number="3.9.4" class="anchored" data-anchor-id="why-pipes-make-life-easier"><span class="header-section-number">3.9.4</span> Why Pipes Make Life Easier</h3>
 <p>The pipe operator (<code>|&gt;</code>) simply takes what comes before it and puts it into the first argument of what comes after it. It’s that simple! Here’s our analysis without pipes:</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Without pipes - like Excel formulas, hard to read and debug!</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_loan_commitments</span>(<span class="fu">calculate_yearly_commitments</span>(<span class="fu">get_gcdf3_dataset</span>(), <span class="at">country =</span> <span class="st">&quot;Angola&quot;</span>), <span class="at">country =</span> <span class="st">&quot;Angola&quot;</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Without pipes - like Excel formulas, hard to read and debug!</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_loan_commitments</span>(<span class="fu">calculate_yearly_commitments</span>(<span class="fu">get_gcdf3_dataset</span>(), <span class="at">country =</span> <span class="st">"Angola"</span>), <span class="at">country =</span> <span class="st">"Angola"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1026,7 +1044,7 @@ Tip
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 A Tale of Two Pipes: |&gt; vs %&gt;%
@@ -1048,37 +1066,37 @@ A Tale of Two Pipes: |&gt; vs %&gt;%
 </div>
 </section>
 <section id="understanding-our-code-with-ai" class="level3" data-number="3.9.5">
-<h3 data-number="3.9.5"><span class="header-section-number">3.9.5</span> Understanding Our Code with AI</h3>
+<h3 data-number="3.9.5" class="anchored" data-anchor-id="understanding-our-code-with-ai"><span class="header-section-number">3.9.5</span> Understanding Our Code with AI</h3>
 <p>Let’s use Claude or ChatGPT to understand our code better. Try these prompts:</p>
 <ol type="1">
 <li>For our simple function:</li>
 </ol>
-<div class="sourceCode" id="cb28"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>&quot;Can you explain how this function works?&quot;</span>
+<div class="sourceCode" id="cb28"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>"Can you explain how this function works?"</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>to_billions &lt;- function(amount) {</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  amount / 10^9</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>}&quot;</span></code></pre></div>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>}"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
 <li>For understanding the pipeline:</li>
 </ol>
-<div class="sourceCode" id="cb29"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>&quot;Can you explain what each step of this pipeline does?</span>
+<div class="sourceCode" id="cb29"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>"Can you explain what each step of this pipeline does?</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>get_gcdf3_dataset() |&gt; </span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  calculate_yearly_commitments(country = &#39;Angola&#39;) |&gt; </span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  plot_loan_commitments(country = &#39;Angola&#39;)&quot;</span></code></pre></div>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  calculate_yearly_commitments(country = 'Angola') |&gt; </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  plot_loan_commitments(country = 'Angola')"</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="understanding-complex-functions-with-ai" class="level3" data-number="3.9.6">
-<h3 data-number="3.9.6"><span class="header-section-number">3.9.6</span> Understanding Complex Functions with AI</h3>
+<h3 data-number="3.9.6" class="anchored" data-anchor-id="understanding-complex-functions-with-ai"><span class="header-section-number">3.9.6</span> Understanding Complex Functions with AI</h3>
 <p>Now let’s look at a more sophisticated function. We’ll use AI to help us understand how it works:</p>
 <p>Try this prompt with Claude, ChatGPT, or DeepSeek:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>“I’m new to R and trying to understand this function. Could you explain what each line does in simple terms? Please be specific about what each function (like filter, group_by, and summarize) is doing with our data.</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>calculate_yearly_commitments <span class="ot">&lt;-</span> <span class="cf">function</span>(data, country) {</span>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>calculate_yearly_commitments <span class="ot">&lt;-</span> <span class="cf">function</span>(data, country) {</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">|&gt;</span> </span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>      recommended_for_aggregates <span class="sc">==</span> <span class="st">&#39;Yes&#39;</span>,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>      recommended_for_aggregates <span class="sc">==</span> <span class="st">'Yes'</span>,</span>
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>      country_name <span class="sc">==</span> country</span>
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
 <span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(</span>
@@ -1091,13 +1109,13 @@ A Tale of Two Pipes: |&gt; vs %&gt;%
 <span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
 <span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">|&gt;</span> </span>
 <span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">to_billions</span>(),</span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">.groups =</span> <span class="st">&#39;drop&#39;</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">.groups =</span> <span class="st">'drop'</span></span>
 <span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="practice-time-1" class="level3" data-number="3.9.7">
-<h3 data-number="3.9.7"><span class="header-section-number">3.9.7</span> Practice Time</h3>
+<h3 data-number="3.9.7" class="anchored" data-anchor-id="practice-time-1"><span class="header-section-number">3.9.7</span> Practice Time</h3>
 <p>Let’s try some analyses:</p>
 <ol type="1">
 <li>Use <code>to_billions()</code> with some large numbers</li>
@@ -1107,7 +1125,7 @@ A Tale of Two Pipes: |&gt; vs %&gt;%
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Tip
@@ -1121,61 +1139,61 @@ Tip
 </section>
 </section>
 <section id="work-smarter-not-harder-automating-repetitive-tasks-with-map-functions" class="level2" data-number="3.10">
-<h2 data-number="3.10"><span class="header-section-number">3.10</span> Work Smarter, Not Harder: Automating Repetitive Tasks with Map Functions</h2>
+<h2 data-number="3.10" class="anchored" data-anchor-id="work-smarter-not-harder-automating-repetitive-tasks-with-map-functions"><span class="header-section-number">3.10</span> Work Smarter, Not Harder: Automating Repetitive Tasks with Map Functions</h2>
 <section id="the-problem-repetitive-analysis" class="level3" data-number="3.10.1">
-<h3 data-number="3.10.1"><span class="header-section-number">3.10.1</span> The Problem: Repetitive Analysis</h3>
+<h3 data-number="3.10.1" class="anchored" data-anchor-id="the-problem-repetitive-analysis"><span class="header-section-number">3.10.1</span> The Problem: Repetitive Analysis</h3>
 <p>Let’s say we want to analyze several countries. We could copy and paste our code:</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analysis for Pakistan</span></span>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analysis for Pakistan</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate_yearly_commitments</span>(<span class="st">&quot;Pakistan&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_loan_commitments</span>(<span class="st">&quot;Pakistan&quot;</span>)</span></code></pre></div>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate_yearly_commitments</span>(<span class="st">"Pakistan"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_loan_commitments</span>(<span class="st">"Pakistan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analysis for Ethiopia</span></span>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analysis for Ethiopia</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate_yearly_commitments</span>(<span class="st">&quot;Ethiopia&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_loan_commitments</span>(<span class="st">&quot;Ethiopia&quot;</span>)</span></code></pre></div>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate_yearly_commitments</span>(<span class="st">"Ethiopia"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_loan_commitments</span>(<span class="st">"Ethiopia"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analysis for Sri Lanka...</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analysis for Sri Lanka...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>But this is: - Tedious to write - Easy to make mistakes - Hard to maintain - Not scalable (imagine doing this for 100 countries!)</p>
 </section>
 <section id="a-better-way-map-functions" class="level3" data-number="3.10.2">
-<h3 data-number="3.10.2"><span class="header-section-number">3.10.2</span> A Better Way: Map Functions</h3>
+<h3 data-number="3.10.2" class="anchored" data-anchor-id="a-better-way-map-functions"><span class="header-section-number">3.10.2</span> A Better Way: Map Functions</h3>
 <p>Instead of repeating ourselves, we can tell R to do something for each item in a list. Here’s a simple example using our <code>to_billions()</code> function:</p>
 <div class="cell">
-<div class="sourceCode" id="cb34"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Some amounts to convert</span></span>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Some amounts to convert</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>amounts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1000000000</span>, <span class="dv">2000000000</span>, <span class="dv">3000000000</span>)</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Instead of:</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">to_billions</span>(amounts[<span class="dv">1</span>])</span></code></pre></div>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">to_billions</span>(amounts[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">to_billions</span>(amounts[<span class="dv">2</span>])</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">to_billions</span>(amounts[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">to_billions</span>(amounts[<span class="dv">3</span>])</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">to_billions</span>(amounts[<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can just write:</span></span>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can just write:</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    amounts,          <span class="co"># The list of values we want to work with</span></span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    to_billions      <span class="co"># The function to apply to each value (no parentheses needed!)</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3</code></pre>
 </div>
@@ -1189,7 +1207,7 @@ Tip
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Map Functions vs For Loops
@@ -1197,7 +1215,7 @@ Map Functions vs For Loops
 </div>
 <div class="callout-body-container callout-body">
 <p>If you’ve programmed before, you might be familiar with for loops. Both map functions and for loops let you repeat tasks, but map functions are often clearer to read and harder to mess up. Compare these approaches:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<div class="sourceCode" id="cb42"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="in"># For loop approach</span></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="in">results &lt;- numeric(length(amounts))  # Have to pre-allocate</span></span>
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="in">for(i in seq_along(amounts)) {      # Need to manage indices</span></span>
@@ -1206,7 +1224,7 @@ Map Functions vs For Loops
 <span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="in"># Map approach</span></span>
 <span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="in">results &lt;- map_dbl(amounts, to_billions)  # Clear and concise</span></span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Why tidyverse prefers map functions:</p>
 <ul>
 <li>They’re simpler to read and write</li>
@@ -1217,7 +1235,7 @@ Map Functions vs For Loops
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Map Functions Family
@@ -1234,7 +1252,7 @@ Map Functions Family
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Tip
@@ -1246,13 +1264,13 @@ Tip
 </div>
 </section>
 <section id="analyzing-multiple-countries" class="level3" data-number="3.10.3">
-<h3 data-number="3.10.3"><span class="header-section-number">3.10.3</span> Analyzing Multiple Countries</h3>
+<h3 data-number="3.10.3" class="anchored" data-anchor-id="analyzing-multiple-countries"><span class="header-section-number">3.10.3</span> Analyzing Multiple Countries</h3>
 <p>Let’s apply this to our country analysis:</p>
 <div class="cell">
-<div class="sourceCode" id="cb43"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of countries we want to analyze</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>countries <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Pakistan&quot;</span>, <span class="st">&quot;Ethiopia&quot;</span>, <span class="st">&quot;Sri Lanka&quot;</span>)</span>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of countries we want to analyze</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>countries <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Pakistan"</span>, <span class="st">"Ethiopia"</span>, <span class="st">"Sri Lanka"</span>)</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># First, let&#39;s make a function that does our whole analysis</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># First, let's make a function that does our whole analysis</span></span>
 <span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>analyze_country <span class="ot">&lt;-</span> <span class="cf">function</span>(country) {</span>
 <span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">calculate_yearly_commitments</span>(country) <span class="sc">|&gt;</span> </span>
@@ -1260,20 +1278,20 @@ Tip
 <span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we can easily analyze any country</span></span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="fu">analyze_country</span>(<span class="st">&quot;Sri Lanka&quot;</span>)</span></code></pre></div>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="fu">analyze_country</span>(<span class="st">"Sri Lanka"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># And we can use map to do many countries</span></span>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># And we can use map to do many countries</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co"># map(data to work with, function to apply)</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">map</span>(</span>
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  countries,        <span class="co"># First argument: list of countries</span></span>
 <span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  analyze_country   <span class="co"># Second argument: what to do with each country</span></span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s break down what’s happening:</p>
 <ol type="1">
@@ -1284,7 +1302,7 @@ Tip
 </ol>
 </section>
 <section id="why-this-matters" class="level3" data-number="3.10.4">
-<h3 data-number="3.10.4"><span class="header-section-number">3.10.4</span> Why This Matters</h3>
+<h3 data-number="3.10.4" class="anchored" data-anchor-id="why-this-matters"><span class="header-section-number">3.10.4</span> Why This Matters</h3>
 <p>This approach:</p>
 <ol type="1">
 <li>Makes your code more concise and readable</li>
@@ -1294,15 +1312,15 @@ Tip
 </ol>
 </section>
 <section id="practice-time-2" class="level3" data-number="3.10.5">
-<h3 data-number="3.10.5"><span class="header-section-number">3.10.5</span> Practice Time</h3>
+<h3 data-number="3.10.5" class="anchored" data-anchor-id="practice-time-2"><span class="header-section-number">3.10.5</span> Practice Time</h3>
 <p>Let’s try some exercises:</p>
 <ol type="1">
 <li>Basic mapping:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb45"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert these amounts to billions</span></span>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert these amounts to billions</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>big_numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1234567890</span>, <span class="dv">9876543210</span>, <span class="dv">5555555555</span>)</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(big_numbers, to_billions)</span></code></pre></div>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(big_numbers, to_billions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.234568 9.876543 5.555556</code></pre>
 </div>
@@ -1311,16 +1329,16 @@ Tip
 <li>Try with different countries:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb47"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analyze your own list of countries</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>your_countries <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Vietnam&quot;</span>, <span class="st">&quot;Indonesia&quot;</span>, <span class="st">&quot;Laos&quot;</span>)</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(your_countries, analyze_country)  <span class="co"># Simple and clear!</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analyze your own list of countries</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>your_countries <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Vietnam"</span>, <span class="st">"Indonesia"</span>, <span class="st">"Laos"</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(your_countries, analyze_country)  <span class="co"># Simple and clear!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1330,8 +1348,8 @@ Tip
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1341,8 +1359,8 @@ Tip
 </div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-15-3.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-15-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1351,7 +1369,7 @@ Tip
 <li>Calculate total commitments:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb51"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First, make a function for the calculation</span></span>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First, make a function for the calculation</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>get_total_commitments <span class="ot">&lt;-</span> <span class="cf">function</span>(country) {</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">calculate_yearly_commitments</span>(country) <span class="sc">|&gt;</span> </span>
@@ -1364,7 +1382,7 @@ Tip
 <span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(</span>
 <span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>  your_countries,        <span class="co"># First argument: list of countries</span></span>
 <span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>  get_total_commitments  <span class="co"># Second argument: what to do with each country</span></span>
-<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 28.94673 55.18729 21.56447</code></pre>
 </div>
@@ -1372,7 +1390,7 @@ Tip
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Getting Help from AI
@@ -1380,24 +1398,24 @@ Getting Help from AI
 </div>
 <div class="callout-body-container callout-body">
 <p>Try this prompt to understand map functions better:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>&quot;I&#39;m new to R and trying to understand this code. Can you explain what map_dbl does and how it&#39;s different from a regular for loop?</span>
+<div class="sourceCode" id="cb53"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>"I'm new to R and trying to understand this code. Can you explain what map_dbl does and how it's different from a regular for loop?</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="in">amounts &lt;- c(1000000000, 2000000000, 3000000000)</span></span>
 <span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="in">map_dbl(amounts, to_billions)</span></span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="next-steps" class="level3" data-number="3.10.6">
-<h3 data-number="3.10.6"><span class="header-section-number">3.10.6</span> Next Steps</h3>
+<h3 data-number="3.10.6" class="anchored" data-anchor-id="next-steps"><span class="header-section-number">3.10.6</span> Next Steps</h3>
 <p>Now that we can easily work with multiple countries at once, we’re ready to learn how to generate automated reports. The same principles we just learned about doing things repeatedly will help us create professional reports for any country with just a few lines of code!</p>
 </section>
 </section>
 <section id="creating-reports-for-multiple-countries" class="level2" data-number="3.11">
-<h2 data-number="3.11"><span class="header-section-number">3.11</span> Creating Reports for Multiple Countries</h2>
+<h2 data-number="3.11" class="anchored" data-anchor-id="creating-reports-for-multiple-countries"><span class="header-section-number">3.11</span> Creating Reports for Multiple Countries</h2>
 <section id="the-problem-manual-report-creation" class="level3" data-number="3.11.1">
-<h3 data-number="3.11.1"><span class="header-section-number">3.11.1</span> The Problem: Manual Report Creation</h3>
+<h3 data-number="3.11.1" class="anchored" data-anchor-id="the-problem-manual-report-creation"><span class="header-section-number">3.11.1</span> The Problem: Manual Report Creation</h3>
 <p>Imagine your boss asks for reports on Chinese development finance in:</p>
 <ul>
 <li>All countries in Southeast Asia</li>
@@ -1414,10 +1432,10 @@ Getting Help from AI
 <p>Let’s automate this!</p>
 </section>
 <section id="step-1-save-our-functions" class="level3" data-number="3.11.2">
-<h3 data-number="3.11.2"><span class="header-section-number">3.11.2</span> Step 1: Save Our Functions</h3>
+<h3 data-number="3.11.2" class="anchored" data-anchor-id="step-1-save-our-functions"><span class="header-section-number">3.11.2</span> Step 1: Save Our Functions</h3>
 <p>First, let’s save our functions in <code>week_1/R/functions.R</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb54"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># week_1/R/functions.R</span></span>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># week_1/R/functions.R</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to billions for readability</span></span>
 <span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>to_billions <span class="ot">&lt;-</span> <span class="cf">function</span>(amount) {</span>
@@ -1428,7 +1446,7 @@ Getting Help from AI
 <span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>calculate_yearly_commitments <span class="ot">&lt;-</span> <span class="cf">function</span>(data, country) {</span>
 <span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">|&gt;</span> </span>
 <span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(</span>
-<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>      recommended_for_aggregates <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>,</span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>      recommended_for_aggregates <span class="sc">==</span> <span class="st">"Yes"</span>,</span>
 <span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>      country_name <span class="sc">==</span> country</span>
 <span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
 <span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(</span>
@@ -1441,7 +1459,7 @@ Getting Help from AI
 <span id="cb54-22"><a href="#cb54-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
 <span id="cb54-23"><a href="#cb54-23" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">|&gt;</span> </span>
 <span id="cb54-24"><a href="#cb54-24" aria-hidden="true" tabindex="-1"></a>        <span class="fu">to_billions</span>(),</span>
-<span id="cb54-25"><a href="#cb54-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span></span>
+<span id="cb54-25"><a href="#cb54-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">.groups =</span> <span class="st">"drop"</span></span>
 <span id="cb54-26"><a href="#cb54-26" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb54-27"><a href="#cb54-27" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb54-28"><a href="#cb54-28" aria-hidden="true" tabindex="-1"></a></span>
@@ -1457,23 +1475,23 @@ Getting Help from AI
 <span id="cb54-38"><a href="#cb54-38" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
 <span id="cb54-39"><a href="#cb54-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>() <span class="sc">+</span></span>
 <span id="cb54-40"><a href="#cb54-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
-<span id="cb54-41"><a href="#cb54-41" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="fu">str_glue</span>(<span class="st">&quot;Chinese Development Finance Commitments to {country}&quot;</span>),</span>
-<span id="cb54-42"><a href="#cb54-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">subtitle =</span> <span class="st">&quot;By Flow Class, 2000-2021&quot;</span>,</span>
-<span id="cb54-43"><a href="#cb54-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Commitment Year&quot;</span>,</span>
-<span id="cb54-44"><a href="#cb54-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Commitments (Constant 2021 USD, Billions)&quot;</span>,</span>
-<span id="cb54-45"><a href="#cb54-45" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">&quot;Flow Class&quot;</span></span>
+<span id="cb54-41"><a href="#cb54-41" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="fu">str_glue</span>(<span class="st">"Chinese Development Finance Commitments to {country}"</span>),</span>
+<span id="cb54-42"><a href="#cb54-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">subtitle =</span> <span class="st">"By Flow Class, 2000-2021"</span>,</span>
+<span id="cb54-43"><a href="#cb54-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">"Commitment Year"</span>,</span>
+<span id="cb54-44"><a href="#cb54-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">"Commitments (Constant 2021 USD, Billions)"</span>,</span>
+<span id="cb54-45"><a href="#cb54-45" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">"Flow Class"</span></span>
 <span id="cb54-46"><a href="#cb54-46" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
 <span id="cb54-47"><a href="#cb54-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb54-48"><a href="#cb54-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set2&quot;</span>)</span>
-<span id="cb54-49"><a href="#cb54-49" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb54-48"><a href="#cb54-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>)</span>
+<span id="cb54-49"><a href="#cb54-49" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step-2-create-a-report-template" class="level3" data-number="3.11.3">
-<h3 data-number="3.11.3"><span class="header-section-number">3.11.3</span> Step 2: Create a Report Template</h3>
+<h3 data-number="3.11.3" class="anchored" data-anchor-id="step-2-create-a-report-template"><span class="header-section-number">3.11.3</span> Step 2: Create a Report Template</h3>
 <p>Now create a new file called <code>week_1/R/country_report.qmd</code>:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Chinese Development Finance in `{r} params$country`&quot;</span></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Your Name&quot;</span></span>
+<div class="sourceCode" id="cb55"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Chinese Development Finance in `{r} params$country`"</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Your Name"</span></span>
 <span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> today</span></span>
 <span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
 <span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
@@ -1481,12 +1499,12 @@ Getting Help from AI
 <span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
 <span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">embed-resources</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
 <span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">country</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Angola&quot;</span><span class="co">  # Default country</span></span>
-<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">country</span><span class="kw">:</span><span class="at"> </span><span class="st">"Angola"</span><span class="co">  # Default country</span></span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Tip
@@ -1497,7 +1515,7 @@ Tip
 </div>
 </div>
 <p>Add this content to the report template:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<div class="sourceCode" id="cb56"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: setup</span></span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| include: false</span></span>
 <span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1508,7 +1526,7 @@ Tip
 <span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="in">library(here)</span></span>
 <span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="in"># Load our functions</span></span>
-<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="in">source(here::here(&quot;week_1&quot;, &quot;R&quot;, &quot;functions.R&quot;))</span></span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="in">source(here::here("week_1", "R", "functions.R"))</span></span>
 <span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Overview</span></span>
@@ -1538,11 +1556,11 @@ Tip
 <span id="cb56-39"><a href="#cb56-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb56-40"><a href="#cb56-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-41"><a href="#cb56-41" aria-hidden="true" tabindex="-1"></a>Total commitments to <span class="in">`{r} params$country`</span> from 2000-2021: </span>
-<span id="cb56-42"><a href="#cb56-42" aria-hidden="true" tabindex="-1"></a>$<span class="in">`{r} total_commitment`</span> billion (2021 USD)</span></code></pre></div>
+<span id="cb56-42"><a href="#cb56-42" aria-hidden="true" tabindex="-1"></a>$<span class="in">`{r} total_commitment`</span> billion (2021 USD)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 The <code>{here}</code> Package: Making File Paths Work Everywhere
@@ -1566,9 +1584,9 @@ The <code>{here}</code> Package: Making File Paths Work Everywhere
 <li>Building file paths that work everywhere</li>
 </ol>
 <p>Instead of:</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;../R/functions.R&quot;</span>)  <span class="co"># Fragile!</span></span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../R/functions.R"</span>)  <span class="co"># Fragile!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Use:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;week_1&quot;</span>, <span class="st">&quot;R&quot;</span>, <span class="st">&quot;functions.R&quot;</span>))  <span class="co"># Robust!</span></span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"week_1"</span>, <span class="st">"R"</span>, <span class="st">"functions.R"</span>))  <span class="co"># Robust!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This works regardless of:</p>
 <ul>
 <li>What computer you’re on</li>
@@ -1579,10 +1597,10 @@ The <code>{here}</code> Package: Making File Paths Work Everywhere
 </div>
 </section>
 <section id="step-3-create-a-rendering-script" class="level3" data-number="3.11.4">
-<h3 data-number="3.11.4"><span class="header-section-number">3.11.4</span> Step 3: Create a Rendering Script</h3>
+<h3 data-number="3.11.4" class="anchored" data-anchor-id="step-3-create-a-rendering-script"><span class="header-section-number">3.11.4</span> Step 3: Create a Rendering Script</h3>
 <p>Create a new file called <code>week_1/R/render_reports.R</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb59"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># week_1/R/render_reports.R</span></span>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># week_1/R/render_reports.R</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># For data manipulation and pipe operator</span></span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quarto)     <span class="co"># For rendering Quarto documents</span></span>
 <span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)       <span class="co"># For reliable file paths</span></span>
@@ -1591,43 +1609,43 @@ The <code>{here}</code> Package: Making File Paths Work Everywhere
 <span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="co"># List of countries to analyze</span></span>
 <span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>sea_countries <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Vietnam&quot;</span>, </span>
-<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Indonesia&quot;</span>, </span>
-<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Thailand&quot;</span>, </span>
-<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Malaysia&quot;</span></span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Vietnam"</span>, </span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Indonesia"</span>, </span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Thailand"</span>, </span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Malaysia"</span></span>
 <span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to render a report for one country</span></span>
 <span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a>render_country_report <span class="ot">&lt;-</span> <span class="cf">function</span>(country) {</span>
-<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create output directory if it doesn&#39;t exist</span></span>
-<span id="cb59-19"><a href="#cb59-19" aria-hidden="true" tabindex="-1"></a>  output_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;week_1&quot;</span>, <span class="st">&quot;outputs&quot;</span>)</span>
+<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create output directory if it doesn't exist</span></span>
+<span id="cb59-19"><a href="#cb59-19" aria-hidden="true" tabindex="-1"></a>  output_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"week_1"</span>, <span class="st">"outputs"</span>)</span>
 <span id="cb59-20"><a href="#cb59-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir_create</span>(output_dir)</span>
 <span id="cb59-21"><a href="#cb59-21" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb59-22"><a href="#cb59-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># We&#39;ll use withr::with_dir() instead of setwd()</span></span>
+<span id="cb59-22"><a href="#cb59-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># We'll use withr::with_dir() instead of setwd()</span></span>
 <span id="cb59-23"><a href="#cb59-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># It automatically restores the working directory when done</span></span>
 <span id="cb59-24"><a href="#cb59-24" aria-hidden="true" tabindex="-1"></a>  withr<span class="sc">::</span><span class="fu">with_dir</span>(</span>
-<span id="cb59-25"><a href="#cb59-25" aria-hidden="true" tabindex="-1"></a>    here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;week_1&quot;</span>, <span class="st">&quot;R&quot;</span>),</span>
+<span id="cb59-25"><a href="#cb59-25" aria-hidden="true" tabindex="-1"></a>    here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"week_1"</span>, <span class="st">"R"</span>),</span>
 <span id="cb59-26"><a href="#cb59-26" aria-hidden="true" tabindex="-1"></a>    {</span>
 <span id="cb59-27"><a href="#cb59-27" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Render the Quarto document</span></span>
 <span id="cb59-28"><a href="#cb59-28" aria-hidden="true" tabindex="-1"></a>      quarto<span class="sc">::</span><span class="fu">quarto_render</span>(</span>
-<span id="cb59-29"><a href="#cb59-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">input =</span> <span class="st">&quot;country_report.qmd&quot;</span>,</span>
-<span id="cb59-30"><a href="#cb59-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">output_file =</span> <span class="fu">str_glue</span>(<span class="st">&quot;{country}_analysis.html&quot;</span>),</span>
+<span id="cb59-29"><a href="#cb59-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">input =</span> <span class="st">"country_report.qmd"</span>,</span>
+<span id="cb59-30"><a href="#cb59-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">output_file =</span> <span class="fu">str_glue</span>(<span class="st">"{country}_analysis.html"</span>),</span>
 <span id="cb59-31"><a href="#cb59-31" aria-hidden="true" tabindex="-1"></a>        <span class="at">execute_params =</span> <span class="fu">list</span>(<span class="at">country =</span> country)</span>
 <span id="cb59-32"><a href="#cb59-32" aria-hidden="true" tabindex="-1"></a>      )</span>
 <span id="cb59-33"><a href="#cb59-33" aria-hidden="true" tabindex="-1"></a>      </span>
 <span id="cb59-34"><a href="#cb59-34" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Move the rendered file to outputs directory</span></span>
 <span id="cb59-35"><a href="#cb59-35" aria-hidden="true" tabindex="-1"></a>      <span class="fu">file_move</span>(</span>
-<span id="cb59-36"><a href="#cb59-36" aria-hidden="true" tabindex="-1"></a>        <span class="at">path =</span> <span class="fu">str_glue</span>(<span class="st">&quot;{country}_analysis.html&quot;</span>),</span>
-<span id="cb59-37"><a href="#cb59-37" aria-hidden="true" tabindex="-1"></a>        <span class="at">new_path =</span> <span class="fu">path</span>(output_dir, <span class="fu">str_glue</span>(<span class="st">&quot;{country}_analysis.html&quot;</span>))</span>
+<span id="cb59-36"><a href="#cb59-36" aria-hidden="true" tabindex="-1"></a>        <span class="at">path =</span> <span class="fu">str_glue</span>(<span class="st">"{country}_analysis.html"</span>),</span>
+<span id="cb59-37"><a href="#cb59-37" aria-hidden="true" tabindex="-1"></a>        <span class="at">new_path =</span> <span class="fu">path</span>(output_dir, <span class="fu">str_glue</span>(<span class="st">"{country}_analysis.html"</span>))</span>
 <span id="cb59-38"><a href="#cb59-38" aria-hidden="true" tabindex="-1"></a>      )</span>
 <span id="cb59-39"><a href="#cb59-39" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb59-40"><a href="#cb59-40" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb59-41"><a href="#cb59-41" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb59-42"><a href="#cb59-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-43"><a href="#cb59-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a safer version of our render function that won&#39;t error</span></span>
+<span id="cb59-43"><a href="#cb59-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a safer version of our render function that won't error</span></span>
 <span id="cb59-44"><a href="#cb59-44" aria-hidden="true" tabindex="-1"></a>safe_render <span class="ot">&lt;-</span> <span class="fu">possibly</span>(</span>
 <span id="cb59-45"><a href="#cb59-45" aria-hidden="true" tabindex="-1"></a>  render_country_report,</span>
-<span id="cb59-46"><a href="#cb59-46" aria-hidden="true" tabindex="-1"></a>  <span class="at">otherwise =</span> <span class="st">&quot;Failed to render report&quot;</span> <span class="co"># What to return if there&#39;s an error</span></span>
+<span id="cb59-46"><a href="#cb59-46" aria-hidden="true" tabindex="-1"></a>  <span class="at">otherwise =</span> <span class="st">"Failed to render report"</span> <span class="co"># What to return if there's an error</span></span>
 <span id="cb59-47"><a href="#cb59-47" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb59-48"><a href="#cb59-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb59-49"><a href="#cb59-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate reports and capture results</span></span>
@@ -1637,14 +1655,14 @@ The <code>{here}</code> Package: Making File Paths Work Everywhere
 <span id="cb59-53"><a href="#cb59-53" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb59-54"><a href="#cb59-54" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb59-55"><a href="#cb59-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for any failures</span></span>
-<span id="cb59-56"><a href="#cb59-56" aria-hidden="true" tabindex="-1"></a>failed_countries <span class="ot">&lt;-</span> sea_countries[results <span class="sc">==</span> <span class="st">&quot;Failed to render report&quot;</span>]</span>
+<span id="cb59-56"><a href="#cb59-56" aria-hidden="true" tabindex="-1"></a>failed_countries <span class="ot">&lt;-</span> sea_countries[results <span class="sc">==</span> <span class="st">"Failed to render report"</span>]</span>
 <span id="cb59-57"><a href="#cb59-57" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(failed_countries) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb59-58"><a href="#cb59-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&quot;Failed to render reports for: &quot;</span>, <span class="fu">str_c</span>(failed_countries, <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>))</span>
-<span id="cb59-59"><a href="#cb59-59" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb59-58"><a href="#cb59-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"Failed to render reports for: "</span>, <span class="fu">str_c</span>(failed_countries, <span class="at">collapse =</span> <span class="st">", "</span>))</span>
+<span id="cb59-59"><a href="#cb59-59" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step-4-generate-reports" class="level3" data-number="3.11.5">
-<h3 data-number="3.11.5"><span class="header-section-number">3.11.5</span> Step 4: Generate Reports</h3>
+<h3 data-number="3.11.5" class="anchored" data-anchor-id="step-4-generate-reports"><span class="header-section-number">3.11.5</span> Step 4: Generate Reports</h3>
 <ol type="1">
 <li>Open <code>week_1/R/render_reports.R</code> in RStudio</li>
 <li>Click “Source” (or press Cmd/Ctrl + Shift + S)</li>
@@ -1659,7 +1677,7 @@ The <code>{here}</code> Package: Making File Paths Work Everywhere
 </ul>
 </section>
 <section id="real-world-applications" class="level3" data-number="3.11.6">
-<h3 data-number="3.11.6"><span class="header-section-number">3.11.6</span> Real-World Applications</h3>
+<h3 data-number="3.11.6" class="anchored" data-anchor-id="real-world-applications"><span class="header-section-number">3.11.6</span> Real-World Applications</h3>
 <p>This approach is incredibly powerful for:</p>
 <ol type="1">
 <li><strong>Regular Reporting</strong>
@@ -1683,7 +1701,7 @@ The <code>{here}</code> Package: Making File Paths Work Everywhere
 </ol>
 </section>
 <section id="practice-time-3" class="level3" data-number="3.11.7">
-<h3 data-number="3.11.7"><span class="header-section-number">3.11.7</span> Practice Time</h3>
+<h3 data-number="3.11.7" class="anchored" data-anchor-id="practice-time-3"><span class="header-section-number">3.11.7</span> Practice Time</h3>
 <p>Let’s try some exercises:</p>
 <ol type="1">
 <li>Add a new visualization to <code>country_report.qmd</code></li>
@@ -1693,7 +1711,7 @@ The <code>{here}</code> Package: Making File Paths Work Everywhere
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class='callout-icon'></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 File Organization
@@ -1711,7 +1729,7 @@ File Organization
 </section>
 </section>
 <section id="wrapping-up-the-cool-things-first-approach" class="level2" data-number="3.12">
-<h2 data-number="3.12"><span class="header-section-number">3.12</span> Wrapping up: The Cool Things First Approach</h2>
+<h2 data-number="3.12" class="anchored" data-anchor-id="wrapping-up-the-cool-things-first-approach"><span class="header-section-number">3.12</span> Wrapping up: The Cool Things First Approach</h2>
 <p>The data science workflow typically follows these steps:</p>
 <ol type="1">
 <li><strong>Get Data</strong>: Import and clean your data</li>
@@ -1720,13 +1738,13 @@ File Organization
 </ol>
 <p>Look at our analysis pipeline:</p>
 <div class="cell">
-<div class="sourceCode" id="cb60"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span>                     <span class="co"># Step 1: Get Data</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate_yearly_commitments</span>(<span class="st">&quot;Angola&quot;</span>) <span class="sc">|&gt;</span> <span class="co"># Step 2: Transform</span></span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_loan_commitments</span>(<span class="st">&quot;Angola&quot;</span>)          <span class="co"># Step 3: Communicate</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span>                     <span class="co"># Step 1: Get Data</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate_yearly_commitments</span>(<span class="st">"Angola"</span>) <span class="sc">|&gt;</span> <span class="co"># Step 2: Transform</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_loan_commitments</span>(<span class="st">"Angola"</span>)          <span class="co"># Step 3: Communicate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure>
-<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672" /></p>
+<figure class="figure">
+<p><img src="week_1_in_class_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1752,22 +1770,22 @@ File Organization
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
-<p><figure class=''></p>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph TB
     %% Standard Workflow
-    subgraph Traditional[&quot;Data Science Workflow&quot;]
-        A(&quot;Get Data&lt;br&gt;(Import &amp; Clean)&quot;) --&gt; B(&quot;Transform Data&lt;br&gt;(Analyze &amp; Summarize)&quot;)
-        B --&gt; C(&quot;Communicate&lt;br&gt;(Visualize &amp; Report)&quot;)
+    subgraph Traditional["Data Science Workflow"]
+        A("Get Data&lt;br&gt;(Import &amp; Clean)") --&gt; B("Transform Data&lt;br&gt;(Analyze &amp; Summarize)")
+        B --&gt; C("Communicate&lt;br&gt;(Visualize &amp; Report)")
     end
     
     %% Our Learning Path
-    subgraph Course[&quot;Our Learning Path&quot;]
+    subgraph Course["Our Learning Path"]
         direction TB
-        W1(&quot;Week 1:&lt;br&gt;Introduction to Quarto&lt;br&gt;(Professional Reports)&quot;)
-        W2(&quot;Week 2:&lt;br&gt;Data Visualization&lt;br&gt;(The Fun Part!)&quot;)
-        W3(&quot;Week 3:&lt;br&gt;Data Transformation&lt;br&gt;(Making Data Useful)&quot;)
-        W4(&quot;Week 4:&lt;br&gt;Data Import &amp; Cleaning&lt;br&gt;(Building Strong Foundations)&quot;)
+        W1("Week 1:&lt;br&gt;Introduction to Quarto&lt;br&gt;(Professional Reports)")
+        W2("Week 2:&lt;br&gt;Data Visualization&lt;br&gt;(The Fun Part!)")
+        W3("Week 3:&lt;br&gt;Data Transformation&lt;br&gt;(Making Data Useful)")
+        W4("Week 4:&lt;br&gt;Data Import &amp; Cleaning&lt;br&gt;(Building Strong Foundations)")
         W1 --&gt; W2
         W2 --&gt; W3
         W3 --&gt; W4
@@ -1787,7 +1805,7 @@ File Organization
     style W4 fill:#fff3e0,stroke:#f57c00,stroke-width:2px
 </pre>
 </div>
-<p></figure></p>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -1800,9 +1818,9 @@ File Organization
 </ul>
 </section>
 <section id="wrapping-up-what-weve-accomplished" class="level2" data-number="3.13">
-<h2 data-number="3.13"><span class="header-section-number">3.13</span> Wrapping Up: What We’ve Accomplished</h2>
+<h2 data-number="3.13" class="anchored" data-anchor-id="wrapping-up-what-weve-accomplished"><span class="header-section-number">3.13</span> Wrapping Up: What We’ve Accomplished</h2>
 <section id="todays-achievements" class="level3" data-number="3.13.1">
-<h3 data-number="3.13.1"><span class="header-section-number">3.13.1</span> Today’s Achievements</h3>
+<h3 data-number="3.13.1" class="anchored" data-anchor-id="todays-achievements"><span class="header-section-number">3.13.1</span> Today’s Achievements</h3>
 <p>Let’s look back at what we’ve accomplished in just 90 minutes:</p>
 <ol type="1">
 <li><strong>Getting Comfortable with RStudio</strong>
@@ -1827,9 +1845,9 @@ File Organization
 <p>Most importantly, you’ve seen how these tools can make your work at AidData more efficient and reproducible. While it takes time to master these skills, you now have working examples that you can build upon and adapt for your own analysis needs.</p>
 </section>
 <section id="resources-for-continued-learning" class="level3" data-number="3.13.2">
-<h3 data-number="3.13.2"><span class="header-section-number">3.13.2</span> Resources for Continued Learning</h3>
+<h3 data-number="3.13.2" class="anchored" data-anchor-id="resources-for-continued-learning"><span class="header-section-number">3.13.2</span> Resources for Continued Learning</h3>
 <section id="r-fundamentals" class="level4" data-number="3.13.2.1">
-<h4 data-number="3.13.2.1"><span class="header-section-number">3.13.2.1</span> R Fundamentals</h4>
+<h4 data-number="3.13.2.1" class="anchored" data-anchor-id="r-fundamentals"><span class="header-section-number">3.13.2.1</span> R Fundamentals</h4>
 <p>Even with AI assistance, a solid foundation in R basics will make you much more effective. Here are some excellent starting points:</p>
 <ol type="1">
 <li><strong>Interactive Learning</strong>
@@ -1853,7 +1871,7 @@ File Organization
 </ol>
 </section>
 <section id="quarto-documentation-tutorials" class="level4" data-number="3.13.2.2">
-<h4 data-number="3.13.2.2"><span class="header-section-number">3.13.2.2</span> Quarto Documentation &amp; Tutorials</h4>
+<h4 data-number="3.13.2.2" class="anchored" data-anchor-id="quarto-documentation-tutorials"><span class="header-section-number">3.13.2.2</span> Quarto Documentation &amp; Tutorials</h4>
 <ol type="1">
 <li><strong>Official Resources</strong>
 <ul>
@@ -1879,7 +1897,7 @@ File Organization
 </ol>
 </section>
 <section id="functions-iteration" class="level4" data-number="3.13.2.3">
-<h4 data-number="3.13.2.3"><span class="header-section-number">3.13.2.3</span> Functions &amp; Iteration</h4>
+<h4 data-number="3.13.2.3" class="anchored" data-anchor-id="functions-iteration"><span class="header-section-number">3.13.2.3</span> Functions &amp; Iteration</h4>
 <ol type="1">
 <li><strong>R for Data Science Chapters</strong>
 <ul>
@@ -1911,7 +1929,7 @@ File Organization
 </section>
 </section>
 <section id="next-steps-1" class="level3" data-number="3.13.3">
-<h3 data-number="3.13.3"><span class="header-section-number">3.13.3</span> Next Steps</h3>
+<h3 data-number="3.13.3" class="anchored" data-anchor-id="next-steps-1"><span class="header-section-number">3.13.3</span> Next Steps</h3>
 <ol type="1">
 <li><strong>Practice with Your Own Data</strong>
 <ul>
@@ -1935,17 +1953,13 @@ File Organization
 </ol>
 <p>Remember: Learning R is a journey. You don’t need to memorize everything - knowing where to find help is often more important than memorizing syntax. Focus on understanding the concepts and how they can make your work easier and more reproducible.</p>
 <p>See you next week!</p>
-<div id="quarto-navigation-envelope" class="hidden">
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uZXh0"><span class="chapter-number">4</span>  <span class="chapter-title">Week 2: Make Cool Charts, Right Away (Pre-Class)</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1wcmV2"><span class="chapter-number">2</span>  <span class="chapter-title">Pre-Course Preparation</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9pbmRleC5odG1sUHJlZmFjZQ==">Preface</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9pbnRyby5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz4xPC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPkludHJvZHVjdGlvbjwvc3Bhbj4="><span class="chapter-number">1</span>  <span class="chapter-title">Introduction</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOnF1YXJ0by1zaWRlYmFyLXNlY3Rpb24tMQ==">Part 1: Data Analysis Bootcamp</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi93ZWVrXzFfcHJlX2NsYXNzLmh0bWw8c3Bhbi1jbGFzcz0nY2hhcHRlci1udW1iZXInPjI8L3NwYW4+LS08c3Bhbi1jbGFzcz0nY2hhcHRlci10aXRsZSc+UHJlLUNvdXJzZS1QcmVwYXJhdGlvbjwvc3Bhbj4="><span class="chapter-number">2</span>  <span class="chapter-title">Pre-Course Preparation</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi93ZWVrXzFfaW5fY2xhc3MuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+Mzwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz5XZWVrLTE6LUdldHRpbmctU3RhcnRlZC0oSW4tQ2xhc3MpPC9zcGFuPg=="><span class="chapter-number">3</span>  <span class="chapter-title">Week 1: Getting Started (In-Class)</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi93ZWVrXzJfcHJlX2NsYXNzLmh0bWw8c3Bhbi1jbGFzcz0nY2hhcHRlci1udW1iZXInPjQ8L3NwYW4+LS08c3Bhbi1jbGFzcz0nY2hhcHRlci10aXRsZSc+V2Vlay0yOi1NYWtlLUNvb2wtQ2hhcnRzLC1SaWdodC1Bd2F5LShQcmUtQ2xhc3MpPC9zcGFuPg=="><span class="chapter-number">4</span>  <span class="chapter-title">Week 2: Make Cool Charts, Right Away (Pre-Class)</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi93ZWVrXzJfaW5fY2xhc3MuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+NTwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz5XZWVrLTI6LU1ha2UtQ29vbC1DaGFydHMsLVJpZ2h0LUF3YXktKEluLUNsYXNzKTwvc3Bhbj4="><span class="chapter-number">5</span>  <span class="chapter-title">Week 2: Make Cool Charts, Right Away (In-Class)</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi93ZWVrXzNfcHJlX2NsYXNzLmh0bWw8c3Bhbi1jbGFzcz0nY2hhcHRlci1udW1iZXInPjY8L3NwYW4+LS08c3Bhbi1jbGFzcz0nY2hhcHRlci10aXRsZSc+V2Vlay0zOi1GaW5kLUFjdGlvbmFibGUtSW5zaWdodHMsLVF1aWNrbHktKFByZS1DbGFzcyk8L3NwYW4+"><span class="chapter-number">6</span>  <span class="chapter-title">Week 3: Find Actionable Insights, Quickly (Pre-Class)</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi93ZWVrXzNfaW5fY2xhc3MuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+Nzwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz5XZWVrLTM6LUZpbmQtQWN0aW9uYWJsZS1JbnNpZ2h0cywtUXVpY2tseS0oSW4tQ2xhc3MpPC9zcGFuPg=="><span class="chapter-number">7</span>  <span class="chapter-title">Week 3: Find Actionable Insights, Quickly (In-Class)</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi93ZWVrXzRfcHJlX2NsYXNzLmh0bWw8c3Bhbi1jbGFzcz0nY2hhcHRlci1udW1iZXInPjg8L3NwYW4+LS08c3Bhbi1jbGFzcz0nY2hhcHRlci10aXRsZSc+V2Vlay00Oi1JbXBvcnQtJi1UaWR5LVlvdXItRGF0YS0oUHJlLUNsYXNzKTwvc3Bhbj4="><span class="chapter-number">8</span>  <span class="chapter-title">Week 4: Import &amp; Tidy Your Data (Pre-Class)</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi93ZWVrXzRfaW5fY2xhc3MuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+OTwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz5XZWVrLTQ6LUltcG9ydC0mLVRpZHktWW91ci1EYXRhLShJbi1DbGFzcyk8L3NwYW4+"><span class="chapter-number">9</span>  <span class="chapter-title">Week 4: Import &amp; Tidy Your Data (In-Class)</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOnF1YXJ0by1zaWRlYmFyLXNlY3Rpb24tMg==">Part 2: Further Resources</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9wYXJ0XzJfcmVzb3VyY2VzLmh0bWw8c3Bhbi1jbGFzcz0nY2hhcHRlci1udW1iZXInPjEwPC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPlJlc291cmNlczwvc3Bhbj4="><span class="chapter-number">10</span>  <span class="chapter-title">Resources</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9zdW1tYXJ5Lmh0bWw8c3Bhbi1jbGFzcz0nY2hhcHRlci1udW1iZXInPjExPC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPlN1bW1hcnk8L3NwYW4+"><span class="chapter-number">11</span>  <span class="chapter-title">Summary</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9yZWZlcmVuY2VzLmh0bWxSZWZlcmVuY2Vz">References</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWJyZWFkY3J1bWJzLVBhcnQtMTotRGF0YS1BbmFseXNpcy1Cb290Y2FtcA==">Part 1: Data Analysis Bootcamp</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWJyZWFkY3J1bWJzLTxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+Mzwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz5XZWVrLTE6LUdldHRpbmctU3RhcnRlZC0oSW4tQ2xhc3MpPC9zcGFuPg=="><span class="chapter-number">3</span>  <span class="chapter-title">Week 1: Getting Started (In-Class)</span></span></p>
-</div>
-<div id="quarto-meta-markdown" class="hidden">
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ=="><span id="sec-week1_in_class" class="quarto-section-identifier"><span class="chapter-number">3</span>  <span class="chapter-title">Week 1: Getting Started (In-Class)</span></span> – Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU="><span id="sec-week1_in_class" class="quarto-section-identifier"><span class="chapter-number">3</span>  <span class="chapter-title">Week 1: Getting Started (In-Class)</span></span> – Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl"><span id="sec-week1_in_class" class="quarto-section-identifier"><span class="chapter-number">3</span>  <span class="chapter-title">Week 1: Getting Started (In-Class)</span></span> – Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw=="></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj"></span></p>
-</div>
+
+
 </section>
 </section>
 
 </main> <!-- /main -->
-<script id = "quarto-html-after-body" type="application/javascript">
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -2364,18 +2378,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a  href="/week_1_pre_class.html" class="pagination-link" aria-label="Pre-Course Preparation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class='chapter-number'>2</span>  <span class='chapter-title'>Pre-Course Preparation</span></span>
+      <a href="./week_1_pre_class.html" class="pagination-link" aria-label="Pre-Course Preparation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pre-Course Preparation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a  href="/week_2_pre_class.html" class="pagination-link" aria-label="Week 2: Make Cool Charts, Right Away (Pre-Class)">
-        <span class="nav-page-text"><span class='chapter-number'>4</span>  <span class='chapter-title'>Week 2: Make Cool Charts, Right Away (Pre-Class)</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./week_2_pre_class.html" class="pagination-link" aria-label="Week 2: Make Cool Charts, Right Away (Pre-Class)">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2: Make Cool Charts, Right Away (Pre-Class)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
 
-</body>
 
-</html>
+
+
+</body></html>
