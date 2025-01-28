@@ -1,1 +1,224 @@
 # Week 2: Make Cool Charts, Right Away (Pre-Class) {#sec-week2_pre_class}
+
+## Overview
+
+This week we'll learn how to create compelling visualizations with `{ggplot2}`. By the end of this pre-class preparation, you'll understand how to think about data visualization systematically and be able to create publication-quality plots of Chinese development finance data.
+
+## Learning Objectives
+
+By completing this pre-class work, you will be able to:
+
+1. Create visualizations quickly using Esquisse's point-and-click interface
+2. Understand and apply the grammar of graphics
+3. Identify which geoms to use for different visualization needs
+4. Build visualizations by layering components
+5. Apply professional themes to your plots
+
+## Quick Wins with Esquisse
+
+Let's start by creating some visualizations without writing any code! Esquisse is an RStudio add-in that provides a graphical interface for creating ggplot2 visualizations.
+
+### Installing Esquisse
+
+```r
+install.packages("esquisse")
+```
+
+### Using Esquisse
+
+1. Load your data
+2. In RStudio, go to Addins → ggplot2 builder
+3. Select variables by dragging and dropping
+4. Export the code when you're happy with your plot
+
+::: {.callout-tip}
+Pay attention to the code Esquisse generates. It's a great way to learn ggplot2 syntax!
+:::
+
+## The Grammar of Graphics: A Mental Model
+
+Think of creating a visualization like building with LEGO blocks. Each component has a specific purpose, and you combine them to create your final visualization. Here are the key components:
+
+1. **Data**: Your foundation - the dataset you want to visualize
+2. **Aesthetic Mappings**: How your data maps to visual properties
+3. **Geometries**: The shapes used to represent your data
+4. **Scales**: How values are converted to visual properties
+5. **Themes**: The overall visual style
+
+Let's break these down using real examples from Chinese development finance data.
+
+### The Foundation: Data and Aesthetics
+
+First, let's look at a simple plot showing the relationship between project size and year:
+
+```r
+library(tidyverse)
+library(chinadevfin3)
+
+# Get our data
+get_gcdf3_dataset() |>
+  # Keep only recommended projects
+  filter(recommended_for_aggregates == "Yes") |>
+  # Create the plot
+  ggplot(
+    aes(
+      x = commitment_year,
+      y = amount_constant_usd_2021,
+      color = flow_class
+    )
+  ) +
+  geom_point()
+```
+
+Let's break down what's happening:
+1. We start with our data (`get_gcdf3_dataset()`)
+2. We map:
+   - Years to the x-axis (`commitment_year`)
+   - Amounts to the y-axis (`amount_constant_usd_2021`)
+   - Flow class to color (`flow_class`)
+
+### Common Aesthetic Mappings
+
+Here are the most common ways to map your variables to visual properties:
+
+[Insert aesthetic-mappings diagram here]
+
+You'll use these aesthetic mappings constantly in your work with Chinese development finance data. For example:
+- x/y for relationships between variables
+- color/fill for categories like sectors or flow types
+- size for amounts (in some plots)
+
+### Choosing the Right Geom
+
+Different geoms serve different purposes. Here are some common scenarios in development finance data:
+
+1. **Time trends**: 
+   - `geom_line()` for smooth trends
+   - `geom_col()` for year-by-year totals
+
+2. **Distributions**:
+   - `geom_histogram()` for single variables
+   - `geom_boxplot()` for comparing across groups
+
+3. **Relationships**:
+   - `geom_point()` for scatter plots
+   - `geom_smooth()` for trend lines
+
+[Insert common-geoms diagram here]
+
+### Building in Layers
+
+Let's create a more complex visualization by adding layers:
+
+```r
+get_gcdf3_dataset() |>
+  filter(recommended_for_aggregates == "Yes") |>
+  ggplot(
+    aes(x = commitment_year, 
+        y = amount_constant_usd_2021)
+  ) +
+  # Add points
+  geom_point(
+    aes(color = flow_class),
+    alpha = 0.6
+  ) +
+  # Add trend line
+  geom_smooth(
+    method = "loess",
+    se = FALSE,
+    color = "black",
+    linewidth = 1
+  ) +
+  # Improve labels
+  labs(
+    title = "Chinese Development Finance Over Time",
+    subtitle = "By Flow Class, 2000-2021",
+    x = "Year",
+    y = "Amount (2021 USD)",
+    color = "Flow Class"
+  ) +
+  # Use a clean theme
+  theme_minimal()
+```
+
+Note how we build the visualization step by step:
+1. Start with the basic plot structure
+2. Add points colored by flow class
+3. Add a trend line
+4. Improve the labels
+5. Apply a theme
+
+## Quick Theme Templates
+
+ggplot2 comes with several built-in themes, and you can get more by installing theme packages. Here are some useful ones:
+
+```r
+# Install some theme packages
+install.packages(c("ggthemes", "hrbrthemes"))
+
+# Examples of different themes
+last_plot() + theme_minimal()     # Clean, minimal
+last_plot() + theme_economist()   # Like The Economist
+last_plot() + theme_wsj()        # Like Wall Street Journal
+```
+
+## Extension Packages
+
+The ggplot2 ecosystem includes many useful extensions. Here are some you might find helpful:
+
+1. **gganimate**: For animated plots
+2. **ggrepel**: For smart label placement
+3. **patchwork**: For combining multiple plots
+
+Example using ggrepel for better labels:
+
+```r
+library(ggrepel)
+
+get_gcdf3_dataset() |>
+  filter(
+    recommended_for_aggregates == "Yes",
+    amount_constant_usd_2021 > 1e9  # Over $1B
+  ) |>
+  ggplot(
+    aes(
+      x = commitment_year,
+      y = amount_constant_usd_2021,
+      label = recipient
+    )
+  ) +
+  geom_point() +
+  geom_text_repel() +  # Smart labels!
+  theme_minimal()
+```
+
+## Practice Exercises
+
+1. Use Esquisse to create a visualization of Chinese development finance data. Export the code and try to understand each component.
+
+2. Create a layered visualization showing:
+   - The distribution of project sizes
+   - Broken down by sector
+   - With appropriate labels and theme
+   
+3. Recreate one of the visualizations from a recent AidData report (links provided in resources).
+
+## Resources
+
+1. [ggplot2 cheat sheet](https://github.com/rstudio/cheatsheets/blob/main/data-visualization-2.1.pdf)
+2. [The R Graph Gallery](https://r-graph-gallery.com/)
+3. [ggplot2 extensions](https://exts.ggplot2.tidyverse.org/)
+4. [Designing with Data (book)](https://socviz.co/)
+
+## Next Steps
+
+In our in-class session, we'll:
+1. Review any questions about the grammar of graphics
+2. Learn more about themes and scales
+3. Practice creating publication-ready visualizations
+4. Work on real examples from your own interests in the Chinese development finance data
+
+Remember: The goal isn't to memorize every option, but to understand the general approach to building visualizations layer by layer.
+```
+
+Would you like me to expand further on any of these sections or create specific examples for the in-class session?

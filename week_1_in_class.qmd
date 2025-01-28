@@ -1,15 +1,5 @@
 # Week 1: Getting Started (In-Class) {#sec-week1_in_class}
 
-## Welcome & Course Overview
-
-Welcome to Applied Data Analysis for Chinese Lending Data! Before we dive into R, let's cover some course logistics:
-
-- **Course Structure**: 4 weekly online sessions + 1 full day in-person
-- **Online Sessions**: 90 minutes each, combining instruction and hands-on practice. 
-- **Materials**: All course materials available in Quarto format
-- **Support**: Using AI tools (Claude, ChatGPT) for learning assistance. Slack channel. 1x1 support for any cool projects you want to pursue.
-- **Questions**: Ask questions anytime - no question is too basic!
-
 ## Today's Agenda (90 minutes)
 
 1. **Welcome & Course Overview** (15 min)
@@ -36,6 +26,16 @@ Welcome to Applied Data Analysis for Chinese Lending Data! Before we dive into R
    - Review key takeaways
    - Preview next week
    - Additional resources
+   
+## Welcome & Course Overview
+
+Welcome to Applied Data Analysis for Chinese Lending Data! Before we dive into R, let's cover some course logistics:
+
+- **Course Structure**: 4 weekly online sessions + 1 full day in-person
+- **Online Sessions**: 90 minutes each, combining instruction and hands-on practice. 
+- **Materials**: All course materials available in Quarto format
+- **Support**: Using AI tools (Claude, ChatGPT) for learning assistance. Slack channel. 1x1 support for any cool projects you want to pursue.
+- **Questions**: Ask questions anytime - no question is too basic!
 
 ## Today's Focus: Practical Tools for Real Work
 
@@ -1018,7 +1018,7 @@ Create a new file called `week_1/R/render_reports.R`:
 library(tidyverse)  # For data manipulation and pipe operator
 library(quarto)     # For rendering Quarto documents
 library(here)       # For reliable file paths
-library(withr).     # For safe working with file paths
+library(withr)     # For safe working with file paths
 library(fs)         # For file system operations
 
 # List of countries to analyze
