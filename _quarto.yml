@@ -11,7 +11,7 @@ book:
   open-graph: true
   chapters:
     - index.qmd
-    - intro.qmd
+    #- intro.qmd
     
     - part: "Part 1: Data Analysis Bootcamp"
       chapters:

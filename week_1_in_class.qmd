@@ -2,83 +2,74 @@
 
 ## Today's Agenda (90 minutes)
 
-1. **Welcome & Course Overview** (15 min)
-   - Course logistics
-   - Learning approach
-   - Setting expectations
+1.  **Welcome & Course Overview** (15 min)
+    -   Course logistics
+    -   Learning approach
+    -   Setting expectations
+2.  **Project Setup** (20 min)
+    -   Creating organized folder structure
+    -   Installing key packages
+    -   Understanding RStudio's layout
+3.  **First Steps with R** (25 min)
+    -   Writing your first function
+    -   Building analysis pipelines
+    -   Creating visualizations
+4.  **Automated Reporting** (25 min)
+    -   Setting up report templates
+    -   Generating multiple reports
+    -   Hands-on practice
+5.  **Wrap-up & Preview** (5 min)
+    -   Review key takeaways
+    -   Preview next week
+    -   Additional resources
 
-2. **Project Setup** (20 min)
-   - Creating organized folder structure
-   - Installing key packages
-   - Understanding RStudio's layout
-
-3. **First Steps with R** (25 min)
-   - Writing your first function
-   - Building analysis pipelines
-   - Creating visualizations
-
-4. **Automated Reporting** (25 min)
-   - Setting up report templates
-   - Generating multiple reports
-   - Hands-on practice
-
-5. **Wrap-up & Preview** (5 min)
-   - Review key takeaways
-   - Preview next week
-   - Additional resources
-   
 ## Welcome & Course Overview
 
 Welcome to Applied Data Analysis for Chinese Lending Data! Before we dive into R, let's cover some course logistics:
 
-- **Course Structure**: 4 weekly online sessions + 1 full day in-person
-- **Online Sessions**: 90 minutes each, combining instruction and hands-on practice. 
-- **Materials**: All course materials available in Quarto format
-- **Support**: Using AI tools (Claude, ChatGPT) for learning assistance. Slack channel. 1x1 support for any cool projects you want to pursue.
-- **Questions**: Ask questions anytime - no question is too basic!
+-   **Course Structure**: 4 weekly online sessions + 1 full day in-person
+-   **Online Sessions**: 90 minutes each, combining instruction and hands-on practice.
+-   **Materials**: All course materials available in Quarto format
+-   **Support**: Using AI tools (Claude, ChatGPT) for learning assistance. Slack channel. 1x1 support for any cool projects you want to pursue.
+-   **Questions**: Ask questions anytime - no question is too basic!
 
 ## Today's Focus: Practical Tools for Real Work
 
 At AidData, you spend countless hours analyzing development finance data and creating reports. Today's session focuses on three key areas that will help make this work more efficient:
 
-1. **Working in RStudio**
-   - Get comfortable with the RStudio interface
-   - Understand how to organize your projects
-   - Learn where to find help when you need it
-
-2. **Using Quarto for Better Documentation**
-   - Keep track of your analysis process (like a lab notebook)
-   - Create professional-quality reports
-   - Combine code, text, and visualizations seamlessly
-
-3. **Productivity-Enhancing Tools**
-   - Write functions to avoid repetitive work
-   - Use map functions to process multiple countries efficiently
-   - Create parameterized reports that save time and reduce errors
+1.  **Working in RStudio**
+    -   Get comfortable with the RStudio interface
+    -   Understand how to organize your projects
+    -   Learn where to find help when you need it
+2.  **Using Quarto for Better Documentation**
+    -   Keep track of your analysis process (like a lab notebook)
+    -   Create professional-quality reports
+    -   Combine code, text, and visualizations seamlessly
+3.  **Productivity-Enhancing Tools**
+    -   Write functions to avoid repetitive work
+    -   Use map functions to process multiple countries efficiently
+    -   Create parameterized reports that save time and reduce errors
 
 ## Learning Objectives: First Steps Toward Efficiency
 
 By the end of today's session, you'll begin to:
 
-1. **Get Started with Automated Reports**
-   - See how to transform manual reporting tasks into automated processes
-   - Create your first parameterized report template
-   - Understand how to generate reports for multiple countries
-
-2. **Learn About Analysis Pipelines**
-   - See how to make your analysis steps clear and reproducible
-   - Start building reusable analysis workflows
-   - Get introduced to tools for consistent results
-
-3. **Take First Steps with Visualization**
-   - Create your first plots in R
-   - See how to standardize visualizations across reports
-   - Understand how automated plotting can save time
-
-4. **Start Working Smarter**
-   - Begin reducing repetitive copy-paste work
-   - See how automation can prevent common errors
-   - Take first steps toward reproducible analysis
+1.  **Get Started with Automated Reports**
+    -   See how to transform manual reporting tasks into automated processes
+    -   Create your first parameterized report template
+    -   Understand how to generate reports for multiple countries
+2.  **Learn About Analysis Pipelines**
+    -   See how to make your analysis steps clear and reproducible
+    -   Start building reusable analysis workflows
+    -   Get introduced to tools for consistent results
+3.  **Take First Steps with Visualization**
+    -   Create your first plots in R
+    -   See how to standardize visualizations across reports
+    -   Understand how automated plotting can save time
+4.  **Start Working Smarter**
+    -   Begin reducing repetitive copy-paste work
+    -   See how automation can prevent common errors
+    -   Take first steps toward reproducible analysis
 
 Most importantly, you'll get hands-on experience with tools that can eventually save you hours of work each week. While mastering these tools takes time and practice, today you'll see enough practical applications to understand their value. You'll leave with working examples that you can build upon and adapt for your own work.
 
@@ -205,7 +196,9 @@ pak::pkg_install(
     "t-emery/chinadevfin3",  # From GitHub, GCDF 3.0 data package that I made
     "glue",              # For working with text
     "tinytex",           # For rendering pdfs
-    "here"               # For relative file paths
+    "here",              # For relative file paths,
+    "withr",             # For file system operations
+    "fs"                # For file system operations
   )
 )
 
@@ -355,19 +348,22 @@ format:
 
 ::: callout-tip
 ## Sharing HTML Documents
+
 Using `embed-resources: true` ensures your HTML document can be shared and opened by anyone. The file will be a bit larger, but this is only noticeable when working with very large datasets. For most purposes, the convenience of easy sharing is worth it!
 :::
 
 ### Basic Markdown
+
 Markdown is a simple way to format text that's easy to read and write. Think of it as a set of formatting shortcuts: instead of clicking buttons like in Word, you add special characters around your text. Here are the basics you'll see in our example:
 
-- Use `#` for headers (more `#` means smaller headers)
-- Wrap words in `**bold**` to make them **bold**
-- Wrap words in `*italics*` to make them *italics*
-- Start lines with `-` or numbers for lists
+-   Use `#` for headers (more `#` means smaller headers)
+-   Wrap words in `**bold**` to make them **bold**
+-   Wrap words in `*italics*` to make them *italics*
+-   Start lines with `-` or numbers for lists
 
 Try this example:
-```markdown
+
+``` markdown
 ## About This Course
 
 This course will teach me to:
@@ -598,6 +594,7 @@ get_gcdf3_dataset() |>
   calculate_yearly_commitments(country = 'Angola') |> 
   plot_loan_commitments(country = 'Angola')"
 ```
+
 ### Understanding Complex Functions with AI
 
 Now let's look at a more sophisticated function. We'll use AI to help us understand how it works:
@@ -627,6 +624,7 @@ calculate_yearly_commitments <- function(data, country) {
     )
 }
 ```
+
 ### Practice Time
 
 Let's try some analyses:
@@ -640,8 +638,6 @@ When you see an interesting pattern in your visualization, paste a screenshot in
 
 This is a great way to test the limits of AI. As domain experts, you probably know exactly why commitments spiked in certain years. Compare what the AI says with your expert domain knowledge - you might be surprised by how often it makes confident but incorrect assertions! This is a valuable lesson in both the power and limitations of AI tools.
 :::
-
-
 
 ## Work Smarter, Not Harder: Automating Repetitive Tasks with Map Functions
 
@@ -707,10 +703,9 @@ results <- map_dbl(amounts, to_billions)  # Clear and concise
 
 Why tidyverse prefers map functions:
 
-- They're simpler to read and write
-- They protect your data from accidental modifications (a common pitfall with for loops)
+-   They're simpler to read and write
+-   They protect your data from accidental modifications (a common pitfall with for loops)
 :::
-
 
 ::: callout-note
 ## Map Functions Family
@@ -723,8 +718,6 @@ Why tidyverse prefers map functions:
 ::: callout-tip
 Notice that when we use `to_billions` in `map_dbl()`, we don't include the parentheses. Think of it as giving R the recipe (the function) rather than the finished dish (the result of calling the function).
 :::
-
-
 
 ### Analyzing Multiple Countries
 
@@ -977,35 +970,37 @@ $`{{r}} total_commitment` billion (2021 USD)
 
 Ever tried opening someone else's R project and gotten errors like "file not found" even though you can see the file right there? This happens because of absolute file paths like:
 
-- Windows: `"C:/Users/YourName/Documents/Project/data.csv"`
-- Mac: `"/Users/YourName/Documents/Project/data.csv"`
+-   Windows: `"C:/Users/YourName/Documents/Project/data.csv"`
+-   Mac: `"/Users/YourName/Documents/Project/data.csv"`
 
 These paths only work on the original computer! Even relative paths like `"../data/file.csv"` can break if you:
 
-- Open your project from a different folder
-- Share your code with colleagues
-- Move your files around
+-   Open your project from a different folder
+-   Share your code with colleagues
+-   Move your files around
 
 The `{here}` package solves this by:
 
-1. Automatically finding your project root folder
-2. Building file paths that work everywhere
+1.  Automatically finding your project root folder
+2.  Building file paths that work everywhere
 
 Instead of:
-```r
+
+``` r
 source("../R/functions.R")  # Fragile!
 ```
 
 Use:
-```r
+
+``` r
 source(here::here("week_1", "R", "functions.R"))  # Robust!
 ```
 
 This works regardless of:
 
-- What computer you're on
-- Where you opened the project
-- What your working directory is
+-   What computer you're on
+-   Where you opened the project
+-   What your working directory is
 :::
 
 ### Step 3: Create a Rendering Script
@@ -1081,12 +1076,12 @@ if (length(failed_countries) > 0) {
 2.  Click "Source" (or press Cmd/Ctrl + Shift + S)
 3.  Check `week_1/outputs/` for your generated reports!
 
-You should see: 
+You should see:
 
-- `vietnam_analysis.html` 
-- `indonesia_analysis.html` 
-- `thailand_analysis.html` 
-- `malaysia_analysis.html`
+-   `vietnam_analysis.html`
+-   `indonesia_analysis.html`
+-   `thailand_analysis.html`
+-   `malaysia_analysis.html`
 
 ### Real-World Applications
 
@@ -1192,97 +1187,90 @@ This **cool things first** approach helps you:
 -   Understand why each step matters
 -   Provides the motivation to learn the details of why code works
 
-
 ## Wrapping Up: What We've Accomplished
 
 ### Today's Achievements
 
 Let's look back at what we've accomplished in just 90 minutes:
 
-1. **Getting Comfortable with RStudio**
-   - Set up an organized project structure
-   - Learned to navigate the RStudio interface
-   - Created our first R scripts and Quarto documents
-
-2. **Taking First Steps with Quarto**
-   - Created our first Quarto document
-   - Combined code, text, and visualizations
-   - Generated reports in multiple formats
-
-3. **Building Efficiency Tools**
-   - Wrote our first function to avoid repetitive work
-   - Used map functions to process multiple countries
-   - Created a parameterized report template
+1.  **Getting Comfortable with RStudio**
+    -   Set up an organized project structure
+    -   Learned to navigate the RStudio interface
+    -   Created our first R scripts and Quarto documents
+2.  **Taking First Steps with Quarto**
+    -   Created our first Quarto document
+    -   Combined code, text, and visualizations
+    -   Generated reports in multiple formats
+3.  **Building Efficiency Tools**
+    -   Wrote our first function to avoid repetitive work
+    -   Used map functions to process multiple countries
+    -   Created a parameterized report template
 
 Most importantly, you've seen how these tools can make your work at AidData more efficient and reproducible. While it takes time to master these skills, you now have working examples that you can build upon and adapt for your own analysis needs.
 
 ### Resources for Continued Learning
 
 #### R Fundamentals
+
 Even with AI assistance, a solid foundation in R basics will make you much more effective. Here are some excellent starting points:
 
-1. **Interactive Learning**
-   - [DataCamp's Free Introduction to R](https://app.datacamp.com/learn/courses/free-introduction-to-r)
-     - Recommended starting point
-     - Covers essential R concepts
-     - Interactive exercises with immediate feedback
-
-2. **Video Tutorial**
-   - [R Programming Crash Course (1 hour)](https://youtu.be/eR-XRSKsuR4?si=BtSvhACTU3bLnv6O)
-     - Quick overview of key concepts
-     - Good for visual learners
-     - Covers most common operations
+1.  **Interactive Learning**
+    -   [DataCamp's Free Introduction to R](https://app.datacamp.com/learn/courses/free-introduction-to-r)
+        -   Recommended starting point
+        -   Covers essential R concepts
+        -   Interactive exercises with immediate feedback
+2.  **Video Tutorial**
+    -   [R Programming Crash Course (1 hour)](https://youtu.be/eR-XRSKsuR4?si=BtSvhACTU3bLnv6O)
+        -   Quick overview of key concepts
+        -   Good for visual learners
+        -   Covers most common operations
 
 #### Quarto Documentation & Tutorials
 
-1. **Official Resources**
-   - [Quarto Documentation](https://quarto.org/)
-     - Comprehensive reference
-     - Many examples and tutorials
-   - [Getting Started with Quarto (Video)](https://youtu.be/_f3latmOhew)
-     - Excellent visual introduction
-     - Shows Quarto in action
-
-2. **Book Chapters**
-   - R for Data Science (2e):
-     - [Chapter 29: Quarto](https://r4ds.hadley.nz/communicate)
-     - [Chapter 30: Quarto Formats](https://r4ds.hadley.nz/quarto-formats.html)
+1.  **Official Resources**
+    -   [Quarto Documentation](https://quarto.org/)
+        -   Comprehensive reference
+        -   Many examples and tutorials
+    -   [Getting Started with Quarto (Video)](https://youtu.be/_f3latmOhew)
+        -   Excellent visual introduction
+        -   Shows Quarto in action
+2.  **Book Chapters**
+    -   R for Data Science (2e):
+        -   [Chapter 29: Quarto](https://r4ds.hadley.nz/communicate)
+        -   [Chapter 30: Quarto Formats](https://r4ds.hadley.nz/quarto-formats.html)
 
 #### Functions & Iteration
 
-1. **R for Data Science Chapters**
-   - [Writing Functions](https://r4ds.hadley.nz/functions)
-     - Comprehensive guide to function writing
-     - Best practices and examples
-   - [Iteration](https://r4ds.hadley.nz/iteration)
-     - Deep dive into map functions
-     - Practical examples
-
-2. **Additional Resources**
-   - [purrr documentation](https://purrr.tidyverse.org/)
-     - Reference for map functions
-     - Comprehensive examples
-   - [Walk This Way: A gentle introduction to purrr](https://www.tidyverse.org/blog/2023/05/purrr-walk-this-way/)
-     - Beginner-friendly blog post
-     - Clear explanations and examples
+1.  **R for Data Science Chapters**
+    -   [Writing Functions](https://r4ds.hadley.nz/functions)
+        -   Comprehensive guide to function writing
+        -   Best practices and examples
+    -   [Iteration](https://r4ds.hadley.nz/iteration)
+        -   Deep dive into map functions
+        -   Practical examples
+2.  **Additional Resources**
+    -   [purrr documentation](https://purrr.tidyverse.org/)
+        -   Reference for map functions
+        -   Comprehensive examples
+    -   [Walk This Way: A gentle introduction to purrr](https://www.tidyverse.org/blog/2023/05/purrr-walk-this-way/)
+        -   Beginner-friendly blog post
+        -   Clear explanations and examples
 
 ### Next Steps
 
-1. **Practice with Your Own Data**
-   - Try modifying today's examples for your specific needs
-   - Start small - maybe automate one regular task
-   - Use AI tools to help understand and adapt code
-
-2. **Prepare for Next Week**
-   - We'll dive deeper into data visualization
-   - Focus on creating compelling graphics for Chinese development finance data
-   - Build on the foundations we've established today
-
-3. **Get Help When Needed**
-   - Use AI tools (Claude, ChatGPT) for code explanation
-   - Reference the resources above
-   - Ask questions in our course forum
-   - Share challenges and solutions with colleagues
+1.  **Practice with Your Own Data**
+    -   Try modifying today's examples for your specific needs
+    -   Start small - maybe automate one regular task
+    -   Use AI tools to help understand and adapt code
+2.  **Prepare for Next Week**
+    -   We'll dive deeper into data visualization
+    -   Focus on creating compelling graphics for Chinese development finance data
+    -   Build on the foundations we've established today
+3.  **Get Help When Needed**
+    -   Use AI tools (Claude, ChatGPT) for code explanation
+    -   Reference the resources above
+    -   Ask questions in our course forum
+    -   Share challenges and solutions with colleagues
 
 Remember: Learning R is a journey. You don't need to memorize everything - knowing where to find help is often more important than memorizing syntax. Focus on understanding the concepts and how they can make your work easier and more reproducible.
 
