@@ -2,223 +2,151 @@
 
 ## Overview
 
-This week we'll learn how to create compelling visualizations with `{ggplot2}`. By the end of this pre-class preparation, you'll understand how to think about data visualization systematically and be able to create publication-quality plots of Chinese development finance data.
+This week we'll learn how to create compelling visualizations with `{ggplot2}`. Instead of starting with theory, we'll dive right in using Esquisse, a point-and-click interface. By making increasingly complex charts and examining the code they generate, you'll start to understand how ggplot2 works.
 
 ## Learning Objectives
 
-By completing this pre-class work, you will be able to:
+By completing this pre-class work, you will be able to: 1. Create basic visualizations using Esquisse's point-and-click interface 2. Understand how aesthetic mappings control visual features 3. See how ggplot2 code relates to visual choices 4. Begin to read and understand ggplot2 code
 
-1. Create visualizations quickly using Esquisse's point-and-click interface
-2. Understand and apply the grammar of graphics
-3. Identify which geoms to use for different visualization needs
-4. Build visualizations by layering components
-5. Apply professional themes to your plots
+## Setup
 
-## Quick Wins with Esquisse
+First, let's install Esquisse, load our libraries, and prepare our data.
 
-Let's start by creating some visualizations without writing any code! Esquisse is an RStudio add-in that provides a graphical interface for creating ggplot2 visualizations.
+Create a quarto file to use as a lab notebook, and save it in `week_2/R`.
 
-### Installing Esquisse
+Install esquisse:
 
-```r
-install.packages("esquisse")
+```{r}
+#| eval: false
+pak::pkg_install("esquisse")
 ```
 
-### Using Esquisse
+Next we'll load the packages we'll be using in this session.
 
-1. Load your data
-2. In RStudio, go to Addins → ggplot2 builder
-3. Select variables by dragging and dropping
-4. Export the code when you're happy with your plot
+```{r}
+library(tidyverse)      # Data analysis tools, including ggplot2
+library(chinadevfin3) # GCDF 3.0 data
+library(esquisse)     # ggplot2 point-and-click add-in
+```
 
-::: {.callout-tip}
-Pay attention to the code Esquisse generates. It's a great way to learn ggplot2 syntax!
-:::
+## Create An Initial Dataset
 
-## The Grammar of Graphics: A Mental Model
+In week three you will how to transform your data. For now, we'll do it for you. If you're curious what's happening in the code below, paste it into an LLM and ask it to explain what is happening step-by-step.
 
-Think of creating a visualization like building with LEGO blocks. Each component has a specific purpose, and you combine them to create your final visualization. Here are the key components:
+```{r}
 
-1. **Data**: Your foundation - the dataset you want to visualize
-2. **Aesthetic Mappings**: How your data maps to visual properties
-3. **Geometries**: The shapes used to represent your data
-4. **Scales**: How values are converted to visual properties
-5. **Themes**: The overall visual style
+# Helper function from Week 1
+to_billions <- function(amount) {
+  amount / 10^9
+}
 
-Let's break these down using real examples from Chinese development finance data.
+# Create dataset for exploring project characteristics
+gcdf_project_features <- get_gcdf3_dataset() |>
+  filter(
+    recommended_for_aggregates == "Yes",
+    !is.na(source_quality_score), 
+    !is.na(data_completeness_score)
+  ) |>
+  mutate(
+    total_amount_bn = to_billions(amount_constant_usd_2021),
+    data_quality = source_quality_score + data_completeness_score
+  ) |>
+  select(
+    total_amount_bn,
+    data_quality,
+    flow_class,
+    commitment_year,
+    total_source_count
+  )
+```
 
-### The Foundation: Data and Aesthetics
+## Building Your First Visualization
 
-First, let's look at a simple plot showing the relationship between project size and year:
+Let's explore relationships between project size, data quality, and other features by building a visualization step by step. We'll use Esquisse to create the plot visually, then examine the code it generates to understand how ggplot2 works.
 
-```r
-library(tidyverse)
-library(chinadevfin3)
+### Step 1: Basic Scatter Plot
 
-# Get our data
-get_gcdf3_dataset() |>
-  # Keep only recommended projects
-  filter(recommended_for_aggregates == "Yes") |>
-  # Create the plot
-  ggplot(
-    aes(
-      x = commitment_year,
-      y = amount_constant_usd_2021,
-      color = flow_class
-    )
-  ) +
+1.  In RStudio, click Addins → ggplot2 builder
+
+![](images/week2_esquisse_addin.png){fig-alt="Esquisse R Studio Dropdown"}
+
+2.  Select `gcdf_project_features` as your dataset
+
+![](images/week2_esquisse_data_select.png){fig-alt="Select dataset in esquisse addin"}
+
+3.  Create a basic scatter plot:
+
+-   Drag `data_quality` to x-axis
+-   Drag `total_amount_bn` to y-axis
+-   Click "Point" in the geometry menu
+
+![](images/week2_esquisse_aesthetics.png){fig-alt="Select esquisse aesthetic mappings"}
+
+4.  Click the "Code" button at the bottom and copy the code
+
+![](images/week2_esquisse_copy_code.png){fig-alt="esquisse copy code"}
+
+Try running this code in R:
+
+```{r}
+ggplot(gcdf_project_features) +
+  aes(x = data_quality, y = total_amount_bn) +
+  geom_point(colour = "#112446") +
+  theme_minimal()
+```
+
+Now that you understand how Esquisse works, let's build up our visualization step by step. Just follow the instructions at each stage, and remember to export and run the code to see how ggplot2 syntax matches your visual choices.
+
+### Step 2: Add Color by Flow Class
+
+In Esquisse, drag `flow_class` to the color box. Export and examine the new code:
+
+```{r}
+ggplot(gcdf_project_features) +
+  aes(x = data_quality, 
+      y = total_amount_bn,
+      color = flow_class) +
   geom_point()
 ```
 
-Let's break down what's happening:
-1. We start with our data (`get_gcdf3_dataset()`)
-2. We map:
-   - Years to the x-axis (`commitment_year`)
-   - Amounts to the y-axis (`amount_constant_usd_2021`)
-   - Flow class to color (`flow_class`)
+Notice how `color = flow_class` was added inside `aes()`. In ggplot2, `aes()` is where we map data variables to visual properties.
 
-### Common Aesthetic Mappings
+### Step 3: Size by Source Count
 
-Here are the most common ways to map your variables to visual properties:
+Add a third dimension to our visualization by mapping point size to the number of sources:
+1. Drag `total_source_count` to the size box
+2. Export and examine the code:
 
-[Insert aesthetic-mappings diagram here]
-
-You'll use these aesthetic mappings constantly in your work with Chinese development finance data. For example:
-- x/y for relationships between variables
-- color/fill for categories like sectors or flow types
-- size for amounts (in some plots)
-
-### Choosing the Right Geom
-
-Different geoms serve different purposes. Here are some common scenarios in development finance data:
-
-1. **Time trends**: 
-   - `geom_line()` for smooth trends
-   - `geom_col()` for year-by-year totals
-
-2. **Distributions**:
-   - `geom_histogram()` for single variables
-   - `geom_boxplot()` for comparing across groups
-
-3. **Relationships**:
-   - `geom_point()` for scatter plots
-   - `geom_smooth()` for trend lines
-
-[Insert common-geoms diagram here]
-
-### Building in Layers
-
-Let's create a more complex visualization by adding layers:
-
-```r
-get_gcdf3_dataset() |>
-  filter(recommended_for_aggregates == "Yes") |>
-  ggplot(
-    aes(x = commitment_year, 
-        y = amount_constant_usd_2021)
-  ) +
-  # Add points
-  geom_point(
-    aes(color = flow_class),
-    alpha = 0.6
-  ) +
-  # Add trend line
-  geom_smooth(
-    method = "loess",
-    se = FALSE,
-    color = "black",
-    linewidth = 1
-  ) +
-  # Improve labels
-  labs(
-    title = "Chinese Development Finance Over Time",
-    subtitle = "By Flow Class, 2000-2021",
-    x = "Year",
-    y = "Amount (2021 USD)",
-    color = "Flow Class"
-  ) +
-  # Use a clean theme
-  theme_minimal()
+```{r}
+ggplot(gcdf_project_features) +
+  aes(x = data_quality, 
+      y = total_amount_bn,
+      color = flow_class,
+      size = total_source_count) +
+  geom_point()
 ```
 
-Note how we build the visualization step by step:
-1. Start with the basic plot structure
-2. Add points colored by flow class
-3. Add a trend line
-4. Improve the labels
-5. Apply a theme
+Our visualization now shows several relationships simultaneously:
+- Data quality (x-axis)
+- Project size (y-axis)
+- Number of sources (point size)
+- Flow class (color)
 
-## Quick Theme Templates
+### Step 4: Dealing with Overlapping Points
 
-ggplot2 comes with several built-in themes, and you can get more by installing theme packages. Here are some useful ones:
+Looking at our plot, you can see many overlapping points. This happens because our data quality scores are whole numbers (0-10), so many projects have exactly the same score. We can fix this by switching to `geom_jitter()`:
 
-```r
-# Install some theme packages
-install.packages(c("ggthemes", "hrbrthemes"))
-
-# Examples of different themes
-last_plot() + theme_minimal()     # Clean, minimal
-last_plot() + theme_economist()   # Like The Economist
-last_plot() + theme_wsj()        # Like Wall Street Journal
+```{r}
+ggplot(gcdf_project_features) +
+  aes(x = data_quality, 
+      y = total_amount_bn,
+      color = flow_class,
+      size = total_source_count) +
+  geom_jitter(width = 0.2) # Adds small random noise to spread points out
 ```
 
-## Extension Packages
+::: callout-tip
+## What is jittering?
+`geom_jitter()` adds a small amount of random noise to each point's position. This helps us see overlapping points without changing the fundamental patterns in our data. The `width` parameter controls how much horizontal jittering to apply - we use a small value (0.2) to maintain the connection to the original data quality scores.
+:::
 
-The ggplot2 ecosystem includes many useful extensions. Here are some you might find helpful:
-
-1. **gganimate**: For animated plots
-2. **ggrepel**: For smart label placement
-3. **patchwork**: For combining multiple plots
-
-Example using ggrepel for better labels:
-
-```r
-library(ggrepel)
-
-get_gcdf3_dataset() |>
-  filter(
-    recommended_for_aggregates == "Yes",
-    amount_constant_usd_2021 > 1e9  # Over $1B
-  ) |>
-  ggplot(
-    aes(
-      x = commitment_year,
-      y = amount_constant_usd_2021,
-      label = recipient
-    )
-  ) +
-  geom_point() +
-  geom_text_repel() +  # Smart labels!
-  theme_minimal()
-```
-
-## Practice Exercises
-
-1. Use Esquisse to create a visualization of Chinese development finance data. Export the code and try to understand each component.
-
-2. Create a layered visualization showing:
-   - The distribution of project sizes
-   - Broken down by sector
-   - With appropriate labels and theme
-   
-3. Recreate one of the visualizations from a recent AidData report (links provided in resources).
-
-## Resources
-
-1. [ggplot2 cheat sheet](https://github.com/rstudio/cheatsheets/blob/main/data-visualization-2.1.pdf)
-2. [The R Graph Gallery](https://r-graph-gallery.com/)
-3. [ggplot2 extensions](https://exts.ggplot2.tidyverse.org/)
-4. [Designing with Data (book)](https://socviz.co/)
-
-## Next Steps
-
-In our in-class session, we'll:
-1. Review any questions about the grammar of graphics
-2. Learn more about themes and scales
-3. Practice creating publication-ready visualizations
-4. Work on real examples from your own interests in the Chinese development finance data
-
-Remember: The goal isn't to memorize every option, but to understand the general approach to building visualizations layer by layer.
-```
-
-Would you like me to expand further on any of these sections or create specific examples for the in-class session?

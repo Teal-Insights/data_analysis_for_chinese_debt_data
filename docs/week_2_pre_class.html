@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7580570a2e354cd56757c689413fca0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -107,10 +107,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="3&nbsp; Week 2: Make Cool Charts, Right Away (Pre-Class) – Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs">
 <meta property="og:description" content="">
+<meta property="og:image" content="images/week2_esquisse_addin.png">
 <meta property="og:site_name" content="Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs">
+<meta property="og:image:alt" content="Esquisse R Studio Dropdown">
 <meta name="twitter:title" content="3&nbsp; Week 2: Make Cool Charts, Right Away (Pre-Class) – Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs">
 <meta name="twitter:description" content="">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="images/week2_esquisse_addin.png">
+<meta name="twitter:image:alt" content="Esquisse R Studio Dropdown">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar floating">
@@ -165,7 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_1_pre_class.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Pre-Course Preparation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -253,23 +257,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">3.1</span> Overview</a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">3.2</span> Learning Objectives</a></li>
-  <li><a href="#quick-wins-with-esquisse" id="toc-quick-wins-with-esquisse" class="nav-link" data-scroll-target="#quick-wins-with-esquisse"><span class="header-section-number">3.3</span> Quick Wins with Esquisse</a>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">3.3</span> Setup</a></li>
+  <li><a href="#create-an-initial-dataset" id="toc-create-an-initial-dataset" class="nav-link" data-scroll-target="#create-an-initial-dataset"><span class="header-section-number">3.4</span> Create An Initial Dataset</a></li>
+  <li><a href="#building-your-first-visualization" id="toc-building-your-first-visualization" class="nav-link" data-scroll-target="#building-your-first-visualization"><span class="header-section-number">3.5</span> Building Your First Visualization</a>
   <ul class="collapse">
-  <li><a href="#installing-esquisse" id="toc-installing-esquisse" class="nav-link" data-scroll-target="#installing-esquisse"><span class="header-section-number">3.3.1</span> Installing Esquisse</a></li>
-  <li><a href="#using-esquisse" id="toc-using-esquisse" class="nav-link" data-scroll-target="#using-esquisse"><span class="header-section-number">3.3.2</span> Using Esquisse</a></li>
+  <li><a href="#step-1-basic-scatter-plot" id="toc-step-1-basic-scatter-plot" class="nav-link" data-scroll-target="#step-1-basic-scatter-plot"><span class="header-section-number">3.5.1</span> Step 1: Basic Scatter Plot</a></li>
+  <li><a href="#step-2-add-color-by-flow-class" id="toc-step-2-add-color-by-flow-class" class="nav-link" data-scroll-target="#step-2-add-color-by-flow-class"><span class="header-section-number">3.5.2</span> Step 2: Add Color by Flow Class</a></li>
+  <li><a href="#step-3-size-by-source-count" id="toc-step-3-size-by-source-count" class="nav-link" data-scroll-target="#step-3-size-by-source-count"><span class="header-section-number">3.5.3</span> Step 3: Size by Source Count</a></li>
+  <li><a href="#step-4-dealing-with-overlapping-points" id="toc-step-4-dealing-with-overlapping-points" class="nav-link" data-scroll-target="#step-4-dealing-with-overlapping-points"><span class="header-section-number">3.5.4</span> Step 4: Dealing with Overlapping Points</a></li>
   </ul></li>
-  <li><a href="#the-grammar-of-graphics-a-mental-model" id="toc-the-grammar-of-graphics-a-mental-model" class="nav-link" data-scroll-target="#the-grammar-of-graphics-a-mental-model"><span class="header-section-number">3.4</span> The Grammar of Graphics: A Mental Model</a>
-  <ul class="collapse">
-  <li><a href="#the-foundation-data-and-aesthetics" id="toc-the-foundation-data-and-aesthetics" class="nav-link" data-scroll-target="#the-foundation-data-and-aesthetics"><span class="header-section-number">3.4.1</span> The Foundation: Data and Aesthetics</a></li>
-  <li><a href="#common-aesthetic-mappings" id="toc-common-aesthetic-mappings" class="nav-link" data-scroll-target="#common-aesthetic-mappings"><span class="header-section-number">3.4.2</span> Common Aesthetic Mappings</a></li>
-  <li><a href="#choosing-the-right-geom" id="toc-choosing-the-right-geom" class="nav-link" data-scroll-target="#choosing-the-right-geom"><span class="header-section-number">3.4.3</span> Choosing the Right Geom</a></li>
-  <li><a href="#building-in-layers" id="toc-building-in-layers" class="nav-link" data-scroll-target="#building-in-layers"><span class="header-section-number">3.4.4</span> Building in Layers</a></li>
-  </ul></li>
-  <li><a href="#quick-theme-templates" id="toc-quick-theme-templates" class="nav-link" data-scroll-target="#quick-theme-templates"><span class="header-section-number">3.5</span> Quick Theme Templates</a></li>
-  <li><a href="#extension-packages" id="toc-extension-packages" class="nav-link" data-scroll-target="#extension-packages"><span class="header-section-number">3.6</span> Extension Packages</a></li>
-  <li><a href="#practice-exercises" id="toc-practice-exercises" class="nav-link" data-scroll-target="#practice-exercises"><span class="header-section-number">3.7</span> Practice Exercises</a></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="header-section-number">3.8</span> Resources</a></li>
-  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps"><span class="header-section-number">3.9</span> Next Steps</a></li>
   </ul>
 </nav>
     </div>
@@ -297,210 +293,199 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="overview" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">3.1</span> Overview</h2>
-<p>This week we’ll learn how to create compelling visualizations with <code>{ggplot2}</code>. By the end of this pre-class preparation, you’ll understand how to think about data visualization systematically and be able to create publication-quality plots of Chinese development finance data.</p>
+<p>This week we’ll learn how to create compelling visualizations with <code>{ggplot2}</code>. Instead of starting with theory, we’ll dive right in using Esquisse, a point-and-click interface. By making increasingly complex charts and examining the code they generate, you’ll start to understand how ggplot2 works.</p>
 </section>
 <section id="learning-objectives" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">3.2</span> Learning Objectives</h2>
-<p>By completing this pre-class work, you will be able to:</p>
-<ol type="1">
-<li>Create visualizations quickly using Esquisse’s point-and-click interface</li>
-<li>Understand and apply the grammar of graphics</li>
-<li>Identify which geoms to use for different visualization needs</li>
-<li>Build visualizations by layering components</li>
-<li>Apply professional themes to your plots</li>
-</ol>
+<p>By completing this pre-class work, you will be able to: 1. Create basic visualizations using Esquisse’s point-and-click interface 2. Understand how aesthetic mappings control visual features 3. See how ggplot2 code relates to visual choices 4. Begin to read and understand ggplot2 code</p>
 </section>
-<section id="quick-wins-with-esquisse" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="quick-wins-with-esquisse"><span class="header-section-number">3.3</span> Quick Wins with Esquisse</h2>
-<p>Let’s start by creating some visualizations without writing any code! Esquisse is an RStudio add-in that provides a graphical interface for creating ggplot2 visualizations.</p>
-<section id="installing-esquisse" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="installing-esquisse"><span class="header-section-number">3.3.1</span> Installing Esquisse</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"esquisse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="setup" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="setup"><span class="header-section-number">3.3</span> Setup</h2>
+<p>First, let’s install Esquisse, load our libraries, and prepare our data.</p>
+<p>Create a quarto file to use as a lab notebook, and save it in <code>week_2/R</code>.</p>
+<p>Install esquisse:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pkg_install</span>(<span class="st">"esquisse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next we’ll load the packages we’ll be using in this session.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)      <span class="co"># Data analysis tools, including ggplot2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(chinadevfin3) <span class="co"># GCDF 3.0 data</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(esquisse)     <span class="co"># ggplot2 point-and-click add-in</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="using-esquisse" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="using-esquisse"><span class="header-section-number">3.3.2</span> Using Esquisse</h3>
+<section id="create-an-initial-dataset" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="create-an-initial-dataset"><span class="header-section-number">3.4</span> Create An Initial Dataset</h2>
+<p>In week three you will how to transform your data. For now, we’ll do it for you. If you’re curious what’s happening in the code below, paste it into an LLM and ask it to explain what is happening step-by-step.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper function from Week 1</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>to_billions <span class="ot">&lt;-</span> <span class="cf">function</span>(amount) {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  amount <span class="sc">/</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">9</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create dataset for exploring project characteristics</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>gcdf_project_features <span class="ot">&lt;-</span> <span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    recommended_for_aggregates <span class="sc">==</span> <span class="st">"Yes"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(source_quality_score), </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(data_completeness_score)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_amount_bn =</span> <span class="fu">to_billions</span>(amount_constant_usd_2021),</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">data_quality =</span> source_quality_score <span class="sc">+</span> data_completeness_score</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    total_amount_bn,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    data_quality,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    flow_class,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    commitment_year,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    total_source_count</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="building-your-first-visualization" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="building-your-first-visualization"><span class="header-section-number">3.5</span> Building Your First Visualization</h2>
+<p>Let’s explore relationships between project size, data quality, and other features by building a visualization step by step. We’ll use Esquisse to create the plot visually, then examine the code it generates to understand how ggplot2 works.</p>
+<section id="step-1-basic-scatter-plot" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="step-1-basic-scatter-plot"><span class="header-section-number">3.5.1</span> Step 1: Basic Scatter Plot</h3>
 <ol type="1">
-<li>Load your data</li>
-<li>In RStudio, go to Addins → ggplot2 builder</li>
-<li>Select variables by dragging and dropping</li>
-<li>Export the code when you’re happy with your plot</li>
+<li>In RStudio, click Addins → ggplot2 builder</li>
 </ol>
+<p><img src="images/week2_esquisse_addin.png" class="img-fluid" alt="Esquisse R Studio Dropdown"></p>
+<ol start="2" type="1">
+<li>Select <code>gcdf_project_features</code> as your dataset</li>
+</ol>
+<p><img src="images/week2_esquisse_data_select.png" class="img-fluid" alt="Select dataset in esquisse addin"></p>
+<ol start="3" type="1">
+<li>Create a basic scatter plot:</li>
+</ol>
+<ul>
+<li>Drag <code>data_quality</code> to x-axis</li>
+<li>Drag <code>total_amount_bn</code> to y-axis</li>
+<li>Click “Point” in the geometry menu</li>
+</ul>
+<p><img src="images/week2_esquisse_aesthetics.png" class="img-fluid" alt="Select esquisse aesthetic mappings"></p>
+<ol start="4" type="1">
+<li>Click the “Code” button at the bottom and copy the code</li>
+</ol>
+<p><img src="images/week2_esquisse_copy_code.png" class="img-fluid" alt="esquisse copy code"></p>
+<p>Try running this code in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gcdf_project_features) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> data_quality, <span class="at">y =</span> total_amount_bn) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"#112446"</span>) <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 7286 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_pre_class_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now that you understand how Esquisse works, let’s build up our visualization step by step. Just follow the instructions at each stage, and remember to export and run the code to see how ggplot2 syntax matches your visual choices.</p>
+</section>
+<section id="step-2-add-color-by-flow-class" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="step-2-add-color-by-flow-class"><span class="header-section-number">3.5.2</span> Step 2: Add Color by Flow Class</h3>
+<p>In Esquisse, drag <code>flow_class</code> to the color box. Export and examine the new code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gcdf_project_features) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> data_quality, </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> total_amount_bn,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> flow_class) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 7286 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_pre_class_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Notice how <code>color = flow_class</code> was added inside <code>aes()</code>. In ggplot2, <code>aes()</code> is where we map data variables to visual properties.</p>
+</section>
+<section id="step-3-size-by-source-count" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="step-3-size-by-source-count"><span class="header-section-number">3.5.3</span> Step 3: Size by Source Count</h3>
+<p>Add a third dimension to our visualization by mapping point size to the number of sources: 1. Drag <code>total_source_count</code> to the size box 2. Export and examine the code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gcdf_project_features) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> data_quality, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> total_amount_bn,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> flow_class,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> total_source_count) <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 7286 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_pre_class_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Our visualization now shows several relationships simultaneously: - Data quality (x-axis) - Project size (y-axis) - Number of sources (point size) - Flow class (color)</p>
+</section>
+<section id="step-4-dealing-with-overlapping-points" class="level3" data-number="3.5.4">
+<h3 data-number="3.5.4" class="anchored" data-anchor-id="step-4-dealing-with-overlapping-points"><span class="header-section-number">3.5.4</span> Step 4: Dealing with Overlapping Points</h3>
+<p>Looking at our plot, you can see many overlapping points. This happens because our data quality scores are whole numbers (0-10), so many projects have exactly the same score. We can fix this by switching to <code>geom_jitter()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gcdf_project_features) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> data_quality, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> total_amount_bn,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> flow_class,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> total_source_count) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="co"># Adds small random noise to spread points out</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 7286 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_pre_class_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+What is jittering?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Pay attention to the code Esquisse generates. It’s a great way to learn ggplot2 syntax!</p>
+<p><code>geom_jitter()</code> adds a small amount of random noise to each point’s position. This helps us see overlapping points without changing the fundamental patterns in our data. The <code>width</code> parameter controls how much horizontal jittering to apply - we use a small value (0.2) to maintain the connection to the original data quality scores.</p>
 </div>
 </div>
-</section>
-</section>
-<section id="the-grammar-of-graphics-a-mental-model" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="the-grammar-of-graphics-a-mental-model"><span class="header-section-number">3.4</span> The Grammar of Graphics: A Mental Model</h2>
-<p>Think of creating a visualization like building with LEGO blocks. Each component has a specific purpose, and you combine them to create your final visualization. Here are the key components:</p>
-<ol type="1">
-<li><strong>Data</strong>: Your foundation - the dataset you want to visualize</li>
-<li><strong>Aesthetic Mappings</strong>: How your data maps to visual properties</li>
-<li><strong>Geometries</strong>: The shapes used to represent your data</li>
-<li><strong>Scales</strong>: How values are converted to visual properties</li>
-<li><strong>Themes</strong>: The overall visual style</li>
-</ol>
-<p>Let’s break these down using real examples from Chinese development finance data.</p>
-<section id="the-foundation-data-and-aesthetics" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="the-foundation-data-and-aesthetics"><span class="header-section-number">3.4.1</span> The Foundation: Data and Aesthetics</h3>
-<p>First, let’s look at a simple plot showing the relationship between project size and year:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(chinadevfin3)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get our data</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Keep only recommended projects</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(recommended_for_aggregates <span class="sc">==</span> <span class="st">"Yes"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create the plot</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> commitment_year,</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> amount_constant_usd_2021,</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> flow_class</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Let’s break down what’s happening: 1. We start with our data (<code>get_gcdf3_dataset()</code>) 2. We map: - Years to the x-axis (<code>commitment_year</code>) - Amounts to the y-axis (<code>amount_constant_usd_2021</code>) - Flow class to color (<code>flow_class</code>)</p>
-</section>
-<section id="common-aesthetic-mappings" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="common-aesthetic-mappings"><span class="header-section-number">3.4.2</span> Common Aesthetic Mappings</h3>
-<p>Here are the most common ways to map your variables to visual properties:</p>
-<p>[Insert aesthetic-mappings diagram here]</p>
-<p>You’ll use these aesthetic mappings constantly in your work with Chinese development finance data. For example: - x/y for relationships between variables - color/fill for categories like sectors or flow types - size for amounts (in some plots)</p>
-</section>
-<section id="choosing-the-right-geom" class="level3" data-number="3.4.3">
-<h3 data-number="3.4.3" class="anchored" data-anchor-id="choosing-the-right-geom"><span class="header-section-number">3.4.3</span> Choosing the Right Geom</h3>
-<p>Different geoms serve different purposes. Here are some common scenarios in development finance data:</p>
-<ol type="1">
-<li><strong>Time trends</strong>:
-<ul>
-<li><code>geom_line()</code> for smooth trends</li>
-<li><code>geom_col()</code> for year-by-year totals</li>
-</ul></li>
-<li><strong>Distributions</strong>:
-<ul>
-<li><code>geom_histogram()</code> for single variables</li>
-<li><code>geom_boxplot()</code> for comparing across groups</li>
-</ul></li>
-<li><strong>Relationships</strong>:
-<ul>
-<li><code>geom_point()</code> for scatter plots</li>
-<li><code>geom_smooth()</code> for trend lines</li>
-</ul></li>
-</ol>
-<p>[Insert common-geoms diagram here]</p>
-</section>
-<section id="building-in-layers" class="level3" data-number="3.4.4">
-<h3 data-number="3.4.4" class="anchored" data-anchor-id="building-in-layers"><span class="header-section-number">3.4.4</span> Building in Layers</h3>
-<p>Let’s create a more complex visualization by adding layers:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(recommended_for_aggregates <span class="sc">==</span> <span class="st">"Yes"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> commitment_year, </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> amount_constant_usd_2021)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add points</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> flow_class),</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.6</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add trend line</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"loess"</span>,</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"black"</span>,</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="dv">1</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Improve labels</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Chinese Development Finance Over Time"</span>,</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"By Flow Class, 2000-2021"</span>,</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Amount (2021 USD)"</span>,</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Flow Class"</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use a clean theme</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Note how we build the visualization step by step: 1. Start with the basic plot structure 2. Add points colored by flow class 3. Add a trend line 4. Improve the labels 5. Apply a theme</p>
-</section>
-</section>
-<section id="quick-theme-templates" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="quick-theme-templates"><span class="header-section-number">3.5</span> Quick Theme Templates</h2>
-<p>ggplot2 comes with several built-in themes, and you can get more by installing theme packages. Here are some useful ones:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install some theme packages</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"ggthemes"</span>, <span class="st">"hrbrthemes"</span>))</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Examples of different themes</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>()     <span class="co"># Clean, minimal</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span> <span class="fu">theme_economist</span>()   <span class="co"># Like The Economist</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span> <span class="fu">theme_wsj</span>()        <span class="co"># Like Wall Street Journal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="extension-packages" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="extension-packages"><span class="header-section-number">3.6</span> Extension Packages</h2>
-<p>The ggplot2 ecosystem includes many useful extensions. Here are some you might find helpful:</p>
-<ol type="1">
-<li><strong>gganimate</strong>: For animated plots</li>
-<li><strong>ggrepel</strong>: For smart label placement</li>
-<li><strong>patchwork</strong>: For combining multiple plots</li>
-</ol>
-<p>Example using ggrepel for better labels:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    recommended_for_aggregates <span class="sc">==</span> <span class="st">"Yes"</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    amount_constant_usd_2021 <span class="sc">&gt;</span> <span class="fl">1e9</span>  <span class="co"># Over $1B</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> commitment_year,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> amount_constant_usd_2021,</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> recipient</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>() <span class="sc">+</span>  <span class="co"># Smart labels!</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="practice-exercises" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="practice-exercises"><span class="header-section-number">3.7</span> Practice Exercises</h2>
-<ol type="1">
-<li><p>Use Esquisse to create a visualization of Chinese development finance data. Export the code and try to understand each component.</p></li>
-<li><p>Create a layered visualization showing:</p>
-<ul>
-<li>The distribution of project sizes</li>
-<li>Broken down by sector</li>
-<li>With appropriate labels and theme</li>
-</ul></li>
-<li><p>Recreate one of the visualizations from a recent AidData report (links provided in resources).</p></li>
-</ol>
-</section>
-<section id="resources" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="resources"><span class="header-section-number">3.8</span> Resources</h2>
-<ol type="1">
-<li><a href="https://github.com/rstudio/cheatsheets/blob/main/data-visualization-2.1.pdf">ggplot2 cheat sheet</a></li>
-<li><a href="https://r-graph-gallery.com/">The R Graph Gallery</a></li>
-<li><a href="https://exts.ggplot2.tidyverse.org/">ggplot2 extensions</a></li>
-<li><a href="https://socviz.co/">Designing with Data (book)</a></li>
-</ol>
-</section>
-<section id="next-steps" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="next-steps"><span class="header-section-number">3.9</span> Next Steps</h2>
-<p>In our in-class session, we’ll: 1. Review any questions about the grammar of graphics 2. Learn more about themes and scales 3. Practice creating publication-ready visualizations 4. Work on real examples from your own interests in the Chinese development finance data</p>
-<p>Remember: The goal isn’t to memorize every option, but to understand the general approach to building visualizations layer by layer. ```</p>
-<p>Would you like me to expand further on any of these sections or create specific examples for the in-class session?</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -586,8 +571,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -698,7 +681,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

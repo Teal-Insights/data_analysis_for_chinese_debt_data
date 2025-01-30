@@ -92,155 +92,155 @@
   {
     "objectID": "week_1_pre_class.html",
     "href": "week_1_pre_class.html",
-    "title": "1  Pre-Course Preparation",
+    "title": "1  Overview",
     "section": "",
-    "text": "1.1 Overview\nBefore our first class meeting, you’ll need to install some software and familiarize yourself with a few basic concepts. This preparation will ensure you can participate fully in class activities. While the steps are straightforward, please allow 45-60 minutes to complete everything comfortably.",
+    "text": "1.1 Learning Objectives\n`# Pre-Course Preparation {#sec-preclass}\nBefore our first class meeting, you’ll need to install some software and familiarize yourself with a few basic concepts. This preparation will ensure you can participate fully in class activities. While the steps are straightforward, please allow 45-60 minutes to complete everything comfortably.\nBy completing this pre-class work, you will be able to:",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-Course Preparation</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
   },
   {
     "objectID": "week_1_pre_class.html#learning-objectives",
     "href": "week_1_pre_class.html#learning-objectives",
-    "title": "1  Pre-Course Preparation",
-    "section": "1.2 Learning Objectives",
-    "text": "1.2 Learning Objectives\nBy completing this pre-class work, you will be able to:\n\nInstall R and RStudio on your computer\nExplain the difference between R and RStudio\nPerform basic calculations in R\nCreate simple variables\nUse basic R functions\nUse AI tools to help understand R code",
+    "title": "1  Overview",
+    "section": "",
+    "text": "Install R and RStudio on your computer\nExplain the difference between R and RStudio\nPerform basic calculations in R\nCreate simple variables\nUse basic R functions\nUse AI tools to help understand R code",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-Course Preparation</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
   },
   {
     "objectID": "week_1_pre_class.html#what-is-r",
     "href": "week_1_pre_class.html#what-is-r",
-    "title": "1  Pre-Course Preparation",
-    "section": "1.3 What is R?",
-    "text": "1.3 What is R?\nThink of R as two things working together: a powerful calculator designed specifically for data analysis, and a collection of tools that make that calculator more useful. R was created by statisticians in the 1990s to make data analysis more accessible and reproducible. Today, it’s one of the most popular tools for data analysis worldwide. It is free and open source.",
+    "title": "1  Overview",
+    "section": "1.2 What is R?",
+    "text": "1.2 What is R?\nThink of R as two things working together: a powerful calculator designed specifically for data analysis, and a collection of tools that make that calculator more useful. R was created by statisticians in the 1990s to make data analysis more accessible and reproducible. Today, it’s one of the most popular tools for data analysis worldwide. It is free and open source.",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-Course Preparation</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
   },
   {
     "objectID": "week_1_pre_class.html#what-is-rstudio",
     "href": "week_1_pre_class.html#what-is-rstudio",
-    "title": "1  Pre-Course Preparation",
-    "section": "1.4 What is RStudio?",
-    "text": "1.4 What is RStudio?\nRStudio is like a workshop for R – it’s where you’ll actually do your work. If R is a powerful calculator, RStudio is the desk, notepad, file organizer, and reference library that makes using that calculator much easier. It’s called an IDE (Integrated Development Environment), but you can think of it as your data analysis workspace.",
+    "title": "1  Overview",
+    "section": "1.3 What is RStudio?",
+    "text": "1.3 What is RStudio?\nRStudio is like a workshop for R – it’s where you’ll actually do your work. If R is a powerful calculator, RStudio is the desk, notepad, file organizer, and reference library that makes using that calculator much easier. It’s called an IDE (Integrated Development Environment), but you can think of it as your data analysis workspace.",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-Course Preparation</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
   },
   {
     "objectID": "week_1_pre_class.html#what-are-r-packages",
     "href": "week_1_pre_class.html#what-are-r-packages",
-    "title": "1  Pre-Course Preparation",
-    "section": "1.5 What are R Packages?",
-    "text": "1.5 What are R Packages?\nPackages in R are like apps on your phone:\n\nYour phone comes with some basic apps (like R’s built-in functions)\nYou can install new apps (packages) to do specific tasks\nOnce installed, you need to open (load) an app to use it",
+    "title": "1  Overview",
+    "section": "1.4 What are R Packages?",
+    "text": "1.4 What are R Packages?\nPackages in R are like apps on your phone:\n\nYour phone comes with some basic apps (like R’s built-in functions)\nYou can install new apps (packages) to do specific tasks\nOnce installed, you need to open (load) an app to use it",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-Course Preparation</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
   },
   {
     "objectID": "week_1_pre_class.html#what-is-the-tidyverse",
     "href": "week_1_pre_class.html#what-is-the-tidyverse",
-    "title": "1  Pre-Course Preparation",
-    "section": "1.6 What is the tidyverse?",
-    "text": "1.6 What is the tidyverse?\nThe tidyverse is like a bundle of the most useful data analysis apps, all designed to work together seamlessly. It includes tools for:\n\nCreating beautiful visualizations\nCleaning and organizing data\nImporting data from various sources\n\nThese tools are designed to be more intuitive and user-friendly than base R.",
+    "title": "1  Overview",
+    "section": "1.5 What is the tidyverse?",
+    "text": "1.5 What is the tidyverse?\nThe tidyverse is like a bundle of the most useful data analysis apps, all designed to work together seamlessly. It includes tools for:\n\nCreating beautiful visualizations\nCleaning and organizing data\nImporting data from various sources\n\nThese tools are designed to be more intuitive and user-friendly than base R.",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-Course Preparation</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
   },
   {
     "objectID": "week_1_pre_class.html#installation-steps",
     "href": "week_1_pre_class.html#installation-steps",
-    "title": "1  Pre-Course Preparation",
-    "section": "1.7 Installation Steps",
-    "text": "1.7 Installation Steps\n\n1.7.1 1. Install R First\n\nGo to CRAN\nClick on your operating system\nDownload and run the installer\n\n\n\n1.7.2 2. Install RStudio Second\n\nGo to RStudio Download\nDownload and run the installer\n\n\n\n1.7.3 Need More Help?\nIf you run into any issues, you have two great options:\n\nTry an interactive tutorial\n\nThis will walk you through each step with detailed instructions\nIncludes screenshots and troubleshooting tips\n\nAsk a friendly LLM\n\nUse ChatGPT or Claude\nTry questions like: “I’m having trouble installing R on [your OS]. Here’s what I’ve tried…”\nThe LLM can provide customized help for your specific situation\n\n\n\n\n1.7.4 Verify Your Installation\nAfter installing both R and RStudio:\n\nOpen RStudio (not R)\nType 2 + 2 in the Console (bottom left)\nPress Enter\n\nIf you see [1] 4, you’re ready to go!\nIf not, ask your favorite LLM. Describe what your issue. Upload a screenshot if you are unsure.",
+    "title": "1  Overview",
+    "section": "1.6 Installation Steps",
+    "text": "1.6 Installation Steps\n\n1.6.1 1. Install R First\n\nGo to CRAN\nClick on your operating system\nDownload and run the installer\n\n\n\n1.6.2 2. Install RStudio Second\n\nGo to RStudio Download\nDownload and run the installer\n\n\n\n1.6.3 Need More Help?\nIf you run into any issues, you have two great options:\n\nTry an interactive tutorial\n\nThis will walk you through each step with detailed instructions\nIncludes screenshots and troubleshooting tips\n\nAsk a friendly LLM\n\nUse ChatGPT or Claude\nTry questions like: “I’m having trouble installing R on [your OS]. Here’s what I’ve tried…”\nThe LLM can provide customized help for your specific situation\n\n\n\n\n1.6.4 Verify Your Installation\nAfter installing both R and RStudio:\n\nOpen RStudio (not R)\nType 2 + 2 in the Console (bottom left)\nPress Enter\n\nIf you see [1] 4, you’re ready to go!\nIf not, ask your favorite LLM. Describe what your issue. Upload a screenshot if you are unsure.",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-Course Preparation</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
   },
   {
     "objectID": "week_1_pre_class.html#the-rstudio-interface",
     "href": "week_1_pre_class.html#the-rstudio-interface",
-    "title": "1  Pre-Course Preparation",
-    "section": "1.8 The RStudio Interface",
-    "text": "1.8 The RStudio Interface\n\n\n\nR Studio\n\n\nWhen you first open RStudio, you’ll likely see three panels. To see all four panels, click the “New File” icon in the top left corner and select “R Script”. Here’s what each panel does:\n\nSource Editor (top left): This is where you write and edit your R code files\n\nLike a text editor for your R scripts\nWhere you’ll write code you want to save and reuse\n\nConsole (bottom left): This is where you run R commands\n\nThink of it as R’s command center\nWhere you can try out code immediately\n\nEnvironment/History (top right): Shows your active variables and command history\n\nEnvironment tab lists all variables you’ve created\nHistory tab shows commands you’ve run\n\nFiles/Plots/Packages/Help (bottom right): A multi-purpose viewing area\n\nBrowse your files\nView plots and visualizations\nManage R packages\nAccess help documentation\n\n\n\n\n\n\n\n\nTip\n\n\n\nWant to learn more about RStudio’s features? Check out the RStudio IDE Cheat Sheet.",
+    "title": "1  Overview",
+    "section": "1.7 The RStudio Interface",
+    "text": "1.7 The RStudio Interface\n\n\n\nR Studio\n\n\nWhen you first open RStudio, you’ll likely see three panels. To see all four panels, click the “New File” icon in the top left corner and select “R Script”. Here’s what each panel does:\n\nSource Editor (top left): This is where you write and edit your R code files\n\nLike a text editor for your R scripts\nWhere you’ll write code you want to save and reuse\n\nConsole (bottom left): This is where you run R commands\n\nThink of it as R’s command center\nWhere you can try out code immediately\n\nEnvironment/History (top right): Shows your active variables and command history\n\nEnvironment tab lists all variables you’ve created\nHistory tab shows commands you’ve run\n\nFiles/Plots/Packages/Help (bottom right): A multi-purpose viewing area\n\nBrowse your files\nView plots and visualizations\nManage R packages\nAccess help documentation\n\n\n\n\n\n\n\n\nTip\n\n\n\nWant to learn more about RStudio’s features? Check out the RStudio IDE Cheat Sheet.",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-Course Preparation</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
   },
   {
     "objectID": "week_1_pre_class.html#basic-r-console-practice",
     "href": "week_1_pre_class.html#basic-r-console-practice",
-    "title": "1  Pre-Course Preparation",
-    "section": "1.9 Basic R Console Practice",
-    "text": "1.9 Basic R Console Practice\nOnce you have R and RStudio installed, try these commands in your RStudio console:\n\n1.9.1 R as a calculator\n\n2 * 3 + 4\n\n[1] 10\n\n10 / 2\n\n[1] 5\n\n2^3   # This means 2 to the power of 3\n\n[1] 8\n\n### Creating variables (we call this \"assignment\")\nx &lt;- 10    # The arrow means \"assign 10 to x\"\ny &lt;- 5\nx + y\n\n[1] 15\n\n### Using functions\nsum(1, 2, 3, 4, 5)\n\n[1] 15\n\nmean(c(1, 2, 3, 4, 5))    # c() combines numbers into a list\n\n[1] 3",
+    "title": "1  Overview",
+    "section": "1.8 Basic R Console Practice",
+    "text": "1.8 Basic R Console Practice\nOnce you have R and RStudio installed, try these commands in your RStudio console:\n\n1.8.1 R as a calculator\n\n2 * 3 + 4\n\n[1] 10\n\n10 / 2\n\n[1] 5\n\n2^3   # This means 2 to the power of 3\n\n[1] 8\n\n### Creating variables (we call this \"assignment\")\nx &lt;- 10    # The arrow means \"assign 10 to x\"\ny &lt;- 5\nx + y\n\n[1] 15\n\n### Using functions\nsum(1, 2, 3, 4, 5)\n\n[1] 15\n\nmean(c(1, 2, 3, 4, 5))    # c() combines numbers into a list\n\n[1] 3",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-Course Preparation</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
   },
   {
     "objectID": "week_1_pre_class.html#installing-your-first-package-the-tidyverse",
     "href": "week_1_pre_class.html#installing-your-first-package-the-tidyverse",
-    "title": "1  Pre-Course Preparation",
-    "section": "1.10 Installing Your First Package: The Tidyverse",
-    "text": "1.10 Installing Your First Package: The Tidyverse\nJust as installing Microsoft Office gives you a whole suite of programs (Word, Excel, PowerPoint) at once, installing the tidyverse gives you a collection of R packages designed to work together seamlessly for data analysis. Let’s install it:\n\nType this command in your console:\n\n\ninstall.packages(\"tidyverse\")\n\nYou’ll see quite a bit of text appear as R downloads and installs multiple packages. This is normal! The tidyverse includes packages for:\nMaking plots (ggplot2) Working with data (dplyr) Reading data files (readr) And several others we’ll use throughout the course\nAfter installation completes, load the tidyverse:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nYou’ll see some messages about which packages were loaded. Don’t worry about understanding all of them now - we’ll learn about each one as we need it. ::: {.callout-note} You only need to install a package once on your computer (like installing Microsoft Office), but you need to load it with library() each time you start R (like opening Excel when you want to use it). :::",
+    "title": "1  Overview",
+    "section": "1.9 Installing Your First Package: The Tidyverse",
+    "text": "1.9 Installing Your First Package: The Tidyverse\nJust as installing Microsoft Office gives you a whole suite of programs (Word, Excel, PowerPoint) at once, installing the tidyverse gives you a collection of R packages designed to work together seamlessly for data analysis. Let’s install it:\n\nType this command in your console:\n\n\ninstall.packages(\"tidyverse\")\n\nYou’ll see quite a bit of text appear as R downloads and installs multiple packages. This is normal! The tidyverse includes packages for:\nMaking plots (ggplot2) Working with data (dplyr) Reading data files (readr) And several others we’ll use throughout the course\nAfter installation completes, load the tidyverse:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nYou’ll see some messages about which packages were loaded. Don’t worry about understanding all of them now - we’ll learn about each one as we need it. ::: {.callout-note} You only need to install a package once on your computer (like installing Microsoft Office), but you need to load it with library() each time you start R (like opening Excel when you want to use it). :::",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-Course Preparation</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
   },
   {
     "objectID": "week_1_pre_class.html#try-using-ai-to-learn-r",
     "href": "week_1_pre_class.html#try-using-ai-to-learn-r",
-    "title": "1  Pre-Course Preparation",
-    "section": "1.11 Try Using AI to Learn R",
-    "text": "1.11 Try Using AI to Learn R\nAI can be your extra-attentive tutor. Here’s a piece of code to ask an LLM about:\n\nflights |&gt;\n  group_by(carrier) |&gt;\n  summarize(\n    avg_delay = mean(dep_delay, na.rm = TRUE),\n    n = n()\n  ) |&gt;\n  arrange(desc(avg_delay))\n\nTry this prompt with ChatGPT or Claude:\n\n“I’m new to R. Can you explain what each line of this code does? Please explain it like you’re talking to someone who has never programmed before.”\n\nLLMs’ coding ability improves rapidly, so it’s worth using the frontier models. If you don’t already have access to the paid version of either Claude or ChatGPT, it is $20 a month well spent1.",
+    "title": "1  Overview",
+    "section": "1.10 Try Using AI to Learn R",
+    "text": "1.10 Try Using AI to Learn R\nAI can be your extra-attentive tutor. Here’s a piece of code to ask an LLM about:\n\nflights |&gt;\n  group_by(carrier) |&gt;\n  summarize(\n    avg_delay = mean(dep_delay, na.rm = TRUE),\n    n = n()\n  ) |&gt;\n  arrange(desc(avg_delay))\n\nTry this prompt with ChatGPT or Claude:\n\n“I’m new to R. Can you explain what each line of this code does? Please explain it like you’re talking to someone who has never programmed before.”\n\nLLMs’ coding ability improves rapidly, so it’s worth using the frontier models. If you don’t already have access to the paid version of either Claude or ChatGPT, it is $20 a month well spent1.",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-Course Preparation</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
   },
   {
     "objectID": "week_1_pre_class.html#learning-resources",
     "href": "week_1_pre_class.html#learning-resources",
-    "title": "1  Pre-Course Preparation",
-    "section": "1.12 Learning Resources",
-    "text": "1.12 Learning Resources\nOne of R’s greatest strengths is its welcoming, active community that creates high-quality learning resources in many different formats. Everyone learns differently, so we’ve provided options to suit different learning styles. Remember: our course will get you started, but these resources can help you continue your journey.\n\n1.12.1 THE Textbook\nR for Data Science (2e) is the definitive guide to modern data analysis in R, and it’s completely free online. Much of this course’s approach is inspired by this book, but with a key difference: while R4DS teaches concepts using general datasets (like diamond prices and penguin measurements), we’ll apply these same concepts directly to Chinese development finance data.\nThink of R4DS as your comprehensive reference manual. When you want to: - Understand a concept more deeply - Learn additional approaches - Explore beyond what we cover in class - Review fundamentals\nThis should be your first stop. The authors (Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund) have a gift for clear explanation, and the book is constantly updated to reflect modern best practices.\n\n\n\n\n\n\nTip\n\n\n\nBookmark R for Data Science now - you’ll be referring to it often!\n\n\n\n\n1.12.2 Video Learning\nIf you prefer to learn by watching, check out “R Programming for ABSOLUTE Beginners” (14 minutes). This gentle introduction is perfect if you’re feeling uncertain about where to start.\n\n\n1.12.3 Interactive Learning\nDataCamp’s Introduction to R provides hands-on practice in an online environment with immediate feedback. While DataCamp is generally a paid platform, this introductory course is free. This format worked particularly well for me when I was learning R.\n\n\n1.12.4 Community Resources\nThe R community is known for being friendly and supportive. Here’s where to find help:\n\n#rstats on Bluesky: The active R community shares tips, resources, and help\nR-Ladies: A worldwide organization promoting gender diversity in the R community\nR-bloggers: An aggregator of R-related blogs and tutorials\n\n\n\n\n\n\n\nNote\n\n\n\nWe’ll provide a comprehensive resource list in Chapter X, but these should get you started. The R community’s commitment to sharing knowledge means you’ll never lack for learning materials!",
+    "title": "1  Overview",
+    "section": "1.11 Learning Resources",
+    "text": "1.11 Learning Resources\nOne of R’s greatest strengths is its welcoming, active community that creates high-quality learning resources in many different formats. Everyone learns differently, so we’ve provided options to suit different learning styles. Remember: our course will get you started, but these resources can help you continue your journey.\n\n1.11.1 THE Textbook\nR for Data Science (2e) is the definitive guide to modern data analysis in R, and it’s completely free online. Much of this course’s approach is inspired by this book, but with a key difference: while R4DS teaches concepts using general datasets (like diamond prices and penguin measurements), we’ll apply these same concepts directly to Chinese development finance data.\nThink of R4DS as your comprehensive reference manual. When you want to: - Understand a concept more deeply - Learn additional approaches - Explore beyond what we cover in class - Review fundamentals\nThis should be your first stop. The authors (Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund) have a gift for clear explanation, and the book is constantly updated to reflect modern best practices.\n\n\n\n\n\n\nTip\n\n\n\nBookmark R for Data Science now - you’ll be referring to it often!\n\n\n\n\n1.11.2 Video Learning\nIf you prefer to learn by watching, check out “R Programming for ABSOLUTE Beginners” (14 minutes). This gentle introduction is perfect if you’re feeling uncertain about where to start.\n\n\n1.11.3 Interactive Learning\nDataCamp’s Introduction to R provides hands-on practice in an online environment with immediate feedback. While DataCamp is generally a paid platform, this introductory course is free. This format worked particularly well for me when I was learning R.\n\n\n1.11.4 Community Resources\nThe R community is known for being friendly and supportive. Here’s where to find help:\n\n#rstats on Bluesky: The active R community shares tips, resources, and help\nR-Ladies: A worldwide organization promoting gender diversity in the R community\nR-bloggers: An aggregator of R-related blogs and tutorials\n\n\n\n\n\n\n\nNote\n\n\n\nWe’ll provide a comprehensive resource list in Chapter X, but these should get you started. The R community’s commitment to sharing knowledge means you’ll never lack for learning materials!",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-Course Preparation</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
   },
   {
     "objectID": "week_1_pre_class.html#success-checklist",
     "href": "week_1_pre_class.html#success-checklist",
-    "title": "1  Pre-Course Preparation",
-    "section": "1.13 Success Checklist",
-    "text": "1.13 Success Checklist\nBefore coming to class, you should be able to:\n\nOpen RStudio\nPerform a calculation in the console\nCreate a variable\nUse a basic function\nInstall and load packages\nAsk an AI to explain R code",
+    "title": "1  Overview",
+    "section": "1.12 Success Checklist",
+    "text": "1.12 Success Checklist\nBefore coming to class, you should be able to:\n\nOpen RStudio\nPerform a calculation in the console\nCreate a variable\nUse a basic function\nInstall and load packages\nAsk an AI to explain R code",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-Course Preparation</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
   },
   {
     "objectID": "week_1_pre_class.html#footnotes",
     "href": "week_1_pre_class.html#footnotes",
-    "title": "1  Pre-Course Preparation",
+    "title": "1  Overview",
     "section": "",
     "text": "As of the time of writing in January of 2025, Claude is the best for R, but ChatGPT 4o (and above) aren’t too far behind. This will change quickly as new models come out.↩︎",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Pre-Course Preparation</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
   },
   {
@@ -314,7 +314,7 @@
     "href": "week_1_in_class.html#setting-up-your-work-environment",
     "title": "2  Week 1: Getting Started (In-Class)",
     "section": "2.6 Setting Up Your Work Environment",
-    "text": "2.6 Setting Up Your Work Environment\nLet’s create an organized workspace for this course. We’ll do this together - follow along on your computer:\n\n2.6.1 Creating a Project Structure\n\nIn RStudio, click File → New File → New Project\nClick “New Directory”\nClick “New Project”\nName it “data_analysis_bootcamp”\nChoose where to save it (remember this location!)\nClick “Create Project”\n\nNow let’s create an organized folder structure. Copy and paste this code into your R console:\n\n# Create week folders and their subfolders\nfor (week in 1:4) {\n  week_folder &lt;- paste0(\"week_\", week)\n  dir.create(week_folder)\n  \n  # Create standard subfolders\n  dir.create(file.path(week_folder, \"R\"))        # Scripts and Quarto documents\n  dir.create(file.path(week_folder, \"data-raw\")) # Original data files\n  dir.create(file.path(week_folder, \"data\"))     # Processed data\n  dir.create(file.path(week_folder, \"outputs\"))  # Generated reports and figures\n}\n\nThis will create:\ndata_analysis_bootcamp/\n├── week_1/\n│   ├── R/         # R scripts and Quarto documents\n│   ├── data-raw/  # Original data files\n│   ├── data/      # Processed data\n│   └── outputs/   # Generated reports and figures\n├── week_2/\n│   ├── R/\n│   ├── data-raw/\n│   ├── data/\n│   └── outputs/\n├── week_3/\n│   ├── R/\n│   ├── data-raw/\n│   ├── data/\n│   └── outputs/\n└── week_4/\n    ├── R/\n    ├── data-raw/\n    ├── data/\n    └── outputs/\n\n\n\n\n\n\nTip\n\n\n\nUse the Files pane in RStudio (bottom right) to verify that all folders were created correctly.\n\n\nEach week’s folder has:\n\nR/: Scripts and Quarto documents\ndata-raw/: Original, unmodified data\ndata/: Processed, analysis-ready data\noutputs/: Generated reports, figures, and other results\n\nFor this week’s automated reporting project, we’ll use:\n\nweek_1/R/ for our report template and functions\nweek_1/data-raw/ for any raw data we need to process\nweek_1/data/ for cleaned, ready-to-analyze data\nweek_1/outputs/ for our generated reports\n\n\n\n\n\n\n\nNote\n\n\n\nYou can also create folders using the Files pane in RStudio (bottom right) by clicking “New Folder”.\n\n\n\n\n2.6.2 Install & Load Packages\nThink of R packages like apps for your phone:\n\nYou install an app once\nYou open the app each time you want to use it\n\nSimilarly with R:\n\nYou install a package once\nYou load it with library() each time you start R\n\nThere are two main “app stores” for R packages:\n\nCRAN: The official R app store. Like the Apple App Store or Google Play Store, packages here go through review and testing\nGitHub: More like downloading apps directly from developers’ websites. Newer features, but less formal review\n\nLet’s install what we need:\n\n# First, install pak - our package installer\ninstall.packages(\"pak\")\n\n# Now use pak to install everything else\npak::pkg_install(\n  c(\n    \"quarto\",            # For report generation\n    \"t-emery/chinadevfin3\",  # From GitHub, GCDF 3.0 data package that I made\n    \"glue\",              # For working with text\n    \"tinytex\",           # For rendering pdfs\n    \"here\",              # For relative file paths,\n    \"withr\",             # For file system operations\n    \"fs\"                # For file system operations\n  )\n)\n\n# Special setup needed for PDF creation\ntinytex::install_tinytex() \n\n# If you haven't installed tidyverse yet (from pre-class setup):\n# pak::pkg_install(\"tidyverse\") # Core data science tools from CRAN\n\n\n\n\n\n\n\nTip\n\n\n\nThe c() function combines things together. We’ll use it often!\n\n\nNow let’s load the packages we’ll use:\n\nlibrary(tidyverse)      # Load core tools\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(chinadevfin3)   # Load GCDF 3.0 tools\nlibrary(glue)           # Load text tools\nlibrary(here)           # Load relative file paths\n\nhere() starts at /Users/teal_mac_mini_25/Library/CloudStorage/Dropbox/DataScience/data_analysis_for_chinese_debt_data\n\n\n\n\n\n\n\n\nNote\n\n\n\nDon’t worry about the startup messages - they’re just telling us what was loaded.",
+    "text": "2.6 Setting Up Your Work Environment\nLet’s create an organized workspace for this course. We’ll do this together - follow along on your computer:\n\n2.6.1 Creating a Project Structure\n\nIn RStudio, click File → New File → New Project\nClick “New Directory”\nClick “New Project”\nName it “data_analysis_bootcamp”\nChoose where to save it (remember this location!)\nClick “Create Project”\n\nNow let’s create an organized folder structure. Copy and paste this code into your R console:\n\n# Create week folders and their subfolders\nfor (week in 1:4) {\n  week_folder &lt;- paste0(\"week_\", week)\n  dir.create(week_folder)\n  \n  # Create standard subfolders\n  dir.create(file.path(week_folder, \"R\"))        # Scripts and Quarto documents\n  dir.create(file.path(week_folder, \"data-raw\")) # Original data files\n  dir.create(file.path(week_folder, \"data\"))     # Processed data\n  dir.create(file.path(week_folder, \"outputs\"))  # Generated reports and figures\n}\n\nThis will create:\ndata_analysis_bootcamp/\n├── week_1/\n│   ├── R/         # R scripts and Quarto documents\n│   ├── data-raw/  # Original data files\n│   ├── data/      # Processed data\n│   └── outputs/   # Generated reports and figures\n├── week_2/\n│   ├── R/\n│   ├── data-raw/\n│   ├── data/\n│   └── outputs/\n├── week_3/\n│   ├── R/\n│   ├── data-raw/\n│   ├── data/\n│   └── outputs/\n└── week_4/\n    ├── R/\n    ├── data-raw/\n    ├── data/\n    └── outputs/\n\n\n\n\n\n\nTip\n\n\n\nUse the Files pane in RStudio (bottom right) to verify that all folders were created correctly.\n\n\nEach week’s folder has:\n\nR/: Scripts and Quarto documents\ndata-raw/: Original, unmodified data\ndata/: Processed, analysis-ready data\noutputs/: Generated reports, figures, and other results\n\nFor this week’s automated reporting project, we’ll use:\n\nweek_1/R/ for our report template and functions\nweek_1/data-raw/ for any raw data we need to process\nweek_1/data/ for cleaned, ready-to-analyze data\nweek_1/outputs/ for our generated reports\n\n\n\n\n\n\n\nNote\n\n\n\nYou can also create folders using the Files pane in RStudio (bottom right) by clicking “New Folder”.\n\n\n\n\n2.6.2 Install & Load Packages\nThink of R packages like apps for your phone:\n\nYou install an app once\nYou open the app each time you want to use it\n\nSimilarly with R:\n\nYou install a package once\nYou load it with library() each time you start R\n\nThere are two main “app stores” for R packages:\n\nCRAN: The official R app store. Like the Apple App Store or Google Play Store, packages here go through review and testing\nGitHub: More like downloading apps directly from developers’ websites. Newer features, but less formal review\n\nLet’s install what we need:\n\n# First, install pak - our package installer\ninstall.packages(\"pak\")\n\n# Now use pak to install everything else\npak::pkg_install(\n  c(\n    \"quarto\",            # For report generation\n    \"t-emery/chinadevfin3\",  # From GitHub, GCDF 3.0 data package that I made\n    \"glue\",              # For working with text\n    \"tinytex\",           # For rendering pdfs\n    \"here\",              # For relative file paths,\n    \"withr\",             # For file system operations\n    \"fs\"                # For file system operations\n  )\n)\n\n# Special setup needed for PDF creation\ntinytex::install_tinytex() \n\n# If you haven't installed tidyverse yet (from pre-class setup):\n# pak::pkg_install(\"tidyverse\") # Core data science tools from CRAN\n\n\n\n\n\n\n\nTip\n\n\n\nThe c() function combines things together. We’ll use it often!\n\n\nNow let’s load the packages we’ll use:\n\nlibrary(tidyverse)      # Load core tools\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(chinadevfin3)   # Load GCDF 3.0 tools\nlibrary(glue)           # Load text tools\nlibrary(here)           # Load relative file paths\n\nhere() starts at /Users/teal_emery/Dropbox/DataScience/data_analysis_for_chinese_debt_data\n\n\n\n\n\n\n\n\nNote\n\n\n\nDon’t worry about the startup messages - they’re just telling us what was loaded.",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Week 1: Getting Started (In-Class)</span>"
@@ -402,7 +402,7 @@
     "href": "week_2_pre_class.html",
     "title": "3  Week 2: Make Cool Charts, Right Away (Pre-Class)",
     "section": "",
-    "text": "3.1 Overview\nThis week we’ll learn how to create compelling visualizations with {ggplot2}. By the end of this pre-class preparation, you’ll understand how to think about data visualization systematically and be able to create publication-quality plots of Chinese development finance data.",
+    "text": "3.1 Overview\nThis week we’ll learn how to create compelling visualizations with {ggplot2}. Instead of starting with theory, we’ll dive right in using Esquisse, a point-and-click interface. By making increasingly complex charts and examining the code they generate, you’ll start to understand how ggplot2 works.",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Week 2: Make Cool Charts, Right Away (Pre-Class)</span>"
@@ -413,84 +413,40 @@
     "href": "week_2_pre_class.html#learning-objectives",
     "title": "3  Week 2: Make Cool Charts, Right Away (Pre-Class)",
     "section": "3.2 Learning Objectives",
-    "text": "3.2 Learning Objectives\nBy completing this pre-class work, you will be able to:\n\nCreate visualizations quickly using Esquisse’s point-and-click interface\nUnderstand and apply the grammar of graphics\nIdentify which geoms to use for different visualization needs\nBuild visualizations by layering components\nApply professional themes to your plots",
+    "text": "3.2 Learning Objectives\nBy completing this pre-class work, you will be able to: 1. Create basic visualizations using Esquisse’s point-and-click interface 2. Understand how aesthetic mappings control visual features 3. See how ggplot2 code relates to visual choices 4. Begin to read and understand ggplot2 code",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Week 2: Make Cool Charts, Right Away (Pre-Class)</span>"
     ]
   },
   {
-    "objectID": "week_2_pre_class.html#quick-wins-with-esquisse",
-    "href": "week_2_pre_class.html#quick-wins-with-esquisse",
+    "objectID": "week_2_pre_class.html#setup",
+    "href": "week_2_pre_class.html#setup",
     "title": "3  Week 2: Make Cool Charts, Right Away (Pre-Class)",
-    "section": "3.3 Quick Wins with Esquisse",
-    "text": "3.3 Quick Wins with Esquisse\nLet’s start by creating some visualizations without writing any code! Esquisse is an RStudio add-in that provides a graphical interface for creating ggplot2 visualizations.\n\n3.3.1 Installing Esquisse\ninstall.packages(\"esquisse\")\n\n\n3.3.2 Using Esquisse\n\nLoad your data\nIn RStudio, go to Addins → ggplot2 builder\nSelect variables by dragging and dropping\nExport the code when you’re happy with your plot\n\n\n\n\n\n\n\nTip\n\n\n\nPay attention to the code Esquisse generates. It’s a great way to learn ggplot2 syntax!",
+    "section": "3.3 Setup",
+    "text": "3.3 Setup\nFirst, let’s install Esquisse, load our libraries, and prepare our data.\nCreate a quarto file to use as a lab notebook, and save it in week_2/R.\nInstall esquisse:\n\npak::pkg_install(\"esquisse\")\n\nNext we’ll load the packages we’ll be using in this session.\n\nlibrary(tidyverse)      # Data analysis tools, including ggplot2\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(chinadevfin3) # GCDF 3.0 data\nlibrary(esquisse)     # ggplot2 point-and-click add-in",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Week 2: Make Cool Charts, Right Away (Pre-Class)</span>"
     ]
   },
   {
-    "objectID": "week_2_pre_class.html#the-grammar-of-graphics-a-mental-model",
-    "href": "week_2_pre_class.html#the-grammar-of-graphics-a-mental-model",
+    "objectID": "week_2_pre_class.html#create-an-initial-dataset",
+    "href": "week_2_pre_class.html#create-an-initial-dataset",
     "title": "3  Week 2: Make Cool Charts, Right Away (Pre-Class)",
-    "section": "3.4 The Grammar of Graphics: A Mental Model",
-    "text": "3.4 The Grammar of Graphics: A Mental Model\nThink of creating a visualization like building with LEGO blocks. Each component has a specific purpose, and you combine them to create your final visualization. Here are the key components:\n\nData: Your foundation - the dataset you want to visualize\nAesthetic Mappings: How your data maps to visual properties\nGeometries: The shapes used to represent your data\nScales: How values are converted to visual properties\nThemes: The overall visual style\n\nLet’s break these down using real examples from Chinese development finance data.\n\n3.4.1 The Foundation: Data and Aesthetics\nFirst, let’s look at a simple plot showing the relationship between project size and year:\nlibrary(tidyverse)\nlibrary(chinadevfin3)\n\n# Get our data\nget_gcdf3_dataset() |&gt;\n  # Keep only recommended projects\n  filter(recommended_for_aggregates == \"Yes\") |&gt;\n  # Create the plot\n  ggplot(\n    aes(\n      x = commitment_year,\n      y = amount_constant_usd_2021,\n      color = flow_class\n    )\n  ) +\n  geom_point()\nLet’s break down what’s happening: 1. We start with our data (get_gcdf3_dataset()) 2. We map: - Years to the x-axis (commitment_year) - Amounts to the y-axis (amount_constant_usd_2021) - Flow class to color (flow_class)\n\n\n3.4.2 Common Aesthetic Mappings\nHere are the most common ways to map your variables to visual properties:\n[Insert aesthetic-mappings diagram here]\nYou’ll use these aesthetic mappings constantly in your work with Chinese development finance data. For example: - x/y for relationships between variables - color/fill for categories like sectors or flow types - size for amounts (in some plots)\n\n\n3.4.3 Choosing the Right Geom\nDifferent geoms serve different purposes. Here are some common scenarios in development finance data:\n\nTime trends:\n\ngeom_line() for smooth trends\ngeom_col() for year-by-year totals\n\nDistributions:\n\ngeom_histogram() for single variables\ngeom_boxplot() for comparing across groups\n\nRelationships:\n\ngeom_point() for scatter plots\ngeom_smooth() for trend lines\n\n\n[Insert common-geoms diagram here]\n\n\n3.4.4 Building in Layers\nLet’s create a more complex visualization by adding layers:\nget_gcdf3_dataset() |&gt;\n  filter(recommended_for_aggregates == \"Yes\") |&gt;\n  ggplot(\n    aes(x = commitment_year, \n        y = amount_constant_usd_2021)\n  ) +\n  # Add points\n  geom_point(\n    aes(color = flow_class),\n    alpha = 0.6\n  ) +\n  # Add trend line\n  geom_smooth(\n    method = \"loess\",\n    se = FALSE,\n    color = \"black\",\n    linewidth = 1\n  ) +\n  # Improve labels\n  labs(\n    title = \"Chinese Development Finance Over Time\",\n    subtitle = \"By Flow Class, 2000-2021\",\n    x = \"Year\",\n    y = \"Amount (2021 USD)\",\n    color = \"Flow Class\"\n  ) +\n  # Use a clean theme\n  theme_minimal()\nNote how we build the visualization step by step: 1. Start with the basic plot structure 2. Add points colored by flow class 3. Add a trend line 4. Improve the labels 5. Apply a theme",
+    "section": "3.4 Create An Initial Dataset",
+    "text": "3.4 Create An Initial Dataset\nIn week three you will how to transform your data. For now, we’ll do it for you. If you’re curious what’s happening in the code below, paste it into an LLM and ask it to explain what is happening step-by-step.\n\n# Helper function from Week 1\nto_billions &lt;- function(amount) {\n  amount / 10^9\n}\n\n# Create dataset for exploring project characteristics\ngcdf_project_features &lt;- get_gcdf3_dataset() |&gt;\n  filter(\n    recommended_for_aggregates == \"Yes\",\n    !is.na(source_quality_score), \n    !is.na(data_completeness_score)\n  ) |&gt;\n  mutate(\n    total_amount_bn = to_billions(amount_constant_usd_2021),\n    data_quality = source_quality_score + data_completeness_score\n  ) |&gt;\n  select(\n    total_amount_bn,\n    data_quality,\n    flow_class,\n    commitment_year,\n    total_source_count\n  )",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Week 2: Make Cool Charts, Right Away (Pre-Class)</span>"
     ]
   },
   {
-    "objectID": "week_2_pre_class.html#quick-theme-templates",
-    "href": "week_2_pre_class.html#quick-theme-templates",
+    "objectID": "week_2_pre_class.html#building-your-first-visualization",
+    "href": "week_2_pre_class.html#building-your-first-visualization",
     "title": "3  Week 2: Make Cool Charts, Right Away (Pre-Class)",
-    "section": "3.5 Quick Theme Templates",
-    "text": "3.5 Quick Theme Templates\nggplot2 comes with several built-in themes, and you can get more by installing theme packages. Here are some useful ones:\n# Install some theme packages\ninstall.packages(c(\"ggthemes\", \"hrbrthemes\"))\n\n# Examples of different themes\nlast_plot() + theme_minimal()     # Clean, minimal\nlast_plot() + theme_economist()   # Like The Economist\nlast_plot() + theme_wsj()        # Like Wall Street Journal",
-    "crumbs": [
-      "Part 1: Data Analysis Bootcamp",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Week 2: Make Cool Charts, Right Away (Pre-Class)</span>"
-    ]
-  },
-  {
-    "objectID": "week_2_pre_class.html#extension-packages",
-    "href": "week_2_pre_class.html#extension-packages",
-    "title": "3  Week 2: Make Cool Charts, Right Away (Pre-Class)",
-    "section": "3.6 Extension Packages",
-    "text": "3.6 Extension Packages\nThe ggplot2 ecosystem includes many useful extensions. Here are some you might find helpful:\n\ngganimate: For animated plots\nggrepel: For smart label placement\npatchwork: For combining multiple plots\n\nExample using ggrepel for better labels:\nlibrary(ggrepel)\n\nget_gcdf3_dataset() |&gt;\n  filter(\n    recommended_for_aggregates == \"Yes\",\n    amount_constant_usd_2021 &gt; 1e9  # Over $1B\n  ) |&gt;\n  ggplot(\n    aes(\n      x = commitment_year,\n      y = amount_constant_usd_2021,\n      label = recipient\n    )\n  ) +\n  geom_point() +\n  geom_text_repel() +  # Smart labels!\n  theme_minimal()",
-    "crumbs": [
-      "Part 1: Data Analysis Bootcamp",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Week 2: Make Cool Charts, Right Away (Pre-Class)</span>"
-    ]
-  },
-  {
-    "objectID": "week_2_pre_class.html#practice-exercises",
-    "href": "week_2_pre_class.html#practice-exercises",
-    "title": "3  Week 2: Make Cool Charts, Right Away (Pre-Class)",
-    "section": "3.7 Practice Exercises",
-    "text": "3.7 Practice Exercises\n\nUse Esquisse to create a visualization of Chinese development finance data. Export the code and try to understand each component.\nCreate a layered visualization showing:\n\nThe distribution of project sizes\nBroken down by sector\nWith appropriate labels and theme\n\nRecreate one of the visualizations from a recent AidData report (links provided in resources).",
-    "crumbs": [
-      "Part 1: Data Analysis Bootcamp",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Week 2: Make Cool Charts, Right Away (Pre-Class)</span>"
-    ]
-  },
-  {
-    "objectID": "week_2_pre_class.html#resources",
-    "href": "week_2_pre_class.html#resources",
-    "title": "3  Week 2: Make Cool Charts, Right Away (Pre-Class)",
-    "section": "3.8 Resources",
-    "text": "3.8 Resources\n\nggplot2 cheat sheet\nThe R Graph Gallery\nggplot2 extensions\nDesigning with Data (book)",
-    "crumbs": [
-      "Part 1: Data Analysis Bootcamp",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Week 2: Make Cool Charts, Right Away (Pre-Class)</span>"
-    ]
-  },
-  {
-    "objectID": "week_2_pre_class.html#next-steps",
-    "href": "week_2_pre_class.html#next-steps",
-    "title": "3  Week 2: Make Cool Charts, Right Away (Pre-Class)",
-    "section": "3.9 Next Steps",
-    "text": "3.9 Next Steps\nIn our in-class session, we’ll: 1. Review any questions about the grammar of graphics 2. Learn more about themes and scales 3. Practice creating publication-ready visualizations 4. Work on real examples from your own interests in the Chinese development finance data\nRemember: The goal isn’t to memorize every option, but to understand the general approach to building visualizations layer by layer. ```\nWould you like me to expand further on any of these sections or create specific examples for the in-class session?",
+    "section": "3.5 Building Your First Visualization",
+    "text": "3.5 Building Your First Visualization\nLet’s explore relationships between project size, data quality, and other features by building a visualization step by step. We’ll use Esquisse to create the plot visually, then examine the code it generates to understand how ggplot2 works.\n\n3.5.1 Step 1: Basic Scatter Plot\n\nIn RStudio, click Addins → ggplot2 builder\n\n\n\nSelect gcdf_project_features as your dataset\n\n\n\nCreate a basic scatter plot:\n\n\nDrag data_quality to x-axis\nDrag total_amount_bn to y-axis\nClick “Point” in the geometry menu\n\n\n\nClick the “Code” button at the bottom and copy the code\n\n\nTry running this code in R:\n\nggplot(gcdf_project_features) +\n  aes(x = data_quality, y = total_amount_bn) +\n  geom_point(colour = \"#112446\") +\n  theme_minimal()\n\nWarning: Removed 7286 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\nNow that you understand how Esquisse works, let’s build up our visualization step by step. Just follow the instructions at each stage, and remember to export and run the code to see how ggplot2 syntax matches your visual choices.\n\n\n3.5.2 Step 2: Add Color by Flow Class\nIn Esquisse, drag flow_class to the color box. Export and examine the new code:\n\nggplot(gcdf_project_features) +\n  aes(x = data_quality, \n      y = total_amount_bn,\n      color = flow_class) +\n  geom_point()\n\nWarning: Removed 7286 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\nNotice how color = flow_class was added inside aes(). In ggplot2, aes() is where we map data variables to visual properties.\n\n\n3.5.3 Step 3: Size by Source Count\nAdd a third dimension to our visualization by mapping point size to the number of sources: 1. Drag total_source_count to the size box 2. Export and examine the code:\n\nggplot(gcdf_project_features) +\n  aes(x = data_quality, \n      y = total_amount_bn,\n      color = flow_class,\n      size = total_source_count) +\n  geom_point()\n\nWarning: Removed 7286 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\nOur visualization now shows several relationships simultaneously: - Data quality (x-axis) - Project size (y-axis) - Number of sources (point size) - Flow class (color)\n\n\n3.5.4 Step 4: Dealing with Overlapping Points\nLooking at our plot, you can see many overlapping points. This happens because our data quality scores are whole numbers (0-10), so many projects have exactly the same score. We can fix this by switching to geom_jitter():\n\nggplot(gcdf_project_features) +\n  aes(x = data_quality, \n      y = total_amount_bn,\n      color = flow_class,\n      size = total_source_count) +\n  geom_jitter(width = 0.2) # Adds small random noise to spread points out\n\nWarning: Removed 7286 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat is jittering?\n\n\n\ngeom_jitter() adds a small amount of random noise to each point’s position. This helps us see overlapping points without changing the fundamental patterns in our data. The width parameter controls how much horizontal jittering to apply - we use a small value (0.2) to maintain the connection to the original data quality scores.",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Week 2: Make Cool Charts, Right Away (Pre-Class)</span>"
