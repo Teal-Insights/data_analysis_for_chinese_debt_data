@@ -265,7 +265,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#step-2-add-color-by-flow-class" id="toc-step-2-add-color-by-flow-class" class="nav-link" data-scroll-target="#step-2-add-color-by-flow-class"><span class="header-section-number">3.5.2</span> Step 2: Add Color by Flow Class</a></li>
   <li><a href="#step-3-size-by-source-count" id="toc-step-3-size-by-source-count" class="nav-link" data-scroll-target="#step-3-size-by-source-count"><span class="header-section-number">3.5.3</span> Step 3: Size by Source Count</a></li>
   <li><a href="#step-4-dealing-with-overlapping-points" id="toc-step-4-dealing-with-overlapping-points" class="nav-link" data-scroll-target="#step-4-dealing-with-overlapping-points"><span class="header-section-number">3.5.4</span> Step 4: Dealing with Overlapping Points</a></li>
+  <li><a href="#step-5-adding-clear-labels" id="toc-step-5-adding-clear-labels" class="nav-link" data-scroll-target="#step-5-adding-clear-labels"><span class="header-section-number">3.5.5</span> Step 5: Adding Clear Labels</a></li>
+  <li><a href="#step-6-making-project-sizes-more-visible" id="toc-step-6-making-project-sizes-more-visible" class="nav-link" data-scroll-target="#step-6-making-project-sizes-more-visible"><span class="header-section-number">3.5.6</span> Step 6: Making Project Sizes More Visible</a></li>
+  <li><a href="#step-7-clean-up-the-look" id="toc-step-7-clean-up-the-look" class="nav-link" data-scroll-target="#step-7-clean-up-the-look"><span class="header-section-number">3.5.7</span> Step 7: Clean Up the Look</a></li>
   </ul></li>
+  <li><a href="#understanding-the-grammar-of-graphics" id="toc-understanding-the-grammar-of-graphics" class="nav-link" data-scroll-target="#understanding-the-grammar-of-graphics"><span class="header-section-number">3.6</span> Understanding the Grammar of Graphics</a></li>
+  <li><a href="#the-tip-of-the-iceberg" id="toc-the-tip-of-the-iceberg" class="nav-link" data-scroll-target="#the-tip-of-the-iceberg"><span class="header-section-number">3.7</span> The Tip of the Iceberg</a>
+  <ul class="collapse">
+  <li><a href="#chart-types-and-their-geometries" id="toc-chart-types-and-their-geometries" class="nav-link" data-scroll-target="#chart-types-and-their-geometries"><span class="header-section-number">3.7.1</span> Chart Types and Their Geometries</a></li>
+  <li><a href="#making-adjustments-with-scales" id="toc-making-adjustments-with-scales" class="nav-link" data-scroll-target="#making-adjustments-with-scales"><span class="header-section-number">3.7.2</span> Making Adjustments with Scales</a></li>
+  <li><a href="#setting-the-look-with-themes" id="toc-setting-the-look-with-themes" class="nav-link" data-scroll-target="#setting-the-look-with-themes"><span class="header-section-number">3.7.3</span> Setting the Look with Themes</a></li>
+  </ul></li>
+  <li><a href="#resources-for-learning-more" id="toc-resources-for-learning-more" class="nav-link" data-scroll-target="#resources-for-learning-more"><span class="header-section-number">3.8</span> Resources for Learning More</a>
+  <ul class="collapse">
+  <li><a href="#quick-reference" id="toc-quick-reference" class="nav-link" data-scroll-target="#quick-reference"><span class="header-section-number">3.8.1</span> Quick Reference</a></li>
+  <li><a href="#official-documentation" id="toc-official-documentation" class="nav-link" data-scroll-target="#official-documentation"><span class="header-section-number">3.8.2</span> Official Documentation</a></li>
+  <li><a href="#in-depth-learning" id="toc-in-depth-learning" class="nav-link" data-scroll-target="#in-depth-learning"><span class="header-section-number">3.8.3</span> In-Depth Learning</a></li>
+  </ul></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps"><span class="header-section-number">3.9</span> Next Steps</a></li>
   </ul>
 </nav>
     </div>
@@ -406,10 +423,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In Esquisse, drag <code>flow_class</code> to the color box. Export and examine the new code:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gcdf_project_features) <span class="sc">+</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> data_quality, </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> total_amount_bn,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> flow_class) <span class="sc">+</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> data_quality,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> total_amount_bn,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> flow_class</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_hue</span>(<span class="at">direction =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 7286 rows containing missing values or values outside the scale range
 (`geom_point()`).</code></pre>
@@ -426,14 +447,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="step-3-size-by-source-count" class="level3" data-number="3.5.3">
 <h3 data-number="3.5.3" class="anchored" data-anchor-id="step-3-size-by-source-count"><span class="header-section-number">3.5.3</span> Step 3: Size by Source Count</h3>
-<p>Add a third dimension to our visualization by mapping point size to the number of sources: 1. Drag <code>total_source_count</code> to the size box 2. Export and examine the code:</p>
+<p>Add a third dimension to our visualization by mapping point size to the number of sources:</p>
+<ol type="1">
+<li>Drag <code>total_source_count</code> to the size box</li>
+<li>Export and examine the code:</li>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gcdf_project_features) <span class="sc">+</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> data_quality, </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> total_amount_bn,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> flow_class,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> total_source_count) <span class="sc">+</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> data_quality,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> total_amount_bn,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> flow_class,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> total_source_count</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_hue</span>(<span class="at">direction =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 7286 rows containing missing values or values outside the scale range
 (`geom_point()`).</code></pre>
@@ -446,18 +475,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Our visualization now shows several relationships simultaneously: - Data quality (x-axis) - Project size (y-axis) - Number of sources (point size) - Flow class (color)</p>
+<p>Our visualization now shows several relationships simultaneously:</p>
+<ul>
+<li>Data quality (x-axis)</li>
+<li>Project size (y-axis)</li>
+<li>Number of sources (point size)</li>
+<li>Flow class (color)</li>
+</ul>
 </section>
 <section id="step-4-dealing-with-overlapping-points" class="level3" data-number="3.5.4">
 <h3 data-number="3.5.4" class="anchored" data-anchor-id="step-4-dealing-with-overlapping-points"><span class="header-section-number">3.5.4</span> Step 4: Dealing with Overlapping Points</h3>
 <p>Looking at our plot, you can see many overlapping points. This happens because our data quality scores are whole numbers (0-10), so many projects have exactly the same score. We can fix this by switching to <code>geom_jitter()</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gcdf_project_features) <span class="sc">+</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> data_quality, </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> total_amount_bn,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> flow_class,</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> total_source_count) <span class="sc">+</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="co"># Adds small random noise to spread points out</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> data_quality,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> total_amount_bn,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> flow_class,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> total_source_count</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_hue</span>(<span class="at">direction =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 7286 rows containing missing values or values outside the scale range
 (`geom_point()`).</code></pre>
@@ -480,12 +519,331 @@ What is jittering?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><code>geom_jitter()</code> adds a small amount of random noise to each point’s position. This helps us see overlapping points without changing the fundamental patterns in our data. The <code>width</code> parameter controls how much horizontal jittering to apply - we use a small value (0.2) to maintain the connection to the original data quality scores.</p>
+<p><code>geom_jitter()</code> adds a small amount of random noise to each point’s position. This helps us see overlapping points without changing the fundamental patterns in our data.</p>
 </div>
 </div>
-
-
 </section>
+<section id="step-5-adding-clear-labels" class="level3" data-number="3.5.5">
+<h3 data-number="3.5.5" class="anchored" data-anchor-id="step-5-adding-clear-labels"><span class="header-section-number">3.5.5</span> Step 5: Adding Clear Labels</h3>
+<p>Now let’s make our plot more informative with proper labels. In the “Labels &amp; Title” tab:</p>
+<ol type="1">
+<li>Set Title to: “Larger Chinese Development Projects Have Better Documentation”</li>
+<li>Set Y-axis to: “Project Size (2021 USD, Billions)”</li>
+<li>Set X-axis to: “Data Quality Score”</li>
+<li>Set Color legend to: “Flow Class”</li>
+<li>Set Size legend to: “Number of Sources”</li>
+</ol>
+<p>Export and run the code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gcdf_project_features) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> data_quality,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> total_amount_bn,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> flow_class,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> total_source_count</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_hue</span>(<span class="at">direction =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Data Quality Score"</span>,</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Project Size (2021 USD,</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="st">    Billions)"</span>,</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Larger Chinese Development Projects Have Better Documentation"</span>,</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Flow Class"</span>,</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="st">"Number of Sources"</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 7286 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_pre_class_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="step-6-making-project-sizes-more-visible" class="level3" data-number="3.5.6">
+<h3 data-number="3.5.6" class="anchored" data-anchor-id="step-6-making-project-sizes-more-visible"><span class="header-section-number">3.5.6</span> Step 6: Making Project Sizes More Visible</h3>
+<p>Our plot has a problem: the huge range in project sizes (from millions to billions) makes it hard to see patterns. Let’s use a log scale for the y-axis:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gcdf_project_features) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> data_quality,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> total_amount_bn,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> flow_class,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> total_source_count</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_hue</span>(<span class="at">direction =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">"log10"</span>) <span class="sc">+</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Data Quality Score"</span>,</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Project Size (2021 USD,</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="st">    Billions)"</span>,</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Larger Chinese Development Projects Have Better Documentation"</span>,</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Flow Class"</span>,</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="st">"Number of Sources"</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 7286 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_pre_class_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why Use Log Scales?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Log scales are perfect for data that spans several orders of magnitude. They help us see patterns across both small and large values. In development finance, where projects can range from $1 million to $10 billion, log scales are essential for clear visualization.</p>
+</div>
+</div>
+</section>
+<section id="step-7-clean-up-the-look" class="level3" data-number="3.5.7">
+<h3 data-number="3.5.7" class="anchored" data-anchor-id="step-7-clean-up-the-look"><span class="header-section-number">3.5.7</span> Step 7: Clean Up the Look</h3>
+<p>Finally, let’s change the background. In Esquisse’s Theme tab, select “gray”. Here’s our final code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gcdf_project_features) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> data_quality,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> total_amount_bn,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> flow_class,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> total_source_count</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_hue</span>(<span class="at">direction =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">"log10"</span>) <span class="sc">+</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Data Quality Score"</span>,</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Project Size (2021 USD,</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="st">    Billions)"</span>,</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Larger Chinese Development Projects Have Better Documentation"</span>,</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Flow Class"</span>,</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="st">"Number of Sources"</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_gray</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 7286 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_pre_class_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="understanding-the-grammar-of-graphics" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="understanding-the-grammar-of-graphics"><span class="header-section-number">3.6</span> Understanding the Grammar of Graphics</h2>
+<p>What we’ve just created illustrates a powerful idea in data visualization: the Grammar of Graphics. Just as English grammar gives us rules for combining words into meaningful sentences, the Grammar of Graphics gives us rules for combining visual elements into meaningful plots.</p>
+<p>Let’s break down our visualization to see how this works:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gcdf_project_features) <span class="sc">+</span>                    <span class="co"># 1. Start with data</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(                                             <span class="co"># 2. Map data to visuals</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> data_quality,                              <span class="co">#    - x position</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> total_amount_bn,                           <span class="co">#    - y position</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> flow_class,                           <span class="co">#    - color</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> total_source_count                      <span class="co">#    - size</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span>                                  <span class="co"># 3. Choose how to display</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_hue</span>(<span class="at">direction =</span> <span class="dv">1</span>) <span class="sc">+</span>                 <span class="co"># 4. Adjust scales</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">"log10"</span>) <span class="sc">+</span>            <span class="co">#    - log scale for y</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(                                            <span class="co"># 5. Add labels</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Data Quality Score"</span>,</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Project Size (2021 USD, Billions)"</span>,</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Larger Chinese Development Projects Have Better Documentation"</span>,</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Flow Class"</span>,</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="st">"Number of Sources"</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_gray</span>()                                     <span class="co"># 6. Choose overall look</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 7286 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_pre_class_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Each element serves a specific purpose:</p>
+<ol type="1">
+<li><strong>Data</strong>: The foundation - what we want to visualize</li>
+<li><strong>Aesthetics</strong>: How data maps to visual properties (position, color, size)</li>
+<li><strong>Geometries</strong>: The shapes used to show the data (points, lines, bars)</li>
+<li><strong>Scales</strong>: How values are converted to visual properties</li>
+<li><strong>Labels</strong>: Help readers understand the visualization</li>
+<li><strong>Theme</strong>: The overall visual style</li>
+</ol>
+<p>Think of it like building with LEGOs:</p>
+<ul>
+<li>Your data provides the bricks</li>
+<li>Aesthetics determine how you’ll use each brick</li>
+<li>Geometries are the types of bricks</li>
+<li>Scales adjust the size and arrangement</li>
+<li>Labels explain what you’ve built</li>
+<li>Theme sets the overall style</li>
+</ul>
+<p>I’ll draft the connection and reorganize the common tools section to be more task-focused and intuitive:</p>
+</section>
+<section id="the-tip-of-the-iceberg" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="the-tip-of-the-iceberg"><span class="header-section-number">3.7</span> The Tip of the Iceberg</h2>
+<p>Understanding this grammar gives you access to ggplot2’s full power. While we’ve created one visualization, the same grammar can create virtually any plot you need. Here’s a preview of common tools you’ll use:</p>
+<section id="chart-types-and-their-geometries" class="level3" data-number="3.7.1">
+<h3 data-number="3.7.1" class="anchored" data-anchor-id="chart-types-and-their-geometries"><span class="header-section-number">3.7.1</span> Chart Types and Their Geometries</h3>
+<p>Geometries (geom_*) are the shapes we use to represent data. Think of them as different ways to draw your data points. Here are some common ones by task:</p>
+<p><strong>Time Series</strong> (showing changes over time):</p>
+<ul>
+<li><code>geom_line()</code>: Connect points with lines (for smooth trends)</li>
+<li><code>geom_col()</code>: Use bars (for yearly totals)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Annual lending trends</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data) <span class="sc">+</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> total_lending) <span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()  <span class="co"># or geom_col() for bars</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Distributions</strong> (showing spread of values):</p>
+<ul>
+<li><code>geom_histogram()</code>: Show frequency of values</li>
+<li><code>geom_boxplot()</code>: Show median, quartiles, and outliers</li>
+<li><code>geom_density()</code>: Show smooth distribution shape</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Project size distribution</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> amount_constant_usd_2021_bn) <span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Relationships</strong> (showing how variables connect):</p>
+<ul>
+<li><code>geom_point()</code>: Scatter plots</li>
+<li><code>geom_jitter()</code>: Scattered points with small random offsets</li>
+<li><code>geom_smooth()</code>: Add trend lines</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Project size vs completion time</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> amount_constant_usd_2021_bn, <span class="at">y =</span> implementation_years) <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="making-adjustments-with-scales" class="level3" data-number="3.7.2">
+<h3 data-number="3.7.2" class="anchored" data-anchor-id="making-adjustments-with-scales"><span class="header-section-number">3.7.2</span> Making Adjustments with Scales</h3>
+<p>Scales control how your data is converted to visual properties. They’re like the adjustments on a camera:</p>
+<p><strong>Numeric Scales</strong>:</p>
+<ul>
+<li><code>scale_y_log10()</code>: Handle data spanning many magnitudes</li>
+<li><code>scale_x_continuous(limits = c(0, 100))</code>: Set axis ranges</li>
+<li><code>scale_size_continuous()</code>: Control how numbers map to point sizes</li>
+</ul>
+<p><strong>Color Scales</strong>:</p>
+<ul>
+<li><code>scale_color_brewer()</code>: Color-blind friendly palettes</li>
+<li><code>scale_fill_manual()</code>: Choose your own colors</li>
+<li><code>scale_color_viridis_d()</code>: Perceptually uniform colors</li>
+</ul>
+</section>
+<section id="setting-the-look-with-themes" class="level3" data-number="3.7.3">
+<h3 data-number="3.7.3" class="anchored" data-anchor-id="setting-the-look-with-themes"><span class="header-section-number">3.7.3</span> Setting the Look with Themes</h3>
+<p>Themes control the overall appearance of your plot, like a visual style guide:</p>
+<ul>
+<li><code>theme_gray()</code>: The ggplot2 default, good for exploration</li>
+<li><code>theme_minimal()</code>: Clean look, great for presentations</li>
+<li><code>theme_classic()</code>: Traditional scientific style</li>
+<li><code>theme_bw()</code>: Black and white, printer-friendly</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Choosing the Right Tools
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Use <code>geom_line()</code> when order matters (like time series)</li>
+<li>Use <code>geom_col()</code> for bar charts</li>
+<li>Use <code>geom_histogram()</code> to see distributions</li>
+<li>Use <code>geom_boxplot()</code> to compare distributions across groups</li>
+<li>Use <code>geom_point()</code> to show x &amp; y relationships</li>
+<li>Use <code>geom_jitter()</code> to show relationships with lots of overlapping points</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="resources-for-learning-more" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="resources-for-learning-more"><span class="header-section-number">3.8</span> Resources for Learning More</h2>
+<p>The best way to learn ggplot2 is to start creating visualizations for your own work. When you need help, here are some excellent resources:</p>
+<section id="quick-reference" class="level3" data-number="3.8.1">
+<h3 data-number="3.8.1" class="anchored" data-anchor-id="quick-reference"><span class="header-section-number">3.8.1</span> Quick Reference</h3>
+<ul>
+<li><a href="https://rstudio.github.io/cheatsheets/data-visualization.pdf">ggplot2 cheatsheet</a>: A two-page visual reference of ggplot2’s most useful features. Keep this handy!</li>
+</ul>
+</section>
+<section id="official-documentation" class="level3" data-number="3.8.2">
+<h3 data-number="3.8.2" class="anchored" data-anchor-id="official-documentation"><span class="header-section-number">3.8.2</span> Official Documentation</h3>
+<ul>
+<li><a href="https://ggplot2.tidyverse.org/articles/ggplot2.html">Getting Started with ggplot2</a>: Clear introduction to ggplot2’s core concepts</li>
+<li><a href="https://ggplot2.tidyverse.org/reference/index.html">Function reference</a>: Detailed documentation of every ggplot2 function</li>
+</ul>
+</section>
+<section id="in-depth-learning" class="level3" data-number="3.8.3">
+<h3 data-number="3.8.3" class="anchored" data-anchor-id="in-depth-learning"><span class="header-section-number">3.8.3</span> In-Depth Learning</h3>
+<ul>
+<li><a href="https://r4ds.hadley.nz/data-visualize">Data Visualization chapter</a> in R for Data Science: Comprehensive introduction with lots of examples</li>
+<li><a href="https://youtu.be/IWXcw6NHM6E?si=96LmHNHTskfFDuKN">Beautiful Charts with R &amp; ggplot2</a>: Step-by-step video tutorial by Albert Rapp, perfect if you prefer learning by watching</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learning Strategy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Start simple - get something on the screen</li>
+<li>Add complexity one layer at a time</li>
+<li>Use the cheatsheet to discover new features</li>
+<li>Look up details in the documentation when needed</li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+<section id="next-steps" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="next-steps"><span class="header-section-number">3.9</span> Next Steps</h2>
+<p>In our class session, we’ll: 1. Review any questions about the grammar of graphics 2. Learn more about themes and scales 3. Practice creating publication-ready visualizations 4. Work on real examples from your own interests in the Chinese development finance data</p>
+<p>Remember: The goal isn’t to memorize every option, but to understand the general approach to building visualizations layer by layer.</p>
+
+
 </section>
 
 </main> <!-- /main -->

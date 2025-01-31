@@ -103,10 +103,14 @@ In Esquisse, drag `flow_class` to the color box. Export and examine the new code
 
 ```{r}
 ggplot(gcdf_project_features) +
-  aes(x = data_quality, 
-      y = total_amount_bn,
-      color = flow_class) +
-  geom_point()
+  aes(
+    x = data_quality,
+    y = total_amount_bn,
+    colour = flow_class
+  ) +
+  geom_point() +
+  scale_color_hue(direction = 1) +
+  theme_minimal()
 ```
 
 Notice how `color = flow_class` was added inside `aes()`. In ggplot2, `aes()` is where we map data variables to visual properties.
@@ -114,19 +118,26 @@ Notice how `color = flow_class` was added inside `aes()`. In ggplot2, `aes()` is
 ### Step 3: Size by Source Count
 
 Add a third dimension to our visualization by mapping point size to the number of sources:
+
 1. Drag `total_source_count` to the size box
 2. Export and examine the code:
 
 ```{r}
 ggplot(gcdf_project_features) +
-  aes(x = data_quality, 
-      y = total_amount_bn,
-      color = flow_class,
-      size = total_source_count) +
-  geom_point()
+  aes(
+    x = data_quality,
+    y = total_amount_bn,
+    colour = flow_class,
+    size = total_source_count
+  ) +
+  geom_point() +
+  scale_color_hue(direction = 1) +
+  theme_minimal()
+
 ```
 
 Our visualization now shows several relationships simultaneously:
+
 - Data quality (x-axis)
 - Project size (y-axis)
 - Number of sources (point size)
@@ -138,15 +149,276 @@ Looking at our plot, you can see many overlapping points. This happens because o
 
 ```{r}
 ggplot(gcdf_project_features) +
-  aes(x = data_quality, 
-      y = total_amount_bn,
-      color = flow_class,
-      size = total_source_count) +
-  geom_jitter(width = 0.2) # Adds small random noise to spread points out
+  aes(
+    x = data_quality,
+    y = total_amount_bn,
+    colour = flow_class,
+    size = total_source_count
+  ) +
+  geom_jitter() +
+  scale_color_hue(direction = 1) +
+  theme_minimal()
 ```
 
 ::: callout-tip
 ## What is jittering?
-`geom_jitter()` adds a small amount of random noise to each point's position. This helps us see overlapping points without changing the fundamental patterns in our data. The `width` parameter controls how much horizontal jittering to apply - we use a small value (0.2) to maintain the connection to the original data quality scores.
+`geom_jitter()` adds a small amount of random noise to each point's position. This helps us see overlapping points without changing the fundamental patterns in our data. 
 :::
 
+### Step 5: Adding Clear Labels
+
+Now let's make our plot more informative with proper labels. In the "Labels & Title" tab:
+
+1. Set Title to: "Larger Chinese Development Projects Have Better Documentation"
+2. Set Y-axis to: "Project Size (2021 USD, Billions)"
+3. Set X-axis to: "Data Quality Score"
+4. Set Color legend to: "Flow Class"
+5. Set Size legend to: "Number of Sources"
+
+Export and run the code:
+
+```{r}
+ggplot(gcdf_project_features) +
+  aes(
+    x = data_quality,
+    y = total_amount_bn,
+    colour = flow_class,
+    size = total_source_count
+  ) +
+  geom_jitter() +
+  scale_color_hue(direction = 1) +
+  labs(
+    x = "Data Quality Score",
+    y = "Project Size (2021 USD,
+    Billions)",
+    title = "Larger Chinese Development Projects Have Better Documentation",
+    color = "Flow Class",
+    size = "Number of Sources"
+  ) +
+  theme_minimal()
+
+```
+
+### Step 6: Making Project Sizes More Visible
+
+Our plot has a problem: the huge range in project sizes (from millions to billions) makes it hard to see patterns. Let's use a log scale for the y-axis:
+
+```{r}
+ggplot(gcdf_project_features) +
+  aes(
+    x = data_quality,
+    y = total_amount_bn,
+    colour = flow_class,
+    size = total_source_count
+  ) +
+  geom_jitter() +
+  scale_color_hue(direction = 1) +
+  scale_y_continuous(trans = "log10") +
+  labs(
+    x = "Data Quality Score",
+    y = "Project Size (2021 USD,
+    Billions)",
+    title = "Larger Chinese Development Projects Have Better Documentation",
+    color = "Flow Class",
+    size = "Number of Sources"
+  ) +
+  theme_minimal()
+```
+
+::: callout-tip
+## Why Use Log Scales?
+Log scales are perfect for data that spans several orders of magnitude. They help us see patterns across both small and large values. In development finance, where projects can range from $1 million to $10 billion, log scales are essential for clear visualization.
+:::
+
+### Step 7: Clean Up the Look
+
+Finally, let's change the background. In Esquisse's Theme tab, select "gray". Here's our final code:
+
+```{r}
+ggplot(gcdf_project_features) +
+  aes(
+    x = data_quality,
+    y = total_amount_bn,
+    colour = flow_class,
+    size = total_source_count
+  ) +
+  geom_jitter() +
+  scale_color_hue(direction = 1) +
+  scale_y_continuous(trans = "log10") +
+  labs(
+    x = "Data Quality Score",
+    y = "Project Size (2021 USD,
+    Billions)",
+    title = "Larger Chinese Development Projects Have Better Documentation",
+    color = "Flow Class",
+    size = "Number of Sources"
+  ) +
+  theme_gray()
+```
+
+## Understanding the Grammar of Graphics
+
+What we've just created illustrates a powerful idea in data visualization: the Grammar of Graphics. Just as English grammar gives us rules for combining words into meaningful sentences, the Grammar of Graphics gives us rules for combining visual elements into meaningful plots.
+
+Let's break down our visualization to see how this works:
+
+```{r}
+ggplot(gcdf_project_features) +                    # 1. Start with data
+  aes(                                             # 2. Map data to visuals
+    x = data_quality,                              #    - x position
+    y = total_amount_bn,                           #    - y position
+    colour = flow_class,                           #    - color
+    size = total_source_count                      #    - size
+  ) +
+  geom_jitter() +                                  # 3. Choose how to display
+  scale_color_hue(direction = 1) +                 # 4. Adjust scales
+  scale_y_continuous(trans = "log10") +            #    - log scale for y
+  labs(                                            # 5. Add labels
+    x = "Data Quality Score",
+    y = "Project Size (2021 USD, Billions)",
+    title = "Larger Chinese Development Projects Have Better Documentation",
+    color = "Flow Class",
+    size = "Number of Sources"
+  ) +
+  theme_gray()                                     # 6. Choose overall look
+```
+
+Each element serves a specific purpose:
+
+1. **Data**: The foundation - what we want to visualize
+2. **Aesthetics**: How data maps to visual properties (position, color, size)
+3. **Geometries**: The shapes used to show the data (points, lines, bars)
+4. **Scales**: How values are converted to visual properties
+5. **Labels**: Help readers understand the visualization
+6. **Theme**: The overall visual style
+
+Think of it like building with LEGOs:
+
+- Your data provides the bricks
+- Aesthetics determine how you'll use each brick
+- Geometries are the types of bricks
+- Scales adjust the size and arrangement
+- Labels explain what you've built
+- Theme sets the overall style
+
+
+I'll draft the connection and reorganize the common tools section to be more task-focused and intuitive:
+
+## The Tip of the Iceberg
+
+Understanding this grammar gives you access to ggplot2's full power. While we've created one visualization, the same grammar can create virtually any plot you need. Here's a preview of common tools you'll use:
+
+### Chart Types and Their Geometries
+
+Geometries (geom_*) are the shapes we use to represent data. Think of them as different ways to draw your data points. Here are some common ones by task:
+
+**Time Series** (showing changes over time):
+
+- `geom_line()`: Connect points with lines (for smooth trends)
+- `geom_col()`: Use bars (for yearly totals)
+
+```{r}
+#| eval: false
+# Example: Annual lending trends
+ggplot(data) + 
+  aes(x = year, y = total_lending) +
+  geom_line()  # or geom_col() for bars
+```
+
+**Distributions** (showing spread of values):
+
+- `geom_histogram()`: Show frequency of values
+- `geom_boxplot()`: Show median, quartiles, and outliers
+- `geom_density()`: Show smooth distribution shape
+
+```{r}
+#| eval: false
+# Example: Project size distribution
+ggplot(data) +
+  aes(x = amount_constant_usd_2021_bn) +
+  geom_histogram()
+```
+
+**Relationships** (showing how variables connect):
+
+- `geom_point()`: Scatter plots
+- `geom_jitter()`: Scattered points with small random offsets
+- `geom_smooth()`: Add trend lines
+
+
+```{r}
+#| eval: false
+# Example: Project size vs completion time
+ggplot(data) +
+  aes(x = amount_constant_usd_2021_bn, y = implementation_years) +
+  geom_point()
+```
+
+### Making Adjustments with Scales
+
+Scales control how your data is converted to visual properties. They're like the adjustments on a camera:
+
+**Numeric Scales**:
+
+- `scale_y_log10()`: Handle data spanning many magnitudes
+- `scale_x_continuous(limits = c(0, 100))`: Set axis ranges
+- `scale_size_continuous()`: Control how numbers map to point sizes
+
+**Color Scales**:
+
+- `scale_color_brewer()`: Color-blind friendly palettes
+- `scale_fill_manual()`: Choose your own colors
+- `scale_color_viridis_d()`: Perceptually uniform colors
+
+### Setting the Look with Themes
+
+Themes control the overall appearance of your plot, like a visual style guide:
+
+- `theme_gray()`: The ggplot2 default, good for exploration
+- `theme_minimal()`: Clean look, great for presentations
+- `theme_classic()`: Traditional scientific style
+- `theme_bw()`: Black and white, printer-friendly
+
+::: callout-tip
+## Choosing the Right Tools
+- Use `geom_line()` when order matters (like time series)
+- Use `geom_col()` for bar charts
+- Use `geom_histogram()` to see distributions
+- Use `geom_boxplot()` to compare distributions across groups
+- Use `geom_point()` to show x & y relationships
+- Use `geom_jitter()` to show relationships with lots of overlapping points
+:::
+
+
+## Resources for Learning More
+
+The best way to learn ggplot2 is to start creating visualizations for your own work. When you need help, here are some excellent resources:
+
+### Quick Reference
+- [ggplot2 cheatsheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf): A two-page visual reference of ggplot2's most useful features. Keep this handy!
+
+### Official Documentation
+- [Getting Started with ggplot2](https://ggplot2.tidyverse.org/articles/ggplot2.html): Clear introduction to ggplot2's core concepts
+- [Function reference](https://ggplot2.tidyverse.org/reference/index.html): Detailed documentation of every ggplot2 function
+
+### In-Depth Learning
+- [Data Visualization chapter](https://r4ds.hadley.nz/data-visualize) in R for Data Science: Comprehensive introduction with lots of examples
+- [Beautiful Charts with R & ggplot2](https://youtu.be/IWXcw6NHM6E?si=96LmHNHTskfFDuKN): Step-by-step video tutorial by Albert Rapp, perfect if you prefer learning by watching
+
+::: callout-tip
+## Learning Strategy
+1. Start simple - get something on the screen
+2. Add complexity one layer at a time
+3. Use the cheatsheet to discover new features
+4. Look up details in the documentation when needed
+:::
+
+## Next Steps
+
+In our class session, we'll:
+1. Review any questions about the grammar of graphics
+2. Learn more about themes and scales
+3. Practice creating publication-ready visualizations
+4. Work on real examples from your own interests in the Chinese development finance data
+
+Remember: The goal isn't to memorize every option, but to understand the general approach to building visualizations layer by layer.
