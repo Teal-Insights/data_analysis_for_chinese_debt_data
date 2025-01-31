@@ -1,37 +1,88 @@
 # Week 2: Make Cool Charts, Right Away (Pre-Class) {#sec-week2_pre_class}
 
+This pre-class preparation should take about 45 minutes to complete.
+
 ## Overview
 
-This week we'll learn how to create compelling visualizations with `{ggplot2}`. Instead of starting with theory, we'll dive right in using Esquisse, a point-and-click interface. By making increasingly complex charts and examining the code they generate, you'll start to understand how ggplot2 works.
+Before we dive into code, let's understand what we're about to learn. `{ggplot2}` is an incredibly powerful data visualization tool used by data journalists at the Financial Times, The Economist, and other leading publications. With it, you can create virtually any visualization you can imagine - from simple scatter plots to complex, publication-ready graphics. And it's completely free.
+
+While it takes practice to create professional-level visualizations, the basics are surprisingly accessible. The secret lies in understanding ggplot2's underlying system: the Grammar of Graphics. Just as you can create endless sentences from basic grammar rules, you can create endless visualizations by combining basic graphical elements.
+
+Today, we'll start by building this intuition. Instead of getting bogged down in syntax, we'll use a point-and-click interface called Esquisse to create increasingly sophisticated visualizations. As we do this, we'll examine the code it generates to understand how ggplot2 builds plots layer by layer.
 
 ## Learning Objectives
 
-By completing this pre-class work, you will be able to: 1. Create basic visualizations using Esquisse's point-and-click interface 2. Understand how aesthetic mappings control visual features 3. See how ggplot2 code relates to visual choices 4. Begin to read and understand ggplot2 code
+By completing this pre-class work, you will:
+
+1.  Learn to create visualizations using Esquisse's point-and-click interface
+2.  Understand how ggplot2 builds plots by layering:
+    -   Data
+    -   Geometric shapes (points, lines, bars)
+    -   Visual mappings (color, size, position)
+    -   Scales
+    -   Labels and themes
+3.  Know where to find help and resources for continued learning
+
+::: callout-tip
+## Using AI to Learn ggplot2
+
+Large Language Models (LLMs) like ChatGPT and Claude are excellent learning companions for ggplot2. You can:
+
+1. **Get Code Explanations**:
+   ```r
+   # Ask: "Can you explain what each line of this code does?"
+   ggplot(data) +
+     aes(x = year, y = amount) +
+     geom_point()
+   ```
+
+2. **Understand Concepts**:
+
+- "Why do we use + instead of |> in ggplot2?"
+- "What's the difference between color and fill?"
+- "When should I use geom_bar() vs geom_col()?"
+
+
+3. **Get Visualization Suggestions**:
+
+- "I want to show the distribution of project sizes by region. What's the best way to visualize this?"
+- "How can I make this plot more readable?"
+
+
+4. **Debug Issues**:
+
+- Share your code and error messages
+- Ask for suggestions to improve your plots
+:::
+
 
 ## Setup
 
-First, let's install Esquisse, load our libraries, and prepare our data.
+Let's get our workspace ready. First, create a new Quarto file to use as your lab notebook:
 
-Create a quarto file to use as a lab notebook, and save it in `week_2/R`.
+1.  In RStudio, click File → New File → Quarto Document
+2.  Save it as `week_2_visualization_preclass.qmd` in your `week_2/R` folder
 
-Install esquisse:
+Next, we'll install Esquisse, a tool that will help us learn ggplot2 visually:
 
 ```{r}
 #| eval: false
 pak::pkg_install("esquisse")
 ```
 
-Next we'll load the packages we'll be using in this session.
+Now load the packages we'll need:
 
 ```{r}
-library(tidyverse)      # Data analysis tools, including ggplot2
+library(tidyverse)    # Core data science tools, including ggplot2
 library(chinadevfin3) # GCDF 3.0 data
-library(esquisse)     # ggplot2 point-and-click add-in
+library(esquisse)     # ggplot2 point-and-click interface
 ```
 
 ## Create An Initial Dataset
 
-In week three you will how to transform your data. For now, we'll do it for you. If you're curious what's happening in the code below, paste it into an LLM and ask it to explain what is happening step-by-step.
+Before we start visualizing, let's prepare some interesting data to work with. The code below creates a dataset that combines project sizes, data quality scores, and other features that might help us understand patterns in Chinese development finance.
+
+Don't worry if the data preparation code looks complex - in Week 3, you'll learn how to transform data like this. For now, just run the code:
 
 ```{r}
 
@@ -58,35 +109,41 @@ gcdf_project_features <- get_gcdf3_dataset() |>
     commitment_year,
     total_source_count
   )
+
+gcdf_project_features
 ```
+
+::: callout-tip
+Curious what this code does? Paste it into ChatGPT or Claude and ask them to explain it step by step. Understanding data preparation will be important later, but for now, let's focus on visualization!
+:::
 
 ## Building Your First Visualization
 
-Let's explore relationships between project size, data quality, and other features by building a visualization step by step. We'll use Esquisse to create the plot visually, then examine the code it generates to understand how ggplot2 works.
+Let's start by exploring some interesting relationships in Chinese development finance data. Does project size relate to data quality? Do different types of flows show different patterns? We'll build a visualization step by step to find out.
 
 ### Step 1: Basic Scatter Plot
 
-1.  In RStudio, click Addins → ggplot2 builder
+1.  In RStudio, click Addins → ggplot2 builder (Esquisse)
 
 ![](images/week2_esquisse_addin.png){fig-alt="Esquisse R Studio Dropdown"}
 
-2.  Select `gcdf_project_features` as your dataset
+2.  When prompted, select `gcdf_project_features` as your dataset
 
 ![](images/week2_esquisse_data_select.png){fig-alt="Select dataset in esquisse addin"}
 
-3.  Create a basic scatter plot:
+3.  Let's create a basic scatter plot to start exploring relationships:
 
 -   Drag `data_quality` to x-axis
 -   Drag `total_amount_bn` to y-axis
--   Click "Point" in the geometry menu
+-   Click "Point" as the chart type in the top left
 
 ![](images/week2_esquisse_aesthetics.png){fig-alt="Select esquisse aesthetic mappings"}
 
-4.  Click the "Code" button at the bottom and copy the code
+4.  At the bottom of the Esquisse window, click "Code" to see what ggplot2 code creates this plot
 
 ![](images/week2_esquisse_copy_code.png){fig-alt="esquisse copy code"}
 
-Try running this code in R:
+Copy and run this code in your Quarto document:
 
 ```{r}
 ggplot(gcdf_project_features) +
@@ -95,13 +152,47 @@ ggplot(gcdf_project_features) +
   theme_minimal()
 ```
 
-Now that you understand how Esquisse works, let's build up our visualization step by step. Just follow the instructions at each stage, and remember to export and run the code to see how ggplot2 syntax matches your visual choices.
+You've just created your first ggplot2 visualization! While simple, this already shows us something interesting: there seems to be a relationship between project size and data quality. Let's make this visualization more informative by adding more dimensions to our data.
+
+::: callout-note
+## About Those Warnings
+You'll see warnings like this:
+```
+Warning: Removed 7286 rows containing missing values or values outside the scale range (`geom_point()`).
+```
+
+Don't worry! This just means some projects had missing data or values that couldn't be plotted. This is normal when working with real-world data, especially financial data where we often have incomplete information.
+
+If you want to hide these warnings in your documents, add this to the top of your code chunk:
+```r
+#| warning: false
+```
+
+For example:
+````markdown
+```{{r}}
+#| warning: false
+ggplot(gcdf_project_features) +
+  aes(x = data_quality, y = total_amount_bn) +
+  geom_point()
+```
+````
+:::
 
 ### Step 2: Add Color by Flow Class
 
-In Esquisse, drag `flow_class` to the color box. Export and examine the new code:
+::: callout-tip
+## A Smoother Workflow
+
+Now that you understand how to use Esquisse, stay in the Esquisse window as we add features. Each time we enhance our plot: 1. Make the change in Esquisse 2. Look at the code it generates (using the Code button) 3. Compare it to our code examples & outputs below
+
+This way you can experiment freely without having to restart Esquisse for each change. All the code is in this document for when you want to recreate these visualizations later.
+:::
+
+In Esquisse, drag `flow_class` to the color box. When you do this, notice how the code changes:
 
 ```{r}
+#|warning: false
 ggplot(gcdf_project_features) +
   aes(
     x = data_quality,
@@ -113,16 +204,14 @@ ggplot(gcdf_project_features) +
   theme_minimal()
 ```
 
-Notice how `color = flow_class` was added inside `aes()`. In ggplot2, `aes()` is where we map data variables to visual properties.
+Notice how `color = flow_class` was added inside `aes()`. In ggplot2, `aes()` is where we map data variables to visual properties. Now our plot reveals not just the relationship between project size and data quality, but also shows how different types of flows (ODA-like, OOF-like, etc.) might have different patterns.
 
 ### Step 3: Size by Source Count
 
-Add a third dimension to our visualization by mapping point size to the number of sources:
-
-1. Drag `total_source_count` to the size box
-2. Export and examine the code:
+Let's add another dimension by varying point sizes. In Esquisse, drag `total_source_count` to the size box. The code will now look like this:
 
 ```{r}
+#|warning: false
 ggplot(gcdf_project_features) +
   aes(
     x = data_quality,
@@ -133,21 +222,20 @@ ggplot(gcdf_project_features) +
   geom_point() +
   scale_color_hue(direction = 1) +
   theme_minimal()
-
 ```
 
-Our visualization now shows several relationships simultaneously:
+Our visualization now shows several relationships simultaneously: - Data quality (x-axis) - Project size (y-axis) - Number of sources (point size) - Flow class (color)
 
-- Data quality (x-axis)
-- Project size (y-axis)
-- Number of sources (point size)
-- Flow class (color)
+Look at how larger dots tend to appear toward the right side of the plot. This suggests that projects with more sources tend to have better documentation. That makes sense.
 
 ### Step 4: Dealing with Overlapping Points
 
-Looking at our plot, you can see many overlapping points. This happens because our data quality scores are whole numbers (0-10), so many projects have exactly the same score. We can fix this by switching to `geom_jitter()`:
+You might notice that many points overlap, especially at certain data quality scores. This happens because our data quality scores are whole numbers (0-10), so many projects have exactly the same score.
+
+In Esquisse, look at the different geometry options on the left. Instead of the regular point plot, try the "jitter" option. This adds small random offsets to each point, making overlapping points visible. Here's the code it generates:
 
 ```{r}
+#|warning: false
 ggplot(gcdf_project_features) +
   aes(
     x = data_quality,
@@ -162,22 +250,18 @@ ggplot(gcdf_project_features) +
 
 ::: callout-tip
 ## What is jittering?
-`geom_jitter()` adds a small amount of random noise to each point's position. This helps us see overlapping points without changing the fundamental patterns in our data. 
+
+`geom_jitter()` adds a small amount of random noise to each point's position. This helps us see overlapping points without changing the fundamental patterns in our data. It's particularly useful when you have: - Whole number data (like our quality scores) - Many observations with the same values - Dense clusters of points
 :::
 
 ### Step 5: Adding Clear Labels
 
-Now let's make our plot more informative with proper labels. In the "Labels & Title" tab:
+Now let's make our plot more informative for our audience. In Esquisse's "Labels & Title" tab, add these labels: - Title: "Larger Chinese Development Projects Have Better Documentation" - X-axis: "Data Quality Score" - Y-axis: "Project Size (2021 USD, Billions)" - Color legend: "Flow Class" - Size legend: "Number of Sources"
 
-1. Set Title to: "Larger Chinese Development Projects Have Better Documentation"
-2. Set Y-axis to: "Project Size (2021 USD, Billions)"
-3. Set X-axis to: "Data Quality Score"
-4. Set Color legend to: "Flow Class"
-5. Set Size legend to: "Number of Sources"
-
-Export and run the code:
+The code will now include proper labels:
 
 ```{r}
+#|warning: false
 ggplot(gcdf_project_features) +
   aes(
     x = data_quality,
@@ -189,21 +273,22 @@ ggplot(gcdf_project_features) +
   scale_color_hue(direction = 1) +
   labs(
     x = "Data Quality Score",
-    y = "Project Size (2021 USD,
-    Billions)",
+    y = "Project Size (2021 USD, Billions)",
     title = "Larger Chinese Development Projects Have Better Documentation",
     color = "Flow Class",
     size = "Number of Sources"
   ) +
   theme_minimal()
-
 ```
 
 ### Step 6: Making Project Sizes More Visible
 
-Our plot has a problem: the huge range in project sizes (from millions to billions) makes it hard to see patterns. Let's use a log scale for the y-axis:
+Our plot still has a challenge: the huge range in project sizes (from millions to billions) makes it hard to see patterns. Small projects cluster at the bottom while large projects stretch the y-axis. This is a common issue when values span several orders of magnitude.
+
+We can fix this using a logarithmic scale. In Esquisse's "Axes" tab, look for the y-axis options and select "log10". Here's what the code looks like:
 
 ```{r}
+#|warning: false
 ggplot(gcdf_project_features) +
   aes(
     x = data_quality,
@@ -216,8 +301,7 @@ ggplot(gcdf_project_features) +
   scale_y_continuous(trans = "log10") +
   labs(
     x = "Data Quality Score",
-    y = "Project Size (2021 USD,
-    Billions)",
+    y = "Project Size (2021 USD, Billions, Log Scale)",
     title = "Larger Chinese Development Projects Have Better Documentation",
     color = "Flow Class",
     size = "Number of Sources"
@@ -227,14 +311,18 @@ ggplot(gcdf_project_features) +
 
 ::: callout-tip
 ## Why Use Log Scales?
-Log scales are perfect for data that spans several orders of magnitude. They help us see patterns across both small and large values. In development finance, where projects can range from $1 million to $10 billion, log scales are essential for clear visualization.
+
+Log scales are perfect for data that spans several orders of magnitude. They help us see patterns across both small and large values. In Chinese lending, where projects can range from \$1 million to \$10 billion, log scales are essential for clear visualization.
+
+Notice how the pattern is much clearer now: larger projects (higher on the y-axis) tend to have higher data quality scores (further right), regardless of flow class.
 :::
 
-### Step 7: Clean Up the Look
+### Step 7: Changing the Look
 
-Finally, let's change the background. In Esquisse's Theme tab, select "gray". Here's our final code:
+Finally, let's try a different theme. In Esquisse's Theme tab, switch from "minimal" to "gray". This will give us a slightly different look:
 
 ```{r}
+#|warning: false
 ggplot(gcdf_project_features) +
   aes(
     x = data_quality,
@@ -247,8 +335,7 @@ ggplot(gcdf_project_features) +
   scale_y_continuous(trans = "log10") +
   labs(
     x = "Data Quality Score",
-    y = "Project Size (2021 USD,
-    Billions)",
+    y = "Project Size (2021 USD, Billions, Log Scale)",
     title = "Larger Chinese Development Projects Have Better Documentation",
     color = "Flow Class",
     size = "Number of Sources"
@@ -260,9 +347,10 @@ ggplot(gcdf_project_features) +
 
 What we've just created illustrates a powerful idea in data visualization: the Grammar of Graphics. Just as English grammar gives us rules for combining words into meaningful sentences, the Grammar of Graphics gives us rules for combining visual elements into meaningful plots.
 
-Let's break down our visualization to see how this works:
+Let's break down our final visualization to understand each component:
 
 ```{r}
+#|warning: false
 ggplot(gcdf_project_features) +                    # 1. Start with data
   aes(                                             # 2. Map data to visuals
     x = data_quality,                              #    - x position
@@ -283,142 +371,300 @@ ggplot(gcdf_project_features) +                    # 1. Start with data
   theme_gray()                                     # 6. Choose overall look
 ```
 
-Each element serves a specific purpose:
+Think of each component as answering a specific question:
 
-1. **Data**: The foundation - what we want to visualize
-2. **Aesthetics**: How data maps to visual properties (position, color, size)
-3. **Geometries**: The shapes used to show the data (points, lines, bars)
-4. **Scales**: How values are converted to visual properties
-5. **Labels**: Help readers understand the visualization
-6. **Theme**: The overall visual style
+1.  **Data**: What are we visualizing?
+    -   `ggplot(gcdf_project_features)`
+    -   Like choosing your ingredients before cooking
+2.  **Aesthetics**: How should data map to visual properties?
+    -   `aes(x = ..., y = ..., colour = ..., size = ...)`
+    -   Like assigning roles to your ingredients
+3.  **Geometries**: What shapes should represent our data?
+    -   `geom_jitter()`
+    -   Like choosing how to prepare your ingredients
+4.  **Scales**: How should values convert to visual properties?
+    -   `scale_y_continuous(trans = "log10")`
+    -   Like adjusting cooking temperature and time
+5.  **Labels**: How do we explain what we're showing?
+    -   `labs(title = ..., x = ..., y = ...)`
+    -   Like writing the recipe name and instructions
+6.  **Theme**: What should the overall look be?
+    -   `theme_gray()`
+    -   Like choosing the serving dish and presentation
 
-Think of it like building with LEGOs:
+Understanding this grammar is powerful because:
 
-- Your data provides the bricks
-- Aesthetics determine how you'll use each brick
-- Geometries are the types of bricks
-- Scales adjust the size and arrangement
-- Labels explain what you've built
-- Theme sets the overall style
+-   You can create any visualization by combining these elements
+-   Changes are as simple as modifying one component
+-   The same principles work for any type of plot
 
+::: callout-note
+## Why Does ggplot2 Use + Instead of |>?
 
-I'll draft the connection and reorganize the common tools section to be more task-focused and intuitive:
+You might wonder why ggplot2 uses `+` to combine elements instead of the pipe operator (`|>`) we use elsewhere. This reflects R's evolution as a living language:
+
+- ggplot2 was created in 2005, long before the pipe operator existed
+- The `+` operator was chosen because plots are built by adding layers
+- By the time the pipe became popular, too much code already used `+`
+- Changing it would break thousands of existing scripts
+
+This is a great example of how programming languages evolve while maintaining backwards compatibility.
+:::
 
 ## The Tip of the Iceberg
 
-Understanding this grammar gives you access to ggplot2's full power. While we've created one visualization, the same grammar can create virtually any plot you need. Here's a preview of common tools you'll use:
+Understanding this grammar gives you access to ggplot2's full power. Let's look at some common visualization needs in Chinese development finance analysis. First, we'll prepare some useful datasets:
+
+```{r}
+# Annual flow data
+gcdf_annual_flows <- get_gcdf3_dataset() |>
+  filter(recommended_for_aggregates == "Yes") |>
+  group_by(commitment_year, flow_class) |>
+  summarize(
+    total_amount_bn = sum(amount_constant_usd_2021, na.rm = TRUE) |> 
+      to_billions(),
+    .groups = "drop"
+  )
+
+# Add cumulative amounts
+gcdf_annual_flows <- gcdf_annual_flows |>
+  group_by(flow_class) |>
+  mutate(
+    cumulative_amount_bn = cumsum(total_amount_bn)
+  ) |>
+  ungroup()
+
+# Project-level data
+gcdf_projects <- get_gcdf3_dataset() |>
+  filter(recommended_for_aggregates == "Yes") |>
+  mutate(
+    amount_constant_usd_2021_bn = to_billions(amount_constant_usd_2021)
+  )
+```
+
+Now let's see different ways to visualize this data using the grammar we've learned.
 
 ### Chart Types and Their Geometries
 
-Geometries (geom_*) are the shapes we use to represent data. Think of them as different ways to draw your data points. Here are some common ones by task:
+Think of geometries (`geom_*`) as different ways to draw your data. Here are some you'll commonly use at AidData:
 
-**Time Series** (showing changes over time):
-
-- `geom_line()`: Connect points with lines (for smooth trends)
-- `geom_col()`: Use bars (for yearly totals)
+**Time Series** (showing lending trends):
 
 ```{r}
-#| eval: false
-# Example: Annual lending trends
-ggplot(data) + 
-  aes(x = year, y = total_lending) +
-  geom_line()  # or geom_col() for bars
+# Stacked bar chart of annual lending by flow class
+ggplot(gcdf_annual_flows) + 
+  aes(x = commitment_year, 
+      y = total_amount_bn,
+      fill = flow_class) +
+  geom_col() +
+  labs(
+    title = "Chinese Development Finance Over Time",
+    x = "Year",
+    y = "Amount (2021 USD, Billions)",
+    fill = "Flow Class"
+  ) +
+  theme_gray()
+
+# Line plot showing cumulative amounts
+ggplot(gcdf_annual_flows) +
+  aes(x = commitment_year, 
+      y = cumulative_amount_bn,
+      color = flow_class) +
+  geom_line(linewidth = 1) +
+  labs(
+    title = "Cumulative Chinese Development Finance",
+    x = "Year",
+    y = "Cumulative Amount (2021 USD, Billions)",
+    color = "Flow Class"
+  ) +
+  theme_gray()
 ```
 
-**Distributions** (showing spread of values):
-
-- `geom_histogram()`: Show frequency of values
-- `geom_boxplot()`: Show median, quartiles, and outliers
-- `geom_density()`: Show smooth distribution shape
+**Distributions** (understanding project size patterns):
 
 ```{r}
-#| eval: false
-# Example: Project size distribution
-ggplot(data) +
+# Histogram of project sizes
+ggplot(gcdf_projects) +
   aes(x = amount_constant_usd_2021_bn) +
-  geom_histogram()
+  geom_histogram(bins = 50) +
+  scale_x_log10() +
+  labs(
+    title = "Distribution of Chinese Development Finance Project Sizes",
+    x = "Project Size (2021 USD, Billions, Log Scale)",
+    y = "Number of Projects"
+  ) +
+  theme_gray()
+
+# Box plots comparing flow types
+ggplot(gcdf_projects) +
+  aes(x = flow_class, y = amount_constant_usd_2021_bn) +
+  geom_boxplot() +
+  scale_y_log10() +
+  labs(
+    title = "Project Sizes by Flow Class",
+    x = "Flow Class",
+    y = "Project Size (2021 USD, Billions, Log Scale)"
+  ) +
+  theme_gray() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-**Relationships** (showing how variables connect):
+::: callout-tip
+## Which Chart When?
 
-- `geom_point()`: Scatter plots
-- `geom_jitter()`: Scattered points with small random offsets
-- `geom_smooth()`: Add trend lines
+For time series: - Use `geom_col()` to show yearly totals - Use `geom_line()` to show trends or cumulative values
 
-
-```{r}
-#| eval: false
-# Example: Project size vs completion time
-ggplot(data) +
-  aes(x = amount_constant_usd_2021_bn, y = implementation_years) +
-  geom_point()
-```
+For distributions: - Use `geom_histogram()` to see overall patterns - Use `geom_boxplot()` to compare across categories - Remember to consider log scales for financial data!
+:::
 
 ### Making Adjustments with Scales
 
-Scales control how your data is converted to visual properties. They're like the adjustments on a camera:
+Scales control how your data translates to visual properties. For Chinese development finance data, here are some essential scale adjustments:
 
-**Numeric Scales**:
+```{r}
+# Better handling of wide-ranging financial values
+ggplot(gcdf_projects) +
+  aes(x = commitment_year, y = amount_constant_usd_2021_bn) +
+  geom_point(alpha = 0.5) +
+  scale_y_continuous(
+    trans = "log10",
+    labels = scales::label_number(prefix = "$", suffix = "B")
+  ) +
+  labs(
+    title = "Project Sizes Over Time",
+    y = "Amount (2021 USD, Log Scale)"
+  ) +
+  theme_gray()
 
-- `scale_y_log10()`: Handle data spanning many magnitudes
-- `scale_x_continuous(limits = c(0, 100))`: Set axis ranges
-- `scale_size_continuous()`: Control how numbers map to point sizes
+# Color-blind friendly palettes for flow types
+ggplot(gcdf_annual_flows) + 
+  aes(x = commitment_year, 
+      y = total_amount_bn,
+      fill = flow_class) +
+  geom_col() +
+  scale_fill_brewer(palette = "Set2") +  # Color-blind friendly
+  labs(title = "Using Color Brewer Palettes") +
+  theme_gray()
+```
 
-**Color Scales**:
+::: callout-tip
+## Common Scale Adjustments
 
-- `scale_color_brewer()`: Color-blind friendly palettes
-- `scale_fill_manual()`: Choose your own colors
-- `scale_color_viridis_d()`: Perceptually uniform colors
+-   Use `scale_y_log10()` for financial amounts of multiple orders of magnitude
+-   Use `scale_fill_brewer()` or `scale_color_brewer()` for categorical variables
+-   Use `scale_*_continuous(limits = ...)` to focus on specific ranges
+:::
 
 ### Setting the Look with Themes
 
-Themes control the overall appearance of your plot, like a visual style guide:
+Themes control the overall appearance. Different contexts need different looks:
 
-- `theme_gray()`: The ggplot2 default, good for exploration
-- `theme_minimal()`: Clean look, great for presentations
-- `theme_classic()`: Traditional scientific style
-- `theme_bw()`: Black and white, printer-friendly
+First, we'll install `{ggthemes}`, a ggplot2 extension package, which provides extra themes.
+
+```{r}
+#| eval: false
+# First, install ggthemes
+pak::pkg_install("ggthemes")
+```
+
+```{r}
+# Load ggthemes
+library(ggthemes)
+
+# Create a base plot to try different themes
+base_plot <- ggplot(gcdf_annual_flows) + 
+  aes(x = commitment_year, 
+      y = total_amount_bn,
+      fill = flow_class) +
+  geom_col() +
+  labs(
+    title = "Chinese Development Finance Over Time",
+    subtitle = "Annual Commitments by Flow Class",
+    x = "Year",
+    y = "Amount (2021 USD, Billions)"
+  )
+
+# Like The Economist magazine
+base_plot + 
+  theme_economist() +
+  scale_fill_economist() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+# Like the Wall Street Journal
+base_plot + 
+  theme_wsj() +
+  scale_fill_wsj() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+```
+
+These publication themes aren't just for fun - they demonstrate how consistent visual styling helps build a publication's brand. The Economist's clean, professional look and the Wall Street Journal's distinctive style are instantly recognizable to readers.
+
+Think about how this can apply to AidData.
 
 ::: callout-tip
-## Choosing the Right Tools
-- Use `geom_line()` when order matters (like time series)
-- Use `geom_col()` for bar charts
-- Use `geom_histogram()` to see distributions
-- Use `geom_boxplot()` to compare distributions across groups
-- Use `geom_point()` to show x & y relationships
-- Use `geom_jitter()` to show relationships with lots of overlapping points
+## Professional Publication Themes
+
+The `{ggthemes}` package lets you mimic the style of major publications. While we might not use these for academic work, they're: - Fun to play with - Great for presentations - Show how flexible ggplot2 can be - Demonstrate the power of consistent visual styling
 :::
 
+::: callout-tip
+## Choosing Themes
+
+-   Use `theme_gray()` (default) for exploration
+-   Use `theme_minimal()` for presentations
+-   Use `theme_classic()` or `theme_bw()` for publications
+-   Remember you can customize any theme with `theme()`
+:::
 
 ## Resources for Learning More
 
-The best way to learn ggplot2 is to start creating visualizations for your own work. When you need help, here are some excellent resources:
+Now that you've seen the power of ggplot2, here are the key resources to help you keep learning:
 
-### Quick Reference
-- [ggplot2 cheatsheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf): A two-page visual reference of ggplot2's most useful features. Keep this handy!
+### Essential References
 
-### Official Documentation
-- [Getting Started with ggplot2](https://ggplot2.tidyverse.org/articles/ggplot2.html): Clear introduction to ggplot2's core concepts
-- [Function reference](https://ggplot2.tidyverse.org/reference/index.html): Detailed documentation of every ggplot2 function
+1.  [ggplot2 cheatsheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf)
+    -   Two-page visual reference of ggplot2's most useful features
+    -   Keep this open while you work!
+    -   Print it and put it on your wall
+2.  Official Documentation
+    -   [Getting Started with ggplot2](https://ggplot2.tidyverse.org/articles/ggplot2.html): Clear introduction to core concepts
+    -   [Complete Function Reference](https://ggplot2.tidyverse.org/reference/index.html): When you need details about specific functions
 
-### In-Depth Learning
-- [Data Visualization chapter](https://r4ds.hadley.nz/data-visualize) in R for Data Science: Comprehensive introduction with lots of examples
-- [Beautiful Charts with R & ggplot2](https://youtu.be/IWXcw6NHM6E?si=96LmHNHTskfFDuKN): Step-by-step video tutorial by Albert Rapp, perfect if you prefer learning by watching
+### Learning Resources
+
+1.  [Data Visualization chapter](https://r4ds.hadley.nz/data-visualize) in R for Data Science
+    -   Comprehensive introduction
+    -   Lots of examples
+    -   Free online!
+2.  Video Tutorials
+    -   [Beautiful Charts with R & ggplot2](https://youtu.be/IWXcw6NHM6E?si=96LmHNHTskfFDuKN) by Albert Rapp
+    -   Perfect for learning by watching
+    -   Shows step-by-step process
 
 ::: callout-tip
 ## Learning Strategy
-1. Start simple - get something on the screen
-2. Add complexity one layer at a time
-3. Use the cheatsheet to discover new features
-4. Look up details in the documentation when needed
+
+1.  Start simple - get something on the screen
+2.  Add complexity one layer at a time
+3.  Use the cheatsheet to discover new features
+4.  Look up details in the documentation when needed
+5.  Use AI tools (like ChatGPT or Claude) to:
+    -   Explain code you don't understand
+    -   Suggest improvements
+    -   Help debug issues
 :::
 
 ## Next Steps
 
-In our class session, we'll:
-1. Review any questions about the grammar of graphics
-2. Learn more about themes and scales
-3. Practice creating publication-ready visualizations
-4. Work on real examples from your own interests in the Chinese development finance data
+In our class session, we'll: 
 
-Remember: The goal isn't to memorize every option, but to understand the general approach to building visualizations layer by layer.
+1. Review any questions about the grammar of graphics 
+2. Practice creating publication-ready visualizations 
+3. Work with your own Chinese development finance questions 
+4. Learn some advanced ggplot2 features
+
+Remember: The goal isn't to memorize every option, but to understand the general approach to building visualizations layer by layer. With the grammar of graphics as your foundation, you can create any visualization you need!
