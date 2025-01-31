@@ -1,5 +1,12 @@
 # Week 1: Getting Started (In-Class) {#sec-week1_in_class}
 
+### Video Lecture
+Watch this video lecture to review the concepts from class 1:
+
+::: {.column-page}
+{{< video https://youtu.be/mgkZgkr1gWM>}}
+:::
+
 ## Today's Agenda (90 minutes)
 
 1.  **Welcome & Course Overview** (15 min)

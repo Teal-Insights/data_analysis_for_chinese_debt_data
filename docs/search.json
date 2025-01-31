@@ -248,7 +248,7 @@
     "href": "week_1_in_class.html",
     "title": "2  Week 1: Getting Started (In-Class)",
     "section": "",
-    "text": "2.1 Today’s Agenda (90 minutes)",
+    "text": "2.0.1 Video Lecture\nWatch this video lecture to review the concepts from class 1:",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Week 1: Getting Started (In-Class)</span>"
@@ -258,8 +258,8 @@
     "objectID": "week_1_in_class.html#todays-agenda-90-minutes",
     "href": "week_1_in_class.html#todays-agenda-90-minutes",
     "title": "2  Week 1: Getting Started (In-Class)",
-    "section": "",
-    "text": "Welcome & Course Overview (15 min)\n\nCourse logistics\nLearning approach\nSetting expectations\n\nProject Setup (20 min)\n\nCreating organized folder structure\nInstalling key packages\nUnderstanding RStudio’s layout\n\nFirst Steps with R (25 min)\n\nWriting your first function\nBuilding analysis pipelines\nCreating visualizations\n\nAutomated Reporting (25 min)\n\nSetting up report templates\nGenerating multiple reports\nHands-on practice\n\nWrap-up & Preview (5 min)\n\nReview key takeaways\nPreview next week\nAdditional resources",
+    "section": "2.1 Today’s Agenda (90 minutes)",
+    "text": "2.1 Today’s Agenda (90 minutes)\n\nWelcome & Course Overview (15 min)\n\nCourse logistics\nLearning approach\nSetting expectations\n\nProject Setup (20 min)\n\nCreating organized folder structure\nInstalling key packages\nUnderstanding RStudio’s layout\n\nFirst Steps with R (25 min)\n\nWriting your first function\nBuilding analysis pipelines\nCreating visualizations\n\nAutomated Reporting (25 min)\n\nSetting up report templates\nGenerating multiple reports\nHands-on practice\n\nWrap-up & Preview (5 min)\n\nReview key takeaways\nPreview next week\nAdditional resources",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Week 1: Getting Started (In-Class)</span>"
@@ -403,6 +403,17 @@
     "title": "3  Week 2: Make Cool Charts, Right Away (Pre-Class)",
     "section": "",
     "text": "3.1 Overview\nThis pre-class preparation should take about 45 minutes to complete.\nBefore we dive into code, let’s understand what we’re about to learn. {ggplot2} is an incredibly powerful data visualization tool used by data journalists at the Financial Times, The Economist, and other leading publications. With it, you can create virtually any visualization you can imagine - from simple scatter plots to complex, publication-ready graphics. And it’s completely free.\nWhile it takes practice to create professional-level visualizations, the basics are surprisingly accessible. The secret lies in understanding ggplot2’s underlying system: the Grammar of Graphics. Just as you can create endless sentences from basic grammar rules, you can create endless visualizations by combining basic graphical elements.\nToday, we’ll start by building this intuition. Instead of getting bogged down in syntax, we’ll use a point-and-click interface called Esquisse to create increasingly sophisticated visualizations. As we do this, we’ll examine the code it generates to understand how ggplot2 builds plots layer by layer.",
+    "crumbs": [
+      "Part 1: Data Analysis Bootcamp",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Week 2: Make Cool Charts, Right Away (Pre-Class)</span>"
+    ]
+  },
+  {
+    "objectID": "week_2_pre_class.html#overview",
+    "href": "week_2_pre_class.html#overview",
+    "title": "3  Week 2: Make Cool Charts, Right Away (Pre-Class)",
+    "section": "",
+    "text": "3.1.1 Video Lecture\nWatch this video lecture before our interactive session:",
     "crumbs": [
       "Part 1: Data Analysis Bootcamp",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Week 2: Make Cool Charts, Right Away (Pre-Class)</span>"
