@@ -1,1 +1,939 @@
 # Week 2: Make Cool Charts, Right Away (In-Class) {#sec-week2_in_class}
+
+## Learning Objectives
+
+By the end of this session, you will be able to:
+
+1.  **Create** exploratory visualizations to understand patterns in Chinese development finance data
+2.  **Layer** multiple aesthetic mappings to reveal complex relationships
+3.  **Transform** exploratory visualizations into publication-ready graphics
+4.  **Apply** AidData's visual style using the aiddataviz package
+5.  **Use** AI tools effectively to assist with both exploration and polish
+
+## Today's Agenda (90 minutes)
+
+1.  **The Two Purposes of Data Visualization** (10 min)
+    -   Exploration vs. Communication
+    -   The power of visual thinking
+    -   When to use each approach
+2.  **Part 1: Exploratory Data Visualization** (35 min)
+    -   Introduction (5 min)
+        -   The value of quick, iterative visualization
+        -   Making lots of charts to find patterns
+    -   Demo: Layering for Insight (15 min)
+        -   Case study: Interest rates and commitment size
+        -   Adding variables through aesthetic mappings
+        -   Using AI to suggest visualization approaches
+    -   Interactive Exercise: Chart Detective (15 min)
+        -   Group exploration of Chinese development finance data
+        -   Creating multiple visualizations
+        -   Finding and sharing insights
+3.  **Break & Discussion** (5 min)
+    -   Share key insights from exploration
+    -   Identify visualizations worth polishing
+4.  **Part 2: Creating Publication-Ready Visualizations** (35 min)
+    -   From Exploration to Publication (15 min)
+        -   The 6-step process for polishing visualizations
+        -   Using aiddataviz for consistent styling
+        -   Best practices for professional charts
+    -   Interactive Exercise: Polish & Present (20 min)
+        -   Transform exploratory charts into publication quality
+        -   Apply AidData visual identity
+        -   Peer review and feedback
+5.  **Wrap-up & Resources** (5 min)
+    -   Key takeaways
+    -   Additional resources
+    -   Preview of next week
+    
+::: {.callout-tip}
+### Why This Matters for TUFF Analysis
+**Exploratory Visualization**
+
+- TUFF data is complex and often messy
+- Visual exploration helps spot patterns that spreadsheets might miss
+- Quick iteration helps generate hypotheses about Chinese lending behavior
+- Visual thinking can reveal outliers that need deeper investigation
+
+**Professional Visualization**
+
+- Turn insights into compelling evidence for reports and blogs
+- Create consistent, branded graphics that build AidData's reputation
+- Move efficiently from analysis to publication
+- Tell clear stories about Chinese development finance
+
+The skills you're learning today directly support AidData's mission of bringing transparency to Chinese overseas development finance.
+:::
+
+## Setup
+
+Before we begin exploring data visualization, let's get our environment ready. We'll need to:
+
+1.  Install the experimental aiddataviz package
+2.  Install recommended fonts (optional)
+3.  Load required packages
+
+### Installing aiddataviz
+
+First, install the aiddataviz package from GitHub:
+
+```{r}
+#| eval: false
+pak::pak("Teal-Insights/aiddataviz")
+```
+
+::: callout-warning
+## aiddataviz Package Status
+
+The aiddataviz package is currently under active development. While it's already useful for creating AidData-styled visualizations:
+
+-   Expect breaking changes in the coming weeks
+-   Some features may change or be refined
+-   Your feedback will help shape its development
+-   Treat it as experimental for now
+
+Documentation is available at the [aiddataviz website](https://teal-insights.github.io/aiddataviz/).
+:::
+
+### Installing Fonts (Optional)
+
+The package works best with specific fonts that match AidData's visual identity. You can install these fonts with:
+
+```{r}
+#| eval: false
+aiddataviz::install_aiddata_fonts()
+```
+
+::: callout-note
+Don't worry if the font installation doesn't work - the package will automatically use appropriate backup fonts. We're still refining this functionality!
+:::
+
+### Loading Required Packages
+
+Now let's load the packages we'll need:
+
+```{r}
+#| warning: false
+#| message: false
+library(tidyverse)      # For data manipulation and visualization
+library(chinadevfin3)   # For Chinese development finance data
+library(aiddataviz)     # For AidData visualization tools
+```
+
+### Verifying Setup
+
+Let's make sure everything is working by creating a simple visualization:
+
+```{r}
+#| warning: false
+gcdf_yearly_flows |>
+  ggplot(
+    aes(x = commitment_year, 
+        y = commitments_bn,
+        fill = flow_class)
+  ) +
+  geom_col() +
+  scale_fill_aiddata() +
+  theme_aiddata() +
+  labs(
+    title = "Chinese Development Finance Flows",
+    x = "Year",
+    y = "Commitments (USD Billions)"
+  )
+```
+
+If you see a chart with AidData's colors and styling, you're ready to go! If you run into any issues, don't worry - we'll troubleshoot together during class.
+
+::: callout-tip
+### Getting Help
+
+If you encounter setup issues: 1. Check the [aiddataviz documentation](https://teal-insights.github.io/aiddataviz/) 2. Post in our course Slack channel
+:::
+
+## Part 1: Exploratory Data Visualization
+
+Data visualization isn't just about creating polished graphics for reports. One of its most powerful uses is as a tool for understanding your data and generating new hypotheses. As you explore data, you should:
+
+-   Make lots of charts quickly
+-   Focus on insight, not appearance
+-   Let each visualization suggest the next
+-   Use charts to generate questions
+
+### A Case Study in Visual Exploration
+
+Let's explore a specific question about Chinese overseas lending: Is there a relationship between the size of lending commitments and interest rates? And how does this relationship vary across different types of countries?
+
+This is a perfect example of how we can use visualization to understand complex relationships in our data. We'll build our visualization step by step, with each step adding new insights.
+
+#### Step 1: The Basic Relationship
+
+Let's start with the simplest possible visualization of our question - a basic scatter plot:
+
+```{r}
+#| label: basic-scatter
+#| warning: false
+gcdf_country_commitments |> 
+  # Remove any rows with NA in key variables
+  filter(!is.na(weighted_interest_rate), 
+         !is.na(total_commitments_bn)) |>
+  ggplot(
+    aes(x = total_commitments_bn,
+        y = weighted_interest_rate)
+  ) + 
+  geom_point()
+```
+
+This initial plot already shows there might be a relationship, but it's hard to see the pattern clearly because of how financial data is distributed.
+
+#### Step 2: Making the Scale Intuitive
+
+Financial data often spans several orders of magnitude - from millions to billions of dollars. Regular scales make it hard to see patterns across these different sizes. Let's improve this with three changes:
+
+1.  Use a log scale to spread out the data
+2.  Format the labels to be readable
+3.  Set reasonable limits to use the space well
+
+```{r}
+#| label: better-scale
+#| warning: false
+gcdf_country_commitments |> 
+  filter(!is.na(weighted_interest_rate), 
+         !is.na(total_commitments_bn)) |>
+  ggplot(
+    # scale 1 billion --> 1, we deal with scale below
+    aes(x = total_commitments_bn *1e9,
+        y = weighted_interest_rate)
+  ) + 
+  geom_point() +
+  scale_x_log10(
+    labels = scales::label_number(
+      scale_cut = scales::cut_short_scale(),
+      prefix = "$"
+    ),
+    limits = c(15 * 1e6, 175 * 1e9)  # From roughly $15M to $175B
+  )
+```
+
+::: callout-tip
+## The `{scales}` Package
+
+The [{scales}](https://scales.r-lib.org/) package is an amazing resource for making your axes readable and professional. It can:
+
+-   Format numbers (e.g., `label_number()`)
+-   Handle currencies (e.g., `label_dollar()`)
+-   Show percentages (e.g., `label_percent()`)
+-   Abbreviate large numbers (e.g., `scale_cut_short_scale()`)
+
+While scales offers many sophisticated options for publication-quality graphics, for exploratory work we just want readable labels. Using `scale_cut_short_scale()` to show "\$1B" instead of "1e9" makes our chart more intuitive to read.
+
+Tip: LLMs are great at reformatting scales.
+:::
+
+#### Step 3: Adding Country Labels
+
+The scatter plot shows a pattern, but which countries are where? Let's add labels:
+
+```{r}
+#| label: country-labels
+#| warning: false
+gcdf_country_commitments |> 
+  filter(!is.na(weighted_interest_rate), 
+         !is.na(total_commitments_bn)) |>
+  ggplot(
+    aes(x = total_commitments_bn * 1e9,
+        y = weighted_interest_rate)
+  ) + 
+  geom_text(aes(label = iso3c), size = 3) +
+  scale_x_log10(
+    labels = scales::label_number(
+      scale_cut = scales::cut_short_scale(),
+      prefix = "$"
+    ),
+    limits = c(15 * 1e6, 175 * 1e9)  
+  )
+```
+
+Now we can identify specific countries, and some interesting outliers appear. For example, why does Nicaragua have such a high interest rate relative to its commitment size?
+
+#### Step 4: Adding Regional Context
+
+Are there regional patterns? Let's color-code by region:
+
+```{r}
+#| label: regional-patterns
+#| warning: false
+gcdf_country_commitments |> 
+  filter(!is.na(weighted_interest_rate), 
+         !is.na(total_commitments_bn)) |>
+  ggplot(
+    aes(x = total_commitments_bn * 1e9,
+        y = weighted_interest_rate)
+  ) + 
+  geom_text(
+    aes(label = iso3c,
+        color = region_name),
+    size = 3
+  ) +
+   scale_x_log10(
+    labels = scales::label_number(
+      scale_cut = scales::cut_short_scale(),
+      prefix = "$"
+    ),
+    limits = c(15 * 1e6, 175 * 1e9) 
+  )
+```
+
+::: callout-note
+## Aesthetic Mapping Levels
+
+In ggplot2, you can map aesthetics (like color, size, etc.) at different levels:
+
+1.  In the main `ggplot(aes())`: applies to ALL layers
+2.  In individual geoms like `geom_text(aes())`: applies only to that layer
+
+Here, we put `label` and `color` in `geom_text(aes())` because:
+
+-   We want these aesthetics to only affect the country labels
+-   When we add trend lines later, we want them calculated on ALL data, not by region
+-   If we put `color = region_name` in the main `ggplot(aes())`, our trend lines would be calculated separately for each region
+:::
+
+::: callout-tip
+## Using AI for Exploration
+
+Try asking AI assistants questions like:
+
+-   "What patterns do you notice in this visualization?"
+-   "Can you help me fix my chart's scales?"
+-   "How could I modify this code to explore \[specific aspect\]?"
+:::
+
+#### Step 4: Adding Statistical Context
+
+Is there an overall relationship? Let's add a trend line:
+
+```{r}
+#| label: add-trend
+#| warning: false
+gcdf_country_commitments |> 
+  filter(!is.na(weighted_interest_rate), 
+         !is.na(total_commitments_bn)) |>
+  ggplot(
+    aes(x = total_commitments_bn * 1e9,
+        y = weighted_interest_rate)
+  ) + 
+  geom_text(
+    aes(label = iso3c,
+        color = region_name),
+    size = 3
+  ) +
+  geom_smooth(method = "lm", se = TRUE) +
+  scale_x_log10(
+    labels = scales::label_number(
+      scale_cut = scales::cut_short_scale(),
+      prefix = "$"
+    ),
+    limits = c(15 * 1e6, 175 * 1e9)  
+  )
+```
+
+::: callout-tip
+## Trend Lines with geom_smooth()
+
+`geom_smooth()` adds a trend line to your plot to help visualize patterns. It can:
+
+-   Use different methods (`lm` for linear, `loess` for local, etc.)
+-   Show uncertainty with confidence intervals
+-   Help identify relationships in noisy data
+
+For example:
+
+Linear trend: `geom_smooth(method = "lm")`
+
+Local smoothing (good for non-linear patterns): `geom_smooth(method = "loess")`
+
+Learn more in the [`geom_smooth()` documentation](https://ggplot2.tidyverse.org/reference/geom_smooth.html).
+:::
+
+#### Step 5: Breaking Out by Income Level
+
+Does this relationship vary by country income level? Let's use faceting to find out:
+
+```{r}
+#| label: income-facets
+#| warning: false
+gcdf_country_commitments |> 
+  filter(!is.na(weighted_interest_rate), 
+         !is.na(total_commitments_bn)) |>
+  ggplot(
+    aes(x = total_commitments_bn * 1e9,
+        y = weighted_interest_rate)
+  ) + 
+  geom_text(
+    aes(label = iso3c,
+        color = region_name),
+    size = 2
+  ) +
+  scale_x_log10(
+    labels = scales::label_number(
+      scale_cut = scales::cut_short_scale(),
+      prefix = "$"
+    ),
+    limits = c(15 * 1e6, 175 * 1e9)
+  ) +
+  geom_smooth(method = "lm", se = TRUE) +
+  facet_wrap(~income_level_name)
+```
+
+::: callout-tip
+Faceting for Multiple Views `facet_wrap()` creates small multiples of your plot, split by a variable. It's great for:
+
+-   Comparing patterns across groups
+-   Spotting differences in relationships
+-   Dealing with overlapping data
+
+The `~` in `facet_wrap(~variable)` is a formula that tells R which variable to use for splitting. Key options:
+
+`scales = "free"`: Let axes vary between facets
+
+`ncol` or `nrow`: Control layout
+
+Learn more in the [`facet_wrap()` documentation](https://ggplot2.tidyverse.org/reference/facet_wrap.html?q=facet_wrap#null)
+:::
+
+### What Have We Learned?
+
+This exploratory process has revealed several interesting patterns:
+
+1.  There appears to be a positive relationship between commitment size and interest rates
+2.  This relationship varies by income level
+3.  There are some notable outliers worth investigating
+4.  Regional patterns exist within income groups
+
+Not all exploratory analysis yields profound implications. It's valuable nevertheless. 
+
+### What Questions Does This Raise?
+
+Good exploratory visualization often raises more questions than it answers:
+
+1.  Why does Niger have such a high interest rate relative to its peers?
+2.  What explains the different slopes across income groups?
+3.  Are these relationships stable over time?
+4.  What other factors might explain these patterns?
+
+### Next Steps
+
+This exploration suggests several promising directions:
+
+1.  **Further Research**: Look into specific outlier cases
+2.  **Additional Visualization**: Explore how these patterns change over time
+3.  **Statistical Analysis**: Consider formal modeling of these relationships
+4.  **Domain Expert Input**: Discuss findings with colleagues who know specific countries
+
+::: callout-tip
+## From Exploration to Communication
+
+If you find patterns worth sharing:
+
+1.  For colleagues: Add clear titles, labels, and notes
+2.  For reports: Transform into publication-quality visualizations
+3.  For presentations: Simplify to emphasize key points
+:::
+
+### Practice Exercise: Understanding Distributions
+
+Let's explore the distributions of key variables in our Chinese development finance data. We'll use histograms and box plots to understand both overall patterns and how they vary across groups.
+
+::: {.callout-tip}
+## Exploring Distributions
+
+When examining a variable's distribution, it's helpful to:
+
+1. Look at the overall shape first (histogram)
+2. Then compare across groups (box plots)
+3. Consider whether you need to transform scales (often for financial data)
+:::
+
+Explore these two key variables:
+
+1. **Weighted Interest Rates**
+  - Start with overall distribution
+  - Compare across regions
+  - Compare across income groups
+  - Consider: What patterns do you see? Any surprises?
+
+2. **Total Commitments**
+  - Look at the overall distribution
+  - Try with and without log scale
+  - Look at regional patterns
+  - Examine patterns by income group
+  - Think about: Where is China lending the most? Least?
+
+::: {.callout-note}
+## Useful geoms for Distribution Analysis
+
+- `geom_histogram()`: Overall shape of distribution
+- `geom_boxplot()`: Compare distributions across groups
+- `geom_density()`: Smooth version of histogram
+- `geom_violin()`: Combination of density and box plot
+
+Try different ones to see which reveals patterns best!
+:::
+
+Remember:
+
+- Make lots of charts
+- Try different visualization approaches
+- Note interesting patterns
+- Generate questions for further research
+
+Share what you discover with your colleagues - sometimes fresh eyes see new patterns!
+
+## Part 2: From Exploration to Publication-Ready Graphics
+
+### Creating Publication-Ready Graphics with aiddataviz
+
+In the first part of this class, we explored how to use visualization to understand patterns in our data. Now we'll learn how to transform those exploratory visualizations into polished, professional graphics suitable for reports and presentations.
+
+::: {.callout-warning}
+## Help Shape aiddataviz
+
+The `aiddataviz` package is brand new and actively evolving. While it's already useful for creating AidData-styled visualizations:
+
+- Expect the package to change significantly in coming weeks
+- Some features may be added or refined
+- Documentation will be expanded
+- Installation processes will be streamlined
+
+**Your Input Matters!** 
+
+We're actively seeking feedback from AidData staff & communications team to make this package truly useful for your work. We'd love your input on:
+
+- Color palettes that work well for your analysis
+- Font choices that match AidData's brand
+- Output formats you commonly need
+- Common visualization types you create
+- Features that would save you time
+
+This is your chance to help build a tool that makes your work easier!
+:::
+
+### Our Target: Professional Publication Quality
+
+Let's work through transforming an exploratory visualization into something publication-ready. We'll recreate this visualization from AidData's Belt and Road Reboot Report:
+
+![](images/week2_reboot_chart.png)
+
+This visualization effectively communicates several key pieces of information:
+
+- Total lending volumes over time
+- Composition of lending by flow class
+- Key periods in the Belt and Road Initiative
+- Clear source attribution and professional styling
+
+### Building Our Publication-Ready Visualization
+
+Let's transform our exploratory visualization into a polished, publication-ready graphic step by step. Think of it like building with Legos - each piece adds something specific and manageable.
+
+#### Step 1: Start with Basic Structure
+
+First, let's create our basic stacked bar chart:
+
+```{r}
+#| label: pub-basic
+#| warning: false
+gcdf_yearly_flows |> 
+  ggplot(
+    aes(
+      x = commitment_year,
+      y = commitments_bn,
+      fill = flow_class
+    ) 
+  ) + 
+  geom_col() 
+``` 
+
+::: {.callout-note}
+This basic structure already shows our key information - lending volumes over time by flow class. Now we'll enhance it step by step.
+:::
+
+#### Step 2: Improve Visual Organization
+
+We'll reorder the flow classes to create a more intuitive stacking order:
+
+```{r}
+#| label: pub-reorder
+#| warning: false
+p <- gcdf_yearly_flows |> 
+  ggplot(
+    aes(
+      x = commitment_year,
+      y = commitments_bn,
+      fill = fct_reorder2(
+        .f = flow_class,
+        .x = commitment_year,
+        .y = commitments_bn,
+        .desc = FALSE
+    )
+  ) 
+  )+ 
+  geom_col() +
+  labs(fill = "")
+p
+``` 
+
+::: {.callout-note}
+Factor Reordering: Static vs Time Series Data
+The forcats package gives us two key tools for reordering factors:
+`fct_reorder()`: Best for static data (like sorted bar charts)
+
+Orders categories by a single value
+Perfect when you want to rank things from highest to lowest
+
+`fct_reorder2()`: Designed specifically for time series data
+
+Takes both time and value into account
+Creates stable ordering over time
+Particularly useful for stacked charts like ours
+
+Think: "Static = `fct_reorder()`, Time Series = `fct_reorder2()`"
+:::
+
+#### Step 3: Apply AidData's Visual Style
+
+Now we'll transform the look using AidData's color palette and theme:
+
+```{r}
+#| label: pub-style
+#| warning: false
+
+#Using predefined colors from aiddataviz
+aiddata_custom_colors <- c(
+  "ODA-like" = unname(aiddata_colors$wren_twilight),
+  "OOF-like" = unname(aiddata_colors$spirit_gold),
+  "Vague (Official Finance)" = unname(aiddata_colors$silver)
+)
+
+p2 <- p +
+  # allows you to define your own colors
+  scale_fill_manual(values = aiddata_custom_colors) +
+  theme_aiddata() +
+  theme(
+    panel.grid.major.x = element_blank()  # Remove vertical gridlines
+  )
+p2
+``` 
+
+::: {.callout-note}
+## AidData's Color System
+The colors we're using come from [William & Mary's brand guidelines](https://brand.wm.edu/index.php/university-colors/) and have been chosen to:
+
+- Ensure readability
+- Maintain institutional identity
+- Work well together in various combinations
+:::
+
+#### Step 4: Add Direct Labels
+
+Let's replace the legend with direct labels, making it easier for readers to identify categories:
+
+```{r}
+#| label: pub-labels
+#| warning: false
+p3 <- p2 +
+  annotate(
+    "text", 
+    x = 2022, 
+    y = c(82, 68, 40), 
+    label = c("Vague", "ODA", "OOF"), 
+    # Match colors to labels explicitly
+    color = c(
+      unname(aiddata_colors$silver),          # For "Vague"
+      unname(aiddata_colors$wren_twilight),   # For "ODA"
+      unname(aiddata_colors$spirit_gold)      # For "OOF"
+    ),
+    size = 4, 
+    hjust = 0
+  ) +
+  # add space for the labels
+  xlim(2000, 2023) +
+  # get rid of the old clunky legend
+  theme(legend.position = "none")
+p3
+```
+
+::: {.callout-tip}
+Direct labels eliminate the need for readers to look back and forth between the visualization and a legend, making the chart easier to understand quickly.
+:::
+
+#### Step 5: Add Context with Annotations
+
+Now we'll add the BRI period markers to provide important context:
+
+```{r}
+#| label: pub-annotations
+#| warning: false
+p4 <- p3 +
+  # Add vertical lines for BRI periods
+  geom_vline(
+    xintercept = c(2013.5, 2017.5),
+    linetype = "dashed",
+    color = aiddata_colors$gray50,
+    alpha = 0.5
+  ) +
+  # Add BRI period annotations
+  annotate(
+    "text",
+    x = 2015.5,
+    y = 165,
+    label = "Early BRI\n(2014-2017)",
+    size = 3.5,
+    color = aiddata_colors$gray50
+  ) +
+  annotate(
+    "text",
+    x = 2019.5,
+    y = 165,
+    label = "Late BRI\n(2018-2021)",
+    size = 3.5,
+    color = aiddata_colors$gray50
+  )
+p4
+```
+
+#### Step 6: Polish with Professional Labeling
+
+Finally, we'll add clear titles, format axes, and include proper source attribution:
+
+```{r}
+#| label: pub-polish
+#| warning: false
+p5 <- p4 +
+  labs(
+    title = "Official financial flows from China to the developing world,<br>2000-2021",
+    subtitle = "Constant 2021 USD Billions",
+    x = NULL,
+    y = NULL,
+    caption = "Source: AidData's Global Chinese Development Finance Dataset, Version 3.0"
+  ) +
+  scale_y_continuous(
+    labels = scales::label_currency(suffix = " B"),
+    limits = c(0,170)
+  )
+p5
+```
+Let's compare it to the original:
+
+![](images/week2_reboot_chart.png)
+
+Looks pretty close! That's something you can easily learn to do well. 
+
+If we wanted to, we could take a few more steps:
+
+- draw lines from our labels to the columns
+- make the axis titles lighter to draw attention away from them
+
+Once you get to that level, it's worth talking with your communications team. They are professionals. 
+
+### Key Elements of Professional Visualizations
+
+Our final visualization incorporates several key elements that make it publication-ready:
+
+1. **Clear Visual Hierarchy**
+   - Ordered stacking of categories
+   - Direct labels instead of legend
+   - Removal of unnecessary grid lines
+
+2. **Consistent Branding**
+   - AidData color palette
+   - Professional typography
+   - Clean, minimal theme
+
+3. **Contextual Information**
+   - Clear title and subtitle
+   - Important period markers
+   - Proper source attribution
+
+4. **Readable Formatting**
+   - Well-formatted axis labels
+   - Appropriate scale limits
+   - Balanced use of space
+
+::: {.callout-tip}
+## Creating Your Own Publication Graphics
+
+Create a checklist for your visualizations:
+
+1. Is the main message immediately clear?
+2. Are all elements properly labeled?
+3. Is the styling consistent with your organization's brand?
+4. Have you removed unnecessary visual elements?
+5. Is the source clearly attributed?
+:::
+
+## Resources for Data Visualization
+
+### Essential References
+
+1. **[ggplot2 Documentation](https://ggplot2.tidyverse.org/index.html)**
+   - Comprehensive function reference
+   - Clear examples for each feature
+   - Best place to look up specific details
+
+2. **[R for Data Science (2e)](https://r4ds.hadley.nz/visualize)**
+   - Section 2 focuses entirely on visualization
+   - Written by ggplot2's creator, Hadley Wickham
+   - Perfect balance of theory and practice
+   - Free online!
+
+### Finding Inspiration & Solutions
+
+1. **[ggplot2 Extensions Gallery](https://exts.ggplot2.tidyverse.org/gallery/)**
+   - Browse specialized visualization packages
+   - Find new ways to present your data
+   - All compatible with ggplot2
+
+2. **[R Graph Gallery](https://r-graph-gallery.com/)**
+   - Examples of many chart types
+   - Step-by-step instructions
+   - Code you can adapt
+
+::: {.callout-tip}
+## Quick Tip
+When you need to create a new type of visualization:
+
+1. Check the R Graph Gallery for examples
+2. Look for relevant ggplot2 extensions
+3. Ask AI tools to help adapt example code
+:::
+
+### Advanced Learning
+
+1. **[Storytelling with Data](https://www.storytellingwithdata.com/)**
+   - Beyond technical skills
+   - Focus on communication
+   - Key concepts:
+     - Understanding context and audience
+     - Choosing the right visualization
+     - Eliminating chart clutter
+     - Using design principles
+     - Building effective narratives
+
+2. **[Graphic Design with ggplot2](https://rstudio-conf-2022.github.io/ggplot2-graphic-design/)**
+   - 💫 **Highly Recommended!**
+   - Comprehensive workshop materials
+   - Free online access
+   - Topics include:
+     - Advanced ggplot2 techniques
+     - Color theory and typography
+     - Layout and composition
+     - Creating publication-quality graphics
+
+::: {.callout-note}
+## Learning Path Suggestion
+
+1. Start with R4DS for foundations
+2. Use the galleries for inspiration
+3. Reference ggplot2 docs for details
+4. Move to advanced resources when ready
+:::
+
+### Practice Exercise
+
+Take one of the exploratory visualizations you created today and:
+
+1. Find a similar example in the R Graph Gallery
+2. Identify ways to enhance it
+3. Use the ggplot2 documentation to implement improvements
+4. Share your before/after with colleagues
+
+Remember: Great visualization is an iterative process. Start simple, then enhance step by step.
+
+## Wrapping Up: The Power of Data Visualization
+
+### Today's Achievements
+
+Let's look back at what we've accomplished in just 90 minutes:
+
+1. **Mastered Two Types of Visualization**
+  - Created exploratory visualizations to understand data
+  - Transformed rough charts into publication-ready graphics
+  - Learned when to use each approach
+
+2. **Used Visualization for Discovery**
+  - Layered multiple variables into single charts
+  - Discovered patterns in Chinese development finance
+  - Generated new questions for research
+  - Learned to use aesthetic mappings effectively
+
+3. **Created Professional Graphics**
+  - Applied AidData's visual identity
+  - Built complex visualizations step by step
+  - Used the aiddataviz package for consistent styling
+  - Added professional touches like annotations and labels
+
+Most importantly, you now have a toolkit for both exploring data and communicating your findings effectively. While mastering data visualization takes time and practice, you have working examples you can build upon and adapt for your own analysis needs.
+
+### Checking Our Learning Objectives
+
+Let's review what we set out to achieve:
+
+✅ **Create exploratory visualizations**
+
+- You've learned to build layered visualizations
+- You know how to map multiple variables to aesthetics
+- You can use faceting to compare across groups
+
+✅ **Layer aesthetic mappings**
+
+- You understand how different mappings reveal patterns
+- You can combine multiple variables in one visualization
+- You know how to choose effective aesthetic mappings
+
+✅ **Transform exploratory charts into publication graphics**
+
+- You can follow the 6-step process for polishing charts
+- You understand the elements of professional visualization
+- You can use aiddataviz for consistent styling
+
+✅ **Apply AidData's visual identity**
+
+- You know how to use AidData's color palettes
+- You can apply consistent styling with theme_aiddata()
+- You understand the importance of visual consistency
+
+✅ **Use AI tools effectively**
+
+- You've seen how AI can help with visualization code
+- You know what questions to ask AI assistants
+- You understand how to verify AI suggestions
+
+### Resources for Continued Learning
+
+Remember, you have several resources available:
+
+- Our course textbook and examples
+- The comprehensive resources we just covered
+- The aiddataviz package (though remember it's still evolving!)
+- AI tools to help with coding and troubleshooting
+
+### Next Steps
+
+1. **Practice with Your Own Data**
+  - Try creating exploratory visualizations of your current projects
+  - Apply the 6-step process to polish important charts
+  - Use AI tools to help when you get stuck
+
+2. **Prepare for Next Week**
+  - We'll dive into data transformation
+  - Think about what patterns you'd like to investigate
+  - Consider how visualization and transformation work together
+
+3. **Get Help When Needed**
+  - Use AI tools for code help
+  - Reference the resources we covered
+  - Ask questions in our course forum
+  - Share challenges and solutions with colleagues
+
+Remember: Learning data visualization is a journey. Focus on understanding the fundamentals and building your skills step by step. You don't need to memorize everything - knowing where to find help is often more important than memorizing syntax.
+
+See you next week!
