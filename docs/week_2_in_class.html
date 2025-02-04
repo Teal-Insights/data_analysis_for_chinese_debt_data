@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -72,9 +106,13 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="4&nbsp; Week 2: Make Cool Charts, Right Away (In-Class) – Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs">
+<meta property="og:description" content="">
+<meta property="og:image" content="week_2_in_class_files/figure-html/unnamed-chunk-4-1.png">
 <meta property="og:site_name" content="Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs">
 <meta name="twitter:title" content="4&nbsp; Week 2: Make Cool Charts, Right Away (In-Class) – Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="week_2_in_class_files/figure-html/unnamed-chunk-4-1.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar floating">
@@ -210,8 +248,51 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives"><span class="header-section-number">4.1</span> Learning Objectives</a></li>
+  <li><a href="#todays-agenda-90-minutes" id="toc-todays-agenda-90-minutes" class="nav-link" data-scroll-target="#todays-agenda-90-minutes"><span class="header-section-number">4.2</span> Today’s Agenda (90 minutes)</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">4.3</span> Setup</a>
+  <ul class="collapse">
+  <li><a href="#installing-aiddataviz" id="toc-installing-aiddataviz" class="nav-link" data-scroll-target="#installing-aiddataviz"><span class="header-section-number">4.3.1</span> Installing aiddataviz</a></li>
+  <li><a href="#installing-fonts-optional" id="toc-installing-fonts-optional" class="nav-link" data-scroll-target="#installing-fonts-optional"><span class="header-section-number">4.3.2</span> Installing Fonts (Optional)</a></li>
+  <li><a href="#loading-required-packages" id="toc-loading-required-packages" class="nav-link" data-scroll-target="#loading-required-packages"><span class="header-section-number">4.3.3</span> Loading Required Packages</a></li>
+  <li><a href="#verifying-setup" id="toc-verifying-setup" class="nav-link" data-scroll-target="#verifying-setup"><span class="header-section-number">4.3.4</span> Verifying Setup</a></li>
+  </ul></li>
+  <li><a href="#part-1-exploratory-data-visualization" id="toc-part-1-exploratory-data-visualization" class="nav-link" data-scroll-target="#part-1-exploratory-data-visualization"><span class="header-section-number">4.4</span> Part 1: Exploratory Data Visualization</a>
+  <ul class="collapse">
+  <li><a href="#a-case-study-in-visual-exploration" id="toc-a-case-study-in-visual-exploration" class="nav-link" data-scroll-target="#a-case-study-in-visual-exploration"><span class="header-section-number">4.4.1</span> A Case Study in Visual Exploration</a></li>
+  <li><a href="#what-have-we-learned" id="toc-what-have-we-learned" class="nav-link" data-scroll-target="#what-have-we-learned"><span class="header-section-number">4.4.2</span> What Have We Learned?</a></li>
+  <li><a href="#what-questions-does-this-raise" id="toc-what-questions-does-this-raise" class="nav-link" data-scroll-target="#what-questions-does-this-raise"><span class="header-section-number">4.4.3</span> What Questions Does This Raise?</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps"><span class="header-section-number">4.4.4</span> Next Steps</a></li>
+  <li><a href="#practice-exercise-understanding-distributions" id="toc-practice-exercise-understanding-distributions" class="nav-link" data-scroll-target="#practice-exercise-understanding-distributions"><span class="header-section-number">4.4.5</span> Practice Exercise: Understanding Distributions</a></li>
+  </ul></li>
+  <li><a href="#part-2-from-exploration-to-publication-ready-graphics" id="toc-part-2-from-exploration-to-publication-ready-graphics" class="nav-link" data-scroll-target="#part-2-from-exploration-to-publication-ready-graphics"><span class="header-section-number">4.5</span> Part 2: From Exploration to Publication-Ready Graphics</a>
+  <ul class="collapse">
+  <li><a href="#creating-publication-ready-graphics-with-aiddataviz" id="toc-creating-publication-ready-graphics-with-aiddataviz" class="nav-link" data-scroll-target="#creating-publication-ready-graphics-with-aiddataviz"><span class="header-section-number">4.5.1</span> Creating Publication-Ready Graphics with aiddataviz</a></li>
+  <li><a href="#our-target-professional-publication-quality" id="toc-our-target-professional-publication-quality" class="nav-link" data-scroll-target="#our-target-professional-publication-quality"><span class="header-section-number">4.5.2</span> Our Target: Professional Publication Quality</a></li>
+  <li><a href="#building-our-publication-ready-visualization" id="toc-building-our-publication-ready-visualization" class="nav-link" data-scroll-target="#building-our-publication-ready-visualization"><span class="header-section-number">4.5.3</span> Building Our Publication-Ready Visualization</a></li>
+  <li><a href="#key-elements-of-professional-visualizations" id="toc-key-elements-of-professional-visualizations" class="nav-link" data-scroll-target="#key-elements-of-professional-visualizations"><span class="header-section-number">4.5.4</span> Key Elements of Professional Visualizations</a></li>
+  </ul></li>
+  <li><a href="#resources-for-data-visualization" id="toc-resources-for-data-visualization" class="nav-link" data-scroll-target="#resources-for-data-visualization"><span class="header-section-number">4.6</span> Resources for Data Visualization</a>
+  <ul class="collapse">
+  <li><a href="#essential-references" id="toc-essential-references" class="nav-link" data-scroll-target="#essential-references"><span class="header-section-number">4.6.1</span> Essential References</a></li>
+  <li><a href="#finding-inspiration-solutions" id="toc-finding-inspiration-solutions" class="nav-link" data-scroll-target="#finding-inspiration-solutions"><span class="header-section-number">4.6.2</span> Finding Inspiration &amp; Solutions</a></li>
+  <li><a href="#advanced-learning" id="toc-advanced-learning" class="nav-link" data-scroll-target="#advanced-learning"><span class="header-section-number">4.6.3</span> Advanced Learning</a></li>
+  <li><a href="#practice-exercise" id="toc-practice-exercise" class="nav-link" data-scroll-target="#practice-exercise"><span class="header-section-number">4.6.4</span> Practice Exercise</a></li>
+  </ul></li>
+  <li><a href="#wrapping-up-the-power-of-data-visualization" id="toc-wrapping-up-the-power-of-data-visualization" class="nav-link" data-scroll-target="#wrapping-up-the-power-of-data-visualization"><span class="header-section-number">4.7</span> Wrapping Up: The Power of Data Visualization</a>
+  <ul class="collapse">
+  <li><a href="#todays-achievements" id="toc-todays-achievements" class="nav-link" data-scroll-target="#todays-achievements"><span class="header-section-number">4.7.1</span> Today’s Achievements</a></li>
+  <li><a href="#checking-our-learning-objectives" id="toc-checking-our-learning-objectives" class="nav-link" data-scroll-target="#checking-our-learning-objectives"><span class="header-section-number">4.7.2</span> Checking Our Learning Objectives</a></li>
+  <li><a href="#resources-for-continued-learning" id="toc-resources-for-continued-learning" class="nav-link" data-scroll-target="#resources-for-continued-learning"><span class="header-section-number">4.7.3</span> Resources for Continued Learning</a></li>
+  <li><a href="#next-steps-1" id="toc-next-steps-1" class="nav-link" data-scroll-target="#next-steps-1"><span class="header-section-number">4.7.4</span> Next Steps</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -235,8 +316,1206 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="learning-objectives" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">4.1</span> Learning Objectives</h2>
+<p>By the end of this session, you will be able to:</p>
+<ol type="1">
+<li><strong>Create</strong> exploratory visualizations to understand patterns in Chinese development finance data</li>
+<li><strong>Layer</strong> multiple aesthetic mappings to reveal complex relationships</li>
+<li><strong>Transform</strong> exploratory visualizations into publication-ready graphics</li>
+<li><strong>Apply</strong> AidData’s visual style using the aiddataviz package</li>
+<li><strong>Use</strong> AI tools effectively to assist with both exploration and polish</li>
+</ol>
+</section>
+<section id="todays-agenda-90-minutes" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="todays-agenda-90-minutes"><span class="header-section-number">4.2</span> Today’s Agenda (90 minutes)</h2>
+<ol type="1">
+<li><strong>The Two Purposes of Data Visualization</strong> (10 min)
+<ul>
+<li>Exploration vs.&nbsp;Communication</li>
+<li>The power of visual thinking</li>
+<li>When to use each approach</li>
+</ul></li>
+<li><strong>Part 1: Exploratory Data Visualization</strong> (35 min)
+<ul>
+<li>Introduction (5 min)
+<ul>
+<li>The value of quick, iterative visualization</li>
+<li>Making lots of charts to find patterns</li>
+</ul></li>
+<li>Demo: Layering for Insight (15 min)
+<ul>
+<li>Case study: Interest rates and commitment size</li>
+<li>Adding variables through aesthetic mappings</li>
+<li>Using AI to suggest visualization approaches</li>
+</ul></li>
+<li>Interactive Exercise: Chart Detective (15 min)
+<ul>
+<li>Group exploration of Chinese development finance data</li>
+<li>Creating multiple visualizations</li>
+<li>Finding and sharing insights</li>
+</ul></li>
+</ul></li>
+<li><strong>Break &amp; Discussion</strong> (5 min)
+<ul>
+<li>Share key insights from exploration</li>
+<li>Identify visualizations worth polishing</li>
+</ul></li>
+<li><strong>Part 2: Creating Publication-Ready Visualizations</strong> (35 min)
+<ul>
+<li>From Exploration to Publication (15 min)
+<ul>
+<li>The 6-step process for polishing visualizations</li>
+<li>Using aiddataviz for consistent styling</li>
+<li>Best practices for professional charts</li>
+</ul></li>
+<li>Interactive Exercise: Polish &amp; Present (20 min)
+<ul>
+<li>Transform exploratory charts into publication quality</li>
+<li>Apply AidData visual identity</li>
+<li>Peer review and feedback</li>
+</ul></li>
+</ul></li>
+<li><strong>Wrap-up &amp; Resources</strong> (5 min)
+<ul>
+<li>Key takeaways</li>
+<li>Additional resources</li>
+<li>Preview of next week</li>
+</ul></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why This Matters for TUFF Analysis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Exploratory Visualization</strong></p>
+<ul>
+<li>TUFF data is complex and often messy</li>
+<li>Visual exploration helps spot patterns that spreadsheets might miss</li>
+<li>Quick iteration helps generate hypotheses about Chinese lending behavior</li>
+<li>Visual thinking can reveal outliers that need deeper investigation</li>
+</ul>
+<p><strong>Professional Visualization</strong></p>
+<ul>
+<li>Turn insights into compelling evidence for reports and blogs</li>
+<li>Create consistent, branded graphics that build AidData’s reputation</li>
+<li>Move efficiently from analysis to publication</li>
+<li>Tell clear stories about Chinese development finance</li>
+</ul>
+<p>The skills you’re learning today directly support AidData’s mission of bringing transparency to Chinese overseas development finance.</p>
+</div>
+</div>
+</section>
+<section id="setup" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="setup"><span class="header-section-number">4.3</span> Setup</h2>
+<p>Before we begin exploring data visualization, let’s get our environment ready. We’ll need to:</p>
+<ol type="1">
+<li>Install the experimental aiddataviz package</li>
+<li>Install recommended fonts (optional)</li>
+<li>Load required packages</li>
+</ol>
+<section id="installing-aiddataviz" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="installing-aiddataviz"><span class="header-section-number">4.3.1</span> Installing aiddataviz</h3>
+<p>First, install the aiddataviz package from GitHub:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">"Teal-Insights/aiddataviz"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+aiddataviz Package Status
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The aiddataviz package is currently under active development. While it’s already useful for creating AidData-styled visualizations:</p>
+<ul>
+<li>Expect breaking changes in the coming weeks</li>
+<li>Some features may change or be refined</li>
+<li>Your feedback will help shape its development</li>
+<li>Treat it as experimental for now</li>
+</ul>
+<p>Documentation is available at the <a href="https://teal-insights.github.io/aiddataviz/">aiddataviz website</a>.</p>
+</div>
+</div>
+</section>
+<section id="installing-fonts-optional" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="installing-fonts-optional"><span class="header-section-number">4.3.2</span> Installing Fonts (Optional)</h3>
+<p>The package works best with specific fonts that match AidData’s visual identity. You can install these fonts with:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>aiddataviz<span class="sc">::</span><span class="fu">install_aiddata_fonts</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Don’t worry if the font installation doesn’t work - the package will automatically use appropriate backup fonts. We’re still refining this functionality!</p>
+</div>
+</div>
+</section>
+<section id="loading-required-packages" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="loading-required-packages"><span class="header-section-number">4.3.3</span> Loading Required Packages</h3>
+<p>Now let’s load the packages we’ll need:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)      <span class="co"># For data manipulation and visualization</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(chinadevfin3)   <span class="co"># For Chinese development finance data</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(aiddataviz)     <span class="co"># For AidData visualization tools</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="verifying-setup" class="level3" data-number="4.3.4">
+<h3 data-number="4.3.4" class="anchored" data-anchor-id="verifying-setup"><span class="header-section-number">4.3.4</span> Verifying Setup</h3>
+<p>Let’s make sure everything is working by creating a simple visualization:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gcdf_yearly_flows <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> commitment_year, </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> commitments_bn,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> flow_class)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_aiddata</span>() <span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_aiddata</span>() <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Chinese Development Finance Flows"</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Commitments (USD Billions)"</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_in_class_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>If you see a chart with AidData’s colors and styling, you’re ready to go! If you run into any issues, don’t worry - we’ll troubleshoot together during class.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Getting Help
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you encounter setup issues: 1. Check the <a href="https://teal-insights.github.io/aiddataviz/">aiddataviz documentation</a> 2. Post in our course Slack channel</p>
+</div>
+</div>
+</section>
+</section>
+<section id="part-1-exploratory-data-visualization" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="part-1-exploratory-data-visualization"><span class="header-section-number">4.4</span> Part 1: Exploratory Data Visualization</h2>
+<p>Data visualization isn’t just about creating polished graphics for reports. One of its most powerful uses is as a tool for understanding your data and generating new hypotheses. As you explore data, you should:</p>
+<ul>
+<li>Make lots of charts quickly</li>
+<li>Focus on insight, not appearance</li>
+<li>Let each visualization suggest the next</li>
+<li>Use charts to generate questions</li>
+</ul>
+<section id="a-case-study-in-visual-exploration" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="a-case-study-in-visual-exploration"><span class="header-section-number">4.4.1</span> A Case Study in Visual Exploration</h3>
+<p>Let’s explore a specific question about Chinese overseas lending: Is there a relationship between the size of lending commitments and interest rates? And how does this relationship vary across different types of countries?</p>
+<p>This is a perfect example of how we can use visualization to understand complex relationships in our data. We’ll build our visualization step by step, with each step adding new insights.</p>
+<section id="step-1-the-basic-relationship" class="level4" data-number="4.4.1.1">
+<h4 data-number="4.4.1.1" class="anchored" data-anchor-id="step-1-the-basic-relationship"><span class="header-section-number">4.4.1.1</span> Step 1: The Basic Relationship</h4>
+<p>Let’s start with the simplest possible visualization of our question - a basic scatter plot:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>gcdf_country_commitments <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove any rows with NA in key variables</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(weighted_interest_rate), </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(total_commitments_bn)) <span class="sc">|&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> total_commitments_bn,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> weighted_interest_rate)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_in_class_files/figure-html/basic-scatter-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This initial plot already shows there might be a relationship, but it’s hard to see the pattern clearly because of how financial data is distributed.</p>
+</section>
+<section id="step-2-making-the-scale-intuitive" class="level4" data-number="4.4.1.2">
+<h4 data-number="4.4.1.2" class="anchored" data-anchor-id="step-2-making-the-scale-intuitive"><span class="header-section-number">4.4.1.2</span> Step 2: Making the Scale Intuitive</h4>
+<p>Financial data often spans several orders of magnitude - from millions to billions of dollars. Regular scales make it hard to see patterns across these different sizes. Let’s improve this with three changes:</p>
+<ol type="1">
+<li>Use a log scale to spread out the data</li>
+<li>Format the labels to be readable</li>
+<li>Set reasonable limits to use the space well</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>gcdf_country_commitments <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(weighted_interest_rate), </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(total_commitments_bn)) <span class="sc">|&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># scale 1 billion --&gt; 1, we deal with scale below</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> total_commitments_bn <span class="sc">*</span><span class="fl">1e9</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> weighted_interest_rate)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">scale_cut =</span> scales<span class="sc">::</span><span class="fu">cut_short_scale</span>(),</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">prefix =</span> <span class="st">"$"</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">15</span> <span class="sc">*</span> <span class="fl">1e6</span>, <span class="dv">175</span> <span class="sc">*</span> <span class="fl">1e9</span>)  <span class="co"># From roughly $15M to $175B</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_in_class_files/figure-html/better-scale-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The <code>{scales}</code> Package
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <a href="https://scales.r-lib.org/">{scales}</a> package is an amazing resource for making your axes readable and professional. It can:</p>
+<ul>
+<li>Format numbers (e.g., <code>label_number()</code>)</li>
+<li>Handle currencies (e.g., <code>label_dollar()</code>)</li>
+<li>Show percentages (e.g., <code>label_percent()</code>)</li>
+<li>Abbreviate large numbers (e.g., <code>scale_cut_short_scale()</code>)</li>
+</ul>
+<p>While scales offers many sophisticated options for publication-quality graphics, for exploratory work we just want readable labels. Using <code>scale_cut_short_scale()</code> to show “$1B” instead of “1e9” makes our chart more intuitive to read.</p>
+<p>Tip: LLMs are great at reformatting scales.</p>
+</div>
+</div>
+</section>
+<section id="step-3-adding-country-labels" class="level4" data-number="4.4.1.3">
+<h4 data-number="4.4.1.3" class="anchored" data-anchor-id="step-3-adding-country-labels"><span class="header-section-number">4.4.1.3</span> Step 3: Adding Country Labels</h4>
+<p>The scatter plot shows a pattern, but which countries are where? Let’s add labels:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>gcdf_country_commitments <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(weighted_interest_rate), </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(total_commitments_bn)) <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> total_commitments_bn <span class="sc">*</span> <span class="fl">1e9</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> weighted_interest_rate)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> iso3c), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">scale_cut =</span> scales<span class="sc">::</span><span class="fu">cut_short_scale</span>(),</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">prefix =</span> <span class="st">"$"</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">15</span> <span class="sc">*</span> <span class="fl">1e6</span>, <span class="dv">175</span> <span class="sc">*</span> <span class="fl">1e9</span>)  </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_in_class_files/figure-html/country-labels-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now we can identify specific countries, and some interesting outliers appear. For example, why does Nicaragua have such a high interest rate relative to its commitment size?</p>
+</section>
+<section id="step-4-adding-regional-context" class="level4" data-number="4.4.1.4">
+<h4 data-number="4.4.1.4" class="anchored" data-anchor-id="step-4-adding-regional-context"><span class="header-section-number">4.4.1.4</span> Step 4: Adding Regional Context</h4>
+<p>Are there regional patterns? Let’s color-code by region:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>gcdf_country_commitments <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(weighted_interest_rate), </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(total_commitments_bn)) <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> total_commitments_bn <span class="sc">*</span> <span class="fl">1e9</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> weighted_interest_rate)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> iso3c,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> region_name),</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_x_log10</span>(</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">scale_cut =</span> scales<span class="sc">::</span><span class="fu">cut_short_scale</span>(),</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">prefix =</span> <span class="st">"$"</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">15</span> <span class="sc">*</span> <span class="fl">1e6</span>, <span class="dv">175</span> <span class="sc">*</span> <span class="fl">1e9</span>) </span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_in_class_files/figure-html/regional-patterns-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Aesthetic Mapping Levels
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In ggplot2, you can map aesthetics (like color, size, etc.) at different levels:</p>
+<ol type="1">
+<li>In the main <code>ggplot(aes())</code>: applies to ALL layers</li>
+<li>In individual geoms like <code>geom_text(aes())</code>: applies only to that layer</li>
+</ol>
+<p>Here, we put <code>label</code> and <code>color</code> in <code>geom_text(aes())</code> because:</p>
+<ul>
+<li>We want these aesthetics to only affect the country labels</li>
+<li>When we add trend lines later, we want them calculated on ALL data, not by region</li>
+<li>If we put <code>color = region_name</code> in the main <code>ggplot(aes())</code>, our trend lines would be calculated separately for each region</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Using AI for Exploration
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Try asking AI assistants questions like:</p>
+<ul>
+<li>“What patterns do you notice in this visualization?”</li>
+<li>“Can you help me fix my chart’s scales?”</li>
+<li>“How could I modify this code to explore [specific aspect]?”</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="step-4-adding-statistical-context" class="level4" data-number="4.4.1.5">
+<h4 data-number="4.4.1.5" class="anchored" data-anchor-id="step-4-adding-statistical-context"><span class="header-section-number">4.4.1.5</span> Step 4: Adding Statistical Context</h4>
+<p>Is there an overall relationship? Let’s add a trend line:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>gcdf_country_commitments <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(weighted_interest_rate), </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(total_commitments_bn)) <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> total_commitments_bn <span class="sc">*</span> <span class="fl">1e9</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> weighted_interest_rate)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> iso3c,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> region_name),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">scale_cut =</span> scales<span class="sc">::</span><span class="fu">cut_short_scale</span>(),</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">prefix =</span> <span class="st">"$"</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">15</span> <span class="sc">*</span> <span class="fl">1e6</span>, <span class="dv">175</span> <span class="sc">*</span> <span class="fl">1e9</span>)  </span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_in_class_files/figure-html/add-trend-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Trend Lines with geom_smooth()
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>geom_smooth()</code> adds a trend line to your plot to help visualize patterns. It can:</p>
+<ul>
+<li>Use different methods (<code>lm</code> for linear, <code>loess</code> for local, etc.)</li>
+<li>Show uncertainty with confidence intervals</li>
+<li>Help identify relationships in noisy data</li>
+</ul>
+<p>For example:</p>
+<p>Linear trend: <code>geom_smooth(method = "lm")</code></p>
+<p>Local smoothing (good for non-linear patterns): <code>geom_smooth(method = "loess")</code></p>
+<p>Learn more in the <a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html"><code>geom_smooth()</code> documentation</a>.</p>
+</div>
+</div>
+</section>
+<section id="step-5-breaking-out-by-income-level" class="level4" data-number="4.4.1.6">
+<h4 data-number="4.4.1.6" class="anchored" data-anchor-id="step-5-breaking-out-by-income-level"><span class="header-section-number">4.4.1.6</span> Step 5: Breaking Out by Income Level</h4>
+<p>Does this relationship vary by country income level? Let’s use faceting to find out:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>gcdf_country_commitments <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(weighted_interest_rate), </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(total_commitments_bn)) <span class="sc">|&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> total_commitments_bn <span class="sc">*</span> <span class="fl">1e9</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> weighted_interest_rate)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> iso3c,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> region_name),</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">2</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">scale_cut =</span> scales<span class="sc">::</span><span class="fu">cut_short_scale</span>(),</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">prefix =</span> <span class="st">"$"</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">15</span> <span class="sc">*</span> <span class="fl">1e6</span>, <span class="dv">175</span> <span class="sc">*</span> <span class="fl">1e9</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>income_level_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_in_class_files/figure-html/income-facets-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Faceting for Multiple Views <code>facet_wrap()</code> creates small multiples of your plot, split by a variable. It’s great for:</p>
+<ul>
+<li>Comparing patterns across groups</li>
+<li>Spotting differences in relationships</li>
+<li>Dealing with overlapping data</li>
+</ul>
+<p>The <code>~</code> in <code>facet_wrap(~variable)</code> is a formula that tells R which variable to use for splitting. Key options:</p>
+<p><code>scales = "free"</code>: Let axes vary between facets</p>
+<p><code>ncol</code> or <code>nrow</code>: Control layout</p>
+<p>Learn more in the <a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html?q=facet_wrap#null"><code>facet_wrap()</code> documentation</a></p>
+</div>
+</div>
+</section>
+</section>
+<section id="what-have-we-learned" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="what-have-we-learned"><span class="header-section-number">4.4.2</span> What Have We Learned?</h3>
+<p>This exploratory process has revealed several interesting patterns:</p>
+<ol type="1">
+<li>There appears to be a positive relationship between commitment size and interest rates</li>
+<li>This relationship varies by income level</li>
+<li>There are some notable outliers worth investigating</li>
+<li>Regional patterns exist within income groups</li>
+</ol>
+<p>Not all exploratory analysis yields profound implications. It’s valuable nevertheless.</p>
+</section>
+<section id="what-questions-does-this-raise" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="what-questions-does-this-raise"><span class="header-section-number">4.4.3</span> What Questions Does This Raise?</h3>
+<p>Good exploratory visualization often raises more questions than it answers:</p>
+<ol type="1">
+<li>Why does Niger have such a high interest rate relative to its peers?</li>
+<li>What explains the different slopes across income groups?</li>
+<li>Are these relationships stable over time?</li>
+<li>What other factors might explain these patterns?</li>
+</ol>
+</section>
+<section id="next-steps" class="level3" data-number="4.4.4">
+<h3 data-number="4.4.4" class="anchored" data-anchor-id="next-steps"><span class="header-section-number">4.4.4</span> Next Steps</h3>
+<p>This exploration suggests several promising directions:</p>
+<ol type="1">
+<li><strong>Further Research</strong>: Look into specific outlier cases</li>
+<li><strong>Additional Visualization</strong>: Explore how these patterns change over time</li>
+<li><strong>Statistical Analysis</strong>: Consider formal modeling of these relationships</li>
+<li><strong>Domain Expert Input</strong>: Discuss findings with colleagues who know specific countries</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+From Exploration to Communication
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you find patterns worth sharing:</p>
+<ol type="1">
+<li>For colleagues: Add clear titles, labels, and notes</li>
+<li>For reports: Transform into publication-quality visualizations</li>
+<li>For presentations: Simplify to emphasize key points</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="practice-exercise-understanding-distributions" class="level3" data-number="4.4.5">
+<h3 data-number="4.4.5" class="anchored" data-anchor-id="practice-exercise-understanding-distributions"><span class="header-section-number">4.4.5</span> Practice Exercise: Understanding Distributions</h3>
+<p>Let’s explore the distributions of key variables in our Chinese development finance data. We’ll use histograms and box plots to understand both overall patterns and how they vary across groups.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exploring Distributions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When examining a variable’s distribution, it’s helpful to:</p>
+<ol type="1">
+<li>Look at the overall shape first (histogram)</li>
+<li>Then compare across groups (box plots)</li>
+<li>Consider whether you need to transform scales (often for financial data)</li>
+</ol>
+</div>
+</div>
+<p>Explore these two key variables:</p>
+<ol type="1">
+<li><strong>Weighted Interest Rates</strong></li>
+</ol>
+<ul>
+<li>Start with overall distribution</li>
+<li>Compare across regions</li>
+<li>Compare across income groups</li>
+<li>Consider: What patterns do you see? Any surprises?</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Total Commitments</strong></li>
+</ol>
+<ul>
+<li>Look at the overall distribution</li>
+<li>Try with and without log scale</li>
+<li>Look at regional patterns</li>
+<li>Examine patterns by income group</li>
+<li>Think about: Where is China lending the most? Least?</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Useful geoms for Distribution Analysis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><code>geom_histogram()</code>: Overall shape of distribution</li>
+<li><code>geom_boxplot()</code>: Compare distributions across groups</li>
+<li><code>geom_density()</code>: Smooth version of histogram</li>
+<li><code>geom_violin()</code>: Combination of density and box plot</li>
+</ul>
+<p>Try different ones to see which reveals patterns best!</p>
+</div>
+</div>
+<p>Remember:</p>
+<ul>
+<li>Make lots of charts</li>
+<li>Try different visualization approaches</li>
+<li>Note interesting patterns</li>
+<li>Generate questions for further research</li>
+</ul>
+<p>Share what you discover with your colleagues - sometimes fresh eyes see new patterns!</p>
+</section>
+</section>
+<section id="part-2-from-exploration-to-publication-ready-graphics" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="part-2-from-exploration-to-publication-ready-graphics"><span class="header-section-number">4.5</span> Part 2: From Exploration to Publication-Ready Graphics</h2>
+<section id="creating-publication-ready-graphics-with-aiddataviz" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="creating-publication-ready-graphics-with-aiddataviz"><span class="header-section-number">4.5.1</span> Creating Publication-Ready Graphics with aiddataviz</h3>
+<p>In the first part of this class, we explored how to use visualization to understand patterns in our data. Now we’ll learn how to transform those exploratory visualizations into polished, professional graphics suitable for reports and presentations.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Help Shape aiddataviz
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <code>aiddataviz</code> package is brand new and actively evolving. While it’s already useful for creating AidData-styled visualizations:</p>
+<ul>
+<li>Expect the package to change significantly in coming weeks</li>
+<li>Some features may be added or refined</li>
+<li>Documentation will be expanded</li>
+<li>Installation processes will be streamlined</li>
+</ul>
+<p><strong>Your Input Matters!</strong></p>
+<p>We’re actively seeking feedback from AidData staff &amp; communications team to make this package truly useful for your work. We’d love your input on:</p>
+<ul>
+<li>Color palettes that work well for your analysis</li>
+<li>Font choices that match AidData’s brand</li>
+<li>Output formats you commonly need</li>
+<li>Common visualization types you create</li>
+<li>Features that would save you time</li>
+</ul>
+<p>This is your chance to help build a tool that makes your work easier!</p>
+</div>
+</div>
+</section>
+<section id="our-target-professional-publication-quality" class="level3" data-number="4.5.2">
+<h3 data-number="4.5.2" class="anchored" data-anchor-id="our-target-professional-publication-quality"><span class="header-section-number">4.5.2</span> Our Target: Professional Publication Quality</h3>
+<p>Let’s work through transforming an exploratory visualization into something publication-ready. We’ll recreate this visualization from AidData’s Belt and Road Reboot Report:</p>
+<p><img src="images/week2_reboot_chart.png" class="img-fluid"></p>
+<p>This visualization effectively communicates several key pieces of information:</p>
+<ul>
+<li>Total lending volumes over time</li>
+<li>Composition of lending by flow class</li>
+<li>Key periods in the Belt and Road Initiative</li>
+<li>Clear source attribution and professional styling</li>
+</ul>
+</section>
+<section id="building-our-publication-ready-visualization" class="level3" data-number="4.5.3">
+<h3 data-number="4.5.3" class="anchored" data-anchor-id="building-our-publication-ready-visualization"><span class="header-section-number">4.5.3</span> Building Our Publication-Ready Visualization</h3>
+<p>Let’s transform our exploratory visualization into a polished, publication-ready graphic step by step. Think of it like building with Legos - each piece adds something specific and manageable.</p>
+<section id="step-1-start-with-basic-structure" class="level4" data-number="4.5.3.1">
+<h4 data-number="4.5.3.1" class="anchored" data-anchor-id="step-1-start-with-basic-structure"><span class="header-section-number">4.5.3.1</span> Step 1: Start with Basic Structure</h4>
+<p>First, let’s create our basic stacked bar chart:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>gcdf_yearly_flows <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> commitment_year,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> commitments_bn,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> flow_class</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    ) </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_in_class_files/figure-html/pub-basic-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This basic structure already shows our key information - lending volumes over time by flow class. Now we’ll enhance it step by step.</p>
+</div>
+</div>
+</section>
+<section id="step-2-improve-visual-organization" class="level4" data-number="4.5.3.2">
+<h4 data-number="4.5.3.2" class="anchored" data-anchor-id="step-2-improve-visual-organization"><span class="header-section-number">4.5.3.2</span> Step 2: Improve Visual Organization</h4>
+<p>We’ll reorder the flow classes to create a more intuitive stacking order:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> gcdf_yearly_flows <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> commitment_year,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> commitments_bn,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="fu">fct_reorder2</span>(</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">.f =</span> flow_class,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">.x =</span> commitment_year,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">.y =</span> commitments_bn,</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">.desc =</span> <span class="cn">FALSE</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span> </span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">""</span>)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_in_class_files/figure-html/pub-reorder-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Factor Reordering: Static vs Time Series Data The forcats package gives us two key tools for reordering factors: <code>fct_reorder()</code>: Best for static data (like sorted bar charts)</p>
+<p>Orders categories by a single value Perfect when you want to rank things from highest to lowest</p>
+<p><code>fct_reorder2()</code>: Designed specifically for time series data</p>
+<p>Takes both time and value into account Creates stable ordering over time Particularly useful for stacked charts like ours</p>
+<p>Think: “Static = <code>fct_reorder()</code>, Time Series = <code>fct_reorder2()</code>”</p>
+</div>
+</div>
+</section>
+<section id="step-3-apply-aiddatas-visual-style" class="level4" data-number="4.5.3.3">
+<h4 data-number="4.5.3.3" class="anchored" data-anchor-id="step-3-apply-aiddatas-visual-style"><span class="header-section-number">4.5.3.3</span> Step 3: Apply AidData’s Visual Style</h4>
+<p>Now we’ll transform the look using AidData’s color palette and theme:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Using predefined colors from aiddataviz</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>aiddata_custom_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ODA-like"</span> <span class="ot">=</span> <span class="fu">unname</span>(aiddata_colors<span class="sc">$</span>wren_twilight),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OOF-like"</span> <span class="ot">=</span> <span class="fu">unname</span>(aiddata_colors<span class="sc">$</span>spirit_gold),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Vague (Official Finance)"</span> <span class="ot">=</span> <span class="fu">unname</span>(aiddata_colors<span class="sc">$</span>silver)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p <span class="sc">+</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># allows you to define your own colors</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> aiddata_custom_colors) <span class="sc">+</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_aiddata</span>() <span class="sc">+</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>()  <span class="co"># Remove vertical gridlines</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_in_class_files/figure-html/pub-style-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+AidData’s Color System
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The colors we’re using come from <a href="https://brand.wm.edu/index.php/university-colors/">William &amp; Mary’s brand guidelines</a> and have been chosen to:</p>
+<ul>
+<li>Ensure readability</li>
+<li>Maintain institutional identity</li>
+<li>Work well together in various combinations</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="step-4-add-direct-labels" class="level4" data-number="4.5.3.4">
+<h4 data-number="4.5.3.4" class="anchored" data-anchor-id="step-4-add-direct-labels"><span class="header-section-number">4.5.3.4</span> Step 4: Add Direct Labels</h4>
+<p>Let’s replace the legend with direct labels, making it easier for readers to identify categories:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p2 <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"text"</span>, </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="dv">2022</span>, </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">82</span>, <span class="dv">68</span>, <span class="dv">40</span>), </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">c</span>(<span class="st">"Vague"</span>, <span class="st">"ODA"</span>, <span class="st">"OOF"</span>), </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Match colors to labels explicitly</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">c</span>(</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">unname</span>(aiddata_colors<span class="sc">$</span>silver),          <span class="co"># For "Vague"</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">unname</span>(aiddata_colors<span class="sc">$</span>wren_twilight),   <span class="co"># For "ODA"</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">unname</span>(aiddata_colors<span class="sc">$</span>spirit_gold)      <span class="co"># For "OOF"</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">4</span>, </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="dv">0</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add space for the labels</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">2000</span>, <span class="dv">2023</span>) <span class="sc">+</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># get rid of the old clunky legend</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>p3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_in_class_files/figure-html/pub-labels-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Direct labels eliminate the need for readers to look back and forth between the visualization and a legend, making the chart easier to understand quickly.</p>
+</div>
+</div>
+</section>
+<section id="step-5-add-context-with-annotations" class="level4" data-number="4.5.3.5">
+<h4 data-number="4.5.3.5" class="anchored" data-anchor-id="step-5-add-context-with-annotations"><span class="header-section-number">4.5.3.5</span> Step 5: Add Context with Annotations</h4>
+<p>Now we’ll add the BRI period markers to provide important context:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> p3 <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add vertical lines for BRI periods</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">xintercept =</span> <span class="fu">c</span>(<span class="fl">2013.5</span>, <span class="fl">2017.5</span>),</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">linetype =</span> <span class="st">"dashed"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> aiddata_colors<span class="sc">$</span>gray50,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add BRI period annotations</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"text"</span>,</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fl">2015.5</span>,</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="dv">165</span>,</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"Early BRI</span><span class="sc">\n</span><span class="st">(2014-2017)"</span>,</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span>,</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> aiddata_colors<span class="sc">$</span>gray50</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"text"</span>,</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fl">2019.5</span>,</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="dv">165</span>,</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"Late BRI</span><span class="sc">\n</span><span class="st">(2018-2021)"</span>,</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span>,</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> aiddata_colors<span class="sc">$</span>gray50</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>p4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_in_class_files/figure-html/pub-annotations-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="step-6-polish-with-professional-labeling" class="level4" data-number="4.5.3.6">
+<h4 data-number="4.5.3.6" class="anchored" data-anchor-id="step-6-polish-with-professional-labeling"><span class="header-section-number">4.5.3.6</span> Step 6: Polish with Professional Labeling</h4>
+<p>Finally, we’ll add clear titles, format axes, and include proper source attribution:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> p4 <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Official financial flows from China to the developing world,&lt;br&gt;2000-2021"</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Constant 2021 USD Billions"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Source: AidData's Global Chinese Development Finance Dataset, Version 3.0"</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_currency</span>(<span class="at">suffix =</span> <span class="st">" B"</span>),</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">170</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>p5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_2_in_class_files/figure-html/pub-polish-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Let’s compare it to the original:</p>
+<p><img src="images/week2_reboot_chart.png" class="img-fluid"></p>
+<p>Looks pretty close! That’s something you can easily learn to do well.</p>
+<p>If we wanted to, we could take a few more steps:</p>
+<ul>
+<li>draw lines from our labels to the columns</li>
+<li>make the axis titles lighter to draw attention away from them</li>
+</ul>
+<p>Once you get to that level, it’s worth talking with your communications team. They are professionals.</p>
+</section>
+</section>
+<section id="key-elements-of-professional-visualizations" class="level3" data-number="4.5.4">
+<h3 data-number="4.5.4" class="anchored" data-anchor-id="key-elements-of-professional-visualizations"><span class="header-section-number">4.5.4</span> Key Elements of Professional Visualizations</h3>
+<p>Our final visualization incorporates several key elements that make it publication-ready:</p>
+<ol type="1">
+<li><strong>Clear Visual Hierarchy</strong>
+<ul>
+<li>Ordered stacking of categories</li>
+<li>Direct labels instead of legend</li>
+<li>Removal of unnecessary grid lines</li>
+</ul></li>
+<li><strong>Consistent Branding</strong>
+<ul>
+<li>AidData color palette</li>
+<li>Professional typography</li>
+<li>Clean, minimal theme</li>
+</ul></li>
+<li><strong>Contextual Information</strong>
+<ul>
+<li>Clear title and subtitle</li>
+<li>Important period markers</li>
+<li>Proper source attribution</li>
+</ul></li>
+<li><strong>Readable Formatting</strong>
+<ul>
+<li>Well-formatted axis labels</li>
+<li>Appropriate scale limits</li>
+<li>Balanced use of space</li>
+</ul></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Creating Your Own Publication Graphics
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Create a checklist for your visualizations:</p>
+<ol type="1">
+<li>Is the main message immediately clear?</li>
+<li>Are all elements properly labeled?</li>
+<li>Is the styling consistent with your organization’s brand?</li>
+<li>Have you removed unnecessary visual elements?</li>
+<li>Is the source clearly attributed?</li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+<section id="resources-for-data-visualization" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="resources-for-data-visualization"><span class="header-section-number">4.6</span> Resources for Data Visualization</h2>
+<section id="essential-references" class="level3" data-number="4.6.1">
+<h3 data-number="4.6.1" class="anchored" data-anchor-id="essential-references"><span class="header-section-number">4.6.1</span> Essential References</h3>
+<ol type="1">
+<li><strong><a href="https://ggplot2.tidyverse.org/index.html">ggplot2 Documentation</a></strong>
+<ul>
+<li>Comprehensive function reference</li>
+<li>Clear examples for each feature</li>
+<li>Best place to look up specific details</li>
+</ul></li>
+<li><strong><a href="https://r4ds.hadley.nz/visualize">R for Data Science (2e)</a></strong>
+<ul>
+<li>Section 2 focuses entirely on visualization</li>
+<li>Written by ggplot2’s creator, Hadley Wickham</li>
+<li>Perfect balance of theory and practice</li>
+<li>Free online!</li>
+</ul></li>
+</ol>
+</section>
+<section id="finding-inspiration-solutions" class="level3" data-number="4.6.2">
+<h3 data-number="4.6.2" class="anchored" data-anchor-id="finding-inspiration-solutions"><span class="header-section-number">4.6.2</span> Finding Inspiration &amp; Solutions</h3>
+<ol type="1">
+<li><strong><a href="https://exts.ggplot2.tidyverse.org/gallery/">ggplot2 Extensions Gallery</a></strong>
+<ul>
+<li>Browse specialized visualization packages</li>
+<li>Find new ways to present your data</li>
+<li>All compatible with ggplot2</li>
+</ul></li>
+<li><strong><a href="https://r-graph-gallery.com/">R Graph Gallery</a></strong>
+<ul>
+<li>Examples of many chart types</li>
+<li>Step-by-step instructions</li>
+<li>Code you can adapt</li>
+</ul></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Quick Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you need to create a new type of visualization:</p>
+<ol type="1">
+<li>Check the R Graph Gallery for examples</li>
+<li>Look for relevant ggplot2 extensions</li>
+<li>Ask AI tools to help adapt example code</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="advanced-learning" class="level3" data-number="4.6.3">
+<h3 data-number="4.6.3" class="anchored" data-anchor-id="advanced-learning"><span class="header-section-number">4.6.3</span> Advanced Learning</h3>
+<ol type="1">
+<li><strong><a href="https://www.storytellingwithdata.com/">Storytelling with Data</a></strong>
+<ul>
+<li>Beyond technical skills</li>
+<li>Focus on communication</li>
+<li>Key concepts:
+<ul>
+<li>Understanding context and audience</li>
+<li>Choosing the right visualization</li>
+<li>Eliminating chart clutter</li>
+<li>Using design principles</li>
+<li>Building effective narratives</li>
+</ul></li>
+</ul></li>
+<li><strong><a href="https://rstudio-conf-2022.github.io/ggplot2-graphic-design/">Graphic Design with ggplot2</a></strong>
+<ul>
+<li>💫 <strong>Highly Recommended!</strong></li>
+<li>Comprehensive workshop materials</li>
+<li>Free online access</li>
+<li>Topics include:
+<ul>
+<li>Advanced ggplot2 techniques</li>
+<li>Color theory and typography</li>
+<li>Layout and composition</li>
+<li>Creating publication-quality graphics</li>
+</ul></li>
+</ul></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learning Path Suggestion
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Start with R4DS for foundations</li>
+<li>Use the galleries for inspiration</li>
+<li>Reference ggplot2 docs for details</li>
+<li>Move to advanced resources when ready</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="practice-exercise" class="level3" data-number="4.6.4">
+<h3 data-number="4.6.4" class="anchored" data-anchor-id="practice-exercise"><span class="header-section-number">4.6.4</span> Practice Exercise</h3>
+<p>Take one of the exploratory visualizations you created today and:</p>
+<ol type="1">
+<li>Find a similar example in the R Graph Gallery</li>
+<li>Identify ways to enhance it</li>
+<li>Use the ggplot2 documentation to implement improvements</li>
+<li>Share your before/after with colleagues</li>
+</ol>
+<p>Remember: Great visualization is an iterative process. Start simple, then enhance step by step.</p>
+</section>
+</section>
+<section id="wrapping-up-the-power-of-data-visualization" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="wrapping-up-the-power-of-data-visualization"><span class="header-section-number">4.7</span> Wrapping Up: The Power of Data Visualization</h2>
+<section id="todays-achievements" class="level3" data-number="4.7.1">
+<h3 data-number="4.7.1" class="anchored" data-anchor-id="todays-achievements"><span class="header-section-number">4.7.1</span> Today’s Achievements</h3>
+<p>Let’s look back at what we’ve accomplished in just 90 minutes:</p>
+<ol type="1">
+<li><strong>Mastered Two Types of Visualization</strong></li>
+</ol>
+<ul>
+<li>Created exploratory visualizations to understand data</li>
+<li>Transformed rough charts into publication-ready graphics</li>
+<li>Learned when to use each approach</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Used Visualization for Discovery</strong></li>
+</ol>
+<ul>
+<li>Layered multiple variables into single charts</li>
+<li>Discovered patterns in Chinese development finance</li>
+<li>Generated new questions for research</li>
+<li>Learned to use aesthetic mappings effectively</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Created Professional Graphics</strong></li>
+</ol>
+<ul>
+<li>Applied AidData’s visual identity</li>
+<li>Built complex visualizations step by step</li>
+<li>Used the aiddataviz package for consistent styling</li>
+<li>Added professional touches like annotations and labels</li>
+</ul>
+<p>Most importantly, you now have a toolkit for both exploring data and communicating your findings effectively. While mastering data visualization takes time and practice, you have working examples you can build upon and adapt for your own analysis needs.</p>
+</section>
+<section id="checking-our-learning-objectives" class="level3" data-number="4.7.2">
+<h3 data-number="4.7.2" class="anchored" data-anchor-id="checking-our-learning-objectives"><span class="header-section-number">4.7.2</span> Checking Our Learning Objectives</h3>
+<p>Let’s review what we set out to achieve:</p>
+<p>✅ <strong>Create exploratory visualizations</strong></p>
+<ul>
+<li>You’ve learned to build layered visualizations</li>
+<li>You know how to map multiple variables to aesthetics</li>
+<li>You can use faceting to compare across groups</li>
+</ul>
+<p>✅ <strong>Layer aesthetic mappings</strong></p>
+<ul>
+<li>You understand how different mappings reveal patterns</li>
+<li>You can combine multiple variables in one visualization</li>
+<li>You know how to choose effective aesthetic mappings</li>
+</ul>
+<p>✅ <strong>Transform exploratory charts into publication graphics</strong></p>
+<ul>
+<li>You can follow the 6-step process for polishing charts</li>
+<li>You understand the elements of professional visualization</li>
+<li>You can use aiddataviz for consistent styling</li>
+</ul>
+<p>✅ <strong>Apply AidData’s visual identity</strong></p>
+<ul>
+<li>You know how to use AidData’s color palettes</li>
+<li>You can apply consistent styling with theme_aiddata()</li>
+<li>You understand the importance of visual consistency</li>
+</ul>
+<p>✅ <strong>Use AI tools effectively</strong></p>
+<ul>
+<li>You’ve seen how AI can help with visualization code</li>
+<li>You know what questions to ask AI assistants</li>
+<li>You understand how to verify AI suggestions</li>
+</ul>
+</section>
+<section id="resources-for-continued-learning" class="level3" data-number="4.7.3">
+<h3 data-number="4.7.3" class="anchored" data-anchor-id="resources-for-continued-learning"><span class="header-section-number">4.7.3</span> Resources for Continued Learning</h3>
+<p>Remember, you have several resources available:</p>
+<ul>
+<li>Our course textbook and examples</li>
+<li>The comprehensive resources we just covered</li>
+<li>The aiddataviz package (though remember it’s still evolving!)</li>
+<li>AI tools to help with coding and troubleshooting</li>
+</ul>
+</section>
+<section id="next-steps-1" class="level3" data-number="4.7.4">
+<h3 data-number="4.7.4" class="anchored" data-anchor-id="next-steps-1"><span class="header-section-number">4.7.4</span> Next Steps</h3>
+<ol type="1">
+<li><strong>Practice with Your Own Data</strong></li>
+</ol>
+<ul>
+<li>Try creating exploratory visualizations of your current projects</li>
+<li>Apply the 6-step process to polish important charts</li>
+<li>Use AI tools to help when you get stuck</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Prepare for Next Week</strong></li>
+</ol>
+<ul>
+<li>We’ll dive into data transformation</li>
+<li>Think about what patterns you’d like to investigate</li>
+<li>Consider how visualization and transformation work together</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Get Help When Needed</strong></li>
+</ol>
+<ul>
+<li>Use AI tools for code help</li>
+<li>Reference the resources we covered</li>
+<li>Ask questions in our course forum</li>
+<li>Share challenges and solutions with colleagues</li>
+</ul>
+<p>Remember: Learning data visualization is a journey. Focus on understanding the fundamentals and building your skills step by step. You don’t need to memorize everything - knowing where to find help is often more important than memorizing syntax.</p>
+<p>See you next week!</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
