@@ -10,6 +10,10 @@ By the end of this session, you will be able to:
 4.  **Apply** AidData's visual style using the aiddataviz package
 5.  **Use** AI tools effectively to assist with both exploration and polish
 
+::: {.column-page}
+{{< video https://youtu.be/Wst7I1-2bNQ>}}
+:::
+
 ## Today's Agenda (90 minutes)
 
 1.  **The Two Purposes of Data Visualization** (10 min)
