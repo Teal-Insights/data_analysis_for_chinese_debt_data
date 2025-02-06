@@ -1,3 +1,432 @@
 # Week 3: Find Actionable Insights, Quickly (Pre-Class) {#sec-week3_pre_class}
 
+This pre-class preparation should take about 45-60 minutes to complete.
 
+## Overview
+
+Now that you can create visualizations and automated reports, it's time to learn how to transform your data to find meaningful insights. This week focuses on data transformation - the process of taking raw data and reshaping it to answer specific questions. We'll use the tidyverse's powerful dplyr package, which makes complex data operations surprisingly intuitive.
+
+### Video Lecture
+Watch this video lecture before our interactive session:
+
+::: {.column-page}
+{{< video https://youtu.be/YOUR_VIDEO_ID >}}
+:::
+
+## Learning Objectives
+
+By completing this pre-class work, you will:
+
+1. Understand the core data transformation verbs in dplyr
+2. Learn to chain operations together using the pipe operator
+3. Begin thinking about data transformation patterns
+4. Practice with real Chinese development finance data
+5. Use AI tools to assist with data transformation tasks
+
+## Setup
+
+Let's get our workspace ready. First, create a new Quarto document for your notes:
+
+```r
+# Create a new Quarto document
+# File → New File → Quarto Document
+# Save as "week_3_transformation_preclass.qmd" in your week_3/R folder
+```
+
+Load the packages we'll need:
+
+```{r}
+library(tidyverse)    # For data transformation tools
+library(chinadevfin3) # For Chinese development finance data
+library(aiddataviz)  # For AidData themed charts
+```
+
+## The Five Core verbs of Data Transformation
+
+Think of data transformation as having five fundamental operations, just like basic arithmetic has addition, subtraction, multiplication, and division. In dplyr, these operations are:
+
+1. **filter()**: Pick rows based on their values
+2. **arrange()**: Change the order of rows
+3. **select()**: Pick columns by their names
+4. **mutate()**: Create new columns from existing ones
+5. **summarize()**: Collapse multiple rows into a single summary
+
+Let's explore each one using real examples from Chinese development finance data.
+
+### 1. filter(): Subsetting Your Data
+
+`filter()` helps you focus on specific parts of your data. Think of it like a sieve that keeps only the rows you want:
+
+```{r}
+# Get ODA-like projects over $100 million
+get_gcdf3_dataset() |>
+  filter(
+    flow_class == "ODA-like",
+    amount_constant_usd_2021 >= 100 * 1e6
+  )
+```
+
+Common filtering operations you'll use:
+
+```{r}
+# Projects from 2018-2021
+get_gcdf3_dataset() |>
+  filter(commitment_year >= 2018)
+
+# Projects in specific countries
+get_gcdf3_dataset() |>
+  filter(country_name %in% c("Angola", "Ethiopia", "Kenya"))
+
+# Projects with complete documentation
+get_gcdf3_dataset() |>
+  filter(
+    !is.na(amount_constant_usd_2021),
+    recommended_for_aggregates == "Yes"
+  )
+```
+
+::: {.callout-tip}
+## Logical Operators in filter()
+
+- `==`: Exactly equals
+- `!=`: Does not equal
+- `>`, `>=`: Greater than, Greater than or equal to
+- `<`, `<=`: Less than, Less than or equal to
+- `%in%`: Is in a set of values
+- `!is.na()`: Is not missing
+- `&`: And (multiple conditions)
+- `|`: Or (either condition)
+:::
+
+### 2. arrange(): Ordering Your Data
+
+`arrange()` lets you sort your data. By default, it sorts in ascending order (smallest to largest):
+
+```{r}
+# Sort projects by size (largest first)
+get_gcdf3_dataset() |>
+  arrange(desc(amount_constant_usd_2021)) # sorted by largest to smallest
+
+# Sort by multiple columns
+get_gcdf3_dataset() |>
+  arrange(
+    country_name, # country A-Z
+    desc(commitment_year) # sorted by most recent year
+  )
+```
+
+::: {.callout-note}
+Use `desc()` to sort in descending order. When sorting by multiple columns, each one is used as a tie-breaker for the previous ones.
+:::
+
+### 3. select(): Choosing Columns
+
+`select()` helps you focus on specific variables. It's particularly useful when you have datasets with many columns:
+
+```{r}
+# Select key financial variables
+get_gcdf3_dataset() |>
+  select(
+    aid_data_record_id,
+    recipient,
+    amount_constant_usd_2021,
+    flow_class
+  )
+
+# Select columns by pattern
+get_gcdf3_dataset() |>
+  select(
+    starts_with("amount"),
+    contains("year")
+  )
+```
+
+::: {.callout-tip}
+## Helpful select() Helpers
+
+- `starts_with()`: Columns starting with a prefix
+- `ends_with()`: Columns ending with a suffix
+- `contains()`: Columns containing a string
+- `matches()`: Columns matching a regular expression
+- `everything()`: All remaining columns
+:::
+
+### 4. mutate(): Creating New Variables
+
+`mutate()` lets you create new columns based on existing ones:
+
+```{r}
+# Convert amounts to billions and calculate shares
+get_gcdf3_dataset() |>
+  group_by(commitment_year) |>
+  mutate(
+    amount_bn = amount_constant_usd_2021 / 1e9,
+    share_of_year = amount_constant_usd_2021 / sum(amount_constant_usd_2021, na.rm = TRUE)
+  )
+```
+
+
+```{r}
+mini_gcdf <- get_gcdf3_dataset() |> 
+  filter(
+    recommended_for_aggregates == "Yes",
+    flow_type == "Loan",
+    country_name %in% c(
+      "Angola",
+      "Zambia",
+      "Venezuela",
+      "Indonesia",
+      "Pakistan"
+    )
+  ) |> 
+  group_by(
+    recipient
+  ) |> 
+  slice_max(
+    order_by = amount_constant_usd_2021,
+    n = 2
+  ) |> 
+  select(
+    recipient,
+    recipient_region,
+    sector_name,
+    commitment_year,
+    amount_constant_usd_2021 
+  ) |> 
+  ungroup()
+  
+```
+
+
+Common mutations in development finance analysis:
+
+
+
+
+[FIX: add real data so that these examples run.  for the yoy growth, could do so using the annual_flows tibble created above. And for clean text example, perhaps use tribble to create a 3 row tibble with inconsistent capitalization]
+```{r}
+# mutate(
+#   # Calculate growth rates
+#   yoy_growth = (amount - lag(amount)) / lag(amount),
+#   
+#   # Create categories
+#   size_category = case_when(
+#     amount_bn >= 1 ~ "Large (>$1B)",
+#     amount_bn >= 0.1 ~ "Medium ($100M-$1B)",
+#     TRUE ~ "Small (<$100M)"
+#   ),
+#   
+#   # Clean text
+#   implementing_agency = str_to_title(implementing_agency)
+# )
+```
+
+### 5. summarize(): Creating Summaries
+
+`summarize()` collapses groups into single rows:
+
+```{r}
+# Calculate total lending by year and flow class
+get_gcdf3_dataset() |>
+  group_by(commitment_year, flow_class) |>
+  summarize(
+    total_amount_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
+    project_count = n(),
+    avg_amount_bn = mean(amount_constant_usd_2021, na.rm = TRUE) / 1e9
+  )
+```
+
+Common summary functions:
+
+- `sum()`: Total values
+- `mean()`: Average
+- `median()`: Middle value
+- `sd()`: Standard deviation
+- `n()`: Count rows
+- `n_distinct()`: Count unique values
+
+::: {.callout-important}
+Always use `na.rm = TRUE` when working with financial data! Missing values are common and can break your calculations if not handled properly.
+:::
+
+## Combining Operations: The Power of the Pipe `|>`
+
+While each verb is useful on its own, the real power comes from combining them. The pipe operator (`|>`) makes this natural and readable:
+
+```{r}
+# Find the largest projects in each region
+get_gcdf3_dataset() |>                    # Start with the data
+  filter(                                 # Keep only...
+    recommended_for_aggregates == "Yes",  # recommended projects
+    !is.na(amount_constant_usd_2021)      # with non-missing amounts
+  ) |>                                    # AND THEN...
+  group_by(recipient_region) |>           # For each region...
+  slice_max(                              # Find the projects...
+    order_by = amount_constant_usd_2021,  # ordered by size
+    n = 5                                 # keeping top 5
+  ) |>                                    # AND THEN...
+  arrange(                                # Sort the results...
+    recipient_region,                     # by region
+    desc(amount_constant_usd_2021)        # and size (descending)
+  ) |>                                    # AND THEN...
+  ungroup()                               # remove grouping
+```
+
+Read this as a series of steps:
+
+1. Start with the dataset AND THEN
+2. Filter for recommended projects with amounts AND THEN
+3. Group by region AND THEN
+4. Take the 5 largest projects in each group AND THEN
+5. Sort by region and size
+
+::: {.callout-tip}
+## Using AI to Understand Complex Pipes
+
+When you see a complex pipe operation, try asking an AI assistant:
+
+- "Can you explain what each step of this pipeline does?"
+- "What would the output look like?"
+- "How could I modify this to [your specific need]?"
+
+Try showing it your data by using: `my_data |> glimpse()` 
+
+Copy and paste that glimpse of your data into the LLM along with your code.  More context = better answers.
+:::
+
+## Common Transformation Patterns in Development Finance
+
+Certain data transformation patterns come up frequently when working with development finance data. Here are some common ones:
+
+### Pattern 1: Annual Flows
+
+```{r}
+# Calculate annual lending flows
+annual_flows <- get_gcdf3_dataset() |>
+  filter(recommended_for_aggregates == "Yes") |>
+  group_by(commitment_year, flow_class) |>
+  summarize(
+    total_amount_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
+    project_count = n(),
+    .groups = "drop"
+  )
+
+annual_flows
+```
+
+### Pattern 2: Portfolio Composition
+
+```{r}
+# Analyze lending by sector
+sector_analysis <- get_gcdf3_dataset() |>
+  filter(
+    recommended_for_aggregates == "Yes",
+    commitment_year >= 2015
+  ) |>
+  group_by(sector_name) |>
+  summarize(
+    total_amount_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
+    project_count = n(),
+    avg_amount_bn = mean(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
+    .groups = "drop"
+  ) |>
+  arrange(desc(total_amount_bn))
+
+sector_analysis
+```
+
+### Pattern 3: Regional Comparisons
+
+```{r}
+# Compare lending across regions
+regional_comparison <- get_gcdf3_dataset() |>
+  filter(recommended_for_aggregates == "Yes") |>
+  group_by(recipient_region) |>
+  summarize(
+    total_amount_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
+    project_count = n(),
+    unique_countries = n_distinct(country_name),
+    avg_project_size_bn = mean(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
+    .groups = "drop"
+  ) |>
+  arrange(desc(total_amount_bn))
+
+regional_comparison
+```
+
+## Practice Exercises
+
+Try these exercises to get comfortable with data transformation. Remember to use AI tools if you get stuck!
+
+### Exercise 1: Basic Filtering
+
+Find all projects that are:
+
+- ODA-like or OOF-like
+- Committed between 2018-2021
+- Worth at least $100 million
+
+### Exercise 2: Regional Analysis
+
+For each region, calculate:
+
+- Total lending volume
+- Number of projects
+- Average project size
+- Number of recipient countries
+
+### Exercise 3: Sector Trends
+
+Analyze how sector composition has changed:
+
+- Compare 2013-2017 vs 2018-2021
+- Look at both volume and project counts
+- Focus on the top 5 sectors by volume
+
+::: {.callout-tip}
+## Getting Help
+
+If you get stuck:
+
+1. Check the [dplyr cheatsheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
+2. Ask AI tools for help
+3. Look at similar examples in this guide
+4. Post questions in our course Slack
+:::
+
+## Resources for Learning More
+
+### Essential References
+
+1. [R for Data Science - Data Transformation](https://r4ds.hadley.nz/data-transform)
+   - Comprehensive guide to dplyr
+   - Many practical examples
+   - Free online!
+
+2. [dplyr cheatsheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
+   - Quick reference for common operations
+   - Great to keep handy while working
+
+### Video Tutorials
+
+1. [Animated versions of common common dplyr functions](https://rfortherestofus.com/2024/07/dplyr-functions-animated)
+   - Clear, beginner-friendly overview
+   - Shows live coding examples
+   - Perfect for visual learners
+
+### Practice Resources
+
+1. [dplyr exercises on R-exercises](https://www.r-exercises.com/tag/dplyr/)
+   - Hands-on practice problems
+   - Solutions provided
+   - Range from basic to advanced
+
+## Next Steps
+
+In our class session, we'll:
+1. Review any questions about these concepts
+2. Practice more complex transformations
+3. Work with real analysis questions
+4. Learn some advanced dplyr features
+
+Remember: The goal isn't to memorize every function, but to understand the basic patterns of data transformation. With these five core verbs and the pipe operator, you can handle most analysis tasks!

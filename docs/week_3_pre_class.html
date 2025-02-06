@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -72,8 +106,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="5&nbsp; Week 3: Find Actionable Insights, Quickly (Pre-Class) – Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs">
+<meta property="og:description" content="">
 <meta property="og:site_name" content="Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs">
 <meta name="twitter:title" content="5&nbsp; Week 3: Find Actionable Insights, Quickly (Pre-Class) – Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -210,11 +246,50 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">5.1</span> Overview</a>
+  <ul class="collapse">
+  <li><a href="#video-lecture" id="toc-video-lecture" class="nav-link" data-scroll-target="#video-lecture"><span class="header-section-number">5.1.1</span> Video Lecture</a></li>
+  </ul></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">5.2</span> Learning Objectives</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">5.3</span> Setup</a></li>
+  <li><a href="#the-five-core-verbs-of-data-transformation" id="toc-the-five-core-verbs-of-data-transformation" class="nav-link" data-scroll-target="#the-five-core-verbs-of-data-transformation"><span class="header-section-number">5.4</span> The Five Core verbs of Data Transformation</a>
+  <ul class="collapse">
+  <li><a href="#filter-subsetting-your-data" id="toc-filter-subsetting-your-data" class="nav-link" data-scroll-target="#filter-subsetting-your-data"><span class="header-section-number">5.4.1</span> 1. filter(): Subsetting Your Data</a></li>
+  <li><a href="#arrange-ordering-your-data" id="toc-arrange-ordering-your-data" class="nav-link" data-scroll-target="#arrange-ordering-your-data"><span class="header-section-number">5.4.2</span> 2. arrange(): Ordering Your Data</a></li>
+  <li><a href="#select-choosing-columns" id="toc-select-choosing-columns" class="nav-link" data-scroll-target="#select-choosing-columns"><span class="header-section-number">5.4.3</span> 3. select(): Choosing Columns</a></li>
+  <li><a href="#mutate-creating-new-variables" id="toc-mutate-creating-new-variables" class="nav-link" data-scroll-target="#mutate-creating-new-variables"><span class="header-section-number">5.4.4</span> 4. mutate(): Creating New Variables</a></li>
+  <li><a href="#summarize-creating-summaries" id="toc-summarize-creating-summaries" class="nav-link" data-scroll-target="#summarize-creating-summaries"><span class="header-section-number">5.4.5</span> 5. summarize(): Creating Summaries</a></li>
+  </ul></li>
+  <li><a href="#combining-operations-the-power-of-the-pipe" id="toc-combining-operations-the-power-of-the-pipe" class="nav-link" data-scroll-target="#combining-operations-the-power-of-the-pipe"><span class="header-section-number">5.5</span> Combining Operations: The Power of the Pipe <code>|&gt;</code></a></li>
+  <li><a href="#common-transformation-patterns-in-development-finance" id="toc-common-transformation-patterns-in-development-finance" class="nav-link" data-scroll-target="#common-transformation-patterns-in-development-finance"><span class="header-section-number">5.6</span> Common Transformation Patterns in Development Finance</a>
+  <ul class="collapse">
+  <li><a href="#pattern-1-annual-flows" id="toc-pattern-1-annual-flows" class="nav-link" data-scroll-target="#pattern-1-annual-flows"><span class="header-section-number">5.6.1</span> Pattern 1: Annual Flows</a></li>
+  <li><a href="#pattern-2-portfolio-composition" id="toc-pattern-2-portfolio-composition" class="nav-link" data-scroll-target="#pattern-2-portfolio-composition"><span class="header-section-number">5.6.2</span> Pattern 2: Portfolio Composition</a></li>
+  <li><a href="#pattern-3-regional-comparisons" id="toc-pattern-3-regional-comparisons" class="nav-link" data-scroll-target="#pattern-3-regional-comparisons"><span class="header-section-number">5.6.3</span> Pattern 3: Regional Comparisons</a></li>
+  </ul></li>
+  <li><a href="#practice-exercises" id="toc-practice-exercises" class="nav-link" data-scroll-target="#practice-exercises"><span class="header-section-number">5.7</span> Practice Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-basic-filtering" id="toc-exercise-1-basic-filtering" class="nav-link" data-scroll-target="#exercise-1-basic-filtering"><span class="header-section-number">5.7.1</span> Exercise 1: Basic Filtering</a></li>
+  <li><a href="#exercise-2-regional-analysis" id="toc-exercise-2-regional-analysis" class="nav-link" data-scroll-target="#exercise-2-regional-analysis"><span class="header-section-number">5.7.2</span> Exercise 2: Regional Analysis</a></li>
+  <li><a href="#exercise-3-sector-trends" id="toc-exercise-3-sector-trends" class="nav-link" data-scroll-target="#exercise-3-sector-trends"><span class="header-section-number">5.7.3</span> Exercise 3: Sector Trends</a></li>
+  </ul></li>
+  <li><a href="#resources-for-learning-more" id="toc-resources-for-learning-more" class="nav-link" data-scroll-target="#resources-for-learning-more"><span class="header-section-number">5.8</span> Resources for Learning More</a>
+  <ul class="collapse">
+  <li><a href="#essential-references" id="toc-essential-references" class="nav-link" data-scroll-target="#essential-references"><span class="header-section-number">5.8.1</span> Essential References</a></li>
+  <li><a href="#video-tutorials" id="toc-video-tutorials" class="nav-link" data-scroll-target="#video-tutorials"><span class="header-section-number">5.8.2</span> Video Tutorials</a></li>
+  <li><a href="#practice-resources" id="toc-practice-resources" class="nav-link" data-scroll-target="#practice-resources"><span class="header-section-number">5.8.3</span> Practice Resources</a></li>
+  </ul></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps"><span class="header-section-number">5.9</span> Next Steps</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_1_pre_class.html">Part 1: Data Analysis Bootcamp</a></li><li class="breadcrumb-item"><a href="./week_3_pre_class.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 3: Find Actionable Insights, Quickly (Pre-Class)</span></a></li></ol></nav>
 <div class="quarto-title">
@@ -235,8 +310,707 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>This pre-class preparation should take about 45-60 minutes to complete.</p>
+<section id="overview" class="level2 page-columns page-full" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">5.1</span> Overview</h2>
+<p>Now that you can create visualizations and automated reports, it’s time to learn how to transform your data to find meaningful insights. This week focuses on data transformation - the process of taking raw data and reshaping it to answer specific questions. We’ll use the tidyverse’s powerful dplyr package, which makes complex data operations surprisingly intuitive.</p>
+<section id="video-lecture" class="level3 page-columns page-full" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="video-lecture"><span class="header-section-number">5.1.1</span> Video Lecture</h3>
+<p>Watch this video lecture before our interactive session:</p>
+<div class="column-page">
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</div>
+</section>
+</section>
+<section id="learning-objectives" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">5.2</span> Learning Objectives</h2>
+<p>By completing this pre-class work, you will:</p>
+<ol type="1">
+<li>Understand the core data transformation verbs in dplyr</li>
+<li>Learn to chain operations together using the pipe operator</li>
+<li>Begin thinking about data transformation patterns</li>
+<li>Practice with real Chinese development finance data</li>
+<li>Use AI tools to assist with data transformation tasks</li>
+</ol>
+</section>
+<section id="setup" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="setup"><span class="header-section-number">5.3</span> Setup</h2>
+<p>Let’s get our workspace ready. First, create a new Quarto document for your notes:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new Quarto document</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># File → New File → Quarto Document</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Save as "week_3_transformation_preclass.qmd" in your week_3/R folder</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Load the packages we’ll need:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)    <span class="co"># For data transformation tools</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(chinadevfin3) <span class="co"># For Chinese development finance data</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(aiddataviz)  <span class="co"># For AidData themed charts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-five-core-verbs-of-data-transformation" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="the-five-core-verbs-of-data-transformation"><span class="header-section-number">5.4</span> The Five Core verbs of Data Transformation</h2>
+<p>Think of data transformation as having five fundamental operations, just like basic arithmetic has addition, subtraction, multiplication, and division. In dplyr, these operations are:</p>
+<ol type="1">
+<li><strong>filter()</strong>: Pick rows based on their values</li>
+<li><strong>arrange()</strong>: Change the order of rows</li>
+<li><strong>select()</strong>: Pick columns by their names</li>
+<li><strong>mutate()</strong>: Create new columns from existing ones</li>
+<li><strong>summarize()</strong>: Collapse multiple rows into a single summary</li>
+</ol>
+<p>Let’s explore each one using real examples from Chinese development finance data.</p>
+<section id="filter-subsetting-your-data" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="filter-subsetting-your-data"><span class="header-section-number">5.4.1</span> 1. filter(): Subsetting Your Data</h3>
+<p><code>filter()</code> helps you focus on specific parts of your data. Think of it like a sieve that keeps only the rows you want:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get ODA-like projects over $100 million</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    flow_class <span class="sc">==</span> <span class="st">"ODA-like"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    amount_constant_usd_2021 <span class="sc">&gt;=</span> <span class="dv">100</span> <span class="sc">*</span> <span class="fl">1e6</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 420 × 129
+   country_name iso3c country_or_regional aid_data_record_id
+   &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;                            &lt;int&gt;
+ 1 Kenya        KEN   country                          97295
+ 2 Kyrgyzstan   KGZ   country                          97658
+ 3 Sri Lanka    LKA   country                          89483
+ 4 Tajikistan   TJK   country                          92674
+ 5 Uzbekistan   UZB   country                          92623
+ 6 Cambodia     KHM   country                          92800
+ 7 Cambodia     KHM   country                          94984
+ 8 North Korea  PRK   country                          93442
+ 9 North Korea  PRK   country                          93443
+10 North Korea  PRK   country                          95607
+# ℹ 410 more rows
+# ℹ 125 more variables: recommended_for_aggregates &lt;chr&gt;,
+#   aid_data_parent_id &lt;chr&gt;, umbrella &lt;chr&gt;, financier_country &lt;chr&gt;,
+#   recipient &lt;chr&gt;, recipient_iso_3 &lt;chr&gt;, recipient_region &lt;chr&gt;,
+#   commitment_year &lt;int&gt;, implementation_start_year &lt;int&gt;,
+#   completion_year &lt;int&gt;, title &lt;chr&gt;, description &lt;chr&gt;,
+#   staff_comments &lt;chr&gt;, status &lt;chr&gt;, intent &lt;chr&gt;, flow_type &lt;chr&gt;, …</code></pre>
+</div>
+</div>
+<p>Common filtering operations you’ll use:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Projects from 2018-2021</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(commitment_year <span class="sc">&gt;=</span> <span class="dv">2018</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6,528 × 129
+   country_name iso3c country_or_regional aid_data_record_id
+   &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;                            &lt;int&gt;
+ 1 Afghanistan  AFG   country                          94556
+ 2 Afghanistan  AFG   country                          94564
+ 3 Afghanistan  AFG   country                          94565
+ 4 Afghanistan  AFG   country                          94567
+ 5 Afghanistan  AFG   country                          94568
+ 6 Afghanistan  AFG   country                          94613
+ 7 Afghanistan  AFG   country                          94619
+ 8 Afghanistan  AFG   country                          95312
+ 9 Afghanistan  AFG   country                          95322
+10 Afghanistan  AFG   country                          95323
+# ℹ 6,518 more rows
+# ℹ 125 more variables: recommended_for_aggregates &lt;chr&gt;,
+#   aid_data_parent_id &lt;chr&gt;, umbrella &lt;chr&gt;, financier_country &lt;chr&gt;,
+#   recipient &lt;chr&gt;, recipient_iso_3 &lt;chr&gt;, recipient_region &lt;chr&gt;,
+#   commitment_year &lt;int&gt;, implementation_start_year &lt;int&gt;,
+#   completion_year &lt;int&gt;, title &lt;chr&gt;, description &lt;chr&gt;,
+#   staff_comments &lt;chr&gt;, status &lt;chr&gt;, intent &lt;chr&gt;, flow_type &lt;chr&gt;, …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Projects in specific countries</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Angola"</span>, <span class="st">"Ethiopia"</span>, <span class="st">"Kenya"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 963 × 129
+   country_name iso3c country_or_regional aid_data_record_id
+   &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;                            &lt;int&gt;
+ 1 Angola       AGO   country                          92519
+ 2 Angola       AGO   country                          93104
+ 3 Angola       AGO   country                          93281
+ 4 Angola       AGO   country                          93286
+ 5 Angola       AGO   country                          95331
+ 6 Ethiopia     ETH   country                          91947
+ 7 Ethiopia     ETH   country                          92357
+ 8 Ethiopia     ETH   country                          95864
+ 9 Ethiopia     ETH   country                          95866
+10 Ethiopia     ETH   country                          95869
+# ℹ 953 more rows
+# ℹ 125 more variables: recommended_for_aggregates &lt;chr&gt;,
+#   aid_data_parent_id &lt;chr&gt;, umbrella &lt;chr&gt;, financier_country &lt;chr&gt;,
+#   recipient &lt;chr&gt;, recipient_iso_3 &lt;chr&gt;, recipient_region &lt;chr&gt;,
+#   commitment_year &lt;int&gt;, implementation_start_year &lt;int&gt;,
+#   completion_year &lt;int&gt;, title &lt;chr&gt;, description &lt;chr&gt;,
+#   staff_comments &lt;chr&gt;, status &lt;chr&gt;, intent &lt;chr&gt;, flow_type &lt;chr&gt;, …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Projects with complete documentation</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(amount_constant_usd_2021),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    recommended_for_aggregates <span class="sc">==</span> <span class="st">"Yes"</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10,671 × 129
+   country_name     iso3c country_or_regional aid_data_record_id
+   &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;                            &lt;int&gt;
+ 1 Afghanistan      AFG   country                          94556
+ 2 Afghanistan      AFG   country                          94564
+ 3 Afghanistan      AFG   country                          94565
+ 4 Afghanistan      AFG   country                          94567
+ 5 Afghanistan      AFG   country                          94568
+ 6 Afghanistan      AFG   country                          94619
+ 7 Afghanistan      AFG   country                          98007
+ 8 Afghanistan      AFG   country                          98008
+ 9 Africa, regional &lt;NA&gt;  regional                         92947
+10 Algeria          DZA   country                          94808
+# ℹ 10,661 more rows
+# ℹ 125 more variables: recommended_for_aggregates &lt;chr&gt;,
+#   aid_data_parent_id &lt;chr&gt;, umbrella &lt;chr&gt;, financier_country &lt;chr&gt;,
+#   recipient &lt;chr&gt;, recipient_iso_3 &lt;chr&gt;, recipient_region &lt;chr&gt;,
+#   commitment_year &lt;int&gt;, implementation_start_year &lt;int&gt;,
+#   completion_year &lt;int&gt;, title &lt;chr&gt;, description &lt;chr&gt;,
+#   staff_comments &lt;chr&gt;, status &lt;chr&gt;, intent &lt;chr&gt;, flow_type &lt;chr&gt;, …</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Logical Operators in filter()
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><code>==</code>: Exactly equals</li>
+<li><code>!=</code>: Does not equal</li>
+<li><code>&gt;</code>, <code>&gt;=</code>: Greater than, Greater than or equal to</li>
+<li><code>&lt;</code>, <code>&lt;=</code>: Less than, Less than or equal to</li>
+<li><code>%in%</code>: Is in a set of values</li>
+<li><code>!is.na()</code>: Is not missing</li>
+<li><code>&amp;</code>: And (multiple conditions)</li>
+<li><code>|</code>: Or (either condition)</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="arrange-ordering-your-data" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="arrange-ordering-your-data"><span class="header-section-number">5.4.2</span> 2. arrange(): Ordering Your Data</h3>
+<p><code>arrange()</code> lets you sort your data. By default, it sorts in ascending order (smallest to largest):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort projects by size (largest first)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(amount_constant_usd_2021)) <span class="co"># sorted by largest to smallest</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20,985 × 129
+   country_name iso3c country_or_regional aid_data_record_id
+   &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;                            &lt;int&gt;
+ 1 Venezuela    VEN   country                          58677
+ 2 Russia       RUS   country                          85211
+ 3 Indonesia    IDN   country                          49338
+ 4 Nigeria      NGA   country                          34652
+ 5 Iran         IRN   country                          41271
+ 6 Kazakhstan   KAZ   country                          53932
+ 7 Guinea       GIN   country                          64352
+ 8 Russia       RUS   country                          43069
+ 9 Indonesia    IDN   country                          68792
+10 Argentina    ARG   country                          89416
+# ℹ 20,975 more rows
+# ℹ 125 more variables: recommended_for_aggregates &lt;chr&gt;,
+#   aid_data_parent_id &lt;chr&gt;, umbrella &lt;chr&gt;, financier_country &lt;chr&gt;,
+#   recipient &lt;chr&gt;, recipient_iso_3 &lt;chr&gt;, recipient_region &lt;chr&gt;,
+#   commitment_year &lt;int&gt;, implementation_start_year &lt;int&gt;,
+#   completion_year &lt;int&gt;, title &lt;chr&gt;, description &lt;chr&gt;,
+#   staff_comments &lt;chr&gt;, status &lt;chr&gt;, intent &lt;chr&gt;, flow_type &lt;chr&gt;, …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort by multiple columns</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    country_name, <span class="co"># country A-Z</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">desc</span>(commitment_year) <span class="co"># sorted by most recent year</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20,985 × 129
+   country_name iso3c country_or_regional aid_data_record_id
+   &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;                            &lt;int&gt;
+ 1 Afghanistan  AFG   country                          94556
+ 2 Afghanistan  AFG   country                          94564
+ 3 Afghanistan  AFG   country                          94565
+ 4 Afghanistan  AFG   country                          94567
+ 5 Afghanistan  AFG   country                          94568
+ 6 Afghanistan  AFG   country                          94613
+ 7 Afghanistan  AFG   country                          94619
+ 8 Afghanistan  AFG   country                          95312
+ 9 Afghanistan  AFG   country                          95322
+10 Afghanistan  AFG   country                          95323
+# ℹ 20,975 more rows
+# ℹ 125 more variables: recommended_for_aggregates &lt;chr&gt;,
+#   aid_data_parent_id &lt;chr&gt;, umbrella &lt;chr&gt;, financier_country &lt;chr&gt;,
+#   recipient &lt;chr&gt;, recipient_iso_3 &lt;chr&gt;, recipient_region &lt;chr&gt;,
+#   commitment_year &lt;int&gt;, implementation_start_year &lt;int&gt;,
+#   completion_year &lt;int&gt;, title &lt;chr&gt;, description &lt;chr&gt;,
+#   staff_comments &lt;chr&gt;, status &lt;chr&gt;, intent &lt;chr&gt;, flow_type &lt;chr&gt;, …</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use <code>desc()</code> to sort in descending order. When sorting by multiple columns, each one is used as a tie-breaker for the previous ones.</p>
+</div>
+</div>
+</section>
+<section id="select-choosing-columns" class="level3" data-number="5.4.3">
+<h3 data-number="5.4.3" class="anchored" data-anchor-id="select-choosing-columns"><span class="header-section-number">5.4.3</span> 3. select(): Choosing Columns</h3>
+<p><code>select()</code> helps you focus on specific variables. It’s particularly useful when you have datasets with many columns:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select key financial variables</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    aid_data_record_id,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    recipient,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    amount_constant_usd_2021,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    flow_class</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20,985 × 4
+   aid_data_record_id recipient   amount_constant_usd_2021 flow_class
+                &lt;int&gt; &lt;chr&gt;                          &lt;dbl&gt; &lt;chr&gt;     
+ 1              94556 Afghanistan                 7111456. ODA-like  
+ 2              94564 Afghanistan                12600000  ODA-like  
+ 3              94565 Afghanistan                14400000  ODA-like  
+ 4              94567 Afghanistan                13000000  ODA-like  
+ 5              94568 Afghanistan                 7500000  ODA-like  
+ 6              94613 Afghanistan                      NA  ODA-like  
+ 7              94619 Afghanistan                 3600000  ODA-like  
+ 8              95312 Afghanistan                 4651163. ODA-like  
+ 9              95322 Afghanistan                      NA  ODA-like  
+10              95323 Afghanistan                      NA  ODA-like  
+# ℹ 20,975 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select columns by pattern</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">starts_with</span>(<span class="st">"amount"</span>),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">contains</span>(<span class="st">"year"</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20,985 × 7
+   amount_original_currency amount_estimated amount_constant_usd_2021
+                      &lt;dbl&gt; &lt;chr&gt;                               &lt;dbl&gt;
+ 1                550000000 &lt;NA&gt;                             7111456.
+ 2                 12600000 Yes                             12600000 
+ 3                 14400000 Yes                             14400000 
+ 4                 13000000 &lt;NA&gt;                            13000000 
+ 5                  7500000 &lt;NA&gt;                             7500000 
+ 6                       NA &lt;NA&gt;                                  NA 
+ 7                  3600000 Yes                              3600000 
+ 8                 30000000 &lt;NA&gt;                             4651163.
+ 9                       NA &lt;NA&gt;                                  NA 
+10                       NA &lt;NA&gt;                                  NA 
+# ℹ 20,975 more rows
+# ℹ 4 more variables: amount_nominal_usd &lt;dbl&gt;, commitment_year &lt;int&gt;,
+#   implementation_start_year &lt;int&gt;, completion_year &lt;int&gt;</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Helpful select() Helpers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><code>starts_with()</code>: Columns starting with a prefix</li>
+<li><code>ends_with()</code>: Columns ending with a suffix</li>
+<li><code>contains()</code>: Columns containing a string</li>
+<li><code>matches()</code>: Columns matching a regular expression</li>
+<li><code>everything()</code>: All remaining columns</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="mutate-creating-new-variables" class="level3" data-number="5.4.4">
+<h3 data-number="5.4.4" class="anchored" data-anchor-id="mutate-creating-new-variables"><span class="header-section-number">5.4.4</span> 4. mutate(): Creating New Variables</h3>
+<p><code>mutate()</code> lets you create new columns based on existing ones:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert amounts to billions and calculate shares</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(commitment_year) <span class="sc">|&gt;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">amount_bn =</span> amount_constant_usd_2021 <span class="sc">/</span> <span class="fl">1e9</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">share_of_year =</span> amount_constant_usd_2021 <span class="sc">/</span> <span class="fu">sum</span>(amount_constant_usd_2021, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20,985 × 131
+# Groups:   commitment_year [22]
+   country_name iso3c country_or_regional aid_data_record_id
+   &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;                            &lt;int&gt;
+ 1 Afghanistan  AFG   country                          94556
+ 2 Afghanistan  AFG   country                          94564
+ 3 Afghanistan  AFG   country                          94565
+ 4 Afghanistan  AFG   country                          94567
+ 5 Afghanistan  AFG   country                          94568
+ 6 Afghanistan  AFG   country                          94613
+ 7 Afghanistan  AFG   country                          94619
+ 8 Afghanistan  AFG   country                          95312
+ 9 Afghanistan  AFG   country                          95322
+10 Afghanistan  AFG   country                          95323
+# ℹ 20,975 more rows
+# ℹ 127 more variables: recommended_for_aggregates &lt;chr&gt;,
+#   aid_data_parent_id &lt;chr&gt;, umbrella &lt;chr&gt;, financier_country &lt;chr&gt;,
+#   recipient &lt;chr&gt;, recipient_iso_3 &lt;chr&gt;, recipient_region &lt;chr&gt;,
+#   commitment_year &lt;int&gt;, implementation_start_year &lt;int&gt;,
+#   completion_year &lt;int&gt;, title &lt;chr&gt;, description &lt;chr&gt;,
+#   staff_comments &lt;chr&gt;, status &lt;chr&gt;, intent &lt;chr&gt;, flow_type &lt;chr&gt;, …</code></pre>
+</div>
+</div>
+<p>Common mutations in development finance analysis:</p>
+<p>[FIX]</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mutate(</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   # Calculate growth rates</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   yoy_growth = (amount - lag(amount)) / lag(amount),</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   </span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   # Create categories</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   size_category = case_when(</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#     amount_bn &gt;= 1 ~ "Large (&gt;$1B)",</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">#     amount_bn &gt;= 0.1 ~ "Medium ($100M-$1B)",</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co">#     TRUE ~ "Small (&lt;$100M)"</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co">#   ),</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   </span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   # Clean text</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co">#   implementing_agency = str_to_title(implementing_agency)</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="summarize-creating-summaries" class="level3" data-number="5.4.5">
+<h3 data-number="5.4.5" class="anchored" data-anchor-id="summarize-creating-summaries"><span class="header-section-number">5.4.5</span> 5. summarize(): Creating Summaries</h3>
+<p><code>summarize()</code> collapses groups into single rows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate total lending by year and flow class</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(commitment_year, flow_class) <span class="sc">|&gt;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_amount_bn =</span> <span class="fu">sum</span>(amount_constant_usd_2021, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fl">1e9</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">project_count =</span> <span class="fu">n</span>(),</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_amount_bn =</span> <span class="fu">mean</span>(amount_constant_usd_2021, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fl">1e9</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'commitment_year'. You can override using
+the `.groups` argument.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 66 × 5
+# Groups:   commitment_year [22]
+   commitment_year flow_class        total_amount_bn project_count avg_amount_bn
+             &lt;int&gt; &lt;chr&gt;                       &lt;dbl&gt;         &lt;int&gt;         &lt;dbl&gt;
+ 1            2000 ODA-like                   4.67             173        0.0368
+ 2            2000 OOF-like                   9.13              39        0.261 
+ 3            2000 Vague (Official …          0.0210             3        0.0105
+ 4            2001 ODA-like                   4.02             233        0.0222
+ 5            2001 OOF-like                   6.56              41        0.168 
+ 6            2001 Vague (Official …          0.424             11        0.0471
+ 7            2002 ODA-like                   4.39             264        0.0213
+ 8            2002 OOF-like                   5.64              45        0.141 
+ 9            2002 Vague (Official …          1.18              12        0.236 
+10            2003 ODA-like                   4.92             317        0.0231
+# ℹ 56 more rows</code></pre>
+</div>
+</div>
+<p>Common summary functions:</p>
+<ul>
+<li><code>sum()</code>: Total values</li>
+<li><code>mean()</code>: Average</li>
+<li><code>median()</code>: Middle value</li>
+<li><code>sd()</code>: Standard deviation</li>
+<li><code>n()</code>: Count rows</li>
+<li><code>n_distinct()</code>: Count unique values</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Always use <code>na.rm = TRUE</code> when working with financial data! Missing values are common and can break your calculations if not handled properly.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="combining-operations-the-power-of-the-pipe" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="combining-operations-the-power-of-the-pipe"><span class="header-section-number">5.5</span> Combining Operations: The Power of the Pipe <code>|&gt;</code></h2>
+<p>While each verb is useful on its own, the real power comes from combining them. The pipe operator (<code>|&gt;</code>) makes this natural and readable:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the largest projects in each region</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span>                    <span class="co"># Start with the data</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(                                 <span class="co"># Keep only...</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    recommended_for_aggregates <span class="sc">==</span> <span class="st">"Yes"</span>,  <span class="co"># recommended projects</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(amount_constant_usd_2021)      <span class="co"># with non-missing amounts</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span>                                    <span class="co"># AND THEN...</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(recipient_region) <span class="sc">|&gt;</span>           <span class="co"># For each region...</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(                              <span class="co"># Find the projects...</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">order_by =</span> amount_constant_usd_2021,  <span class="co"># ordered by size</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="dv">5</span>                                 <span class="co"># keeping top 5</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span>                                    <span class="co"># AND THEN...</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(                                <span class="co"># Sort the results...</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    recipient_region,                     <span class="co"># by region</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">desc</span>(amount_constant_usd_2021)        <span class="co"># and size (descending)</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span>                                    <span class="co"># AND THEN...</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()                               <span class="co"># remove grouping</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 35 × 129
+   country_name     iso3c country_or_regional aid_data_record_id
+   &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;                            &lt;int&gt;
+ 1 Angola           AGO   country                          53063
+ 2 Angola           AGO   country                          47101
+ 3 Congo - Kinshasa COD   country                          73145
+ 4 Egypt            EGY   country                          89406
+ 5 Egypt            EGY   country                          89408
+ 6 Argentina        ARG   country                          89416
+ 7 Argentina        ARG   country                          96263
+ 8 Argentina        ARG   country                          96264
+ 9 Argentina        ARG   country                          96322
+10 Venezuela        VEN   country                          37808
+# ℹ 25 more rows
+# ℹ 125 more variables: recommended_for_aggregates &lt;chr&gt;,
+#   aid_data_parent_id &lt;chr&gt;, umbrella &lt;chr&gt;, financier_country &lt;chr&gt;,
+#   recipient &lt;chr&gt;, recipient_iso_3 &lt;chr&gt;, recipient_region &lt;chr&gt;,
+#   commitment_year &lt;int&gt;, implementation_start_year &lt;int&gt;,
+#   completion_year &lt;int&gt;, title &lt;chr&gt;, description &lt;chr&gt;,
+#   staff_comments &lt;chr&gt;, status &lt;chr&gt;, intent &lt;chr&gt;, flow_type &lt;chr&gt;, …</code></pre>
+</div>
+</div>
+<p>Read this as a series of steps: 1. Start with the dataset AND THEN 2. Filter for recommended projects with amounts AND THEN 3. Group by region AND THEN 4. Take the 5 largest projects in each group AND THEN 5. Sort by region and size</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Using AI to Understand Complex Pipes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you see a complex pipe operation, try asking an AI assistant: - “Can you explain what each step of this pipeline does?” - “What would the output look like?” - “How could I modify this to [your specific need]?”</p>
+<p>Try showing it your data by using: <code>my_data |&gt; glimpse()</code></p>
+<p>Copy and paste that glimpse of your data into the LLM along with your code. More context = better answers.</p>
+</div>
+</div>
+</section>
+<section id="common-transformation-patterns-in-development-finance" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="common-transformation-patterns-in-development-finance"><span class="header-section-number">5.6</span> Common Transformation Patterns in Development Finance</h2>
+<p>Certain data transformation patterns come up frequently when working with development finance data. Here are some common ones:</p>
+<section id="pattern-1-annual-flows" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="pattern-1-annual-flows"><span class="header-section-number">5.6.1</span> Pattern 1: Annual Flows</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate annual lending flows</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>annual_flows <span class="ot">&lt;-</span> <span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(recommended_for_aggregates <span class="sc">==</span> <span class="st">"Yes"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(commitment_year, flow_class) <span class="sc">|&gt;</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_amount_bn =</span> <span class="fu">sum</span>(amount_constant_usd_2021, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fl">1e9</span>,</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">project_count =</span> <span class="fu">n</span>(),</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>annual_flows</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 66 × 4
+   commitment_year flow_class               total_amount_bn project_count
+             &lt;int&gt; &lt;chr&gt;                              &lt;dbl&gt;         &lt;int&gt;
+ 1            2000 ODA-like                          1.44             138
+ 2            2000 OOF-like                          3.99              34
+ 3            2000 Vague (Official Finance)          0.0128             2
+ 4            2001 ODA-like                          3.50             175
+ 5            2001 OOF-like                          4.16              33
+ 6            2001 Vague (Official Finance)          0.204              6
+ 7            2002 ODA-like                          2.27             199
+ 8            2002 OOF-like                          4.89              38
+ 9            2002 Vague (Official Finance)          0.429              8
+10            2003 ODA-like                          3.52             236
+# ℹ 56 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="pattern-2-portfolio-composition" class="level3" data-number="5.6.2">
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="pattern-2-portfolio-composition"><span class="header-section-number">5.6.2</span> Pattern 2: Portfolio Composition</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analyze lending by sector</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>sector_analysis <span class="ot">&lt;-</span> <span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    recommended_for_aggregates <span class="sc">==</span> <span class="st">"Yes"</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    commitment_year <span class="sc">&gt;=</span> <span class="dv">2015</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sector_name) <span class="sc">|&gt;</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_amount_bn =</span> <span class="fu">sum</span>(amount_constant_usd_2021, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fl">1e9</span>,</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">project_count =</span> <span class="fu">n</span>(),</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_amount_bn =</span> <span class="fu">mean</span>(amount_constant_usd_2021, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fl">1e9</span>,</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_amount_bn))</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>sector_analysis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 24 × 4
+   sector_name                    total_amount_bn project_count avg_amount_bn
+   &lt;chr&gt;                                    &lt;dbl&gt;         &lt;int&gt;         &lt;dbl&gt;
+ 1 BANKING AND FINANCIAL SERVICES          211.             292        0.746 
+ 2 ENERGY                                  142.             524        0.310 
+ 3 INDUSTRY, MINING, CONSTRUCTION          130.             427        0.333 
+ 4 TRANSPORT AND STORAGE                   104.             648        0.195 
+ 5 GENERAL BUDGET SUPPORT                   51.7             63        0.833 
+ 6 OTHER MULTISECTOR                        24.6            168        0.262 
+ 7 COMMUNICATIONS                           18.9            248        0.116 
+ 8 BUSINESS AND OTHER SERVICES              11.9            140        0.0967
+ 9 UNALLOCATED/UNSPECIFIED                  11.5            105        0.121 
+10 WATER SUPPLY AND SANITATION               8.33           173        0.0801
+# ℹ 14 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="pattern-3-regional-comparisons" class="level3" data-number="5.6.3">
+<h3 data-number="5.6.3" class="anchored" data-anchor-id="pattern-3-regional-comparisons"><span class="header-section-number">5.6.3</span> Pattern 3: Regional Comparisons</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare lending across regions</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>regional_comparison <span class="ot">&lt;-</span> <span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(recommended_for_aggregates <span class="sc">==</span> <span class="st">"Yes"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(recipient_region) <span class="sc">|&gt;</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_amount_bn =</span> <span class="fu">sum</span>(amount_constant_usd_2021, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fl">1e9</span>,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">project_count =</span> <span class="fu">n</span>(),</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">unique_countries =</span> <span class="fu">n_distinct</span>(country_name),</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_project_size_bn =</span> <span class="fu">mean</span>(amount_constant_usd_2021, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fl">1e9</span>,</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_amount_bn))</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>regional_comparison</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 5
+  recipient_region total_amount_bn project_count unique_countries
+  &lt;chr&gt;                      &lt;dbl&gt;         &lt;int&gt;            &lt;int&gt;
+1 Asia                      469.            4844               28
+2 America                   388.            2428               32
+3 Africa                    338.            7985               54
+4 Europe                    226.            1000               13
+5 Middle East                64.5            540               10
+6 Oceania                    15.1           1115               15
+7 Multi-Region                3.75            45                1
+# ℹ 1 more variable: avg_project_size_bn &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="practice-exercises" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="practice-exercises"><span class="header-section-number">5.7</span> Practice Exercises</h2>
+<p>Try these exercises to get comfortable with data transformation. Remember to use AI tools if you get stuck!</p>
+<section id="exercise-1-basic-filtering" class="level3" data-number="5.7.1">
+<h3 data-number="5.7.1" class="anchored" data-anchor-id="exercise-1-basic-filtering"><span class="header-section-number">5.7.1</span> Exercise 1: Basic Filtering</h3>
+<p>Find all projects that are: - ODA-like or OOF-like - Committed between 2018-2021 - Worth at least $100 million</p>
+</section>
+<section id="exercise-2-regional-analysis" class="level3" data-number="5.7.2">
+<h3 data-number="5.7.2" class="anchored" data-anchor-id="exercise-2-regional-analysis"><span class="header-section-number">5.7.2</span> Exercise 2: Regional Analysis</h3>
+<p>For each region, calculate: - Total lending volume - Number of projects - Average project size - Number of recipient countries</p>
+</section>
+<section id="exercise-3-sector-trends" class="level3" data-number="5.7.3">
+<h3 data-number="5.7.3" class="anchored" data-anchor-id="exercise-3-sector-trends"><span class="header-section-number">5.7.3</span> Exercise 3: Sector Trends</h3>
+<p>Analyze how sector composition has changed: - Compare 2013-2017 vs 2018-2021 - Look at both volume and project counts - Focus on the top 5 sectors by volume</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Getting Help
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you get stuck:</p>
+<ol type="1">
+<li>Check the <a href="https://rstudio.github.io/cheatsheets/data-transformation.pdf">dplyr cheatsheet</a></li>
+<li>Ask AI tools for help</li>
+<li>Look at similar examples in this guide</li>
+<li>Post questions in our course Slack</li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+<section id="resources-for-learning-more" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="resources-for-learning-more"><span class="header-section-number">5.8</span> Resources for Learning More</h2>
+<section id="essential-references" class="level3" data-number="5.8.1">
+<h3 data-number="5.8.1" class="anchored" data-anchor-id="essential-references"><span class="header-section-number">5.8.1</span> Essential References</h3>
+<ol type="1">
+<li><a href="https://r4ds.hadley.nz/data-transform">R for Data Science - Data Transformation</a>
+<ul>
+<li>Comprehensive guide to dplyr</li>
+<li>Many practical examples</li>
+<li>Free online!</li>
+</ul></li>
+<li><a href="https://rstudio.github.io/cheatsheets/data-transformation.pdf">dplyr cheatsheet</a>
+<ul>
+<li>Quick reference for common operations</li>
+<li>Great to keep handy while working</li>
+</ul></li>
+</ol>
+</section>
+<section id="video-tutorials" class="level3" data-number="5.8.2">
+<h3 data-number="5.8.2" class="anchored" data-anchor-id="video-tutorials"><span class="header-section-number">5.8.2</span> Video Tutorials</h3>
+<ol type="1">
+<li><a href="https://rfortherestofus.com/2024/07/dplyr-functions-animated">Animated versions of common common dplyr functions</a>
+<ul>
+<li>Clear, beginner-friendly overview</li>
+<li>Shows live coding examples</li>
+<li>Perfect for visual learners</li>
+</ul></li>
+</ol>
+</section>
+<section id="practice-resources" class="level3" data-number="5.8.3">
+<h3 data-number="5.8.3" class="anchored" data-anchor-id="practice-resources"><span class="header-section-number">5.8.3</span> Practice Resources</h3>
+<ol type="1">
+<li><a href="https://www.r-exercises.com/tag/dplyr/">dplyr exercises on R-exercises</a>
+<ul>
+<li>Hands-on practice problems</li>
+<li>Solutions provided</li>
+<li>Range from basic to advanced</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="next-steps" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="next-steps"><span class="header-section-number">5.9</span> Next Steps</h2>
+<p>In our class session, we’ll: 1. Review any questions about these concepts 2. Practice more complex transformations 3. Work with real analysis questions 4. Learn some advanced dplyr features</p>
+<p>Remember: The goal isn’t to memorize every function, but to understand the basic patterns of data transformation. With these five core verbs and the pipe operator, you can handle most analysis tasks!</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
