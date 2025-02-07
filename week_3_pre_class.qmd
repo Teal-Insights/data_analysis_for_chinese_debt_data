@@ -4,7 +4,7 @@ This pre-class preparation should take about 45-60 minutes to complete.
 
 ## Overview
 
-Now that you can create visualizations and automated reports, it's time to learn how to transform your data to find meaningful insights. This week focuses on data transformation - the process of taking raw data and reshaping it to answer specific questions. We'll use the tidyverse's powerful dplyr package, which makes complex data operations surprisingly intuitive.
+Now that you can create visualizations and automated reports, it's time to learn how to transform your data to find meaningful insights. This week focuses on data transformation - the process of taking raw data and reshaping it to answer specific questions. We'll use the tidyverse's powerful `dplyr` package, which makes complex data operations surprisingly intuitive.
 
 ### Video Lecture
 Watch this video lecture before our interactive session:
@@ -17,8 +17,8 @@ Watch this video lecture before our interactive session:
 
 By completing this pre-class work, you will:
 
-1. Understand the core data transformation verbs in dplyr
-2. Learn to chain operations together using the pipe operator
+1. Understand the core data transformation verbs in `dplyr`
+2. Learn to chain operations together using the pipe operator `|>`
 3. Begin thinking about data transformation patterns
 4. Practice with real Chinese development finance data
 5. Use AI tools to assist with data transformation tasks
@@ -36,10 +36,67 @@ Let's get our workspace ready. First, create a new Quarto document for your note
 Load the packages we'll need:
 
 ```{r}
+#| message: false
 library(tidyverse)    # For data transformation tools
 library(chinadevfin3) # For Chinese development finance data
-library(aiddataviz)  # For AidData themed charts
 ```
+
+## A Mini Dataset for Learning
+
+Before diving into data transformation, let's create a small dataset we'll use for learning. This contains the two largest loans for five countries:
+
+```{r}
+mini_gcdf <- get_gcdf3_dataset() |> 
+    filter(
+        recommended_for_aggregates == "Yes",
+        flow_type == "Loan",
+        recipient %in% c(
+            "Angola",
+            "Zambia",
+            "Venezuela",
+            "Indonesia",
+            "Pakistan"
+        )
+    ) |> 
+    group_by(recipient) |> 
+    slice_max(
+        order_by = amount_constant_usd_2021,
+        n = 2
+    ) |> 
+    select(
+        recipient,
+        recipient_region,
+        sector_name,
+        commitment_year,
+        amount_constant_usd_2021 
+    ) |> 
+    ungroup()
+
+# Also create a dataset for year-over-year analysis
+angola_annual_flows <- get_gcdf3_dataset() |>
+    filter(
+        recommended_for_aggregates == "Yes",
+        flow_type == "Loan",
+        recipient == "Angola"
+    ) |>
+    group_by(commitment_year) |>
+    summarize(
+        total_amount = sum(amount_constant_usd_2021, na.rm = TRUE),
+        .groups = "drop"
+    )
+
+# Look at our mini dataset
+mini_gcdf
+```
+
+Don't worry if the code that created this dataset looks complex - by the end of this pre-class material, you'll understand every line! For now, just notice that:
+
+1. We have 10 rows (2 loans each from 5 countries)
+2. Countries are from 3 different regions (Africa, Asia, America)
+3. Each loan has a sector, year, and amount
+4. The amounts are in constant 2021 USD
+
+This small dataset will help us learn the fundamentals before working with the full GCDF database.
 
 ## The Five Core verbs of Data Transformation
 
@@ -51,33 +108,41 @@ Think of data transformation as having five fundamental operations, just like ba
 4. **mutate()**: Create new columns from existing ones
 5. **summarize()**: Collapse multiple rows into a single summary
 
-Let's explore each one using real examples from Chinese development finance data.
+Let's explore each one using examples from Chinese development finance data.
 
-### 1. filter(): Subsetting Your Data
+### Verb 1. `filter()`: Subsetting Your Data
 
 `filter()` helps you focus on specific parts of your data. Think of it like a sieve that keeps only the rows you want:
 
 ```{r}
-# Get ODA-like projects over $100 million
+# Using mini dataset: African loans over $1 billion
+mini_gcdf |>
+  filter(
+    recipient_region == "Africa",
+    amount_constant_usd_2021 >= 1 * 1e9
+  )
+
+# Real world example: Large ODA-like projects
 get_gcdf3_dataset() |>
   filter(
     flow_class == "ODA-like",
-    amount_constant_usd_2021 >= 100 * 1e6
+    amount_constant_usd_2021 >= 100 * 1e6,
+    recommended_for_aggregates == "Yes"
   )
 ```
 
 Common filtering operations you'll use:
 
 ```{r}
-# Projects from 2018-2021
+# Projects from recent years
 get_gcdf3_dataset() |>
   filter(commitment_year >= 2018)
 
 # Projects in specific countries
 get_gcdf3_dataset() |>
-  filter(country_name %in% c("Angola", "Ethiopia", "Kenya"))
+  filter(recipient %in% c("Angola", "Ethiopia", "Kenya"))
 
-# Projects with complete documentation
+# Projects where we don't have an unknown (NA) commitment value
 get_gcdf3_dataset() |>
   filter(
     !is.na(amount_constant_usd_2021),
@@ -98,20 +163,21 @@ get_gcdf3_dataset() |>
 - `|`: Or (either condition)
 :::
 
-### 2. arrange(): Ordering Your Data
+### Verb 2. `arrange()`: Ordering Your Data
 
 `arrange()` lets you sort your data. By default, it sorts in ascending order (smallest to largest):
 
 ```{r}
-# Sort projects by size (largest first)
-get_gcdf3_dataset() |>
-  arrange(desc(amount_constant_usd_2021)) # sorted by largest to smallest
+# Using mini dataset: Sort by size (largest first)
+mini_gcdf |>
+  arrange(desc(amount_constant_usd_2021))
 
-# Sort by multiple columns
+# Real world example: Sort projects by multiple columns
 get_gcdf3_dataset() |>
+  filter(recommended_for_aggregates == "Yes") |>
   arrange(
-    country_name, # country A-Z
-    desc(commitment_year) # sorted by most recent year
+    recipient,  # First by country A-Z
+    desc(commitment_year)  # Then by most recent year
   )
 ```
 
@@ -119,21 +185,20 @@ get_gcdf3_dataset() |>
 Use `desc()` to sort in descending order. When sorting by multiple columns, each one is used as a tie-breaker for the previous ones.
 :::
 
-### 3. select(): Choosing Columns
+### Verb 3. `select()`: Choosing Columns
 
 `select()` helps you focus on specific variables. It's particularly useful when you have datasets with many columns:
 
 ```{r}
-# Select key financial variables
-get_gcdf3_dataset() |>
+# Using mini dataset: Select key columns
+mini_gcdf |>
   select(
-    aid_data_record_id,
     recipient,
-    amount_constant_usd_2021,
-    flow_class
+    commitment_year,
+    amount_constant_usd_2021
   )
 
-# Select columns by pattern
+# Real world example: Select columns by pattern
 get_gcdf3_dataset() |>
   select(
     starts_with("amount"),
@@ -151,88 +216,67 @@ get_gcdf3_dataset() |>
 - `everything()`: All remaining columns
 :::
 
-### 4. mutate(): Creating New Variables
+### Verb 4. `mutate()`: Creating New Variables
 
-`mutate()` lets you create new columns based on existing ones:
+`mutate()` lets you create new columns based on existing ones. Let's look at some examples:
 
 ```{r}
-# Convert amounts to billions and calculate shares
-get_gcdf3_dataset() |>
-  group_by(commitment_year) |>
+# Using mini dataset: Calculate billions and shares
+mini_gcdf |>
+  group_by(recipient_region) |>
   mutate(
     amount_bn = amount_constant_usd_2021 / 1e9,
-    share_of_year = amount_constant_usd_2021 / sum(amount_constant_usd_2021, na.rm = TRUE)
+    share_of_region = amount_constant_usd_2021 / sum(amount_constant_usd_2021) * 100
+  ) |>
+  ungroup()
+
+# Real world example: Year-over-year growth
+angola_annual_flows |>
+  mutate(
+    prev_year_amount = lag(total_amount),
+    yoy_growth = (total_amount - prev_year_amount) / prev_year_amount * 100
   )
 ```
 
+::: {.callout-note}
+## What's Happening Here?
+
+In the regional shares example:
+
+1. Group by region so calculations happen within each region
+2. Convert amounts to billions (divide by 1e9)
+3. Calculate each project's share of its regional total
+4. Remove grouping when done
+
+In the growth example:
+
+1. `lag(total_amount)` gets previous year's value
+2. Calculate percent change from previous year
+:::
+
+### Verb 5. `summarize()`: Creating Summaries
+
+`summarize()` collapses groups into single rows. This is especially powerful when combined with `group_by()`:
 
 ```{r}
-mini_gcdf <- get_gcdf3_dataset() |> 
-  filter(
-    recommended_for_aggregates == "Yes",
-    flow_type == "Loan",
-    country_name %in% c(
-      "Angola",
-      "Zambia",
-      "Venezuela",
-      "Indonesia",
-      "Pakistan"
-    )
-  ) |> 
-  group_by(
-    recipient
-  ) |> 
-  slice_max(
-    order_by = amount_constant_usd_2021,
-    n = 2
-  ) |> 
-  select(
-    recipient,
-    recipient_region,
-    sector_name,
-    commitment_year,
-    amount_constant_usd_2021 
-  ) |> 
-  ungroup()
-  
-```
+# Using mini dataset: Regional summaries
+mini_gcdf |>
+  group_by(recipient_region) |>
+  summarize(
+    total_amount_bn = sum(amount_constant_usd_2021) / 1e9,
+    project_count = n(),
+    avg_amount_bn = mean(amount_constant_usd_2021) / 1e9,
+    .groups = "drop"
+  )
 
-
-Common mutations in development finance analysis:
-
-
-
-
-[FIX: add real data so that these examples run.  for the yoy growth, could do so using the annual_flows tibble created above. And for clean text example, perhaps use tribble to create a 3 row tibble with inconsistent capitalization]
-```{r}
-# mutate(
-#   # Calculate growth rates
-#   yoy_growth = (amount - lag(amount)) / lag(amount),
-#   
-#   # Create categories
-#   size_category = case_when(
-#     amount_bn >= 1 ~ "Large (>$1B)",
-#     amount_bn >= 0.1 ~ "Medium ($100M-$1B)",
-#     TRUE ~ "Small (<$100M)"
-#   ),
-#   
-#   # Clean text
-#   implementing_agency = str_to_title(implementing_agency)
-# )
-```
-
-### 5. summarize(): Creating Summaries
-
-`summarize()` collapses groups into single rows:
-
-```{r}
-# Calculate total lending by year and flow class
+# Real world example: Annual lending by flow class
 get_gcdf3_dataset() |>
+  filter(recommended_for_aggregates == "Yes") |>
   group_by(commitment_year, flow_class) |>
   summarize(
     total_amount_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
     project_count = n(),
-    avg_amount_bn = mean(amount_constant_usd_2021, na.rm = TRUE) / 1e9
+    .groups = "drop"
   )
 ```
 
@@ -249,79 +293,218 @@ Common summary functions:
 Always use `na.rm = TRUE` when working with financial data! Missing values are common and can break your calculations if not handled properly.
 :::
 
-## Combining Operations: The Power of the Pipe `|>`
+## Understanding Groups: A Powerful Way to Organize Analysis
 
-While each verb is useful on its own, the real power comes from combining them. The pipe operator (`|>`) makes this natural and readable:
+If you've used Excel, you're probably familiar with pivot tables - they let you organize data by categories and calculate summaries for each group. The `group_by()` function in R serves a similar purpose but is even more powerful. Just like in Excel when you:
+
+- Create a pivot table to see total lending by region
+- Calculate what percent each project is of its country's total
+- Find the largest project in each sector
+
+In R, `group_by()` lets you do all this and more. Let's explore how it works using our mini dataset.
+
+### Three Key Grouping Patterns
+
+There are three main ways you'll use grouping in your analysis:
+
+1. **Summarize by Group**: Calculate totals, averages, or counts for each group
+2. **Calculate Within Groups**: Create new columns based on group calculations
+3. **Find Extremes Within Groups**: Identify top/bottom values in each group
+
+Let's look at each pattern:
+
+### Pattern 1: Summarize by Group
+
+First, let's see what happens without grouping:
 
 ```{r}
-# Find the largest projects in each region
-get_gcdf3_dataset() |>                    # Start with the data
-  filter(                                 # Keep only...
-    recommended_for_aggregates == "Yes",  # recommended projects
-    !is.na(amount_constant_usd_2021)      # with non-missing amounts
-  ) |>                                    # AND THEN...
-  group_by(recipient_region) |>           # For each region...
-  slice_max(                              # Find the projects...
-    order_by = amount_constant_usd_2021,  # ordered by size
-    n = 5                                 # keeping top 5
-  ) |>                                    # AND THEN...
-  arrange(                                # Sort the results...
-    recipient_region,                     # by region
-    desc(amount_constant_usd_2021)        # and size (descending)
-  ) |>                                    # AND THEN...
-  ungroup()                               # remove grouping
+# Without grouping - one summary for everything
+mini_gcdf |>
+  summarize(
+    total_amount_bn = sum(amount_constant_usd_2021) / 1e9,
+    avg_amount_bn = mean(amount_constant_usd_2021) / 1e9
+  )
+
+# With grouping - summaries for each region
+mini_gcdf |>
+  group_by(recipient_region) |>
+  summarize(
+    total_amount_bn = sum(amount_constant_usd_2021) / 1e9,
+    avg_amount_bn = mean(amount_constant_usd_2021) / 1e9,
+    .groups = "drop"
+  )
 ```
 
-Read this as a series of steps:
+::: {.callout-note}
+## What's Happening Here?
 
-1. Start with the dataset AND THEN
-2. Filter for recommended projects with amounts AND THEN
-3. Group by region AND THEN
-4. Take the 5 largest projects in each group AND THEN
-5. Sort by region and size
+When you group by `recipient_region`, R essentially:
+
+1. Splits the data into three pieces (Africa, America, Asia)
+2. Runs the calculations separately on each piece
+3. Combines the results back into one table
+
+This is just like choosing "Region" as the row variable in a pivot table!
+:::
+
+### Pattern 2: Calculate Within Groups
+
+Sometimes you want to compare values within their group, like calculating each loan's share of its regional total:
+
+```{r}
+# Calculate share of regional total
+mini_gcdf |>
+  group_by(recipient_region) |>
+  mutate(
+    region_total = sum(amount_constant_usd_2021),
+    share_of_region = amount_constant_usd_2021 / region_total * 100
+  ) |>
+  select(recipient, recipient_region, amount_constant_usd_2021, share_of_region) |>  # Just show relevant columns
+  ungroup()
+```
+
+::: {.callout-note}
+## What's Happening Here?
+
+For each region:
+
+1. `sum(amount_constant_usd_2021)` adds up all loans in that region
+2. Each loan's amount is divided by its region's total
+3. The share will always be between 0 and 100% within each region
+
+This is similar to Excel's "Show Values As" → "% of Parent Row Total" in pivot tables!
+:::
+
+### Pattern 3: Find Extremes Within Groups
+
+Often you want to find the largest or smallest values within each group:
+
+```{r}
+# Largest loan in each region
+mini_gcdf |>
+  group_by(recipient_region) |>
+  slice_max(order_by = amount_constant_usd_2021, n = 1) |>
+  ungroup()
+
+# Real world example: Top 3 loans by region
+get_gcdf3_dataset() |>
+  filter(
+    recommended_for_aggregates == "Yes",
+    !is.na(amount_constant_usd_2021)
+  ) |>
+  group_by(recipient_region) |>
+  slice_max(order_by = amount_constant_usd_2021, n = 3) |>
+  select(recipient_region, recipient, amount_constant_usd_2021, commitment_year) |>
+  ungroup()
+```
+
+::: {.callout-note}
+## What's Happening Here?
+
+For each region:
+1. Sort loans by amount (largest to smallest)
+2. Keep the top one (`n = 1`) or top three (`n = 3`)
+3. Move on to the next region
+
+This is like filtering a pivot table to show only the maximum value in each group!
+:::
+
+### The Importance of ungroup()
+
+Notice how we often end with `ungroup()`? This is important! When you group data:
+
+1. The grouping stays active until you explicitly remove it
+2. This can affect later calculations in unexpected ways
+3. `ungroup()` removes the grouping when you're done with it
+
+Let's see what can go wrong:
+
+```{r}
+# THIS IS WRONG! (still grouped when calculating overall_share)
+mini_gcdf |>
+  group_by(recipient_region) |>
+  mutate(
+    # This gives regional share (correct)
+    region_share = amount_constant_usd_2021 / sum(amount_constant_usd_2021),
+    # This gives same result because we're still grouped! (wrong)
+    overall_share = amount_constant_usd_2021 / sum(amount_constant_usd_2021)
+  )
+
+# THIS IS RIGHT! (ungroup before overall calculation)
+mini_gcdf |>
+  group_by(recipient_region) |>
+  mutate(
+    region_share = amount_constant_usd_2021 / sum(amount_constant_usd_2021)
+  ) |>
+  ungroup() |>
+  mutate(
+    overall_share = amount_constant_usd_2021 / sum(amount_constant_usd_2021)
+  )
+```
 
 ::: {.callout-tip}
-## Using AI to Understand Complex Pipes
+## When to ungroup()
 
-When you see a complex pipe operation, try asking an AI assistant:
+- After `summarize()`: Usually automatic (but watch for warnings)
+- After `mutate()`: If you're done with group calculations
+- After `slice_*()`: Almost always
+- When in doubt: `ungroup()`! It never hurts.
+:::
 
-- "Can you explain what each step of this pipeline does?"
-- "What would the output look like?"
-- "How could I modify this to [your specific need]?"
+### Real World Example: Time Series Analysis
 
-Try showing it your data by using: `my_data |> glimpse()` 
+Let's apply these patterns to analyze year-over-year changes in Angola's loan commitments:
 
-Copy and paste that glimpse of your data into the LLM along with your code.  More context = better answers.
+```{r}
+# Calculate year-over-year changes
+angola_annual_flows |>
+  mutate(
+    prev_year_amount = lag(total_amount),
+    yoy_change = (total_amount - prev_year_amount) / prev_year_amount * 100
+  ) |>
+  filter(!is.na(yoy_change))  # Remove first year (no previous year to compare)
+```
+
+::: {.callout-note}
+## What's Happening Here?
+
+1. `lag(total_amount)` gets the previous year's value
+2. Calculate percent change from previous year
+3. Remove the first year (which has no previous year)
+
+This kind of analysis is common when looking at lending trends over time!
 :::
 
 ## Common Transformation Patterns in Development Finance
 
-Certain data transformation patterns come up frequently when working with development finance data. Here are some common ones:
+Now that we understand both the basic operations and grouping, let's look at some common patterns you'll use when analyzing Chinese development finance data:
 
-### Pattern 1: Annual Flows
+### Pattern 1: Annual Flows By Region
+
+This pattern helps understand how lending varies across regions and time:
 
 ```{r}
-# Calculate annual lending flows
-annual_flows <- get_gcdf3_dataset() |>
+get_gcdf3_dataset() |>
   filter(recommended_for_aggregates == "Yes") |>
-  group_by(commitment_year, flow_class) |>
+  group_by(commitment_year, recipient_region) |>
   summarize(
     total_amount_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
     project_count = n(),
+    avg_project_size_bn = mean(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
     .groups = "drop"
-  )
-
-annual_flows
+  ) |>
+  arrange(recipient_region, commitment_year)
 ```
 
 ### Pattern 2: Portfolio Composition
 
+Understanding the sectoral focus of lending:
+
 ```{r}
-# Analyze lending by sector
-sector_analysis <- get_gcdf3_dataset() |>
+get_gcdf3_dataset() |>
   filter(
     recommended_for_aggregates == "Yes",
-    commitment_year >= 2015
+    commitment_year >= 2018  # Focus on recent years
   ) |>
   group_by(sector_name) |>
   summarize(
@@ -330,28 +513,27 @@ sector_analysis <- get_gcdf3_dataset() |>
     avg_amount_bn = mean(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
     .groups = "drop"
   ) |>
-  arrange(desc(total_amount_bn))
-
-sector_analysis
+  arrange(desc(total_amount_bn)) |>
+  slice_head(n = 10)  # Top 10 sectors
 ```
 
-### Pattern 3: Regional Comparisons
+### Pattern 3: Country Risk Analysis
+
+Analyzing lending patterns for specific countries:
 
 ```{r}
-# Compare lending across regions
-regional_comparison <- get_gcdf3_dataset() |>
-  filter(recommended_for_aggregates == "Yes") |>
-  group_by(recipient_region) |>
+get_gcdf3_dataset() |>
+  filter(
+    recommended_for_aggregates == "Yes",
+    recipient %in% c("Angola", "Kenya", "Ethiopia")
+  ) |>
+  group_by(recipient, flow_class) |>
   summarize(
     total_amount_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
     project_count = n(),
-    unique_countries = n_distinct(country_name),
-    avg_project_size_bn = mean(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
     .groups = "drop"
   ) |>
-  arrange(desc(total_amount_bn))
-
-regional_comparison
+  arrange(recipient, desc(total_amount_bn))
 ```
 
 ## Practice Exercises
@@ -409,21 +591,16 @@ If you get stuck:
 
 ### Video Tutorials
 
-1. [Animated versions of common common dplyr functions](https://rfortherestofus.com/2024/07/dplyr-functions-animated)
+1. [Animated versions of common dplyr functions](https://rfortherestofus.com/2024/07/dplyr-functions-animated)
    - Clear, beginner-friendly overview
    - Shows live coding examples
    - Perfect for visual learners
 
-### Practice Resources
-
-1. [dplyr exercises on R-exercises](https://www.r-exercises.com/tag/dplyr/)
-   - Hands-on practice problems
-   - Solutions provided
-   - Range from basic to advanced
 
 ## Next Steps
 
 In our class session, we'll:
+
 1. Review any questions about these concepts
 2. Practice more complex transformations
 3. Work with real analysis questions
