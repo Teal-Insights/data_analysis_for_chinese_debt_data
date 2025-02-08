@@ -7,9 +7,10 @@ This pre-class preparation should take about 45-60 minutes to complete.
 Now that you can create visualizations and automated reports, it's time to learn how to transform your data to find meaningful insights. This week focuses on data transformation - the process of taking raw data and reshaping it to answer specific questions. We'll use the tidyverse's powerful `dplyr` package, which makes complex data operations surprisingly intuitive.
 
 ### Video Lecture
+
 Watch this video lecture before our interactive session:
 
-::: {.column-page}
+::: column-page
 {{< video https://youtu.be/YOUR_VIDEO_ID >}}
 :::
 
@@ -17,17 +18,17 @@ Watch this video lecture before our interactive session:
 
 By completing this pre-class work, you will:
 
-1. Understand the core data transformation verbs in `dplyr`
-2. Learn to chain operations together using the pipe operator `|>`
-3. Begin thinking about data transformation patterns
-4. Practice with real Chinese development finance data
-5. Use AI tools to assist with data transformation tasks
+1.  Understand the core data transformation verbs in `dplyr`
+2.  Learn to chain operations together using the pipe operator `|>`
+3.  Begin thinking about data transformation patterns
+4.  Practice with real Chinese development finance data
+5.  Use AI tools to assist with data transformation tasks
 
 ## Setup
 
 Let's get our workspace ready. First, create a new Quarto document for your notes:
 
-```r
+``` r
 # Create a new Quarto document
 # File → New File → Quarto Document
 # Save as "week_3_transformation_preclass.qmd" in your week_3/R folder
@@ -91,10 +92,10 @@ mini_gcdf
 
 Don't worry if the code that created this dataset looks complex - by the end of this pre-class material, you'll understand every line! For now, just notice that:
 
-1. We have 10 rows (2 loans each from 5 countries)
-2. Countries are from 3 different regions (Africa, Asia, America)
-3. Each loan has a sector, year, and amount
-4. The amounts are in constant 2021 USD
+1.  We have 10 rows (2 loans each from 5 countries)
+2.  Countries are from 3 different regions (Africa, Asia, America)
+3.  Each loan has a sector, year, and amount
+4.  The amounts are in constant 2021 USD
 
 This small dataset will help us learn the fundamentals before working with the full GCDF database.
 
@@ -102,11 +103,11 @@ This small dataset will help us learn the fundamentals before working with the f
 
 Think of data transformation as having five fundamental operations, just like basic arithmetic has addition, subtraction, multiplication, and division. In dplyr, these operations are:
 
-1. **filter()**: Pick rows based on their values
-2. **arrange()**: Change the order of rows
-3. **select()**: Pick columns by their names
-4. **mutate()**: Create new columns from existing ones
-5. **summarize()**: Collapse multiple rows into a single summary
+1.  **filter()**: Pick rows based on their values
+2.  **arrange()**: Change the order of rows
+3.  **select()**: Pick columns by their names
+4.  **mutate()**: Create new columns from existing ones
+5.  **summarize()**: Collapse multiple rows into a single summary
 
 Let's explore each one using examples from Chinese development finance data.
 
@@ -150,17 +151,17 @@ get_gcdf3_dataset() |>
   )
 ```
 
-::: {.callout-tip}
+::: callout-tip
 ## Logical Operators in filter()
 
-- `==`: Exactly equals
-- `!=`: Does not equal
-- `>`, `>=`: Greater than, Greater than or equal to
-- `<`, `<=`: Less than, Less than or equal to
-- `%in%`: Is in a set of values
-- `!is.na()`: Is not missing
-- `&`: And (multiple conditions)
-- `|`: Or (either condition)
+-   `==`: Exactly equals
+-   `!=`: Does not equal
+-   `>`, `>=`: Greater than, Greater than or equal to
+-   `<`, `<=`: Less than, Less than or equal to
+-   `%in%`: Is in a set of values
+-   `!is.na()`: Is not missing
+-   `&`: And (multiple conditions)
+-   `|`: Or (either condition)
 :::
 
 ### Verb 2. `arrange()`: Ordering Your Data
@@ -181,7 +182,7 @@ get_gcdf3_dataset() |>
   )
 ```
 
-::: {.callout-note}
+::: callout-note
 Use `desc()` to sort in descending order. When sorting by multiple columns, each one is used as a tie-breaker for the previous ones.
 :::
 
@@ -206,14 +207,14 @@ get_gcdf3_dataset() |>
   )
 ```
 
-::: {.callout-tip}
+::: callout-tip
 ## Helpful select() Helpers
 
-- `starts_with()`: Columns starting with a prefix
-- `ends_with()`: Columns ending with a suffix
-- `contains()`: Columns containing a string
-- `matches()`: Columns matching a regular expression
-- `everything()`: All remaining columns
+-   `starts_with()`: Columns starting with a prefix
+-   `ends_with()`: Columns ending with a suffix
+-   `contains()`: Columns containing a string
+-   `matches()`: Columns matching a regular expression
+-   `everything()`: All remaining columns
 :::
 
 ### Verb 4. `mutate()`: Creating New Variables
@@ -238,20 +239,20 @@ angola_annual_flows |>
   )
 ```
 
-::: {.callout-note}
+::: callout-note
 ## What's Happening Here?
 
 In the regional shares example:
 
-1. Group by region so calculations happen within each region
-2. Convert amounts to billions (divide by 1e9)
-3. Calculate each project's share of its regional total
-4. Remove grouping when done
+1.  Group by region so calculations happen within each region
+2.  Convert amounts to billions (divide by 1e9)
+3.  Calculate each project's share of its regional total
+4.  Remove grouping when done
 
 In the growth example:
 
-1. `lag(total_amount)` gets previous year's value
-2. Calculate percent change from previous year
+1.  `lag(total_amount)` gets previous year's value
+2.  Calculate percent change from previous year
 :::
 
 ### Verb 5. `summarize()`: Creating Summaries
@@ -282,14 +283,14 @@ get_gcdf3_dataset() |>
 
 Common summary functions:
 
-- `sum()`: Total values
-- `mean()`: Average
-- `median()`: Middle value
-- `sd()`: Standard deviation
-- `n()`: Count rows
-- `n_distinct()`: Count unique values
+-   `sum()`: Total values
+-   `mean()`: Average
+-   `median()`: Middle value
+-   `sd()`: Standard deviation
+-   `n()`: Count rows
+-   `n_distinct()`: Count unique values
 
-::: {.callout-important}
+::: callout-important
 Always use `na.rm = TRUE` when working with financial data! Missing values are common and can break your calculations if not handled properly.
 :::
 
@@ -297,9 +298,9 @@ Always use `na.rm = TRUE` when working with financial data! Missing values are c
 
 If you've used Excel, you're probably familiar with pivot tables - they let you organize data by categories and calculate summaries for each group. The `group_by()` function in R serves a similar purpose but is even more powerful. Just like in Excel when you:
 
-- Create a pivot table to see total lending by region
-- Calculate what percent each project is of its country's total
-- Find the largest project in each sector
+-   Create a pivot table to see total lending by region
+-   Calculate what percent each project is of its country's total
+-   Find the largest project in each sector
 
 In R, `group_by()` lets you do all this and more. Let's explore how it works using our mini dataset.
 
@@ -307,9 +308,9 @@ In R, `group_by()` lets you do all this and more. Let's explore how it works usi
 
 There are three main ways you'll use grouping in your analysis:
 
-1. **Summarize by Group**: Calculate totals, averages, or counts for each group
-2. **Calculate Within Groups**: Create new columns based on group calculations
-3. **Find Extremes Within Groups**: Identify top/bottom values in each group
+1.  **Summarize by Group**: Calculate totals, averages, or counts for each group
+2.  **Calculate Within Groups**: Create new columns based on group calculations
+3.  **Find Extremes Within Groups**: Identify top/bottom values in each group
 
 Let's look at each pattern:
 
@@ -335,14 +336,14 @@ mini_gcdf |>
   )
 ```
 
-::: {.callout-note}
+::: callout-note
 ## What's Happening Here?
 
 When you group by `recipient_region`, R essentially:
 
-1. Splits the data into three pieces (Africa, America, Asia)
-2. Runs the calculations separately on each piece
-3. Combines the results back into one table
+1.  Splits the data into three pieces (Africa, America, Asia)
+2.  Runs the calculations separately on each piece
+3.  Combines the results back into one table
 
 This is just like choosing "Region" as the row variable in a pivot table!
 :::
@@ -363,14 +364,14 @@ mini_gcdf |>
   ungroup()
 ```
 
-::: {.callout-note}
+::: callout-note
 ## What's Happening Here?
 
 For each region:
 
-1. `sum(amount_constant_usd_2021)` adds up all loans in that region
-2. Each loan's amount is divided by its region's total
-3. The share will always be between 0 and 100% within each region
+1.  `sum(amount_constant_usd_2021)` adds up all loans in that region
+2.  Each loan's amount is divided by its region's total
+3.  The share will always be between 0 and 100% within each region
 
 This is similar to Excel's "Show Values As" → "% of Parent Row Total" in pivot tables!
 :::
@@ -398,13 +399,10 @@ get_gcdf3_dataset() |>
   ungroup()
 ```
 
-::: {.callout-note}
+::: callout-note
 ## What's Happening Here?
 
-For each region:
-1. Sort loans by amount (largest to smallest)
-2. Keep the top one (`n = 1`) or top three (`n = 3`)
-3. Move on to the next region
+For each region: 1. Sort loans by amount (largest to smallest) 2. Keep the top one (`n = 1`) or top three (`n = 3`) 3. Move on to the next region
 
 This is like filtering a pivot table to show only the maximum value in each group!
 :::
@@ -413,9 +411,9 @@ This is like filtering a pivot table to show only the maximum value in each grou
 
 Notice how we often end with `ungroup()`? This is important! When you group data:
 
-1. The grouping stays active until you explicitly remove it
-2. This can affect later calculations in unexpected ways
-3. `ungroup()` removes the grouping when you're done with it
+1.  The grouping stays active until you explicitly remove it
+2.  This can affect later calculations in unexpected ways
+3.  `ungroup()` removes the grouping when you're done with it
 
 Let's see what can go wrong:
 
@@ -442,13 +440,13 @@ mini_gcdf |>
   )
 ```
 
-::: {.callout-tip}
+::: callout-tip
 ## When to ungroup()
 
-- After `summarize()`: Usually automatic (but watch for warnings)
-- After `mutate()`: If you're done with group calculations
-- After `slice_*()`: Almost always
-- When in doubt: `ungroup()`! It never hurts.
+-   After `summarize()`: Usually automatic (but watch for warnings)
+-   After `mutate()`: If you're done with group calculations
+-   After `slice_*()`: Almost always
+-   When in doubt: `ungroup()`! It never hurts.
 :::
 
 ### Real World Example: Time Series Analysis
@@ -465,12 +463,12 @@ angola_annual_flows |>
   filter(!is.na(yoy_change))  # Remove first year (no previous year to compare)
 ```
 
-::: {.callout-note}
+::: callout-note
 ## What's Happening Here?
 
-1. `lag(total_amount)` gets the previous year's value
-2. Calculate percent change from previous year
-3. Remove the first year (which has no previous year)
+1.  `lag(total_amount)` gets the previous year's value
+2.  Calculate percent change from previous year
+3.  Remove the first year (which has no previous year)
 
 This kind of analysis is common when looking at lending trends over time!
 :::
@@ -544,66 +542,64 @@ Try these exercises to get comfortable with data transformation. Remember to use
 
 Find all projects that are:
 
-- ODA-like or OOF-like
-- Committed between 2018-2021
-- Worth at least $100 million
+-   ODA-like or OOF-like
+-   Committed between 2018-2021
+-   Worth at least \$100 million
 
 ### Exercise 2: Regional Analysis
 
 For each region, calculate:
 
-- Total lending volume
-- Number of projects
-- Average project size
-- Number of recipient countries
+-   Total lending volume
+-   Number of projects
+-   Average project size
+-   Number of recipient countries
 
 ### Exercise 3: Sector Trends
 
 Analyze how sector composition has changed:
 
-- Compare 2013-2017 vs 2018-2021
-- Look at both volume and project counts
-- Focus on the top 5 sectors by volume
+-   Compare 2013-2017 vs 2018-2021
+-   Look at both volume and project counts
+-   Focus on the top 5 sectors by volume
 
-::: {.callout-tip}
+::: callout-tip
 ## Getting Help
 
 If you get stuck:
 
-1. Check the [dplyr cheatsheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
-2. Ask AI tools for help
-3. Look at similar examples in this guide
-4. Post questions in our course Slack
+1.  Check the [dplyr cheatsheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
+2.  Ask AI tools for help
+3.  Look at similar examples in this guide
+4.  Post questions in our course Slack
 :::
 
 ## Resources for Learning More
 
 ### Essential References
 
-1. [R for Data Science - Data Transformation](https://r4ds.hadley.nz/data-transform)
-   - Comprehensive guide to dplyr
-   - Many practical examples
-   - Free online!
-
-2. [dplyr cheatsheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
-   - Quick reference for common operations
-   - Great to keep handy while working
+1.  [R for Data Science - Data Transformation](https://r4ds.hadley.nz/data-transform)
+    -   Comprehensive guide to dplyr
+    -   Many practical examples
+    -   Free online!
+2.  [dplyr cheatsheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
+    -   Quick reference for common operations
+    -   Great to keep handy while working
 
 ### Video Tutorials
 
-1. [Animated versions of common dplyr functions](https://rfortherestofus.com/2024/07/dplyr-functions-animated)
-   - Clear, beginner-friendly overview
-   - Shows live coding examples
-   - Perfect for visual learners
-
+1.  [Animated versions of common dplyr functions](https://rfortherestofus.com/2024/07/dplyr-functions-animated)
+    -   Clear, beginner-friendly overview
+    -   Shows live coding examples
+    -   Perfect for visual learners
 
 ## Next Steps
 
 In our class session, we'll:
 
-1. Review any questions about these concepts
-2. Practice more complex transformations
-3. Work with real analysis questions
-4. Learn some advanced dplyr features
+1.  Review any questions about these concepts
+2.  Practice more complex transformations
+3.  Work with real analysis questions
+4.  Learn some advanced dplyr features
 
 Remember: The goal isn't to memorize every function, but to understand the basic patterns of data transformation. With these five core verbs and the pipe operator, you can handle most analysis tasks!
