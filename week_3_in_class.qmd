@@ -1,1 +1,1013 @@
 # Week 3: Find Actionable Insights, Quickly (In-Class) {#sec-week3_in_class}
+
+## Today's Agenda (90 minutes)
+
+1. **Understanding Pivoting Power** (25 min)
+   - Why pivot at all? The insight toolkit concept
+   - Demo with mini dataset:
+     * How humans naturally organize data (wide)
+     * Why computers prefer tidy data (long)
+     * Creating insights through strategic pivoting
+   - Key pattern: longer->group->analyze->wider->compare
+
+2. **Live Demo: Finding Non-Obvious Insights** (20 min)
+   - Example: Comparing lending patterns
+     * Pivot longer to analyze by group
+     * Calculate shares and growth rates
+     * Pivot wider to compare countries/regions
+     * Create "repeatable factoids"
+   - Pattern recognition in Chinese development finance
+
+3. **Guided Practice & Exploration** (40 min)
+   - Suggested research questions like:
+     * How has the sectoral composition of lending changed pre/post BRI?
+     * Which countries have seen the biggest shifts in lending patterns?
+     * What regions show similar lending trajectories?
+   - Support for individual exploration
+   - Creating compelling visualizations from insights
+
+4. **Share Discoveries** (5 min)
+   - Quick highlights of interesting findings
+   - Preview of next week's data import & cleaning
+
+
+
+## Learning Objectives
+
+By the end of this session, you will be able to:
+
+1. **Understand** tidy data principles and how they enable powerful data analysis
+2. **Use** pivoting strategically as a tool for finding meaningful patterns in data
+3. **Create** clear comparisons that highlight key changes in lending patterns 
+4. **Generate** "repeatable factoids" that effectively communicate insights
+5. **Apply** these techniques to find non-obvious patterns in Chinese development finance data
+
+
+::: {.callout-tip}
+## Why This Matters for TUFF Analysis
+
+The skills you're learning today directly support your work on the TUFF Initiative:
+
+**Data Analysis**
+- Find patterns in project-level data more efficiently
+- Calculate changes in lending patterns over time
+- Compare lending across regions, sectors, and time periods
+- Generate insights for briefs and reports
+
+**Common TUFF Tasks Made Easier**
+- Analyze how source quality varies across different types of projects
+- Track changes in sectoral composition of lending
+- Compare lending patterns before and after key events
+- Calculate shares of lending by region or country
+- Find similar projects across countries
+
+**Real Benefits**
+- Turn repetitive Excel tasks into efficient R workflows
+- Spend less time manipulating data, more time finding insights
+- Create consistent analysis across projects
+- Generate reproducible factoids for reports
+- Make compelling visualizations of findings
+
+Remember: While the "pivot dance" might seem abstract at first, it's a powerful tool for the exact kind of analysis you do every day with the TUFF database.
+:::
+
+## Today's Video Lecture
+Watch this video lecture to review the concepts from class 3:
+
+::: {.column-page}
+{{< video https://youtu.be/XXXXX>}}
+:::
+
+## Setup
+
+Let's get our workspace ready. First, create a new Quarto document for your notes:
+
+``` r
+# Create a new Quarto document
+# File → New File → Quarto Document
+# Save as "week_3_transformation_in_class.qmd" in your week_3/R folder
+```
+
+Install a few new packages:
+
+```{r}
+#| eval: false
+pak::pkg_install(
+  c(
+    "slider",   # for rolling calculations
+    "janitor",  # for making column names snake_case
+    "widyr",    # for tidy correlation calculation
+    "pheatmap"  # for correlation matrix visualization
+  )
+ )
+```
+
+
+Load the packages we'll need:
+
+```{r}
+#| message: false
+library(tidyverse)    # For data transformation tools
+library(janitor)      # for making column names snake_case
+library(slider)       # for rolling calculations
+library(widyr)        # for tidy correlation calculation
+library(pheatmap)     # for correlation matrix visualization
+library(chinadevfin3) # For Chinese development finance data
+library(aiddataviz)   # For AidData themed visualizations
+```
+
+## Understanding the Power of Tidy Data (25 minutes)
+
+### The "Aha!" Moment: Why Tidy Data Matters
+
+Think of tidy data as the foundation of a building - get it right, and everything else becomes easier. Just as a well-organized kitchen makes cooking efficient, tidy data makes analysis smooth. It's the secret ingredient that makes the tidyverse work.
+
+Three simple rules make data tidy
+
+1. Each variable is a column
+2. Each observation is a row
+3. Each value is a cell
+
+### Why This Matters: A Concrete Example
+
+Let's look at our mini dataset from pre-class in both "natural" and "tidy" formats:
+
+```{r}
+# How we often see data (wide format)
+mini_loans <- tribble(
+  ~country,      ~"2018",  ~"2019",  ~"2020",
+  "Angola",         1.2,     2.1,     0.8,
+  "Pakistan",       2.3,     1.7,     3.1,
+  "Indonesia",      1.8,     2.2,     1.5
+)
+
+mini_loans
+
+# Same data in tidy format
+mini_loans_tidy <- mini_loans |>
+  pivot_longer(
+    cols = c("2018", "2019", "2020"),
+    names_to = "year",
+    values_to = "amount_bn"
+  )
+
+mini_loans_tidy
+```
+
+Watch what happens when we try to answer these questions:
+
+1. **Which country had the highest total lending?**
+
+**Wide format (harder)**:
+```{r}
+mini_loans |>
+  mutate(total = `2018` + `2019` + `2020`) |>
+  arrange(desc(total))
+```
+
+Imagine what this would look like if you had 30 years of data?  Or if you wanted to switch years? It's a pain.
+
+**Tidy format (easier)**:
+```{r}
+mini_loans_tidy |>
+  group_by(country) |>
+  summarize(total = sum(amount_bn)) |>
+  arrange(desc(total))
+```
+
+
+
+2. **What was the year-over-year growth in lending?**
+
+**Wide format (much harder)**:
+```{r}
+mini_loans |>
+  mutate(
+    growth_18_19 = (`2019` - `2018`) / `2018` * 100,
+    growth_19_20 = (`2020` - `2019`) / `2019` * 100
+  )
+```
+
+**Tidy format (clearer)**:
+```{r}
+mini_loans_tidy |>
+  group_by(country) |>
+  arrange(year) |>
+  mutate(
+    growth = (amount_bn - lag(amount_bn)) / lag(amount_bn) * 100
+  )
+```
+
+::: {.callout-tip}
+## Working with Column Names: backticks vs `clean_names()`
+
+When working with messy column names, you'll often need to handle spaces, special characters, or numbers at the start of names. Let's look at your options:
+
+```{r}
+
+# Example dataset with messy column names
+messy_names <- tribble(
+  ~"Country Name",  ~"2021 Amount", ~"% Change",  ~"Current.Status",
+  "Angola",            1.2,            15,         "Active",
+  "Pakistan",          2.3,            -5,         "Delayed",
+  "Indonesia",         1.8,            10,         "Active"
+)
+
+# Look at original names
+names(messy_names)
+
+# See what clean_names() does
+messy_names |>
+  clean_names() |>
+  names()
+```
+
+`clean_names()` transforms column names to **snake_case**, which means:
+
+- All lowercase letters
+- Spaces and dots replaced with underscores
+- Special characters removed
+- Numbers get an 'x' prefix
+- No spaces or special characters
+
+For example:
+
+- "Country Name" → "country_name"
+- "2021 Amount" → "x2021_amount"
+- "% Change" → "percent_change"
+- "Current.Status" → "current_status"
+
+**When to use `clean_names()`:**
+
+- Working with data you'll analyze extensively
+- When column names are inconsistent or messy
+- If you're primarily doing analysis in R
+
+**When to stick with backticks:**
+
+- If you plan to pivot column names into observations
+- When preserving original column formatting is important
+- When working with data that will be exported back to other systems
+
+**Pro tip:** If you need to restore original names later:
+```{r}
+# Store original names
+original_names <- names(messy_names)
+
+# Clean for analysis
+clean_data <- messy_names |>
+  clean_names()
+
+# Analysis here...
+
+# Restore original names if needed
+names(clean_data) <- original_names
+```
+:::
+
+
+### The Pivoting Power Tools
+
+Think of `pivot_longer()` and `pivot_wider()` as power tools for data analysis:
+
+1. `pivot_longer()`: Gets data ready for analysis
+   - Makes grouped calculations easy
+   - Perfect for time series analysis
+   - Great for aesthetic mapping in ggplot2
+
+2. `pivot_wider()`: Helps compare and present
+   - Creates comparison columns
+   - Makes it easy to calculate differences
+   - Great for presentation tables
+
+### Key Pattern: The Pivot Dance
+
+Many powerful insights come from this pattern:
+
+1. Start wide (how we get data)
+2. Pivot longer (to analyze)
+3. Do calculations
+4. Pivot wider (to compare)
+5. Find insights
+
+Let's see this in action with Chinese development finance data...
+
+
+## Live Demo: Finding Non-Obvious Insights (20 minutes)
+
+### Setting Up Our Investigation
+
+Let's use what we just learned to investigate something interesting: How has Chinese development finance shifted between regions and countries over time? This is a perfect example where pivoting can reveal patterns that aren't obvious at first glance.
+
+```{r}
+# First, let's get our annual lending data by country
+country_lending <- get_gcdf3_dataset() |>
+  filter(recommended_for_aggregates == "Yes") |>
+  select(
+    country_name,
+    commitment_year,
+    amount_constant_usd_2021,
+    flow_class
+  )
+
+country_lending
+```
+
+### Why Pivot? A Simple Example
+
+Before we dive into complex analysis, let's understand why pivoting helps. Imagine trying to answer this question: *"For each country, what share of total Chinese lending did they receive in each year?"*
+
+Here's why this is tricky:
+1. We need totals by year (denominator)
+2. We need each country's amount by year (numerator)
+3. We need to divide these to get shares
+
+Let's do this step by step:
+
+```{r}
+# Step 1: Calculate yearly totals
+yearly_totals <- country_lending |>
+  group_by(commitment_year) |>
+  summarize(
+    total_lending = sum(amount_constant_usd_2021, na.rm = TRUE),
+    .groups = "drop"
+  )
+yearly_totals
+
+# Step 2: Calculate each country's yearly amount
+country_shares <- country_lending |>
+  group_by(commitment_year, country_name) |>
+  summarize(
+    country_amount = sum(amount_constant_usd_2021, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  # Join with totals
+  left_join(yearly_totals, by = "commitment_year") |>
+  # Calculate shares
+  mutate(share = country_amount / total_lending * 100)
+
+country_shares
+```
+
+::: {.callout-note}
+## Why This is Hard to Read
+
+Notice how this data is now in "long" format - each row is a country-year observation. While this is great for calculation, it's hard to see patterns. For instance, can you easily tell how Angola's share has changed over time compared to Ethiopia's?
+
+This is where strategic pivoting comes in!
+:::
+
+### The Pivot Dance: Making Comparisons Clear
+
+Let's use our "pivot dance" pattern to make this more insightful:
+
+```{r}
+# Pivot wider to compare countries over time
+country_shares_wide <- country_shares |>
+  select(commitment_year, country_name, share) |>
+  pivot_wider(
+    names_from = commitment_year,
+    values_from = share,
+    values_fill = 0
+  )
+
+country_shares_wide
+
+# Now we can easily see how shares have changed
+country_shares_wide |>
+  # Calculate change in share from 2013 to 2021
+  mutate(
+    share_change = `2021` - `2013`
+  ) |>
+  arrange(desc(share_change)) |>
+  head(10) |>  # Top 10 countries with increasing shares 
+  select(
+    country_name,
+    share_change,
+    `2013`,
+    `2021`
+  )
+```
+
+::: {.callout-tip}
+## The Power of Pivoting
+
+Notice what just happened:
+
+1. We started with country-year data (long format)
+2. Did our calculations (shares)
+3. Pivoted wider to make years into columns
+4. Could easily calculate changes across years
+
+This would be much harder without pivoting!
+:::
+
+### Finding "Repeatable Factoids"
+
+One of the most valuable skills in data analysis is finding "repeatable factoids" - clear, specific insights that tell a story. Let's use our pivoted data to find some:
+
+```{r}
+# Focus on BRI corridor countries
+bri_changes <- country_shares_wide |>
+  filter(country_name %in% c(
+    "Pakistan", "Kazakhstan", "Indonesia",
+    "Vietnam", "Bangladesh"
+  )) |>
+  mutate(
+    early_bri = (`2014` + `2015` + `2016` + `2017`) / 4,  # Average early BRI
+    late_bri = (`2018` + `2019` + `2020` + `2021`) / 4    # Average late BRI
+  )
+
+# Calculate the biggest changes
+bri_changes |>
+  mutate(
+    change = (late_bri - early_bri),
+    pct_change = (late_bri / early_bri - 1) * 100
+  ) |>
+  arrange(desc(change)) |> 
+  select(
+    country_name,
+    early_bri:pct_change # select all columns btw early_bri and pct_change
+  )
+```
+
+::: {.callout-note}
+## From Numbers to Insights
+
+This analysis might reveal something like:
+"Pakistan's share of Chinese development finance increased from X% before BRI to Y% after BRI, a Z-fold increase."
+
+These kinds of clear, specific insights are powerful in reports and presentations!
+:::
+
+### The Pivot Dance, Visualized
+
+Let's revisit the steps we just took:
+
+```{mermaid}
+flowchart TD
+    subgraph Pattern
+        A[Wide Data] -->|pivot_longer| B[Long Data]
+        B -->|group_by & calculate| C[Analysis Results]
+        C -->|pivot_wider| D[Comparison View]
+        D -->|mutate| E[Final Insights]
+    end
+
+    subgraph Example[Chinese Development Finance Example]
+        A1[Years as Columns] -->|pivot_longer| B1[Year Column]
+        B1 -->|group_by country,<br>calculate shares| C1[Country Shares by Year]
+        C1 -->|pivot_wider| D1[Years as Columns Again]
+        D1 -->|calculate changes| E1[Share Changes Over Time]
+    end
+
+    style Pattern fill:#f0f7ff,stroke:#4a90e2
+    style Example fill:#fff3e0,stroke:#f5a623
+    style A1 fill:#e8f5e9
+    style B1 fill:#e8f5e9
+    style C1 fill:#e8f5e9
+    style D1 fill:#e8f5e9
+    style E1 fill:#e8f5e9
+```
+
+
+### Your Turn: More Complex Patterns
+
+Let's try something more sophisticated. What if we want to understand how the composition of lending (ODA-like vs OOF-like) has changed in different regions?
+
+```{r}
+# Start with the data
+lending_composition <- get_gcdf3_dataset() |>
+  filter(recommended_for_aggregates == "Yes") |>
+  group_by(commitment_year, recipient_region, flow_class) |>
+  summarize(
+    amount_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
+    .groups = "drop"
+  )
+lending_composition
+
+# Now let's pivot to make comparisons easy
+composition_wide <- lending_composition |>
+  pivot_wider(
+    names_from = flow_class,
+    values_from = amount_bn,
+    values_fill = 0 # what to put when there is no value
+  ) |>
+  mutate(
+    total = `ODA-like` + `OOF-like` + `Vague (Official Finance)`,
+    oda_share = `ODA-like` / total * 100
+  )
+
+composition_wide
+```
+
+::: {.callout-tip}
+## Why This Pattern Works
+
+1. Group and summarize first (get the numbers we want)
+2. Pivot wider to create columns for each flow class
+3. Calculate new metrics using these columns
+4. Ready for visualization or further analysis!
+:::
+.
+
+## Guided Practice & Exploration (40 minutes)
+
+### Research Questions to Explore
+
+Here are several interesting questions about Chinese development finance that we can investigate using our pivoting toolkit. Feel free to explore these or follow your own curiosity!
+
+### Question Set 1: Regional Patterns & Shifts
+
+1. **Regional Focus Shifts**
+   - How has China's regional focus changed before and after BRI?
+   - Which regions have seen the biggest changes in their share of total lending?
+   - Are there regions that show similar patterns over time?
+
+Here's a starting point:
+```{r}
+# Start with annual regional totals
+regional_patterns <- get_gcdf3_dataset() |>
+  filter(recommended_for_aggregates == "Yes") |>
+  group_by(commitment_year, recipient_region) |>
+  summarize(
+    amount_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
+    .groups = "drop"
+  )
+
+regional_patterns
+
+# Pivot to calculate regional shares over time
+regional_shares <- regional_patterns |>
+  group_by(commitment_year) |>
+  mutate(
+    year_total = sum(amount_bn),
+    share = amount_bn / year_total * 100
+  ) |>
+  ungroup()
+
+regional_shares
+
+# Now you could:
+# 1. Pivot wider to compare regions
+# 2. Calculate changes between periods
+# 3. Visualize the trends
+```
+
+### Question Set 2: Sector Evolution
+
+2. **Sectoral Changes**
+   - Which sectors dominated pre-BRI vs post-BRI?
+   - Are certain sectors more prominent in certain regions?
+   - Has the average project size changed differently across sectors?
+
+Try this approach:
+```{r}
+# Look at sector patterns
+sector_patterns <- get_gcdf3_dataset() |>
+  filter(recommended_for_aggregates == "Yes") |>
+  mutate(
+    period = if_else(
+      commitment_year >= 2014,
+      "Post-BRI (2014-2021)",
+      "Pre-BRI (2000-2013)"
+    )
+  ) |>
+  group_by(period, sector_name) |>
+  summarize(
+    total_amount_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
+    project_count = n(),
+    avg_size_bn = total_amount_bn / project_count,
+    .groups = "drop"
+  )
+
+sector_patterns
+
+# Pivot wider to compare periods
+sector_comparison <- sector_patterns |>
+  pivot_wider(
+    names_from = period,
+    values_from = c(total_amount_bn, project_count, avg_size_bn),
+    values_fill = 0
+  )
+
+sector_comparison
+```
+
+### Question Set 3: Country Deep Dives
+
+3. **Country-Level Analysis**
+   - Which countries have seen the most dramatic changes in lending patterns?
+   - Are there countries that show similar trajectories?
+   - How has the mix of ODA-like vs OOF-like lending evolved in key countries?
+
+Example approach:
+```{r}
+# Analyze lending patterns for top recipients
+country_patterns <- get_gcdf3_dataset() |>
+  filter(recommended_for_aggregates == "Yes") |>
+  group_by(country_name) |>
+  summarize(
+    total_amount_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
+    avg_amount_bn = mean(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
+    project_count = n(),
+    .groups = "drop"
+  ) |>
+  # Focus on major recipients
+  slice_max(order_by = total_amount_bn, n = 20)
+
+country_patterns
+```
+
+::: {.callout-tip}
+## Analysis Strategy
+
+1. Start simple: Get basic numbers first
+2. Look for patterns: Use pivoting to compare across dimensions
+3. Go deeper: Follow interesting patterns you discover
+4. Create visuals: Make your findings clear and compelling
+5. Generate insights: Find those "repeatable factoids"
+:::
+
+## Working Time Structure (30 minutes)
+
+1. **First 5 minutes**: 
+   - Choose a question that interests you
+   - Sketch out your analysis approach
+   - What comparisons will be most revealing?
+
+2. **Next 20 minutes**:
+   - Work on your analysis
+   - Try different approaches
+   - Create visualizations
+   - Look for surprising patterns
+
+3. **Final 5 minutes**:
+   - Refine your most interesting finding
+   - Prepare to share one insight
+
+::: {.callout-note}
+## Getting Unstuck
+
+If you get stuck:
+
+1. Break your question into smaller pieces
+2. Try printing intermediate results
+3. Ask yourself: "What comparison would make this clear?"
+4. Remember the pivot dance pattern:
+   - Longer for analysis
+   - Wider for comparison
+:::
+
+## Example Solutions & Discoveries
+
+Let's work through one question from each set to demonstrate the full analysis process.
+
+### Example 1: Regional Shifts in Focus
+
+::::{.callout-tip}
+## Understanding Factor Ordering in ggplot2
+
+When working with categorical variables in R (like time periods, categories, or rankings), you'll often need to control their display order. By default, R will either:
+- Order factors alphabetically
+- Keep them in the order they first appear in the data
+
+This default behavior rarely matches what we want to show! Here's how to take control:
+
+1. **Understand factors**: Think of factors as categorical variables with a specific order. They're like a numbered list where each category gets a number determining its position.
+
+2. **Create ordered factors**: Use `factor()` with two key arguments:
+   - `x`: Your categorical variable
+   - `levels`: The desired order of categories
+
+```r
+# Example: Creating an ordered time period factor
+df <- df |>
+  mutate(
+    period = factor(
+      period,
+      levels = c("Past", "Present", "Future")
+    )
+  )
+```
+
+3. **Why this matters**: ggplot2 respects factor ordering for:
+   - Axis ordering
+   - Legend ordering
+   - Facet ordering
+   
+4. **Quick tip**: If you need reverse ordering, just reverse your levels vector:
+```r
+levels = rev(c("Past", "Present", "Future"))
+```
+
+Remember: Explicit ordering through factors is almost always better than relying on default ordering!
+::::
+
+Let's investigate how China's regional lending focus has changed from pre-BRI to post-BRI:
+
+```{r}
+# Create clear time periods and calculate regional lending
+regional_shifts <- get_gcdf3_dataset() |>
+  filter(recommended_for_aggregates == "Yes") |>
+  mutate(
+    # Create period labels
+    period = case_when(
+      commitment_year <= 2013 ~ "Pre-BRI (2000-2013)",
+      commitment_year <= 2017 ~ "Early BRI (2014-2017)",
+      TRUE ~ "Late BRI (2018-2021)"
+    ),
+    # Convert to factor with explicit ordering - this matters for ggplot2
+    period = factor(
+      period,
+      levels = c(
+        "Pre-BRI (2000-2013)",
+        "Early BRI (2014-2017)", 
+        "Late BRI (2018-2021)"
+      )
+    )
+  ) |>
+  group_by(period, recipient_region) |>
+  summarize(
+    total_amount_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
+    .groups = "drop"
+  )
+
+regional_shifts
+
+# Calculate shares within each period
+regional_shares <- regional_shifts |>
+  group_by(period) |>
+  mutate(
+    period_total = sum(total_amount_bn),
+    share = total_amount_bn / period_total * 100
+  ) |>
+  ungroup()
+
+regional_shares
+
+# Pivot wider to compare periods
+regional_comparison <- regional_shares |>
+  select(recipient_region, period, share) |>
+  pivot_wider(
+    names_from = period,
+    values_from = share,
+    values_fill = 0
+  ) |>
+  mutate(
+    early_bri_change = `Early BRI (2014-2017)` - `Pre-BRI (2000-2013)`,
+    late_bri_change = `Late BRI (2018-2021)` - `Early BRI (2014-2017)`
+  ) |>
+  arrange(desc(late_bri_change))
+
+regional_comparison
+
+# Visualize the changes
+regional_shares |>
+  ggplot(aes(x = share, y = fct_rev(period), fill = recipient_region)) +
+  geom_col() +
+  theme_minimal() +
+  labs(
+    title = "Regional Share of Chinese Development Finance",
+    subtitle = "By BRI Period",
+    x = NULL,
+    y = "Share of Total Lending (%)",
+    fill = "Region"
+  ) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  facet_wrap(
+    ~recipient_region
+  ) +
+  theme(legend.position = "none")
+
+
+```
+
+::: {.callout-note}
+## Key Insights from Regional Analysis
+
+1. **Pre vs Post BRI**: Lending shifts from Europe to other regions.
+2. **Regional Concentration**: We can calculate a Herfindahl-Hirschman Index (HHI) to see if lending has become more concentrated
+3. **Timing Patterns**: Some regions show consistent growth while others are more volatile
+:::
+
+### Example 2: Sector Evolution Deep Dive
+
+Let's examine how sectoral focus has changed over time:
+
+```{r}
+# First, identify major sectors
+major_sectors <- get_gcdf3_dataset() |>
+  filter(recommended_for_aggregates == "Yes") |>
+  group_by(sector_name) |>
+  summarize(
+    total_amount_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
+    .groups = "drop"
+  ) |>
+  slice_max(order_by = total_amount_bn, n = 5) |>
+  pull(sector_name)
+
+major_sectors
+
+# Analyze these sectors over time
+sector_evolution <- get_gcdf3_dataset() |>
+  filter(
+    recommended_for_aggregates == "Yes",
+    sector_name %in% major_sectors
+  ) |>
+  group_by(commitment_year, sector_name) |>
+  summarize(
+    amount_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
+    project_count = n(),
+    avg_project_size = amount_bn / project_count,
+    .groups = "drop"
+  )
+
+major_sectors
+
+# Calculate moving averages to smooth volatility
+sector_trends <- sector_evolution |>
+  group_by(sector_name) |>
+  mutate(
+    moving_avg = slider::slide_dbl(
+      amount_bn,
+      .f = mean,
+      .before = 2,
+      .after = 0,
+      .complete = TRUE
+    )
+  ) |>
+  ungroup()
+
+sector_trends
+
+# Visualize trends
+sector_trends |>
+  ggplot(aes(x = commitment_year, y = moving_avg, color = sector_name)) +
+  geom_line(linewidth = 1) +
+  theme_minimal() +
+  labs(
+    title = "Evolution of Major Sectors in Chinese Development Finance",
+    subtitle = "3-Year Moving Average",
+    x = NULL,
+    y = "Annual Commitments (USD Billions)",
+    color = "Sector"
+  )
+```
+
+### Example 3: Country Trajectories
+
+Let's identify countries with similar lending trajectories:
+
+```{r}
+# First, get the top 15 recipients 
+top_15_countries <- get_gcdf3_dataset() |>
+  filter(recommended_for_aggregates == "Yes") |>
+  group_by(country_name) |>
+  summarize(
+    total_amount_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
+    .groups = "drop"
+  ) |>
+  slice_max(order_by = total_amount_bn, n = 15) |>
+  pull(country_name)
+
+top_15_countries
+
+# Get annual lending data and calculate correlations with {widyr}
+country_correlations <- get_gcdf3_dataset() |>
+  filter(
+    recommended_for_aggregates == "Yes",
+    country_name %in% top_15_countries
+  ) |>
+  group_by(country_name, commitment_year) |>
+  summarize(
+    amount_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,
+    .groups = "drop"
+  ) |>
+  # Use widyr to calculate correlations
+  pairwise_cor(
+    item = country_name,
+    feature = commitment_year,
+    value = amount_bn
+  )
+
+country_correlations
+
+# Convert to matrix for heatmap
+cor_matrix <- country_correlations |>
+  pivot_wider(
+    names_from = item2,
+    values_from = correlation
+  ) |>
+  column_to_rownames("item1") |>
+  as.matrix()
+
+cor_matrix
+
+# Create heatmap using pheatmap package
+pheatmap(
+  cor_matrix,
+  main = "Correlation of Chinese Development Finance Patterns",
+  color = colorRampPalette(c("red", "white", "blue"))(100),
+  breaks = seq(-1, 1, length.out = 101),
+  display_numbers = TRUE,
+  number_format = "%.2f",
+  fontsize_number = 7
+)
+```
+
+
+## Wrap-up & Preview (5 minutes)
+
+::: {.callout-tip}
+## Creating Reusable Functions
+
+Want to make your analysis pipelines more efficient? Check out:
+
+- The [Programming with dplyr vignette](https://dplyr.tidyverse.org/articles/programming.html)
+- Examples of turning these patterns into functions
+- How to handle non-standard evaluation in dplyr functions
+
+This is a great next step once you're comfortable with the basic patterns!
+:::
+
+### Key Takeaways from Today
+
+1. **The Power of Pivoting**
+   - Strategic pivoting reveals patterns
+   - Long format for analysis, wide for comparison
+   - Think about what comparison will be most revealing
+
+2. **Finding Insights**
+   - Start with clear questions
+   - Use multiple approaches
+   - Look for surprising patterns
+   - Create "repeatable factoids"
+
+3. **Visualization Tips**
+   - Show the most important comparison
+   - Choose appropriate scales
+   - Make titles informative
+
+
+## Resources for Data Transformation & Tidying
+
+### Essential References
+
+1. **[R for Data Science (2e) - Data Tidying](https://r4ds.hadley.nz/data-tidy)**
+   - Comprehensive introduction to tidy data principles
+   - Clear examples and explanations
+   - Practice exercises to reinforce learning
+
+2. **Documentation & Cheatsheets**
+   - [tidyr cheatsheet](https://rstudio.github.io/cheatsheets/tidyr.pdf)
+   - [tidyr documentation](https://tidyr.tidyverse.org/)
+   - [dplyr programming vignette](https://dplyr.tidyverse.org/articles/programming.html)
+
+### Advanced Learning
+
+1. **[Tidy Data Paper](https://vita.had.co.nz/papers/tidy-data.pdf)**
+   - Original academic paper by Hadley Wickham
+   - Deep dive into tidy data principles
+   - Advanced concepts and theory
+
+2. **[Complex Pivoting Examples](https://tidyr.tidyverse.org/articles/pivot.html)**
+   - Advanced pivoting techniques
+   - Handling multiple variables
+   - Dealing with complex data structures
+
+### Next Steps
+
+1. **Practice Daily**
+   - Apply these techniques to your own work
+   - Try different pivoting approaches
+   - Create your own "pivot patterns" library
+
+2. **Build Your Skills**
+   - Start with simple pivots
+   - Progress to more complex transformations
+   - Experiment with different visualization approaches
+
+3. **Share & Learn**
+   - Discuss approaches with colleagues
+   - Share interesting findings
+   - Learn from others' techniques
+
+Remember: Data tidying is a foundational skill that enables all other analysis. Investing time in mastering these concepts will pay dividends throughout your career in data analysis.
+
+
+### Preview of Next Week: Data Import & Cleaning
+
+Next week we'll learn how to:
+
+- Import data from various sources
+- Handle common data quality issues
+- Create reproducible cleaning pipelines
+- Document data decisions
+
+::: {.callout-tip}
+## Preparing for Next Week
+
+1. Think about data cleaning challenges you've faced
+2. Review this week's pivoting patterns
+3. Consider how clean data enables better analysis
+:::
