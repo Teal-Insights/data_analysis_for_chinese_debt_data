@@ -68,7 +68,7 @@ The skills you're learning today directly support your work on the TUFF Initiati
 - Generate reproducible factoids for reports
 - Make compelling visualizations of findings
 
-Remember: While the "pivot dance" might seem abstract at first, it's a powerful tool for the exact kind of analysis you do every day with the TUFF database.
+Remember: While the "pivot dance" might seem abstract at first, it's a powerful tool for the exact kind of analysis you do every day with Chinese overseas lending data.
 :::
 
 ## Today's Video Lecture
@@ -508,7 +508,7 @@ composition_wide
 3. Calculate new metrics using these columns
 4. Ready for visualization or further analysis!
 :::
-.
+
 
 ## Guided Practice & Exploration (40 minutes)
 
@@ -974,6 +974,10 @@ This is a great next step once you're comfortable with the basic patterns!
    - Advanced pivoting techniques
    - Handling multiple variables
    - Dealing with complex data structures
+
+3. **[`{widyr}` UN Voting Correlations Vignette](https://juliasilge.github.io/widyr/articles/united_nations.html)**
+   - Explore UN Voting Patterns with `{widyr}`
+   - Great practical example of power of pivoting to find interesting relationships
 
 ### Next Steps
 

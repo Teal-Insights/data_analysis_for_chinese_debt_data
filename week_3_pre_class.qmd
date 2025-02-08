@@ -11,7 +11,7 @@ Now that you can create visualizations and automated reports, it's time to learn
 Watch this video lecture before our interactive session:
 
 ::: column-page
-{{< video https://youtu.be/YOUR_VIDEO_ID >}}
+{{< video https://youtu.be/Bu2iQxZihTs >}}
 :::
 
 ## Learning Objectives
