@@ -1,1 +1,863 @@
 # Week 4: Import & Tidy Your Data (Pre-Class) {#sec-week4_pre_class}
+
+This pre-class preparation should take about 45-60 minutes to complete.
+
+## Overview
+
+Getting data into R and preparing it for analysis is often your first challenge in any project. This week, we'll focus on importing data from spreadsheets (both Excel and CSV files) and establishing good practices for organizing and cleaning your data.
+
+### Video Lecture
+Watch this video lecture before our interactive session:
+
+::: {.column-page}
+{{< video https://youtu.be/PLACEHOLDER >}}
+:::
+
+## Learning Objectives
+
+By completing this pre-class work, you will:
+
+1. Learn to import data from spreadsheets into R
+2. Set up organized project structures
+3. Establish reliable data cleaning workflows
+4. Standardize country names and other common variables
+5. Practice with real Chinese development finance data
+
+## Setup
+
+### Project Organization
+
+First, let's set up an organized project structure:
+
+1. Create two essential folders in your project root:
+```r
+dir.create("data-raw", showWarnings = FALSE)  # For original, unmodified data
+dir.create("data", showWarnings = FALSE)      # For cleaned, analysis-ready data
+```
+
+2. Download the [AidData Critical Minerals Dataset](https://www.aiddata.org/data/aiddata-chinese-financing-for-transition-minerals-dataset-version-1-0) and save it to your `data-raw` folder.
+
+::: {.callout-tip}
+## Why Two Data Folders?
+
+- `data-raw/`: Store original data exactly as received
+  - Never modify these files
+  - Serves as your "source of truth"
+  - Makes your work reproducible
+  
+- `data/`: Store cleaned, analysis-ready data
+  - Modified through documented R code
+  - Ready for analysis
+  - Can always recreate from raw data
+:::
+
+### Load Required Packages
+
+```{r}
+#| message: false
+library(tidyverse)    # Core data science tools
+library(readxl)       # For reading Excel files
+library(readr)        # For reading CSV files
+library(janitor)      # For cleaning column names
+library(countrycode)  # For standardizing country names
+```
+
+## Reading Data from Spreadsheets
+
+Whether your data is in Excel (`.xlsx`) or CSV format, the basic principles of importing are similar. We use:
+- `readxl::read_excel()` for Excel files
+- `readr::read_csv()` for CSV files
+
+Let's start with the Critical Minerals dataset:
+
+```{r}
+# Read the Excel file
+minerals_raw <- read_excel(
+  "data-raw/AidData_Chinese_Financing_for_Transition_Minerals_Dataset_Version_1.0.xlsx",
+  sheet = "Financial_Contribution",
+  na = c("", "NA", "N/A", "#N/A", "NULL"),  # Handle different missing values
+  guess_max = 20000  # Look at more rows when guessing column types
+)
+
+# Quick look at what we imported
+glimpse(minerals_raw)
+```
+
+### Key Import Arguments
+
+Let's understand the important arguments for reading spreadsheets:
+
+1. **`na =`**: Specify what values should be treated as missing
+```r
+# Different data sources represent missing values differently:
+na = c("", "NA", "N/A", "#N/A", "NULL")
+```
+If we don't specify these, they might be read as text values, causing problems later.
+
+2. **`guess_max =`**: How many rows to use when guessing column types
+```r
+# For large datasets, especially with sparse columns:
+guess_max = 20000  # Default is 1000
+```
+The function guesses column types by looking at the first rows. With large datasets (like GCDF's 21,000 rows), increasing this helps ensure correct type detection.
+
+3. **`sheet =`**: Which Excel sheet to read
+```r
+# See available sheets
+excel_sheets("your_file.xlsx")
+
+# Read specific sheet
+read_excel("your_file.xlsx", sheet = "Sheet1")
+```
+
+4. **`range =`**: Read specific cells
+```r
+# Read just cells A1:D100
+read_excel("your_file.xlsx", range = "A1:D100")
+```
+
+::: {.callout-important}
+## Read the Documentation!
+
+While we're covering key arguments, the `readxl` and `readr` packages have many more options. Taking time to read the documentation ([`read_excel()`](https://readxl.tidyverse.org/reference/read_excel.html), [`read_csv()`](https://readr.tidyverse.org/reference/read_delim.html)) will save you hours of troubleshooting later.
+
+You don't need to memorize all options - just know they exist and where to find them when needed.
+:::
+
+
+## The Data Cleaning Workflow
+
+After importing your data, it's essential to have a systematic cleaning process. Let's walk through a reliable workflow using our Critical Minerals dataset:
+
+### Step 1: Initial Data Inspection
+
+Always start by looking at your data:
+
+```{r}
+# Quick overview of your data
+glimpse(minerals_raw)
+
+# See unique values in key columns
+minerals_raw |>
+  select(Recipient, `Flow Class`, `OECD ODA Income Group`) |>
+  map(unique)
+```
+
+### Step 2: Clean Column Names
+
+Convert column names to a consistent, readable format:
+
+```{r}
+minerals_clean <- minerals_raw |>
+  clean_names()  # Convert to snake_case
+
+# See the difference
+colnames(minerals_raw)[1:5]  # Original names
+colnames(minerals_clean)[1:5]  # Cleaned names
+```
+
+::: {.callout-note}
+## Why Use `clean_names()`?
+
+- Converts to lowercase
+- Replaces spaces with underscores
+- Removes special characters
+- Makes names programming-friendly
+- Creates consistent style
+
+For example:
+- "Recipient Country" → "recipient_country"
+- "Amount (USD)" → "amount_usd"
+- "OECD ODA Income Group" → "oecd_oda_income_group"
+:::
+
+
+
+### Step 3: Review and Fix Data Types
+First, inspect columns that might need to be dates:
+```{r}
+# Look at all columns containing "date"
+minerals_clean |> 
+  select(contains("date")) |> 
+  glimpse()
+```
+
+Let's fix all date columns, including planned dates:
+```{r}
+# Create new object with fixed dates
+minerals_dates <- minerals_clean |>
+  mutate(
+    # Fix specific date columns
+    commitment_date_mm_dd_yyyy = ymd(commitment_date_mm_dd_yyyy),
+    planned_implementation_start_date_mm_dd_yyyy = ymd(planned_implementation_start_date_mm_dd_yyyy),
+    actual_implementation_start_date_mm_dd_yyyy = ymd(actual_implementation_start_date_mm_dd_yyyy),
+    planned_completion_date_mm_dd_yyyy = ymd(planned_completion_date_mm_dd_yyyy),
+    actual_completion_date_mm_dd_yyyy = ymd(actual_completion_date_mm_dd_yyyy),
+    first_loan_repayment_date = ymd(first_loan_repayment_date),
+    last_loan_repayment_date = ymd(last_loan_repayment_date)
+  )
+
+# Verify our date conversions
+minerals_dates |> 
+  select(contains("date")) |> 
+  glimpse()
+```
+
+### Step 4: Standardize Country Information
+
+When working with international data, having standardized country identifiers is crucial. Let's look at our options:
+
+```{r}
+# See available country code types
+?countrycode::codelist
+
+# Look at our current country names
+minerals_dates |> 
+  select(recipient) |> 
+  distinct()
+```
+
+Now let's standardize our country information:
+
+```{r}
+minerals_std <- minerals_dates |>
+  mutate(
+    # First get ISO3C codes
+    # origin_regex = TRUE helps match variations like:
+    # "People's Republic of China" -> "CHN"
+    # "DR Congo" -> "COD"
+    iso3c = countrycode(
+      sourcevar = recipient,
+      origin = "country.name",
+      destination = "iso3c",
+      origin_regex = TRUE,
+      warn = TRUE  # See which entries don't match
+    ),
+    
+    # Create standardized country names
+    # Using iso3c as origin ensures consistent naming
+    country_name = countrycode(
+      sourcevar = iso3c,
+      origin = "iso3c",
+      destination = "country.name"
+    ),
+    
+    # Add World Bank regions
+    wb_region = countrycode(
+      sourcevar = iso3c,
+      origin = "iso3c",
+      destination = "region"
+    )
+  )
+
+minerals_std |> 
+  select(
+    recipient,
+    recipient_iso_3,
+    recipient_region,
+    country_name,
+    iso3c,
+    wb_region
+  ) |> 
+  distinct()
+```
+
+
+
+::: {.callout-tip}
+## Country Code Best Practices
+
+1. **Use ISO3C for Programming**
+   - Three-letter codes are unambiguous
+   - Avoid ISO2C (e.g., Namibia's "NA" can cause issues)
+   - Perfect for plot labels where space is tight
+
+2. **Use Standardized Names for Presentation**
+   - More readable than codes
+   - Consistent across datasets
+   - Good for reports and visualizations
+
+3. **Keep Multiple Identifiers**
+   - Original names (match documentation)
+   - ISO3C codes (for programming)
+   - Standardized names (for presentation)
+   - Regional groupings (for analysis)
+
+4. **Check the Codelist**
+   ```r
+   # See all available code types
+   ?countrycode::codelist
+   
+   # Common useful conversions:
+   # - "continent" Continent as defined in the World Bank Development Indicators
+   # - "currency" ISO 4217 currency name
+   # - "region" Regions as defined in the World Bank Development Indicators
+   # - "eu28" for EU membership
+   ```
+:::
+
+::: {.callout-warning}
+## Handling Non-Country Entries
+
+Some datasets include regional entries (like "Africa, regional") that won't match country codes. Options for handling these:
+
+1. Use `warn = TRUE` to see what doesn't match
+2. Create custom matching rules for special cases
+3. Document any manual corrections needed
+:::
+
+### Step 5: Create Standardized Categories
+
+Some variables in our dataset would work better as ordered factors. Let's identify and fix these:
+
+```{r}
+# See unique values in key categorical variables
+minerals_std |> 
+  select(
+    flow_class,
+    status,
+    oecd_oda_income_group
+  ) |>
+  map(unique)
+
+# Create new object with standardized categories
+minerals_cats <- minerals_std |>
+  mutate(
+    # Make income groups an ordered factor
+    income_level = factor(
+      oecd_oda_income_group,
+      levels = c(
+        "Low income",
+        "Lower middle income",
+        "Upper middle income"
+      )
+    ),
+    
+    # Make status an ordered factor reflecting project lifecycle
+    status = factor(
+      status,
+      levels = c(
+        "Pipeline: Planned",
+        "Pipeline: Committed",
+        "Implementation",
+        "Completion",
+        "Suspension",
+        "Cancellation"
+      )
+    )
+  )
+```
+
+### Step 6: Handle Financial Variables
+
+Financial data often needs special attention:
+
+```{r}
+# Look at our financial variables
+minerals_cats |>
+  select(contains("amount")) |>
+  glimpse()
+
+# Create new object with cleaned financial data
+minerals_final <- minerals_cats |>
+  mutate(
+    # Convert to billions for easier interpretation
+    amount_constant_usd_2021_bn = amount_constant_usd_2021 / 1e9,
+    amount_nominal_usd_bn = amount_nominal_usd / 1e9
+  )
+```
+
+### Step 7: Document and Save
+
+Finally, let's document our cleaning process and save our work:
+
+```{r}
+# Create a documentation data frame
+data_versions <- tibble(
+  version = c("raw", "clean", "dates", "std", "cats", "final"),
+  description = c(
+    "Original imported data",
+    "Basic cleaning with clean_names()",
+    "Date fields properly formatted",
+    "Standardized country information",
+    "Categorical variables as factors",
+    "Final version with financial calculations"
+  ),
+  rows = c(
+    nrow(minerals_raw),
+    nrow(minerals_clean),
+    nrow(minerals_dates),
+    nrow(minerals_std),
+    nrow(minerals_cats),
+    nrow(minerals_final)
+  ),
+  columns = c(
+    ncol(minerals_raw),
+    ncol(minerals_clean),
+    ncol(minerals_dates),
+    ncol(minerals_std),
+    ncol(minerals_cats),
+    ncol(minerals_final)
+  )
+)
+
+# Save our cleaned data
+write_rds(
+  minerals_final,
+  "data/minerals_clean.rds",
+  compress = "gz"  # Use compression for smaller file size
+)
+
+# Also save as CSV for non-R users
+write_csv(
+  minerals_final,
+  "data/minerals_clean.csv"
+)
+```
+
+::: {.callout-tip}
+## Documenting Your Cleaning Process
+
+Creating a data_versions table helps you:
+- Track what changed at each step
+- Verify no data was accidentally lost
+- Help others understand your process
+- Make your work reproducible
+:::
+
+
+Absolutely - a single, well-organized pipeline can be clearer and more maintainable. Let me revise the "Putting It All Together" section:
+
+### Putting It All Together
+
+Here's our complete cleaning workflow as a single, annotated pipeline:
+
+```{r}
+minerals_clean <- read_excel(
+  "data-raw/AidData_Chinese_Financing_for_Transition_Minerals_Dataset_Version_1.0.xlsx",
+  sheet = "Financial_Contribution",
+  na = c("", "NA", "N/A", "#N/A", "NULL"),
+  guess_max = 20000
+) |>
+  # Make column names programming-friendly while preserving meaning
+  clean_names() |>
+  
+  # Convert date columns to proper date format
+  # Important for time-series analysis and calculating project durations
+  mutate(
+    commitment_date_mm_dd_yyyy = ymd(commitment_date_mm_dd_yyyy),
+    planned_implementation_start_date_mm_dd_yyyy = ymd(planned_implementation_start_date_mm_dd_yyyy),
+    actual_implementation_start_date_mm_dd_yyyy = ymd(actual_implementation_start_date_mm_dd_yyyy),
+    planned_completion_date_mm_dd_yyyy = ymd(planned_completion_date_mm_dd_yyyy),
+    actual_completion_date_mm_dd_yyyy = ymd(actual_completion_date_mm_dd_yyyy),
+    first_loan_repayment_date = ymd(first_loan_repayment_date),
+    last_loan_repayment_date = ymd(last_loan_repayment_date)
+  ) |>
+  
+  # Add standardized country identifiers
+  # Critical for joining with other international datasets
+  mutate(
+    iso3c = countrycode(
+      sourcevar = recipient,
+      origin = "country.name",
+      destination = "iso3c",
+      origin_regex = TRUE
+    ),
+    country_name = countrycode(
+      sourcevar = iso3c,
+      origin = "iso3c",
+      destination = "country.name"
+    ),
+    wb_region = countrycode(
+      sourcevar = iso3c,
+      origin = "iso3c",
+      destination = "region"
+    )
+  ) |>
+  
+  # Create ordered factors for categorical variables
+  # Ensures correct ordering in plots and summaries
+  mutate(
+    income_level = factor(
+      oecd_oda_income_group,
+      levels = c("Low income", "Lower middle income", "Upper middle income")
+    ),
+    status = factor(
+      status,
+      levels = c(
+        "Pipeline: Planned",
+        "Pipeline: Committed",
+        "Implementation",
+        "Completion",
+        "Suspension",
+        "Cancellation"
+      )
+    )
+  ) |>
+  
+  # Add billion-dollar amounts for easier interpretation
+  # Useful for visualization and summary statistics
+  mutate(
+    amount_constant_usd_2021_bn = amount_constant_usd_2021 / 1e9,
+    amount_nominal_usd_bn = amount_nominal_usd / 1e9
+  )
+
+# Save both RDS (for R users) and CSV (for sharing)
+write_rds(minerals_clean, "data/minerals_clean.rds", compress = "gz")
+write_csv(minerals_clean, "data/minerals_clean.csv")
+```
+
+::: {.callout-tip}
+## Writing Clear Data Processing Pipelines
+
+Good pipelines should:
+- Flow logically from one operation to the next
+- Include comments explaining *why* (not just what)
+- Group related operations together
+- Use consistent formatting for readability
+
+The order often follows:
+1. Import and basic cleaning
+2. Fix data types (dates, numbers)
+3. Standardize identifiers
+4. Create derived variables
+5. Save processed data
+:::
+
+### Working with Wide Year Data
+
+Year data often comes in a wide format like this:
+
+```{r}
+# Create example of typical wide year data
+lending_wide <- tribble(
+  ~country,     ~"2019",  ~"2020",  ~"2021",
+  "Angola",        1.2,     2.1,     0.8,
+  "Pakistan",      2.3,     1.7,     3.1,
+  "Indonesia",     1.8,     2.2,     1.5
+)
+
+lending_wide
+```
+
+To analyze this, we usually want years in a single column:
+
+```{r}
+# Convert to long format
+lending_long <- lending_wide |>
+  pivot_longer(
+    # Select columns that are years using regex
+    cols = matches("\\d{4}"), # matches columns that are 4 digit numbers
+    names_to = "year",
+    values_to = "amount_bn"
+  ) |>
+  # Convert year to integer
+  mutate(year = as.integer(year))
+
+lending_long
+```
+
+::: {.callout-tip}
+## Selecting Year Columns
+
+Common patterns for matching year columns:
+- `matches("^20")`: Columns starting with "20"
+- `matches("\\d{4}")`: Any four-digit number
+- `num_range("Y", 2019:2021)`: Columns like Y2019, Y2020, Y2021
+:::
+
+### Understanding Joins
+
+Joins combine datasets based on matching values. Let's see how they work with small examples:
+
+```{r}
+# Create two small datasets
+# Country economic indicators
+indicators <- tribble(
+  ~iso3c, ~income_group,     ~population_mn,
+  "AGO",  "Lower middle",           32.9,
+  "PAK",  "Lower middle",          220.9,
+  "IDN",  "Upper middle",          273.5,
+  "VNM",  "Lower middle",           97.3  # Note: not in loans data
+)
+
+# Loan amounts
+loans <- tribble(
+  ~iso3c, ~amount_bn, ~sector,
+  "AGO",       1.2,   "Energy",
+  "PAK",       2.3,   "Transport",
+  "IDN",       1.8,   "Mining",
+  "MMR",       0.5,   "Energy"    # Note: not in indicators data
+)
+
+# Different types of joins
+# Left join: Keep all observations in loans
+left_join(loans, indicators, by = "iso3c")
+
+# Inner join: Keep only matches in both
+inner_join(loans, indicators, by = "iso3c")
+
+# Full join: Keep everything
+full_join(loans, indicators, by = "iso3c")
+```
+
+::: {.callout-tip}
+## Which Join to Use?
+
+- `left_join()`: Keep all rows from first dataset
+  - Use when you want to add information to your main dataset
+  - Missing matches will be NA
+
+- `inner_join()`: Keep only matching rows
+  - Use when you only want complete cases
+  - Drops non-matches from both datasets
+
+- `full_join()`: Keep all rows from both datasets
+  - Use when you want to see what's missing
+  - Good for data quality checks
+:::
+
+
+### Exercise 2: Pivoting and Joining Practice
+
+1. Start with this wide-format lending data:
+```r
+yearly_lending <- tribble(
+  ~recipient,    ~"2019",  ~"2020",  ~"2021",
+  "Angola",         1.2,     2.1,     0.8,
+  "Pakistan",       2.3,     1.7,     3.1,
+  "Indonesia",      1.8,     2.2,     1.5
+)
+
+country_info <- tribble(
+  ~recipient,     ~region,      ~income_group,
+  "Angola",       "Africa",     "Lower middle",
+  "Pakistan",     "Asia",       "Lower middle",
+  "Indonesia",    "Asia",       "Upper middle",
+  "Vietnam",      "Asia",       "Lower middle"
+)
+```
+
+Your tasks:
+1. Convert `yearly_lending` to long format
+2. Add region and income group information using an appropriate join
+3. Calculate average lending by region and year
+4. What happens to Vietnam in different types of joins?
+
+Let me add some practical exercises that combine these skills and reflect real development finance analysis tasks:
+
+### Exercise 3: Analyzing Changes in Lending Patterns
+
+Starting with some historical lending data:
+
+```r
+historical_lending <- tribble(
+  ~country,        ~"2010_2014", ~"2015_2019", ~"2020_2023",  ~region,
+  "Angola",              5.2,         8.1,          3.2,      "Africa",
+  "Pakistan",            3.8,        12.3,          6.7,      "Asia",
+  "Indonesia",           6.1,         4.8,          5.5,      "Asia",
+  "Ethiopia",            2.9,         7.2,          1.8,      "Africa"
+)
+```
+
+Tasks:
+1. Convert periods to long format
+2. Calculate regional shares for each period
+3. Find which countries had the biggest changes pre/post 2015
+4. Create a clean summary table showing changes over time
+
+### Exercise 4: Working with Multiple Datasets
+
+```r
+# Project details
+projects <- tribble(
+  ~project_id, ~country,     ~sector,      ~amount_bn,
+  "P001",     "Angola",     "Energy",          1.2,
+  "P002",     "Pakistan",   "Transport",       2.3,
+  "P003",     "Indonesia",  "Mining",          1.8
+)
+
+# Implementation details
+implementation <- tribble(
+  ~project_id, ~start_date,  ~status,
+  "P001",     "2020-01-15", "Active",
+  "P002",     "2020-03-01", "Delayed",
+  "P004",     "2020-06-30", "Active"  # Note: Project not in first dataset
+)
+
+# Economic indicators
+indicators <- tribble(
+  ~country,     ~gdp_growth, ~debt_gdp_ratio,
+  "Angola",           2.8,          65.2,
+  "Pakistan",         4.2,          71.8,
+  "Indonesia",        5.1,          39.4,
+  "Vietnam",          7.2,          42.3      # Note: Country not in projects
+)
+```
+
+Tasks:
+1. Join project and implementation data appropriately
+2. Add economic indicators
+3. Document which projects/countries are missing and why
+4. Create a clean dataset for analysis
+
+### Exercise 5: Real World Cleaning Challenge
+
+Here's a messy dataset typical of what you might receive:
+
+```r
+messy_finance <- tribble(
+  ~Country,         ~"Project Value (USD)", ~"Approval",    ~"Status",
+  "PR China",       "$1,200,000",          "2021-Q1",      "ACTIVE",
+  "DR Congo",       "2.5M",                "Q2-2021",      "Active",
+  "Vietnam",        "800k",                "Q3 2021",      "COMPLETED",
+  "Cote d'Ivoire",  "1.8 million",        "2021-Q4",      "active"
+)
+```
+
+Tasks:
+1. Clean and standardize country names
+2. Convert all amounts to millions (numeric)
+3. Standardize dates to consistent format
+4. Create proper factor for status
+5. Document your cleaning decisions
+
+### Exercise 6: Integration Challenge
+
+Combine what you've learned to:
+
+1. Import and clean the Critical Minerals dataset
+2. Add World Bank Development Indicators:
+```r
+# Use WDI package to get GDP per capita
+gdp_data <- WDI(
+  country = "all",
+  indicator = "NY.GDP.PCAP.CD",
+  start = 2015,
+  end = 2021
+)
+```
+
+3. Create an analysis-ready dataset that shows:
+- Annual lending by country
+- GDP per capita
+- Income group
+- Regional totals
+- Share of global lending
+
+4. Document any data quality issues you find
+
+::: {.callout-tip}
+## Problem-Solving Strategy
+
+When working with real data:
+
+1. **Start Small**
+   - Test your code on a subset
+   - Add complexity gradually
+   - Document what works/doesn't
+
+2. **Check Your Work**
+   - Use `distinct()` to check categories
+   - Verify totals match expectations
+   - Look for unexpected NAs
+
+3. **Handle Edge Cases**
+   - Missing data
+   - Unusual values
+   - Different date formats
+   - Regional/aggregate entries
+
+4. **Document Decisions**
+   - What you cleaned and why
+   - What you excluded
+   - Assumptions made
+:::
+
+Let me suggest some effective prompts that help students get the most out of AI tools when working with data import and cleaning:
+
+### Effective AI Prompts for Data Import & Cleaning
+
+1. **For Understanding Data Structure**
+```
+I have an Excel file with this glimpse() output:
+[paste your glimpse() output]
+
+I want to:
+1. Clean the column names
+2. Convert dates to proper format
+3. Standardize country names
+Can you help me write a tidyverse pipeline to do this?
+```
+
+2. **For Troubleshooting Specific Issues**
+```
+I'm trying to read this Excel file but getting this error:
+[paste error message]
+
+Here's my code:
+[paste your code]
+
+Can you explain what might be wrong and how to fix it using readxl?
+```
+
+3. **For Working with Wide Year Data**
+```
+I have data that looks like this:
+country, 2019, 2020, 2021
+Angola, 1.2, 2.1, 0.8
+Pakistan, 2.3, 1.7, 3.1
+
+How can I use pivot_longer() to get years into a single column? 
+I specifically need help with the regex pattern to match year columns.
+```
+
+4. **For Join Help**
+```
+I have two datasets:
+Dataset 1 (projects):
+[paste head() output]
+
+Dataset 2 (countries):
+[paste head() output]
+
+I want to join them by country, but some countries don't match.
+Can you help me:
+1. Check which countries don't match
+2. Choose the right type of join
+3. Write the code to standardize country names before joining
+```
+
+5. **For Building Cleaning Pipelines**
+```
+I want to clean this development finance data:
+[paste sample of data]
+
+Please help me create a tidyverse pipeline that:
+1. Handles missing values
+2. Standardizes formats
+3. Creates appropriate factors
+4. Adds useful derived variables
+
+Show me the pipeline with comments explaining each step.
+```
+
+::: {.callout-tip}
+## Making AI Prompts More Effective
+
+1. **Show Your Data**
+   - Use `head()`, `glimpse()`, or `str()`
+   - Include sample input and desired output
+   - Show any error messages
+
+2. **Be Specific**
+   - Explain exactly what you want to achieve
+   - Mention key packages (tidyverse, readxl, etc.)
+   - List any special requirements
+
+3. **Ask for Explanations**
+   - Request comments in the code
+   - Ask why certain approaches are chosen
+   - Get help understanding trade-offs
+:::
+
