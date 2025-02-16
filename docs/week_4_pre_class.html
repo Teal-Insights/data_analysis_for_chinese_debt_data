@@ -256,15 +256,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#video-lecture" id="toc-video-lecture" class="nav-link" data-scroll-target="#video-lecture"><span class="header-section-number">7.1.1</span> Video Lecture</a></li>
   </ul></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">7.2</span> Learning Objectives</a></li>
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">7.3</span> Setup</a>
+  <li><a href="#the-power-of-clean-data" id="toc-the-power-of-clean-data" class="nav-link" data-scroll-target="#the-power-of-clean-data"><span class="header-section-number">7.3</span> The Power of Clean Data</a>
   <ul class="collapse">
-  <li><a href="#project-organization" id="toc-project-organization" class="nav-link" data-scroll-target="#project-organization"><span class="header-section-number">7.3.1</span> Project Organization</a></li>
-  <li><a href="#load-required-packages" id="toc-load-required-packages" class="nav-link" data-scroll-target="#load-required-packages"><span class="header-section-number">7.3.2</span> Load Required Packages</a></li>
+  <li><a href="#why-data-cleaning-matters" id="toc-why-data-cleaning-matters" class="nav-link" data-scroll-target="#why-data-cleaning-matters"><span class="header-section-number">7.3.1</span> Why Data Cleaning Matters</a></li>
+  <li><a href="#the-tidyverse-advantage" id="toc-the-tidyverse-advantage" class="nav-link" data-scroll-target="#the-tidyverse-advantage"><span class="header-section-number">7.3.2</span> The Tidyverse Advantage</a></li>
+  <li><a href="#the-compounding-value-of-clean-data" id="toc-the-compounding-value-of-clean-data" class="nav-link" data-scroll-target="#the-compounding-value-of-clean-data"><span class="header-section-number">7.3.3</span> The Compounding Value of Clean Data</a></li>
+  <li><a href="#what-well-learn" id="toc-what-well-learn" class="nav-link" data-scroll-target="#what-well-learn"><span class="header-section-number">7.3.4</span> What We’ll Learn</a></li>
   </ul></li>
-  <li><a href="#reading-data-from-spreadsheets" id="toc-reading-data-from-spreadsheets" class="nav-link" data-scroll-target="#reading-data-from-spreadsheets"><span class="header-section-number">7.4</span> Reading Data from Spreadsheets</a>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">7.4</span> Setup</a></li>
+  <li><a href="#core-concepts" id="toc-core-concepts" class="nav-link" data-scroll-target="#core-concepts"><span class="header-section-number">7.5</span> Core Concepts</a>
   <ul class="collapse">
-  <li><a href="#key-import-arguments" id="toc-key-import-arguments" class="nav-link" data-scroll-target="#key-import-arguments"><span class="header-section-number">7.4.1</span> Key Import Arguments</a></li>
+  <li><a href="#organizing-your-data-pipeline" id="toc-organizing-your-data-pipeline" class="nav-link" data-scroll-target="#organizing-your-data-pipeline"><span class="header-section-number">7.5.1</span> Organizing Your Data Pipeline</a></li>
+  <li><a href="#reading-data-from-spreadsheets" id="toc-reading-data-from-spreadsheets" class="nav-link" data-scroll-target="#reading-data-from-spreadsheets"><span class="header-section-number">7.5.2</span> Reading Data from Spreadsheets</a></li>
   </ul></li>
+  <li><a href="#a-systematic-approach-to-data-cleaning" id="toc-a-systematic-approach-to-data-cleaning" class="nav-link" data-scroll-target="#a-systematic-approach-to-data-cleaning"><span class="header-section-number">7.6</span> A Systematic Approach to Data Cleaning</a>
+  <ul class="collapse">
+  <li><a href="#step-1-clean-column-names-inspect-data" id="toc-step-1-clean-column-names-inspect-data" class="nav-link" data-scroll-target="#step-1-clean-column-names-inspect-data"><span class="header-section-number">7.6.1</span> Step 1: Clean Column Names &amp; Inspect Data</a></li>
+  <li><a href="#step-2-fix-dates" id="toc-step-2-fix-dates" class="nav-link" data-scroll-target="#step-2-fix-dates"><span class="header-section-number">7.6.2</span> Step 2: Fix Dates</a></li>
+  <li><a href="#step-3-standardize-country-information" id="toc-step-3-standardize-country-information" class="nav-link" data-scroll-target="#step-3-standardize-country-information"><span class="header-section-number">7.6.3</span> Step 3: Standardize Country Information</a></li>
+  <li><a href="#step-4-create-proper-categories" id="toc-step-4-create-proper-categories" class="nav-link" data-scroll-target="#step-4-create-proper-categories"><span class="header-section-number">7.6.4</span> Step 4: Create Proper Categories</a></li>
+  </ul></li>
+  <li><a href="#creating-a-reusable-pipeline" id="toc-creating-a-reusable-pipeline" class="nav-link" data-scroll-target="#creating-a-reusable-pipeline"><span class="header-section-number">7.7</span> Creating a Reusable Pipeline</a></li>
+  <li><a href="#data-cleaning-checklist" id="toc-data-cleaning-checklist" class="nav-link" data-scroll-target="#data-cleaning-checklist"><span class="header-section-number">7.8</span> Data Cleaning Checklist</a></li>
+  <li><a href="#effective-ai-prompts-for-data-cleaning" id="toc-effective-ai-prompts-for-data-cleaning" class="nav-link" data-scroll-target="#effective-ai-prompts-for-data-cleaning"><span class="header-section-number">7.9</span> Effective AI Prompts for Data Cleaning</a>
+  <ul class="collapse">
+  <li><a href="#making-data-tidy" id="toc-making-data-tidy" class="nav-link" data-scroll-target="#making-data-tidy"><span class="header-section-number">7.9.1</span> Making Data Tidy</a></li>
+  <li><a href="#understanding-data-structure" id="toc-understanding-data-structure" class="nav-link" data-scroll-target="#understanding-data-structure"><span class="header-section-number">7.9.2</span> Understanding Data Structure</a></li>
+  <li><a href="#date-standardization" id="toc-date-standardization" class="nav-link" data-scroll-target="#date-standardization"><span class="header-section-number">7.9.3</span> Date Standardization</a></li>
+  <li><a href="#debugging-data-issues" id="toc-debugging-data-issues" class="nav-link" data-scroll-target="#debugging-data-issues"><span class="header-section-number">7.9.4</span> Debugging Data Issues</a></li>
+  <li><a href="#creating-cleaning-functions" id="toc-creating-cleaning-functions" class="nav-link" data-scroll-target="#creating-cleaning-functions"><span class="header-section-number">7.9.5</span> Creating Cleaning Functions</a></li>
+  </ul></li>
+  <li><a href="#practice-exercises" id="toc-practice-exercises" class="nav-link" data-scroll-target="#practice-exercises"><span class="header-section-number">7.10</span> Practice Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-creating-a-data-processing-pipeline" id="toc-exercise-1-creating-a-data-processing-pipeline" class="nav-link" data-scroll-target="#exercise-1-creating-a-data-processing-pipeline"><span class="header-section-number">7.10.1</span> Exercise 1: Creating a Data Processing Pipeline</a></li>
+  <li><a href="#exercise-2-working-with-multiple-data-quality-issues" id="toc-exercise-2-working-with-multiple-data-quality-issues" class="nav-link" data-scroll-target="#exercise-2-working-with-multiple-data-quality-issues"><span class="header-section-number">7.10.2</span> Exercise 2: Working with Multiple Data Quality Issues</a></li>
+  </ul></li>
+  <li><a href="#resources-for-learning-more" id="toc-resources-for-learning-more" class="nav-link" data-scroll-target="#resources-for-learning-more"><span class="header-section-number">7.11</span> Resources for Learning More</a>
+  <ul class="collapse">
+  <li><a href="#essential-references" id="toc-essential-references" class="nav-link" data-scroll-target="#essential-references"><span class="header-section-number">7.11.1</span> Essential References</a></li>
+  </ul></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps"><span class="header-section-number">7.12</span> Next Steps</a></li>
   </ul>
 </nav>
     </div>
@@ -293,7 +324,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This pre-class preparation should take about 45-60 minutes to complete.</p>
 <section id="overview" class="level2 page-columns page-full" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">7.1</span> Overview</h2>
-<p>Getting data into R and preparing it for analysis is often your first challenge in any project. This week, we’ll focus on importing data from spreadsheets (both Excel and CSV files) and establishing good practices for organizing and cleaning your data.</p>
+<p>Getting data into R and preparing it for analysis is often your first challenge in any project. In this pre-class session, we’ll focus on importing data from spreadsheets and establishing good practices for data cleaning. You’ll learn reliable workflows that make your analysis more reproducible and easier to maintain.</p>
 <section id="video-lecture" class="level3 page-columns page-full" data-number="7.1.1">
 <h3 data-number="7.1.1" class="anchored" data-anchor-id="video-lecture"><span class="header-section-number">7.1.1</span> Video Lecture</h3>
 <p>Watch this video lecture before our interactive session:</p>
@@ -306,24 +337,91 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="7.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">7.2</span> Learning Objectives</h2>
 <p>By completing this pre-class work, you will:</p>
 <ol type="1">
-<li>Learn to import data from spreadsheets into R</li>
+<li>Learn to import data from Excel and CSV files into R</li>
 <li>Set up organized project structures</li>
 <li>Establish reliable data cleaning workflows</li>
-<li>Standardize country names and other common variables</li>
+<li>Standardize common variables like dates and country names</li>
 <li>Practice with real Chinese development finance data</li>
 </ol>
 </section>
-<section id="setup" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="setup"><span class="header-section-number">7.3</span> Setup</h2>
-<section id="project-organization" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="project-organization"><span class="header-section-number">7.3.1</span> Project Organization</h3>
-<p>First, let’s set up an organized project structure:</p>
+<section id="the-power-of-clean-data" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="the-power-of-clean-data"><span class="header-section-number">7.3</span> The Power of Clean Data</h2>
+<section id="why-data-cleaning-matters" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="why-data-cleaning-matters"><span class="header-section-number">7.3.1</span> Why Data Cleaning Matters</h3>
+<p>Data cleaning might not be anyone’s idea of fun, but here’s a secret: getting good at data cleaning is one of the highest-return skills you can develop as a researcher. Why? Because while lots of people can run sophisticated analyses on clean datasets, far fewer people can reliably turn messy real-world data into analysis-ready information.</p>
+<p>At AidData, this matters even more. AidData’s mission isn’t just to analyze existing datasets - you create new ones that reveal previously hidden patterns in Chinese development finance. The ability to clean and standardize messy data is core to this mission.</p>
+</section>
+<section id="the-tidyverse-advantage" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="the-tidyverse-advantage"><span class="header-section-number">7.3.2</span> The Tidyverse Advantage</h3>
+<p>The tidyverse provides an extraordinarily powerful toolkit for importing and cleaning data, with specialized packages designed specifically for common cleaning tasks:</p>
+<section id="data-import-tools" class="level4" data-number="7.3.2.1">
+<h4 data-number="7.3.2.1" class="anchored" data-anchor-id="data-import-tools"><span class="header-section-number">7.3.2.1</span> Data Import Tools</h4>
+<ul>
+<li><a href="https://readr.tidyverse.org/">{readr}</a> (<a href="https://rawgit.com/rstudio/cheatsheets/main/data-import.pdf">cheatsheet</a>): CSV and flat files</li>
+<li><a href="https://readxl.tidyverse.org/">{readxl}</a>: Excel files</li>
+<li><a href="https://haven.tidyverse.org/">{haven}</a>: SPSS, Stata, and SAS files</li>
+<li><a href="https://httr2.r-lib.org/">{httr2}</a>: Web APIs</li>
+</ul>
+<p>These are just the basics. There’s a whole universe of tidyverse-style data import packages for all varieties of file formats and APIs (<em>“There’s a package for that…”</em>).</p>
+</section>
+<section id="data-cleaning-specialists" class="level4" data-number="7.3.2.2">
+<h4 data-number="7.3.2.2" class="anchored" data-anchor-id="data-cleaning-specialists"><span class="header-section-number">7.3.2.2</span> Data Cleaning Specialists</h4>
+<ul>
+<li><a href="https://stringr.tidyverse.org/">{stringr}</a> (<a href="https://github.com/rstudio/cheatsheets/raw/master/strings.pdf">cheatsheet</a>): Text cleaning and manipulation</li>
+<li><a href="https://lubridate.tidyverse.org/">{lubridate}</a> (<a href="https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf">cheatsheet</a>): Dates and times</li>
+<li><a href="https://forcats.tidyverse.org/">{forcats}</a> (<a href="https://rstudio.github.io/cheatsheets/factors.pdf">cheatsheet</a>): Factor handling</li>
+<li><a href="https://tidyr.tidyverse.org/">{tidyr}</a> (<a href="https://github.com/rstudio/cheatsheets/raw/master/tidyr.pdf">cheatsheet</a>): Data structure tools</li>
+</ul>
+<p>All of these packages follow consistent principles and are designed for humans to use. The <a href="https://r4ds.hadley.nz/">R for Data Science (2e)</a> book has excellent chapters on each:</p>
+<ul>
+<li><a href="https://r4ds.hadley.nz/data-import">Data Import</a></li>
+<li><a href="https://r4ds.hadley.nz/strings">Strings</a></li>
+<li><a href="https://r4ds.hadley.nz/factors">Factors</a></li>
+<li><a href="https://r4ds.hadley.nz/datetimes">Dates and Times</a></li>
+</ul>
+</section>
+</section>
+<section id="the-compounding-value-of-clean-data" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="the-compounding-value-of-clean-data"><span class="header-section-number">7.3.3</span> The Compounding Value of Clean Data</h3>
+<p>Here’s why mastering data cleaning is worth your time:</p>
 <ol type="1">
-<li>Create two essential folders in your project root:</li>
+<li><p><strong>Unique Insights</strong>: When everyone works with the same clean datasets, it’s hard to find unique patterns. The ability to clean messy data gives you access to information others might miss.</p></li>
+<li><p><strong>Reproducible Work</strong>: Good data cleaning isn’t just about getting the data right once - it’s about creating reproducible pipelines that can handle new data as it arrives.</p></li>
+<li><p><strong>Time Investment</strong>: While cleaning data takes time upfront, having clean, reliable data saves countless hours of troubleshooting and redoing analyses later.</p></li>
+<li><p><strong>Competitive Advantage</strong>: In research, the quality of your inputs often matters more than the sophistication of your analysis. Being good at data cleaning lets you work with sources others might avoid.</p></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"data-raw"</span>, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)  <span class="co"># For original, unmodified data</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"data"</span>, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)      <span class="co"># For cleaned, analysis-ready data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="what-well-learn" class="level3" data-number="7.3.4">
+<h3 data-number="7.3.4" class="anchored" data-anchor-id="what-well-learn"><span class="header-section-number">7.3.4</span> What We’ll Learn</h3>
+<p>In the following sections, you’ll learn to:</p>
+<ol type="1">
+<li>Import data from various sources</li>
+<li>Create reliable cleaning pipelines</li>
+<li>Handle common data issues like:
+<ul>
+<li>Inconsistent text formats</li>
+<li>Messy dates and times</li>
+<li>Different monetary formats</li>
+<li>Variant country names</li>
+</ul></li>
+</ol>
+<p>While data cleaning may never be the most exciting part of research, by the end of this section, you’ll have the tools to make it a manageable, reliable part of your workflow.</p>
+</section>
+</section>
+<section id="setup" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="setup"><span class="header-section-number">7.4</span> Setup</h2>
+<p>Let’s get our workspace ready:</p>
+<ol type="1">
+<li>Create a new Quarto document for your notes:</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># File → New File → Quarto Document</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Save as "week_4_import_preclass.qmd" in your week_4/R folder</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
+<li>Create folders for organizing data:</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"data-raw"</span>, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)  <span class="co"># For original data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"data"</span>, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)      <span class="co"># For cleaned data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
 <li>Download the <a href="https://www.aiddata.org/data/aiddata-chinese-financing-for-transition-minerals-dataset-version-1-0">AidData Critical Minerals Dataset</a> and save it to your <code>data-raw</code> folder.</li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -352,53 +450,48 @@ Why Two Data Folders?
 </ul>
 </div>
 </div>
-</section>
-<section id="load-required-packages" class="level3" data-number="7.3.2">
-<h3 data-number="7.3.2" class="anchored" data-anchor-id="load-required-packages"><span class="header-section-number">7.3.2</span> Load Required Packages</h3>
+<ol start="4" type="1">
+<li>Load required packages:</li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)    <span class="co"># Core data science tools</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)       <span class="co"># For reading Excel files</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)        <span class="co"># For reading CSV files</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)      <span class="co"># For cleaning column names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'janitor'
-
-The following objects are masked from 'package:stats':
-
-    chisq.test, fisher.test</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(countrycode)  <span class="co"># For standardizing country names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)    <span class="co"># Core data science tools</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)       <span class="co"># For reading Excel files</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)        <span class="co"># For reading CSV files</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)      <span class="co"># For cleaning column names</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(countrycode)  <span class="co"># For standardizing country names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="core-concepts" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="core-concepts"><span class="header-section-number">7.5</span> Core Concepts</h2>
+<section id="organizing-your-data-pipeline" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="organizing-your-data-pipeline"><span class="header-section-number">7.5.1</span> Organizing Your Data Pipeline</h3>
+<p>Think of data cleaning as a multi-step recipe. Just like cooking, you want to:</p>
+<ol type="1">
+<li>Get your ingredients (import raw data, save in <code>data-raw</code>)</li>
+<li>Prep them properly (clean data)</li>
+<li>Create something useful (analysis-ready data, save in <code>data</code> for further use)</li>
+</ol>
+<p>Let’s see how this works with real data.</p>
 </section>
-<section id="reading-data-from-spreadsheets" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="reading-data-from-spreadsheets"><span class="header-section-number">7.4</span> Reading Data from Spreadsheets</h2>
-<p>Whether your data is in Excel (<code>.xlsx</code>) or CSV format, the basic principles of importing are similar. We use: - <code>readxl::read_excel()</code> for Excel files - <code>readr::read_csv()</code> for CSV files</p>
-<p>Let’s start with the Critical Minerals dataset:</p>
+<section id="reading-data-from-spreadsheets" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="reading-data-from-spreadsheets"><span class="header-section-number">7.5.2</span> Reading Data from Spreadsheets</h3>
+<p>The two main functions for reading spreadsheet data are:</p>
+<ul>
+<li><code>readxl::read_excel()</code> for Excel files</li>
+<li><code>readr::read_csv()</code> for CSV files</li>
+</ul>
+<p>Let’s try reading our Critical Minerals data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the Excel file</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>minerals_raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"data-raw/AidData_Chinese_Financing_for_Transition_Minerals_Dataset_Version_1.0.xlsx"</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">"Financial_Contribution"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"N/A"</span>, <span class="st">"#N/A"</span>, <span class="st">"NULL"</span>),  <span class="co"># Handle different missing values</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">guess_max =</span> <span class="dv">20000</span>  <span class="co"># Look at more rows when guessing column types</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick look at what we imported</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(minerals_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the Excel file</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>minerals_raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"data-raw/AidData_Chinese_Financing_for_Transition_Minerals_Dataset_Version_1.0.xlsx"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">"Financial_Contribution"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"N/A"</span>, <span class="st">"#N/A"</span>, <span class="st">"NULL"</span>),  <span class="co"># Handle missing values</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">guess_max =</span> <span class="dv">20000</span>  <span class="co"># Look at more rows when guessing types</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick look at what we imported</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(minerals_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 137
 Columns: 128
@@ -532,34 +625,25 @@ $ `OECD ODA Income Group`                            &lt;chr&gt; "Upper middle i
 $ `Location Narrative`                               &lt;chr&gt; "The project develo…</code></pre>
 </div>
 </div>
-<section id="key-import-arguments" class="level3" data-number="7.4.1">
-<h3 data-number="7.4.1" class="anchored" data-anchor-id="key-import-arguments"><span class="header-section-number">7.4.1</span> Key Import Arguments</h3>
-<p>Let’s understand the important arguments for reading spreadsheets:</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Import Arguments
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
-<li><strong><code>na =</code></strong>: Specify what values should be treated as missing</li>
+<li><code>na =</code>: What values should be treated as missing</li>
+<li><code>guess_max =</code>: How many rows to check when determining column types</li>
+<li><code>sheet =</code>: Which Excel sheet to read</li>
+<li><code>range =</code>: Specific cells to read</li>
 </ol>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Different data sources represent missing values differently:</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>na <span class="ot">=</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"N/A"</span>, <span class="st">"#N/A"</span>, <span class="st">"NULL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If we don’t specify these, they might be read as text values, causing problems later.</p>
-<ol start="2" type="1">
-<li><strong><code>guess_max =</code></strong>: How many rows to use when guessing column types</li>
-</ol>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For large datasets, especially with sparse columns:</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>guess_max <span class="ot">=</span> <span class="dv">20000</span>  <span class="co"># Default is 1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The function guesses column types by looking at the first rows. With large datasets (like GCDF’s 21,000 rows), increasing this helps ensure correct type detection.</p>
-<ol start="3" type="1">
-<li><strong><code>sheet =</code></strong>: Which Excel sheet to read</li>
-</ol>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># See available sheets</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">excel_sheets</span>(<span class="st">"your_file.xlsx"</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read specific sheet</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="st">"your_file.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Sheet1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="4" type="1">
-<li><strong><code>range =</code></strong>: Read specific cells</li>
-</ol>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read just cells A1:D100</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="st">"your_file.xlsx"</span>, <span class="at">range =</span> <span class="st">"A1:D100"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>These help handle common import challenges like: - Different representations of missing data - Incorrect column type detection - Multiple sheets in one file</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -574,9 +658,1007 @@ Read the Documentation!
 <p>You don’t need to memorize all options - just know they exist and where to find them when needed.</p>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="a-systematic-approach-to-data-cleaning" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="a-systematic-approach-to-data-cleaning"><span class="header-section-number">7.6</span> A Systematic Approach to Data Cleaning</h2>
+<section id="step-1-clean-column-names-inspect-data" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="step-1-clean-column-names-inspect-data"><span class="header-section-number">7.6.1</span> Step 1: Clean Column Names &amp; Inspect Data</h3>
+<p>First, we always want consistent, programming-friendly column names. <code>glimpse()</code> your new clean names, and look for data that might need to be cleaned. Note any variables where the data type displayed does not match what it logically should be (e.g.&nbsp;is a numeric variable show with data type <code>&lt;chr&gt;</code>?)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean the names</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>minerals_clean <span class="ot">&lt;-</span> minerals_raw <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># See the difference</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>minerals_clean <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 137
+Columns: 128
+$ aid_data_record_id                               &lt;dbl&gt; 95747, 95748, 39557, …
+$ aid_data_parent_id                               &lt;chr&gt; "228", "228", "695", …
+$ loan_event_id                                    &lt;chr&gt; "101", "201", "301", …
+$ loan_event_description                           &lt;chr&gt; "2010 $200 million lo…
+$ financier_country                                &lt;chr&gt; "China (People's Repu…
+$ recipient                                        &lt;chr&gt; "Kazakhstan", "Kazakh…
+$ recipient_iso_3                                  &lt;chr&gt; "KAZ", "KAZ", "KAZ", …
+$ recipient_region                                 &lt;chr&gt; "Asia", "Asia", "Asia…
+$ commitment_year                                  &lt;dbl&gt; 2010, 2012, 2011, 201…
+$ implementation_start_year                        &lt;dbl&gt; 2014, 2009, 2013, 201…
+$ completion_year                                  &lt;dbl&gt; NA, NA, 2015, 2015, 2…
+$ mining_site                                      &lt;chr&gt; "Abyz Copper Mine and…
+$ mining_site_id                                   &lt;dbl&gt; 1, 2, 3, 3, 3, 3, 4, …
+$ investors_ownership_id                           &lt;dbl&gt; 1, 2, 3, 3, 3, 3, 4, …
+$ transition_minerals                              &lt;chr&gt; "Copper", "Copper", "…
+$ title                                            &lt;chr&gt; "CDB provides $200 mi…
+$ description                                      &lt;chr&gt; "In June 2009, China …
+$ staff_comments                                   &lt;chr&gt; "1. The loan’s precis…
+$ status                                           &lt;chr&gt; "Implementation", "Im…
+$ intent                                           &lt;chr&gt; "Commercial", "Mixed"…
+$ flow_type                                        &lt;chr&gt; "Loan", "Loan", "Loan…
+$ oecd_oda_concessionality_threshold               &lt;dbl&gt; 0.25, 0.25, 0.25, 0.2…
+$ flow_class                                       &lt;chr&gt; "OOF-like", "OOF-like…
+$ sector_code                                      &lt;dbl&gt; 320, 320, 320, 320, 3…
+$ sector_name                                      &lt;chr&gt; "INDUSTRY, MINING, CO…
+$ infrastructure                                   &lt;chr&gt; "Yes", "Yes", "Yes", …
+$ funding_agencies                                 &lt;chr&gt; "China Development Ba…
+$ funding_agencies_type                            &lt;chr&gt; "State-owned Policy B…
+$ cofinanced                                       &lt;chr&gt; "No", "No", "No", "No…
+$ cofinancing_agencies                             &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ cofinancing_agencies_type                        &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ direct_receiving_agencies                        &lt;chr&gt; "KAZ Minerals Finance…
+$ direct_receiving_agencies_type                   &lt;chr&gt; "Other Joint Venture/…
+$ indirect_receiving_agencies                      &lt;chr&gt; NA, NA, NA, NA, "KAZ …
+$ indirect_receiving_agencies_type                 &lt;chr&gt; NA, NA, NA, NA, "Othe…
+$ on_lending                                       &lt;chr&gt; NA, NA, NA, NA, "Yes"…
+$ implementing_agencies                            &lt;chr&gt; NA, NA, "ABB Group|Al…
+$ implementing_agencies_type                       &lt;chr&gt; NA, NA, "Other Privat…
+$ operator_owner                                   &lt;chr&gt; "Kazakhmys Corporatio…
+$ operator_owner_type                              &lt;chr&gt; "Recipient Private Se…
+$ investors                                        &lt;chr&gt; "Kazakhmys PLC", "Kaz…
+$ investors_type                                   &lt;chr&gt; "Other Private Sector…
+$ investors_ownership_percentages                  &lt;chr&gt; "100", "100", "100", …
+$ controlling_shareholder                          &lt;chr&gt; "Kazakhmys PLC", "Kaz…
+$ controlling_shareholder_type                     &lt;chr&gt; "Other Private Sector…
+$ guarantee_provided                               &lt;chr&gt; "Yes", "Yes", "Yes", …
+$ guarantor                                        &lt;chr&gt; "KAZ Minerals PLC (Fo…
+$ guarantor_agency_type                            &lt;chr&gt; "Other Private Sector…
+$ insurance_provided                               &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ insurance_provider                               &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ insurance_provider_agency_type                   &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ collateralized_securitized                       &lt;chr&gt; NA, "Yes", "Yes", "Ye…
+$ collateral_provider                              &lt;chr&gt; NA, "KAZ Minerals Fin…
+$ collateral_provider_agency_type                  &lt;chr&gt; NA, "Other Joint Vent…
+$ security_agent_collateral_agent                  &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ security_agent_collateral_agent_type             &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ collateral                                       &lt;chr&gt; NA, "Borrower to prov…
+$ amount_original_currency                         &lt;dbl&gt; 200000000, 200000000,…
+$ original_currency                                &lt;chr&gt; "USD", "USD", "CNY", …
+$ amount_estimated                                 &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ amount_constant_usd_2021                         &lt;dbl&gt; 278545387, 234824712,…
+$ amount_nominal_usd                               &lt;dbl&gt; 200000000, 200000000,…
+$ financial_distress                               &lt;chr&gt; "Yes", "Yes", NA, NA,…
+$ commitment_date_mm_dd_yyyy                       &lt;dttm&gt; 2010-01-12, 2012-06-…
+$ commitment_date_estimated                        &lt;chr&gt; "No", "No", "No", "No…
+$ planned_implementation_start_date_mm_dd_yyyy     &lt;dttm&gt; NA, NA, NA, NA, NA, …
+$ actual_implementation_start_date_mm_dd_yyyy      &lt;dttm&gt; 2014-01-01, 2009-01-…
+$ actual_implementation_start_date_estimated       &lt;chr&gt; "No", "No", NA, NA, N…
+$ deviation_from_planned_implementation_start_date &lt;dbl&gt; NA, NA, NA, NA, NA, N…
+$ planned_completion_date_mm_dd_yyyy               &lt;dttm&gt; NA, NA, NA, NA, NA, …
+$ actual_completion_date_mm_dd_yyyy                &lt;dttm&gt; NA, NA, 2015-12-01, …
+$ actual_completion_date_estimated                 &lt;chr&gt; "No", "No", NA, NA, N…
+$ deviation_from_planned_completion_date           &lt;dbl&gt; NA, NA, NA, NA, NA, N…
+$ maturity                                         &lt;dbl&gt; 13.50, 13.50, 15.00, …
+$ interest_rate                                    &lt;dbl&gt; 5.199, 5.536, 4.540, …
+$ fixed_variable_interest_rate                     &lt;chr&gt; "Variable", "Variable…
+$ variable_interest_reference_rate                 &lt;chr&gt; "LIBOR", "LIBOR", "LI…
+$ variable_interest_detail                         &lt;chr&gt; NA, NA, NA, NA, "6-Mo…
+$ variable_interest_margin                         &lt;dbl&gt; 4.8, 4.8, NA, 4.2, 4.…
+$ grace_period                                     &lt;dbl&gt; 3, 3, 3, 3, NA, NA, N…
+$ management_fee                                   &lt;dbl&gt; 1.5, 1.5, NA, NA, NA,…
+$ commitment_fee                                   &lt;lgl&gt; NA, NA, NA, NA, NA, N…
+$ insurance_fee_percent                            &lt;lgl&gt; NA, NA, NA, NA, NA, N…
+$ insurance_fee_nominal_usd                        &lt;lgl&gt; NA, NA, NA, NA, NA, N…
+$ default_interest_rate                            &lt;lgl&gt; NA, NA, NA, NA, NA, N…
+$ first_loan_repayment_date                        &lt;dttm&gt; 2013-01-11, 2015-06-…
+$ last_loan_repayment_date                         &lt;dttm&gt; 2023-07-10, 2025-12-…
+$ grant_element_oecd_cash_flow                     &lt;dbl&gt; 24.4630, 22.6562, 29.…
+$ grant_element_oecd_grant_equiv                   &lt;dbl&gt; 4.4782, 2.3634, 29.44…
+$ grant_element_imf                                &lt;dbl&gt; 0.0000, 0.0000, 2.790…
+$ number_of_lenders                                &lt;chr&gt; "Bilateral Loan", "Bi…
+$ export_buyers_credit                             &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ supplier_s_credit_export_seller_s_credit         &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ interest_free_loan                               &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ refinancing                                      &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ investment_project_loan                          &lt;chr&gt; "Yes", "Yes", "Yes", …
+$ m_a                                              &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ working_capital                                  &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ epcf                                             &lt;lgl&gt; NA, NA, NA, NA, NA, N…
+$ lease                                            &lt;lgl&gt; NA, NA, NA, NA, NA, N…
+$ fxsl_bop                                         &lt;lgl&gt; NA, NA, NA, NA, NA, N…
+$ cc_irs                                           &lt;lgl&gt; NA, NA, NA, NA, NA, N…
+$ rcf                                              &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ gcl                                              &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ pbc                                              &lt;lgl&gt; NA, NA, NA, NA, NA, N…
+$ px_f_commodity_prepayment                        &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ inter_bank_loan                                  &lt;chr&gt; NA, NA, NA, NA, "Yes"…
+$ overseas_project_contracting_loan                &lt;lgl&gt; NA, NA, NA, NA, NA, N…
+$ dpa                                              &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ project_finance                                  &lt;chr&gt; NA, NA, "Yes", "Yes",…
+$ involving_multilateral                           &lt;lgl&gt; NA, NA, NA, NA, NA, N…
+$ involving_non_chinese_financier                  &lt;chr&gt; "No", "No", "No", "No…
+$ short_term                                       &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ rescue                                           &lt;lgl&gt; NA, NA, NA, NA, NA, N…
+$ jv_spv_host_government_ownership                 &lt;chr&gt; "No Host Government O…
+$ jv_spv_chinese_government_ownership              &lt;chr&gt; "No Chinese Governmen…
+$ level_of_public_liability                        &lt;chr&gt; "Central government-g…
+$ total_source_count                               &lt;dbl&gt; 9, 11, 17, 19, 10, 13…
+$ official_source_count                            &lt;dbl&gt; 2, 2, 11, 12, 6, 12, …
+$ source_ur_ls                                     &lt;chr&gt; "https://www.proactiv…
+$ source_titles                                    &lt;chr&gt; "Kazakhmys signs new …
+$ source_publishers                                &lt;chr&gt; "Proactive Investors|…
+$ source_resource_types                            &lt;chr&gt; "Media Report|Impleme…
+$ contact_name                                     &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ contact_position                                 &lt;chr&gt; NA, NA, NA, NA, NA, N…
+$ oda_eligible_recipient                           &lt;chr&gt; "Yes", "Yes", "Yes", …
+$ oecd_oda_income_group                            &lt;chr&gt; "Upper middle income"…
+$ location_narrative                               &lt;chr&gt; "The project develope…</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why Clean Column Names?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Raw data often comes with inconsistent column names:</p>
+<ul>
+<li>Spaces (“Project Name”)</li>
+<li>Special characters (“Amount ($)”)</li>
+<li>Inconsistent capitalization (“projectName”, “Project_name”)</li>
+<li>Numbers at start (“2021_amount”)</li>
+</ul>
+<p><code>clean_names()</code>:</p>
+<ul>
+<li>Converts to lowercase</li>
+<li>Replaces spaces/special chars with underscores</li>
+<li>Makes names programming-friendly</li>
+<li>Creates consistent style</li>
+</ul>
+<p>This matters because:</p>
+<ul>
+<li>Reduces coding errors</li>
+<li>Makes autocomplete work better</li>
+<li>Prevents quoting/escaping headaches</li>
+<li>Creates consistent style across projects</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="step-2-fix-dates" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="step-2-fix-dates"><span class="header-section-number">7.6.2</span> Step 2: Fix Dates</h3>
+<p>Always inspect and clean date columns early:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First, find all date columns</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>minerals_clean <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"date"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 137
+Columns: 12
+$ commitment_date_mm_dd_yyyy                       &lt;dttm&gt; 2010-01-12, 2012-06-…
+$ commitment_date_estimated                        &lt;chr&gt; "No", "No", "No", "No…
+$ planned_implementation_start_date_mm_dd_yyyy     &lt;dttm&gt; NA, NA, NA, NA, NA, …
+$ actual_implementation_start_date_mm_dd_yyyy      &lt;dttm&gt; 2014-01-01, 2009-01-…
+$ actual_implementation_start_date_estimated       &lt;chr&gt; "No", "No", NA, NA, N…
+$ deviation_from_planned_implementation_start_date &lt;dbl&gt; NA, NA, NA, NA, NA, N…
+$ planned_completion_date_mm_dd_yyyy               &lt;dttm&gt; NA, NA, NA, NA, NA, …
+$ actual_completion_date_mm_dd_yyyy                &lt;dttm&gt; NA, NA, 2015-12-01, …
+$ actual_completion_date_estimated                 &lt;chr&gt; "No", "No", NA, NA, N…
+$ deviation_from_planned_completion_date           &lt;dbl&gt; NA, NA, NA, NA, NA, N…
+$ first_loan_repayment_date                        &lt;dttm&gt; 2013-01-11, 2015-06-…
+$ last_loan_repayment_date                         &lt;dttm&gt; 2023-07-10, 2025-12-…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert all dates to proper format</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>minerals_dates <span class="ot">&lt;-</span> minerals_clean <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">commitment_date_mm_dd_yyyy =</span> <span class="fu">ymd</span>(commitment_date_mm_dd_yyyy),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">planned_implementation_start_date_mm_dd_yyyy =</span> <span class="fu">ymd</span>(planned_implementation_start_date_mm_dd_yyyy),</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">actual_implementation_start_date_mm_dd_yyyy =</span> <span class="fu">ymd</span>(actual_implementation_start_date_mm_dd_yyyy),</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">planned_completion_date_mm_dd_yyyy =</span> <span class="fu">ymd</span>(planned_completion_date_mm_dd_yyyy),</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">actual_completion_date_mm_dd_yyyy =</span> <span class="fu">ymd</span>(actual_completion_date_mm_dd_yyyy),</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">first_loan_repayment_date =</span> <span class="fu">ymd</span>(first_loan_repayment_date),</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">last_loan_repayment_date =</span> <span class="fu">ymd</span>(last_loan_repayment_date)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>minerals_dates <span class="sc">|&gt;</span> </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"date"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 137
+Columns: 12
+$ commitment_date_mm_dd_yyyy                       &lt;date&gt; 2010-01-12, 2012-06-…
+$ commitment_date_estimated                        &lt;chr&gt; "No", "No", "No", "No…
+$ planned_implementation_start_date_mm_dd_yyyy     &lt;date&gt; NA, NA, NA, NA, NA, …
+$ actual_implementation_start_date_mm_dd_yyyy      &lt;date&gt; 2014-01-01, 2009-01-…
+$ actual_implementation_start_date_estimated       &lt;chr&gt; "No", "No", NA, NA, N…
+$ deviation_from_planned_implementation_start_date &lt;dbl&gt; NA, NA, NA, NA, NA, N…
+$ planned_completion_date_mm_dd_yyyy               &lt;date&gt; NA, NA, NA, NA, NA, …
+$ actual_completion_date_mm_dd_yyyy                &lt;date&gt; NA, NA, 2015-12-01, …
+$ actual_completion_date_estimated                 &lt;chr&gt; "No", "No", NA, NA, N…
+$ deviation_from_planned_completion_date           &lt;dbl&gt; NA, NA, NA, NA, NA, N…
+$ first_loan_repayment_date                        &lt;date&gt; 2013-01-11, 2015-06-…
+$ last_loan_repayment_date                         &lt;date&gt; 2023-07-10, 2025-12-…</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why Clean Dates?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Raw dates can appear in many formats:</p>
+<ul>
+<li>“2021-01-15”</li>
+<li>“1/15/21”</li>
+<li>“15 Jan 2021”</li>
+<li>“2021-Q1”</li>
+</ul>
+<p>Proper date formatting enables:</p>
+<ul>
+<li>Time-series analysis</li>
+<li>Duration calculations</li>
+<li>Correct sorting</li>
+<li>Filtering by time periods</li>
+</ul>
+<p>If you are creating a data cleaning pipeline that will be used on newer versions of the same dataset, make sure to coerce dates into the correct format even if they are parsed correctly by <code>read_excel()</code> (or other data import methods). Next time they might not be, and a date variable that is read in as a character string might mess up your subsequent analysis pipelines.</p>
+</div>
+</div>
+</section>
+<section id="step-3-standardize-country-information" class="level3" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="step-3-standardize-country-information"><span class="header-section-number">7.6.3</span> Step 3: Standardize Country Information</h3>
+<p>Create consistent country identifiers:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why Standardize Country Names?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Countries often appear differently across datasets:</p>
+<ul>
+<li>“Cote d’Ivoire” vs “Ivory Coast”</li>
+<li>“Democratic Republic of the Congo” vs “DR Congo”</li>
+<li>“People’s Republic of China” vs “China”</li>
+</ul>
+<p>Standardization enables:</p>
+<ul>
+<li>Joining across datasets</li>
+<li>Consistent visualization labels</li>
+<li>Regional aggregation</li>
+<li>Integration with other global data</li>
+</ul>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>minerals_countries <span class="ot">&lt;-</span> minerals_dates <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add ISO3C codes</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">iso3c =</span> <span class="fu">countrycode</span>(</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">sourcevar =</span> recipient,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">origin =</span> <span class="st">"country.name"</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">destination =</span> <span class="st">"iso3c"</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">origin_regex =</span> <span class="cn">TRUE</span>,  <span class="co"># Helps match variations</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">warn =</span> <span class="cn">TRUE</span>          <span class="co"># Shows what doesn't match</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add standardized names</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">country_name =</span> <span class="fu">countrycode</span>(</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">sourcevar =</span> iso3c,</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">origin =</span> <span class="st">"iso3c"</span>,</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">destination =</span> <span class="st">"country.name"</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add World Bank regions</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">wb_region =</span> <span class="fu">countrycode</span>(</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">sourcevar =</span> iso3c,</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">origin =</span> <span class="st">"iso3c"</span>,</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">destination =</span> <span class="st">"region"</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `iso3c = countrycode(...)`.
+Caused by warning:
+! Some values were not matched unambiguously: Africa, regional</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>minerals_countries <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    country_name,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    recipient,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    wb_region,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    recipient_region</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20 × 4
+   country_name       recipient                       wb_region recipient_region
+   &lt;chr&gt;              &lt;chr&gt;                           &lt;chr&gt;     &lt;chr&gt;           
+ 1 Kazakhstan         Kazakhstan                      Europe &amp;… Asia            
+ 2 Peru               Peru                            Latin Am… America         
+ 3 Eritrea            Eritrea                         Sub-Saha… Africa          
+ 4 Serbia             Serbia                          Europe &amp;… Europe          
+ 5 Kyrgyzstan         Kyrgyz Republic                 Europe &amp;… Asia            
+ 6 Russia             Russia                          Europe &amp;… Europe          
+ 7 Dominican Republic Dominican Republic              Latin Am… America         
+ 8 Chile              Chile                           Latin Am… America         
+ 9 Congo - Kinshasa   Democratic Republic of the Con… Sub-Saha… Africa          
+10 Myanmar (Burma)    Myanmar                         East Asi… Asia            
+11 Zambia             Zambia                          Sub-Saha… Africa          
+12 Ecuador            Ecuador                         Latin Am… America         
+13 South Africa       South Africa                    Sub-Saha… Africa          
+14 Laos               Lao People's Democratic Republ… East Asi… Asia            
+15 &lt;NA&gt;               Africa, regional                &lt;NA&gt;      Africa          
+16 Papua New Guinea   Papua New Guinea                East Asi… Oceania         
+17 Vietnam            Viet Nam                        East Asi… Asia            
+18 Uganda             Uganda                          Sub-Saha… Africa          
+19 Indonesia          Indonesia                       East Asi… Asia            
+20 Iran               Iran                            Middle E… Middle East     </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Handling Non-Country Entries
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Some datasets include regional entries (like “Africa, regional”) that won’t match country codes. Options for handling these:</p>
+<ol type="1">
+<li>Use <code>warn = TRUE</code> to see what doesn’t match</li>
+<li>Create custom matching rules for special cases (see <code>?countrycode</code>)</li>
+<li>Document any manual corrections needed</li>
+</ol>
+<p>How you handle these will depend on the context of your dataset and analysis. It’s worth remembering that the definition of regions and other aggregates often varies slightly by data source.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Country Code Best Practices
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Use ISO3C for Programming</strong></p>
+<ul>
+<li>Three-letter codes are unambiguous</li>
+<li>Avoid ISO2C (e.g., Namibia’s “NA” can cause issues)</li>
+<li>Perfect for plot labels where space is tight</li>
+</ul></li>
+<li><p><strong>Use Standardized Names for Presentation</strong></p>
+<ul>
+<li>More readable than codes</li>
+<li>Consistent across datasets</li>
+<li>Good for reports and visualizations</li>
+</ul></li>
+<li><p><strong>Keep Multiple Identifiers</strong></p>
+<ul>
+<li>Original names (match documentation)</li>
+<li>ISO3C codes (for programming)</li>
+<li>Standardized names (for presentation)</li>
+<li>Regional groupings (for analysis)</li>
+</ul></li>
+<li><p><strong>Check the <code>countrycode::codelist</code></strong></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># See all available code types</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>?countrycode<span class="sc">::</span>codelist</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Common useful conversions:</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># - "continent" Continent as defined in the World Bank Development Indicators</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># - "currency" ISO 4217 currency name</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># - "region" Regions as defined in the World Bank Development Indicators</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># - "eu28" for EU membership</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="step-4-create-proper-categories" class="level3" data-number="7.6.4">
+<h3 data-number="7.6.4" class="anchored" data-anchor-id="step-4-create-proper-categories"><span class="header-section-number">7.6.4</span> Step 4: Create Proper Categories</h3>
+<p>Convert text categories to meaningful factors.</p>
+<p>You don’t need to do this for all text variables, but consider doing it for ones you are going to use often, and where order matters for tables + charts.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>minerals_cats <span class="ot">&lt;-</span> minerals_countries <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Make status an ordered factor</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">status =</span> <span class="fu">factor</span>(</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>      status,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Pipeline: Commitment"</span>,</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Implementation"</span>,</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Completion"</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Make income groups ordered</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">oecd_oda_income_group =</span> <span class="fu">factor</span>(</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>      oecd_oda_income_group,</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Low income"</span>,</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Lower middle income"</span>,</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Upper middle income"</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>minerals_cats <span class="sc">|&gt;</span> </span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>    status</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  status                   n
+  &lt;fct&gt;                &lt;int&gt;
+1 Pipeline: Commitment    22
+2 Implementation          26
+3 Completion              89</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why Create Proper Factors?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Raw categorical data often needs structure:</p>
+<ul>
+<li>Natural ordering (status phases)</li>
+<li>Grouping levels (income categories)</li>
+<li>Consistent labels</li>
+</ul>
+<p>Proper factors enable:</p>
+<ul>
+<li>Correct ordering in plots</li>
+<li>Meaningful summaries</li>
+<li>Efficient filtering</li>
+<li>Clear presentation</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="creating-a-reusable-pipeline" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="creating-a-reusable-pipeline"><span class="header-section-number">7.7</span> Creating a Reusable Pipeline</h2>
+<p>Now let’s combine these steps into a reusable function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>process_minerals_data <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 1: Clean column names</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">clean_names</span>() <span class="sc">|&gt;</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 2: Fix dates</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">commitment_date_mm_dd_yyyy =</span> <span class="fu">ymd</span>(commitment_date_mm_dd_yyyy),</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">planned_implementation_start_date_mm_dd_yyyy =</span> <span class="fu">ymd</span>(planned_implementation_start_date_mm_dd_yyyy),</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">actual_implementation_start_date_mm_dd_yyyy =</span> <span class="fu">ymd</span>(actual_implementation_start_date_mm_dd_yyyy),</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">planned_completion_date_mm_dd_yyyy =</span> <span class="fu">ymd</span>(planned_completion_date_mm_dd_yyyy),</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">actual_completion_date_mm_dd_yyyy =</span> <span class="fu">ymd</span>(actual_completion_date_mm_dd_yyyy),</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">first_loan_repayment_date =</span> <span class="fu">ymd</span>(first_loan_repayment_date),</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">last_loan_repayment_date =</span> <span class="fu">ymd</span>(last_loan_repayment_date)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 3: Standardize country information</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">iso3c =</span> <span class="fu">countrycode</span>(</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">sourcevar =</span> recipient,</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">origin =</span> <span class="st">"country.name"</span>,</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">destination =</span> <span class="st">"iso3c"</span>,</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">origin_regex =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">warn =</span> <span class="cn">TRUE</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">country_name =</span> <span class="fu">countrycode</span>(</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">sourcevar =</span> iso3c,</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">origin =</span> <span class="st">"iso3c"</span>,</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">destination =</span> <span class="st">"country.name"</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">wb_region =</span> <span class="fu">countrycode</span>(</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>        <span class="at">sourcevar =</span> iso3c,</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>        <span class="at">origin =</span> <span class="st">"iso3c"</span>,</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>        <span class="at">destination =</span> <span class="st">"region"</span></span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 4: Create proper factors</span></span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">status =</span> <span class="fu">factor</span>(</span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>        status,</span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>        <span class="at">levels =</span> <span class="fu">c</span>(</span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Pipeline: Commitment"</span>,</span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Implementation"</span>,</span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Completion"</span></span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Make income groups ordered</span></span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a>      <span class="at">oecd_oda_income_group =</span> <span class="fu">factor</span>(</span>
+<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a>        oecd_oda_income_group,</span>
+<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a>        <span class="at">levels =</span> <span class="fu">c</span>(</span>
+<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Low income"</span>,</span>
+<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Lower middle income"</span>,</span>
+<span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Upper middle income"</span></span>
+<span id="cb19-55"><a href="#cb19-55" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb19-56"><a href="#cb19-56" aria-hidden="true" tabindex="-1"></a>      ) </span>
+<span id="cb19-57"><a href="#cb19-57" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb19-58"><a href="#cb19-58" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-59"><a href="#cb19-59" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 5: Add derived variables</span></span>
+<span id="cb19-60"><a href="#cb19-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb19-61"><a href="#cb19-61" aria-hidden="true" tabindex="-1"></a>      <span class="at">amount_bn =</span> amount_constant_usd_2021 <span class="sc">/</span> <span class="fl">1e9</span></span>
+<span id="cb19-62"><a href="#cb19-62" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb19-63"><a href="#cb19-63" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-64"><a href="#cb19-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-65"><a href="#cb19-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the pipeline</span></span>
+<span id="cb19-66"><a href="#cb19-66" aria-hidden="true" tabindex="-1"></a><span class="co"># First import the data</span></span>
+<span id="cb19-67"><a href="#cb19-67" aria-hidden="true" tabindex="-1"></a>minerals_raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb19-68"><a href="#cb19-68" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(</span>
+<span id="cb19-69"><a href="#cb19-69" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data-raw"</span>, </span>
+<span id="cb19-70"><a href="#cb19-70" aria-hidden="true" tabindex="-1"></a>    <span class="st">"AidData_Chinese_Financing_for_Transition_Minerals_Dataset_Version_1.0.xlsx"</span></span>
+<span id="cb19-71"><a href="#cb19-71" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb19-72"><a href="#cb19-72" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">"Financial_Contribution"</span>,</span>
+<span id="cb19-73"><a href="#cb19-73" aria-hidden="true" tabindex="-1"></a>  <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"N/A"</span>, <span class="st">"#N/A"</span>, <span class="st">"NULL"</span>),</span>
+<span id="cb19-74"><a href="#cb19-74" aria-hidden="true" tabindex="-1"></a>  <span class="at">guess_max =</span> <span class="dv">20000</span></span>
+<span id="cb19-75"><a href="#cb19-75" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-76"><a href="#cb19-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-77"><a href="#cb19-77" aria-hidden="true" tabindex="-1"></a><span class="co"># Then process it</span></span>
+<span id="cb19-78"><a href="#cb19-78" aria-hidden="true" tabindex="-1"></a>minerals_clean <span class="ot">&lt;-</span> minerals_raw <span class="sc">|&gt;</span> </span>
+<span id="cb19-79"><a href="#cb19-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">process_minerals_data</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `iso3c = countrycode(...)`.
+Caused by warning:
+! Some values were not matched unambiguously: Africa, regional</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the results</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  minerals_clean, </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"minerals_clean.rds"</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  minerals_clean, </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"minerals_clean.csv"</span>)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data-cleaning-checklist" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="data-cleaning-checklist"><span class="header-section-number">7.8</span> Data Cleaning Checklist</h2>
+<p>Before considering your data clean, verify:</p>
+<p><strong>Data Structure</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Column names are clean and consistent</label></li>
+<li><label><input type="checkbox">Each variable is in its own column</label></li>
+<li><label><input type="checkbox">Each observation is in its own row</label></li>
+<li><label><input type="checkbox">No duplicate observations</label></li>
+<li><label><input type="checkbox">No hidden formatting/calculations (if from Excel)</label></li>
+</ul>
+<p><strong>Data Types</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Dates are proper date objects</label></li>
+<li><label><input type="checkbox">Numbers are numeric (not text)</label></li>
+<li><label><input type="checkbox">Categories are proper factors</label></li>
+<li><label><input type="checkbox">Text fields are character type</label></li>
+<li><label><input type="checkbox">No mixed types in columns</label></li>
+</ul>
+<p><strong>Standardization</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Country names/codes are consistent</label></li>
+<li><label><input type="checkbox">Categories have standardized values</label></li>
+<li><label><input type="checkbox">Units are consistent</label></li>
+<li><label><input type="checkbox">Missing values are properly coded</label></li>
+<li><label><input type="checkbox">Special characters handled appropriately</label></li>
+</ul>
+<p><strong>Documentation</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Cleaning steps are documented</label></li>
+<li><label><input type="checkbox">Unusual values are noted</label></li>
+<li><label><input type="checkbox">Missing value handling is explained</label></li>
+<li><label><input type="checkbox">Assumptions are documented</label></li>
+<li><label><input type="checkbox">Output files are properly labeled</label></li>
+</ul>
+<p><strong>Quality Control</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Row counts match expectations</label></li>
+<li><label><input type="checkbox">Column counts match expectations</label></li>
+<li><label><input type="checkbox">Summaries look reasonable</label></li>
+<li><label><input type="checkbox">Missing value patterns make sense</label></li>
+<li><label><input type="checkbox">Extreme values are investigated</label></li>
+</ul>
+</section>
+<section id="effective-ai-prompts-for-data-cleaning" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="effective-ai-prompts-for-data-cleaning"><span class="header-section-number">7.9</span> Effective AI Prompts for Data Cleaning</h2>
+<p>Here are some powerful prompts that will help you get the most out of AI tools when cleaning data:</p>
+<section id="making-data-tidy" class="level3" data-number="7.9.1">
+<h3 data-number="7.9.1" class="anchored" data-anchor-id="making-data-tidy"><span class="header-section-number">7.9.1</span> Making Data Tidy</h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="an">I have a dataset that looks like this:</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">paste first few rows of your data using head() or glimpse()</span><span class="co">]</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>I think it might not be in tidy format because:</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">describe what seems wrong, e.g., "multiple variables in one column" or "values spread across columns"</span><span class="co">]</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>Can you help me:</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Identify which tidyverse principles it violates:</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Is each variable a column?</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Is each observation a row?</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Is each value a single cell?</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Suggest a tidyr pipeline to fix it?</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Explain why each step in the pipeline helps?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Example:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="an">I have this dataset:</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>Year  Q1_Sales  Q2_Sales  Q3_Sales  Q4_Sales</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>2021    100       120       95        150</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>2022    110       125       100       160</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>This seems untidy because sales values are spread across columns.</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>How can I reshape this to have columns: year, quarter, sales?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Tips for good tidy data prompts:</p>
+<ol type="1">
+<li>Show sample data</li>
+<li>Explain what seems wrong</li>
+<li>Describe desired output</li>
+<li>Ask for explanation of steps</li>
+</ol>
+</section>
+<section id="understanding-data-structure" class="level3" data-number="7.9.2">
+<h3 data-number="7.9.2" class="anchored" data-anchor-id="understanding-data-structure"><span class="header-section-number">7.9.2</span> Understanding Data Structure</h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>I have an Excel file with this glimpse() output:</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">paste your glimpse() output</span><span class="co">]</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>I want to:</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Clean the column names</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Convert dates to proper format</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Standardize country names</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>Can you help me write a tidyverse pipeline to do this?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="date-standardization" class="level3" data-number="7.9.3">
+<h3 data-number="7.9.3" class="anchored" data-anchor-id="date-standardization"><span class="header-section-number">7.9.3</span> Date Standardization</h3>
+<div class="sourceCode" id="cb25"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="an">I have dates in these formats:</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">paste unique(date_column)</span><span class="co">]</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>I need to:</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Convert them to proper date objects</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Handle missing/invalid dates</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Create consistent format</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>Can you help me write a robust date cleaning function?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="debugging-data-issues" class="level3" data-number="7.9.4">
+<h3 data-number="7.9.4" class="anchored" data-anchor-id="debugging-data-issues"><span class="header-section-number">7.9.4</span> Debugging Data Issues</h3>
+<div class="sourceCode" id="cb26"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>I'm trying to clean this data but getting this error:</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">paste error message</span><span class="co">]</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>Here's my code:</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">paste code</span><span class="co">]</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>Here's a sample of my data:</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">paste glimpse(data)</span><span class="co">]</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>Can you help me:</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Understand what's wrong</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Fix the immediate issue</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Prevent similar issues?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="creating-cleaning-functions" class="level3" data-number="7.9.5">
+<h3 data-number="7.9.5" class="anchored" data-anchor-id="creating-cleaning-functions"><span class="header-section-number">7.9.5</span> Creating Cleaning Functions</h3>
+<div class="sourceCode" id="cb27"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="an">I need to clean multiple similar datasets with these characteristics:</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">paste glimpse(data)</span><span class="co">]</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>Common issues include:</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">list issues</span><span class="co">]</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>Can you help me write a robust cleaning function that:</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Handles all these cases</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Includes error checking</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Documents the cleaning steps?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Getting the Most from AI
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>Show Your Data</strong>
+<ul>
+<li>Use <code>glimpse()</code>, <code>head()</code>, or <code>str()</code></li>
+<li>Include sample values</li>
+<li>Show error messages</li>
+</ul></li>
+<li><strong>Be Specific</strong>
+<ul>
+<li>Explain your goal</li>
+<li>Describe current issues</li>
+<li>List any constraints</li>
+</ul></li>
+<li><strong>Ask for Explanation</strong>
+<ul>
+<li>Request comments in code</li>
+<li>Ask about trade-offs</li>
+<li>Get help with error handling</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+<section id="practice-exercises" class="level2" data-number="7.10">
+<h2 data-number="7.10" class="anchored" data-anchor-id="practice-exercises"><span class="header-section-number">7.10</span> Practice Exercises</h2>
+<section id="exercise-1-creating-a-data-processing-pipeline" class="level3" data-number="7.10.1">
+<h3 data-number="7.10.1" class="anchored" data-anchor-id="exercise-1-creating-a-data-processing-pipeline"><span class="header-section-number">7.10.1</span> Exercise 1: Creating a Data Processing Pipeline</h3>
+<p>Let’s practice by cleaning some financial data with common issues:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create our messy data</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>messy_data <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="st">Country,Project Value,Date,Status</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="st">People's Republic of China,</span><span class="sc">\"</span><span class="st">$12,000,000</span><span class="sc">\"</span><span class="st">,Sep 20 2021,ACTIVE</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="st">Democratic Republic of Congo,</span><span class="sc">\"</span><span class="st">$8,500,000</span><span class="sc">\"</span><span class="st">,Sep 15 2021,Active</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="st">Vietnam,</span><span class="sc">\"</span><span class="st">$15,250,000</span><span class="sc">\"</span><span class="st">,Sep 10 2021,COMPLETED</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="st">China,</span><span class="sc">\"</span><span class="st">$9,750,000</span><span class="sc">\"</span><span class="st">,Sep 5 2021,active</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="st">Cote d'Ivoire,</span><span class="sc">\"</span><span class="st">$11,250,000</span><span class="sc">\"</span><span class="st">,Sep 1 2021,Pipeline</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to data-raw using here()</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">write_file</span>(</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>  messy_data,</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data-raw"</span>, <span class="st">"messy_finance.csv"</span>)</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Your tasks:</p>
+<ol type="1">
+<li><p>Create a function called <code>process_finance_data()</code> that:</p>
+<ul>
+<li>Standardizes country names (note: China appears twice with different names)</li>
+<li>Cleans monetary values using <code>parse_number()</code></li>
+<li>Converts dates to proper date format using lubridate</li>
+<li>Creates proper status factors. Use <code>str_to_title()</code> to get values to consistent case first.</li>
+</ul></li>
+<li><p>Write a pipeline that:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import data</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>finance_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data-raw"</span>, <span class="st">"messy_finance.csv"</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Process it</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>finance_clean <span class="ot">&lt;-</span> finance_raw <span class="sc">|&gt;</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">process_finance_data</span>()</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Save results</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  finance_clean,</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"finance_clean.rds"</span>)</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Useful Cleaning Functions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>For Numbers:</strong></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># parse_number() removes currency symbols and commas</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parse_number</span>(<span class="st">"$12,000,000"</span>)  <span class="co"># Returns 12000000</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">parse_number</span>(<span class="st">"$1,234.56"</span>)    <span class="co"># Returns 1234.56</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>For Dates:</strong> Lubridate provides functions matching common date formats:</p>
+<ul>
+<li><code>mdy()</code> (month-day-year): “Sep 20 2021” → 2021-09-20</li>
+<li><code>ymd()</code> (year-month-date): “2021-09-20” → 2021-09-20</li>
+<li><code>dmy()</code> (day-month-year): “20-09-2021” → 2021-09-20</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Examples</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mdy</span>(<span class="st">"Sep 20 2021"</span>)    <span class="co"># Returns "2021-09-20"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2021-09-20"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">"2021-09-20"</span>)     <span class="co"># Returns "2021-09-20"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2021-09-20"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dmy</span>(<span class="st">"20-09-2021"</span>)     <span class="co"># Returns "2021-09-20"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2021-09-20"</code></pre>
+</div>
+</div>
+<p>The function name matches the order of the date components (m=month, d=day, y=year).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Making Text Case Consistent
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The {stringr} package provides several functions for standardizing text case:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to title case (First Letter Of Each Word)</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_title</span>(<span class="st">"RURAL ELECTRIFICATION project"</span>)  <span class="co"># Returns "Rural Electrification Project"</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to upper case (ALL CAPS)</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_upper</span>(<span class="st">"Rural Electrification Project"</span>)  <span class="co"># Returns "RURAL ELECTRIFICATION PROJECT"</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to lower case (all lowercase)</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_lower</span>(<span class="st">"Rural Electrification Project"</span>)  <span class="co"># Returns "rural electrification project"</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Real world example: standardizing status values</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>status_values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"IN PROGRESS"</span>, <span class="st">"Completed"</span>, <span class="st">"not started"</span>, <span class="st">"In Progress"</span>)</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>status_clean <span class="ot">&lt;-</span> status_values <span class="sc">|&gt;</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_to_title</span>()  <span class="co"># Returns: "In Progress", "Completed", "Not Started", "In Progress"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When to use each:</p>
+<ul>
+<li><code>str_to_title()</code>: Names, project titles, status values</li>
+<li><code>str_to_upper()</code>: Country codes, ID values</li>
+<li><code>str_to_lower()</code>: Before matching or comparing strings</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="exercise-2-working-with-multiple-data-quality-issues" class="level3" data-number="7.10.2">
+<h3 data-number="7.10.2" class="anchored" data-anchor-id="exercise-2-working-with-multiple-data-quality-issues"><span class="header-section-number">7.10.2</span> Exercise 2: Working with Multiple Data Quality Issues</h3>
+<p>Let’s practice handling several common data quality issues:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create project data with various issues</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>projects <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="st">Region,Project Title,Start Date,Budget (USD),Status</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="st">East Asia,Water Treatment Plant,Sep 15 2021,$12000000,In Progress</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="st">Eastern Asia,Solar Farm Phase 1,Sep 10 2021,$15250000,ACTIVE</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="st">Sub-Saharan Africa,Highway Extension,,</span><span class="sc">\"</span><span class="st">$8,500,000</span><span class="sc">\"</span><span class="st">,planning</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="st">SSA,Rural Electrification,Sep 1 2021,$11250000,ACTIVE</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Save using here()</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write_file</span>(</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>  projects,</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data-raw"</span>, <span class="st">"projects.csv"</span>)</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Your tasks:</p>
+<ol type="1">
+<li>Create a data processing function that:
+<ul>
+<li>Standardizes region names (East Asia/Eastern Asia, Sub-Saharan Africa/SSA)</li>
+<li>Handles the missing date</li>
+<li>Cleans monetary values</li>
+<li>Standardizes status values</li>
+<li>Groups similar projects by region</li>
+</ul></li>
+<li>Add validation checks that:
+<ul>
+<li>Verify all required fields are present</li>
+<li>Check date ranges</li>
+<li>Validate budget ranges</li>
+<li>Ensure status values are standardized</li>
+</ul></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Common Data Quality Issues
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When working with real data, watch for:</p>
+<ol type="1">
+<li><strong>Inconsistent Names</strong>
+<ul>
+<li>Different spellings</li>
+<li>Abbreviations</li>
+<li>Regional variations</li>
+</ul></li>
+<li><strong>Missing Values</strong>
+<ul>
+<li>Empty cells</li>
+<li>Placeholder values (“N/A”, “-”, etc.)</li>
+<li>Impossible values</li>
+</ul></li>
+<li><strong>Format Inconsistencies</strong>
+<ul>
+<li>Mixed date formats</li>
+<li>Different currency notations</li>
+<li>Varied text cases</li>
+</ul></li>
+</ol>
+<p>Always document how you handle each type of issue!</p>
+</div>
+</div>
+</section>
+</section>
+<section id="resources-for-learning-more" class="level2" data-number="7.11">
+<h2 data-number="7.11" class="anchored" data-anchor-id="resources-for-learning-more"><span class="header-section-number">7.11</span> Resources for Learning More</h2>
+<section id="essential-references" class="level3" data-number="7.11.1">
+<h3 data-number="7.11.1" class="anchored" data-anchor-id="essential-references"><span class="header-section-number">7.11.1</span> Essential References</h3>
+<ol type="1">
+<li><strong>Data Import &amp; Cleaning</strong>
+<ul>
+<li><a href="https://r4ds.hadley.nz/data-import">R for Data Science - Data Import</a></li>
+<li><a href="https://readxl.tidyverse.org/">readxl documentation</a></li>
+<li><a href="https://sfirke.github.io/janitor/articles/janitor.html">janitor vignette</a></li>
+<li><a href="https://vincentarelbundock.github.io/countrycode/">countrycode documentation</a></li>
+</ul></li>
+<li><strong>Working with Dates</strong>
+<ul>
+<li><a href="https://lubridate.tidyverse.org/articles/lubridate.html">Lubridate vignette</a></li>
+<li><a href="https://r4ds.hadley.nz/dates.html">Dates and Times in R</a></li>
+</ul></li>
+<li><strong>Number Formatting</strong>
+<ul>
+<li><a href="https://readr.tidyverse.org/articles/readr.html#numbers">readr vignette on parsing numbers</a></li>
+<li><a href="https://scales.r-lib.org/">scales package for formatting</a></li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="next-steps" class="level2" data-number="7.12">
+<h2 data-number="7.12" class="anchored" data-anchor-id="next-steps"><span class="header-section-number">7.12</span> Next Steps</h2>
+<p>In our class session, we’ll:</p>
+<ol type="1">
+<li><strong>Work with Complex Datasets</strong>
+<ul>
+<li>Handle multiple related files</li>
+<li>Learn about different types of joins</li>
+<li>Create robust cleaning pipelines</li>
+</ul></li>
+<li><strong>Build Validation Systems</strong>
+<ul>
+<li>Create data quality checks</li>
+<li>Validate transformations</li>
+<li>Document cleaning decisions</li>
+</ul></li>
+<li><strong>Practice with Real Data</strong>
+<ul>
+<li>Work with your own datasets</li>
+<li>Solve common challenges</li>
+<li>Create reusable solutions</li>
+</ul></li>
+<li><strong>Learn Advanced Techniques</strong>
+<ul>
+<li>Handle special cases</li>
+<li>Create custom cleaning functions</li>
+<li>Build automated workflows</li>
+</ul></li>
+</ol>
+<p>Remember: Good data cleaning is the foundation of reliable analysis. The time you invest in creating robust cleaning pipelines will save you hours of troubleshooting later!</p>
+
+
 </section>
 
 </main> <!-- /main -->
