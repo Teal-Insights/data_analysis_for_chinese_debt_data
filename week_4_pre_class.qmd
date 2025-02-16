@@ -10,7 +10,7 @@ Getting data into R and preparing it for analysis is often your first challenge 
 Watch this video lecture before our interactive session:
 
 ::: {.column-page}
-{{< video https://youtu.be/PLACEHOLDER >}}
+{{< video https://www.youtube.com/watch?v=NoxsOgxSoUE >}}
 :::
 
 ## Learning Objectives
@@ -122,6 +122,7 @@ library(readxl)       # For reading Excel files
 library(readr)        # For reading CSV files
 library(janitor)      # For cleaning column names
 library(countrycode)  # For standardizing country names
+library(here)        # For relative filepaths
 ```
 
 ## Core Concepts
@@ -147,7 +148,10 @@ Let's try reading our Critical Minerals data:
 ```{r}
 # Read the Excel file
 minerals_raw <- read_excel(
-  "data-raw/AidData_Chinese_Financing_for_Transition_Minerals_Dataset_Version_1.0.xlsx",
+  here(
+    "data-raw",
+    "AidData_Chinese_Financing_for_Transition_Minerals_Dataset_Version_1.0.xlsx"
+  ),
   sheet = "Financial_Contribution",
   na = c("", "NA", "N/A", "#N/A", "NULL"),  # Handle missing values
   guess_max = 20000  # Look at more rows when guessing types
