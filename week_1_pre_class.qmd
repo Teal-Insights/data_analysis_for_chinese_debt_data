@@ -1,4 +1,4 @@
-`# Pre-Course Preparation {#sec-preclass}
+# Pre-Course Preparation {#sec-preclass}
 
 ## Overview
 
@@ -153,7 +153,11 @@ After installation completes, load the tidyverse:
 library(tidyverse)
 ```
 
-You'll see some messages about which packages were loaded. Don't worry about understanding all of them now - we'll learn about each one as we need it. ::: {.callout-note} You only need to install a package once on your computer (like installing Microsoft Office), but you need to load it with library() each time you start R (like opening Excel when you want to use it). :::
+You'll see some messages about which packages were loaded. Don't worry about understanding all of them now - we'll learn about each one as we need it.
+
+::: callout-note
+You only need to install a package once on your computer (like installing Microsoft Office), but you need to load it with library() each time you start R (like opening Excel when you want to use it). 
+:::
 
 ## Try Using AI to Learn R
 
@@ -174,9 +178,9 @@ Try this prompt with ChatGPT or Claude:
 
 > "I'm new to R. Can you explain what each line of this code does? Please explain it like you're talking to someone who has never programmed before."
 
-LLMs' coding ability improves rapidly, so it's worth using the frontier models. If you don't already have access to the paid version of either Claude or ChatGPT, it is \$20 a month well spent[^week_1_preclass-1].
+LLMs' coding ability improves rapidly, so it's worth using the frontier models. If you don't already have access to the paid version of either Claude or ChatGPT, it is \$20 a month well spent[^week_1_pre_class-1].
 
-[^week_1_preclass-1]: As of the time of writing in January of 2025, Claude is the best for R, but ChatGPT 4o (and above) aren't too far behind. This will change quickly as new models come out.
+[^week_1_pre_class-1]: As of the time of writing in January of 2025, Claude is the best for R, but ChatGPT 4o (and above) aren't too far behind. This will change quickly as new models come out.
 
 ## Learning Resources
 
@@ -211,7 +215,7 @@ The R community is known for being friendly and supportive. Here's where to find
 -   [R-bloggers](https://www.r-bloggers.com/): An aggregator of R-related blogs and tutorials
 
 ::: callout-note
-We'll provide a comprehensive resource list in Chapter X, but these should get you started. The R community's commitment to sharing knowledge means you'll never lack for learning materials!
+We'll provide a resource list at the end of each chapter, but these should get you started. The R community's commitment to sharing knowledge means you'll never lack for learning materials!
 :::
 
 ## Success Checklist
