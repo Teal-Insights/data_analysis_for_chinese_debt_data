@@ -1,1 +1,572 @@
 # Week 4: Import & Tidy Your Data (In-Class) {#sec-week4_in_class}
+
+## Today's Agenda (90 minutes)
+
+1.  **Understanding Data Integration** (20 min)
+    -   Why combine multiple data sources?
+    -   Types of data relationships
+    -   Common integration challenges
+    -   Real examples from loan performance analysis
+2.  **Working with Multiple Data Sources** (25 min)
+    -   Importing from different sources (CSV, APIs, packages)
+    -   Standardizing country names
+    -   Understanding join types
+    -   Handling missing values
+3.  **Integrating Debt Data** (40 min)
+    -   Case study: GCDF and IDS data
+    -   Hands-on practice with joins
+    -   Creating richer analysis
+    -   Setting up for capstone project
+4.  **Preview: Capstone Project** (5 min)
+    -   Next week's in-person session
+    -   Project options
+    -   Resource sharing
+    -   Team formation
+
+## Learning Objectives
+
+By the end of this session, you will be able to:
+
+1.  **Import** data from multiple sources (APIs, CSVs, R packages)
+2.  **Standardize** key variables for joining datasets
+3.  **Combine** datasets using different types of joins
+4.  **Create** integrated analysis incorporating multiple data sources
+5.  **Begin** exploring capstone project possibilities
+
+::: callout-tip
+## Why This Matters for TUFF Analysis
+
+The ability to integrate multiple data sources is crucial for your work:
+
+-   Compare TUFF data with official statistics
+-   Add macroeconomic context to lending data
+-   Validate data against multiple sources
+-   Create richer analysis by combining perspectives
+
+Having these skills will help you:
+
+-   Work more efficiently
+-   Find unique insights
+-   Create compelling visualizations
+-   Build reproducible workflows
+:::
+
+## Today's Video Lecture
+
+Watch this video lecture to review the concepts from class 4:
+
+::: column-page
+{{< video https://youtu.be/NoxsOgxSoUE >}}
+:::
+
+## Setup
+
+Let's get our workspace ready:
+
+``` r
+# Create a new Quarto document
+# File → New File → Quarto Document
+# Save as "week_4_integration_in_class.qmd" in your week_4/R folder
+```
+
+Intall new packages:
+
+```{r}
+#| eval: false
+pak::pkg_install(
+  c(
+    "wbids",
+    "WDI", 
+    "Teal-Insights/imfweo"
+  )
+)
+```
+
+Load required packages:
+
+```{r}
+#| message: false
+library(tidyverse)      # Core data science tools
+library(chinadevfin3)   # GCDF 3.0 data
+library(imfweo)         # IMF WEO data
+library(wbids)          # WB IDS data
+library(countrycode)    # Country name standardization
+library(WDI)            # World Bank Development Indicators
+library(janitor)        # Data cleaning tools
+```
+
+## Understanding Data Integration
+
+### Why Combine Data Sources?
+
+In real-world analysis, crucial insights often come from combining different perspectives on the same phenomenon. For example, in analyzing Chinese overseas lending:
+
+1.  **GCDF Data** provides:
+    -   Project-level details
+    -   Sectoral breakdown
+    -   Implementation status
+    -   Flow classifications
+2.  **IDS Data** provides:
+    -   Official debt statistics
+    -   Creditor composition
+    -   Debt service metrics
+    -   Restructuring information
+3.  **IMF WEO Data** provides:
+    -   Macroeconomic context
+    -   GDP and growth figures
+    -   External sector metrics
+    -   Forward projections
+
+### Key Integration Challenges
+
+When combining data, we often face:
+
+1.  **Identifier Mismatches**
+    -   Different country names/codes
+    -   Various date formats
+    -   Inconsistent categorizations
+2.  **Temporal Alignment**
+    -   Different time periods
+    -   Varying frequencies
+    -   Point vs. period data
+3.  **Unit Consistency**
+    -   Nominal vs. real values
+    -   Currency conversions
+    -   Scale differences
+4.  **Conceptual Mapping**
+    -   Different definitions
+    -   Varying methodologies
+    -   Classification systems
+
+Let's see how to handle these challenges systematically.
+
+## Working with Multiple Data Sources
+
+### Getting IDS Debt Data
+
+First, let's get the IDS debt distress data from GitHub:
+
+```{r}
+# URLs for IDS data
+ids_data_url <- "https://raw.githubusercontent.com/Teal-Insights/ids_2024_explorations/main/data/ids_debt_distress_data.csv"
+ids_metadata_url <- "https://raw.githubusercontent.com/Teal-Insights/ids_2024_explorations/main/data/ids_debt_distress_metadata.csv"
+
+# Import data
+ids_data <- read_csv(ids_data_url)
+ids_metadata <- read_csv(ids_metadata_url)
+
+# Look at what we have
+glimpse(ids_data)
+glimpse(ids_metadata)
+```
+
+### Getting IMF WEO Data
+
+Now let's add some macroeconomic context:
+
+```{r}
+# List available WEO series
+weo_list_series()
+
+# Get GDP data for all countries
+gdp_data <- weo_get(
+  series = c(
+    "NGDPD",        # Nominal GDP in USD
+    "NGDP_RPCH"     # Real GDP growth
+  ),
+  # Get all countries - we'll filter later
+  countries = weo_list_countries()$country_code,
+  start_year = 2000
+)
+
+glimpse(gdp_data)
+```
+
+### Understanding Join Types
+
+Before we combine our data, let's understand the four main types of joins:
+
+1.  **Inner Join**: Keep only rows that match in both datasets
+
+```{r}
+# Example with small datasets
+country_debt <- tibble(
+  country = c("Angola", "Ghana", "Kenya"),
+  debt_stock = c(100, 200, 300)
+)
+
+country_debt
+
+country_gdp <- tibble(
+  country = c("Angola", "Ghana", "Zambia"),
+  gdp = c(1000, 2000, 3000)
+)
+
+country_gdp
+
+# Inner join - only Angola and Ghana appear
+country_debt |>
+  inner_join(country_gdp, by = "country")
+```
+
+2.  **Left Join**: Keep all rows from left dataset, match where possible from right
+
+```{r}
+# Left join - Kenya appears with NA for gdp
+country_debt |>
+  left_join(country_gdp, by = "country")
+```
+
+3.  **Right Join**: Keep all rows from right dataset, match where possible from left
+
+```{r}
+# Right join - Zambia appears with NA for debt_stock
+country_debt |>
+  right_join(country_gdp, by = "country")
+```
+
+4.  **Full Join**: Keep all rows from both datasets
+
+```{r}
+# Full join - all countries appear, with NAs where no match
+country_debt |>
+  full_join(country_gdp, by = "country")
+```
+
+::: callout-tip
+## Choosing Join Types
+
+-   Use `inner_join()` when you only want complete cases
+-   Use `left_join()` to keep all your primary data
+-   Use `right_join()` rarely (just use left_join with datasets reversed)
+-   Use `full_join()` to see what might be missing
+:::
+
+### Practice Exercise: Basic Joins
+
+Let's practice with some GCDF data:
+
+```{r}
+# Get total commitments by country
+country_totals <- get_gcdf3_dataset() |>
+  filter(recommended_for_aggregates == "Yes") |>
+  group_by(country_name,iso3c) |>
+  summarize(
+    total_commitments = sum(amount_constant_usd_2021, na.rm = TRUE)
+  ) |> 
+  ungroup()
+
+country_totals
+
+# Get GDP data for comparison
+gdp_totals <- gdp_data |>
+  filter(
+    series_code == "NGDPD",  # Nominal GDP
+    year == 2021             # Latest year
+  ) |>
+  select(country_code, gdp = value)
+
+gdp_totals
+
+
+
+```
+
+Your turn: Try different joins
+
+1.  **Inner join** - which countries have both commitment and GDP data?
+
+2.  **Left join** - keep all countries with GCDF commitments
+
+3.  **Full join** - see which countries are missing from each source
+
+::: callout-tip
+## Joining by a common key
+
+What variable in each dataset is the same? Look at the documentation (e.g. run `?left_join()`) to figure out how to connect the two datasets.
+:::
+
+## Integrating Debt Data
+
+Now let's work with our real analysis datasets:
+
+### Step 1: Standardize Country Information
+
+First, we need consistent country identifiers:
+
+```{r}
+# Standardize IDS data
+ids_clean <- ids_data |>
+  mutate(
+    # Add ISO3C codes
+    iso3c = countrycode(
+      sourcevar = geography_id,
+      origin = "iso3c",
+      destination = "iso3c"
+    ),
+    # Add standardized names
+    country_name = countrycode(
+      sourcevar = iso3c,
+      origin = "iso3c",
+      destination = "country.name"
+    )
+  )
+
+ids_clean |> glimpse()
+
+# Standardize WEO data
+weo_clean <- gdp_data |>
+  mutate(
+    # Add ISO3C codes - WEO uses ISO3C already
+    iso3c = country_code,
+    # Add standardized names
+    country_name = countrycode(
+      sourcevar = iso3c,
+      origin = "iso3c",
+      destination = "country.name"
+    )
+  )
+
+weo_clean |> glimpse()
+```
+
+### Step 2: Focus on Key Variables
+
+Let's look at debt rescheduling:
+
+```{r}
+# Get rescheduling data from IDS
+rescheduling <- ids_clean |>
+  filter(
+    # Total amount rescheduled
+    series_id == "DT.TXR.DPPG.CD",
+    # Only Chinese debt
+    counterpart_id == "730",
+    # Focus on recent years
+    year >= 2015
+  )
+
+# Get GCDF rescheduling cases and identify DSSI cases
+gcdf_rescheduling <- get_gcdf3_dataset() |>
+  filter(
+    flow_type == "Debt rescheduling",
+    recommended_for_aggregates == "Yes"
+  ) |>
+  mutate(
+    is_dssi = str_detect(description, "DSSI")
+  )
+
+# Look at the mix of DSSI vs other reschedulings
+gcdf_rescheduling |>
+  count(is_dssi)
+```
+
+### Step 3: Create Combined Analysis
+
+Now we can start comparing sources:
+
+```{r}
+# Get GCDF rescheduling counts by country-year
+gcdf_counts <- gcdf_rescheduling |>
+  group_by(country_name, commitment_year, is_dssi) |>
+  summarize(
+    rescheduling_count = n(),
+    .groups = "drop"
+  ) |>
+  # Make counts by type
+  pivot_wider(
+    names_from = is_dssi,
+    values_from = rescheduling_count,
+    values_fill = 0,
+    names_prefix = "gcdf_count_"
+  )
+
+# Combine with IDS amounts
+rescheduling_comparison <- gcdf_counts |>
+  distinct() |>
+  left_join(
+    rescheduling |>
+      distinct(
+        country_name,
+        year,
+        ids_amount = value
+      ),
+    by = c(
+      "country_name" = "country_name",
+      "commitment_year" = "year"
+    )
+  )
+
+# Check the results
+rescheduling_comparison |>
+  filter(!is.na(ids_amount)) |>
+  filter(commitment_year >= 2015) |>
+  arrange(desc(ids_amount))
+
+# First create summary data
+rescheduling_summary <- gcdf_rescheduling |>
+  # Get annual counts by DSSI vs non-DSSI
+  group_by(commitment_year, is_dssi) |>
+  summarize(
+    count = n(),
+    .groups = "drop"
+  ) |>
+  # Make DSSI labels more readable
+  mutate(
+    rescheduling_type = if_else(
+      is_dssi,
+      "DSSI Rescheduling",
+      "Other Rescheduling"
+    )
+  )
+
+# Create visualization
+ggplot(
+  rescheduling_summary |>
+    filter(commitment_year >= 2015)
+) +
+  geom_col(
+    aes(
+      x = commitment_year,
+      y = count,
+      fill = rescheduling_type
+    ),
+    position = "stack"
+  ) +
+  scale_fill_brewer(palette = "Set2") +
+  labs(
+    title = "Debt Rescheduling Cases by Type",
+    subtitle = "DSSI vs Other Reschedulings (2015-2021)",
+    x = "Year",
+    y = "Number of Cases",
+    fill = NULL
+  ) +
+  theme_minimal()
+```
+
+### Practice Exercise: Exploring Rescheduling Patterns
+
+Your turn! Try these exercises:
+
+1.  Analyze DSSI participation:
+
+-   Which countries had DSSI reschedulings?
+-   How does this compare to eligible countries?
+-   What patterns do you see by region?
+
+2.  Compare with IDS reporting:
+
+-   Do countries with more GCDF reschedulings show larger IDS amounts?
+-   Are there systematic differences by region or income group?
+-   What might explain any discrepancies?
+
+3.  Add economic context:
+
+-   Use WEO data to add GDP context
+-   Calculate rescheduling amounts as % of GDP
+-   Look for patterns in timing relative to growth rates
+
+::: callout-tip
+## Analysis Tips
+
+-   Start by looking at simple counts and patterns
+-   Add complexity gradually
+-   Document unexpected findings
+-   Consider what patterns might mean for data collection
+:::
+
+## Setting Up the Capstone Project
+
+### Project Structure
+
+The capstone project will explore Chinese overseas lending data using multiple sources:
+
+1.  **Core Data Sources**
+    -   GCDF 3.0 Database
+    -   World Bank IDS
+    -   IMF WEO
+    -   Other sources you identify
+2.  **Key Questions**
+    -   How do GCDF and IDS data compare?
+    -   What patterns emerge in debt distress?
+    -   How does economic context matter?
+    -   What stories deserve deeper investigation?
+3.  **Output Options**
+    -   Blog post
+    -   Policy brief
+    -   Interactive dashboard
+    -   Automated report system
+    -   Your creative ideas!
+
+### Next Week's Schedule
+
+**Morning Session (9:30-11:00)** - Storytelling with Data workshop - Project planning - Team formation
+
+**Midday (11:30-3:00)** - Optional work session - One-on-one consultations - Team collaboration time
+
+**Afternoon Session (3:00-4:30)** - Project development - Peer feedback - Planning next steps
+
+### This Week's Preparation
+
+1.  **Explore the Data**
+    -   Try different integration approaches
+    -   Look for interesting patterns
+    -   Document questions that arise
+2.  **Consider Output Format**
+    -   What would be most useful?
+    -   Who is your audience?
+    -   What story do you want to tell?
+3.  **Optional: Other Projects**
+    -   If you have other data to work with
+    -   Different questions to explore
+    -   Alternative output formats
+
+## Resources for Data Integration
+
+### Essential References
+
+1.  **R for Data Science Chapters**
+    -   [Data Import](https://r4ds.hadley.nz/data-import)
+    -   [Data Tidying](https://r4ds.hadley.nz/data-tidy)
+    -   [Joins](https://r4ds.hadley.nz/joins)
+2.  Notable Data Resources
+    -   [WDI vignette](https://vincentarelbundock.github.io/WDI/)
+    -   [imfr examples](https://github.com/christophergandrud/imfr)
+    -   [Our World in Data GitHub](https://github.com/owid)
+
+### Additional Learning
+
+1.  **Data Integration Concepts**
+    -   [Relational Data chapter](https://r4ds.hadley.nz/joins)
+    -   [Database Concepts in R](https://db.rstudio.com/databases)
+    -   [Best Practices for Joins](https://style.tidyverse.org/joins)
+
+## Wrapping Up
+
+### Key Takeaways
+
+1.  **Data Integration Power**
+    -   Combining sources reveals new insights
+    -   Standardization is crucial
+    -   Documentation matters
+2.  **Join Mechanics**
+    -   Different joins for different needs
+    -   Always check results
+    -   Consider what missing data means
+3.  **Project Preparation**
+    -   Start exploring now
+    -   Think about storytelling
+    -   Consider your audience
+
+### Next Steps
+
+1.  **This Week**
+    -   Explore the data
+    -   Try different combinations
+    -   Document interesting findings
+2.  **Next Wednesday**
+    -   Bring your discoveries
+    -   Come with questions
+    -   Be ready to collaborate
+
+Remember: The goal is to create something useful for your work while practicing your new R skills!

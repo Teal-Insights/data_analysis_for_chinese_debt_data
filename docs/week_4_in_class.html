@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -72,9 +106,13 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="8&nbsp; Week 4: Import &amp; Tidy Your Data (In-Class) – Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs">
+<meta property="og:description" content="">
+<meta property="og:image" content="week_4_in_class_files/figure-html/unnamed-chunk-12-1.png">
 <meta property="og:site_name" content="Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs">
 <meta name="twitter:title" content="8&nbsp; Week 4: Import &amp; Tidy Your Data (In-Class) – Applied Data Analysis for Chinese Lending Data Using R &amp; LLMs">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="week_4_in_class_files/figure-html/unnamed-chunk-12-1.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar floating">
@@ -210,11 +248,55 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#todays-agenda-90-minutes" id="toc-todays-agenda-90-minutes" class="nav-link active" data-scroll-target="#todays-agenda-90-minutes"><span class="header-section-number">8.1</span> Today’s Agenda (90 minutes)</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">8.2</span> Learning Objectives</a></li>
+  <li><a href="#todays-video-lecture" id="toc-todays-video-lecture" class="nav-link" data-scroll-target="#todays-video-lecture"><span class="header-section-number">8.3</span> Today’s Video Lecture</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">8.4</span> Setup</a></li>
+  <li><a href="#understanding-data-integration" id="toc-understanding-data-integration" class="nav-link" data-scroll-target="#understanding-data-integration"><span class="header-section-number">8.5</span> Understanding Data Integration</a>
+  <ul class="collapse">
+  <li><a href="#why-combine-data-sources" id="toc-why-combine-data-sources" class="nav-link" data-scroll-target="#why-combine-data-sources"><span class="header-section-number">8.5.1</span> Why Combine Data Sources?</a></li>
+  <li><a href="#key-integration-challenges" id="toc-key-integration-challenges" class="nav-link" data-scroll-target="#key-integration-challenges"><span class="header-section-number">8.5.2</span> Key Integration Challenges</a></li>
+  </ul></li>
+  <li><a href="#working-with-multiple-data-sources" id="toc-working-with-multiple-data-sources" class="nav-link" data-scroll-target="#working-with-multiple-data-sources"><span class="header-section-number">8.6</span> Working with Multiple Data Sources</a>
+  <ul class="collapse">
+  <li><a href="#getting-ids-debt-data" id="toc-getting-ids-debt-data" class="nav-link" data-scroll-target="#getting-ids-debt-data"><span class="header-section-number">8.6.1</span> Getting IDS Debt Data</a></li>
+  <li><a href="#getting-imf-weo-data" id="toc-getting-imf-weo-data" class="nav-link" data-scroll-target="#getting-imf-weo-data"><span class="header-section-number">8.6.2</span> Getting IMF WEO Data</a></li>
+  <li><a href="#understanding-join-types" id="toc-understanding-join-types" class="nav-link" data-scroll-target="#understanding-join-types"><span class="header-section-number">8.6.3</span> Understanding Join Types</a></li>
+  <li><a href="#practice-exercise-basic-joins" id="toc-practice-exercise-basic-joins" class="nav-link" data-scroll-target="#practice-exercise-basic-joins"><span class="header-section-number">8.6.4</span> Practice Exercise: Basic Joins</a></li>
+  </ul></li>
+  <li><a href="#integrating-debt-data" id="toc-integrating-debt-data" class="nav-link" data-scroll-target="#integrating-debt-data"><span class="header-section-number">8.7</span> Integrating Debt Data</a>
+  <ul class="collapse">
+  <li><a href="#step-1-standardize-country-information" id="toc-step-1-standardize-country-information" class="nav-link" data-scroll-target="#step-1-standardize-country-information"><span class="header-section-number">8.7.1</span> Step 1: Standardize Country Information</a></li>
+  <li><a href="#step-2-focus-on-key-variables" id="toc-step-2-focus-on-key-variables" class="nav-link" data-scroll-target="#step-2-focus-on-key-variables"><span class="header-section-number">8.7.2</span> Step 2: Focus on Key Variables</a></li>
+  <li><a href="#step-3-create-combined-analysis" id="toc-step-3-create-combined-analysis" class="nav-link" data-scroll-target="#step-3-create-combined-analysis"><span class="header-section-number">8.7.3</span> Step 3: Create Combined Analysis</a></li>
+  <li><a href="#practice-exercise-exploring-rescheduling-patterns" id="toc-practice-exercise-exploring-rescheduling-patterns" class="nav-link" data-scroll-target="#practice-exercise-exploring-rescheduling-patterns"><span class="header-section-number">8.7.4</span> Practice Exercise: Exploring Rescheduling Patterns</a></li>
+  </ul></li>
+  <li><a href="#setting-up-the-capstone-project" id="toc-setting-up-the-capstone-project" class="nav-link" data-scroll-target="#setting-up-the-capstone-project"><span class="header-section-number">8.8</span> Setting Up the Capstone Project</a>
+  <ul class="collapse">
+  <li><a href="#project-structure" id="toc-project-structure" class="nav-link" data-scroll-target="#project-structure"><span class="header-section-number">8.8.1</span> Project Structure</a></li>
+  <li><a href="#next-weeks-schedule" id="toc-next-weeks-schedule" class="nav-link" data-scroll-target="#next-weeks-schedule"><span class="header-section-number">8.8.2</span> Next Week’s Schedule</a></li>
+  <li><a href="#this-weeks-preparation" id="toc-this-weeks-preparation" class="nav-link" data-scroll-target="#this-weeks-preparation"><span class="header-section-number">8.8.3</span> This Week’s Preparation</a></li>
+  </ul></li>
+  <li><a href="#resources-for-data-integration" id="toc-resources-for-data-integration" class="nav-link" data-scroll-target="#resources-for-data-integration"><span class="header-section-number">8.9</span> Resources for Data Integration</a>
+  <ul class="collapse">
+  <li><a href="#essential-references" id="toc-essential-references" class="nav-link" data-scroll-target="#essential-references"><span class="header-section-number">8.9.1</span> Essential References</a></li>
+  <li><a href="#additional-learning" id="toc-additional-learning" class="nav-link" data-scroll-target="#additional-learning"><span class="header-section-number">8.9.2</span> Additional Learning</a></li>
+  </ul></li>
+  <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up"><span class="header-section-number">8.10</span> Wrapping Up</a>
+  <ul class="collapse">
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways"><span class="header-section-number">8.10.1</span> Key Takeaways</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps"><span class="header-section-number">8.10.2</span> Next Steps</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_1_pre_class.html">Part 1: Data Analysis Bootcamp</a></li><li class="breadcrumb-item"><a href="./week_4_in_class.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 4: Import &amp; Tidy Your Data (In-Class)</span></a></li></ol></nav>
 <div class="quarto-title">
@@ -235,8 +317,883 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="todays-agenda-90-minutes" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="todays-agenda-90-minutes"><span class="header-section-number">8.1</span> Today’s Agenda (90 minutes)</h2>
+<ol type="1">
+<li><strong>Understanding Data Integration</strong> (20 min)
+<ul>
+<li>Why combine multiple data sources?</li>
+<li>Types of data relationships</li>
+<li>Common integration challenges</li>
+<li>Real examples from loan performance analysis</li>
+</ul></li>
+<li><strong>Working with Multiple Data Sources</strong> (25 min)
+<ul>
+<li>Importing from different sources (CSV, APIs, packages)</li>
+<li>Standardizing country names</li>
+<li>Understanding join types</li>
+<li>Handling missing values</li>
+</ul></li>
+<li><strong>Integrating Debt Data</strong> (40 min)
+<ul>
+<li>Case study: GCDF and IDS data</li>
+<li>Hands-on practice with joins</li>
+<li>Creating richer analysis</li>
+<li>Setting up for capstone project</li>
+</ul></li>
+<li><strong>Preview: Capstone Project</strong> (5 min)
+<ul>
+<li>Next week’s in-person session</li>
+<li>Project options</li>
+<li>Resource sharing</li>
+<li>Team formation</li>
+</ul></li>
+</ol>
+</section>
+<section id="learning-objectives" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">8.2</span> Learning Objectives</h2>
+<p>By the end of this session, you will be able to:</p>
+<ol type="1">
+<li><strong>Import</strong> data from multiple sources (APIs, CSVs, R packages)</li>
+<li><strong>Standardize</strong> key variables for joining datasets</li>
+<li><strong>Combine</strong> datasets using different types of joins</li>
+<li><strong>Create</strong> integrated analysis incorporating multiple data sources</li>
+<li><strong>Begin</strong> exploring capstone project possibilities</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why This Matters for TUFF Analysis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The ability to integrate multiple data sources is crucial for your work:</p>
+<ul>
+<li>Compare TUFF data with official statistics</li>
+<li>Add macroeconomic context to lending data</li>
+<li>Validate data against multiple sources</li>
+<li>Create richer analysis by combining perspectives</li>
+</ul>
+<p>Having these skills will help you:</p>
+<ul>
+<li>Work more efficiently</li>
+<li>Find unique insights</li>
+<li>Create compelling visualizations</li>
+<li>Build reproducible workflows</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="todays-video-lecture" class="level2 page-columns page-full" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="todays-video-lecture"><span class="header-section-number">8.3</span> Today’s Video Lecture</h2>
+<p>Watch this video lecture to review the concepts from class 4:</p>
+<div class="column-page">
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/NoxsOgxSoUE" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</div>
+</section>
+<section id="setup" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="setup"><span class="header-section-number">8.4</span> Setup</h2>
+<p>Let’s get our workspace ready:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new Quarto document</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># File → New File → Quarto Document</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Save as "week_4_integration_in_class.qmd" in your week_4/R folder</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Intall new packages:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pkg_install</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"wbids"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"WDI"</span>, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Teal-Insights/imfweo"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Load required packages:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)      <span class="co"># Core data science tools</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(chinadevfin3)   <span class="co"># GCDF 3.0 data</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(imfweo)         <span class="co"># IMF WEO data</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wbids)          <span class="co"># WB IDS data</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(countrycode)    <span class="co"># Country name standardization</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(WDI)            <span class="co"># World Bank Development Indicators</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)        <span class="co"># Data cleaning tools</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="understanding-data-integration" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="understanding-data-integration"><span class="header-section-number">8.5</span> Understanding Data Integration</h2>
+<section id="why-combine-data-sources" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="why-combine-data-sources"><span class="header-section-number">8.5.1</span> Why Combine Data Sources?</h3>
+<p>In real-world analysis, crucial insights often come from combining different perspectives on the same phenomenon. For example, in analyzing Chinese overseas lending:</p>
+<ol type="1">
+<li><strong>GCDF Data</strong> provides:
+<ul>
+<li>Project-level details</li>
+<li>Sectoral breakdown</li>
+<li>Implementation status</li>
+<li>Flow classifications</li>
+</ul></li>
+<li><strong>IDS Data</strong> provides:
+<ul>
+<li>Official debt statistics</li>
+<li>Creditor composition</li>
+<li>Debt service metrics</li>
+<li>Restructuring information</li>
+</ul></li>
+<li><strong>IMF WEO Data</strong> provides:
+<ul>
+<li>Macroeconomic context</li>
+<li>GDP and growth figures</li>
+<li>External sector metrics</li>
+<li>Forward projections</li>
+</ul></li>
+</ol>
+</section>
+<section id="key-integration-challenges" class="level3" data-number="8.5.2">
+<h3 data-number="8.5.2" class="anchored" data-anchor-id="key-integration-challenges"><span class="header-section-number">8.5.2</span> Key Integration Challenges</h3>
+<p>When combining data, we often face:</p>
+<ol type="1">
+<li><strong>Identifier Mismatches</strong>
+<ul>
+<li>Different country names/codes</li>
+<li>Various date formats</li>
+<li>Inconsistent categorizations</li>
+</ul></li>
+<li><strong>Temporal Alignment</strong>
+<ul>
+<li>Different time periods</li>
+<li>Varying frequencies</li>
+<li>Point vs.&nbsp;period data</li>
+</ul></li>
+<li><strong>Unit Consistency</strong>
+<ul>
+<li>Nominal vs.&nbsp;real values</li>
+<li>Currency conversions</li>
+<li>Scale differences</li>
+</ul></li>
+<li><strong>Conceptual Mapping</strong>
+<ul>
+<li>Different definitions</li>
+<li>Varying methodologies</li>
+<li>Classification systems</li>
+</ul></li>
+</ol>
+<p>Let’s see how to handle these challenges systematically.</p>
+</section>
+</section>
+<section id="working-with-multiple-data-sources" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="working-with-multiple-data-sources"><span class="header-section-number">8.6</span> Working with Multiple Data Sources</h2>
+<section id="getting-ids-debt-data" class="level3" data-number="8.6.1">
+<h3 data-number="8.6.1" class="anchored" data-anchor-id="getting-ids-debt-data"><span class="header-section-number">8.6.1</span> Getting IDS Debt Data</h3>
+<p>First, let’s get the IDS debt distress data from GitHub:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># URLs for IDS data</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ids_data_url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/Teal-Insights/ids_2024_explorations/main/data/ids_debt_distress_data.csv"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>ids_metadata_url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/Teal-Insights/ids_2024_explorations/main/data/ids_debt_distress_metadata.csv"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Import data</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>ids_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(ids_data_url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 1130763 Columns: 5
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (3): geography_id, series_id, counterpart_id
+dbl (2): year, value
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ids_metadata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(ids_metadata_url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 22 Columns: 10
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (9): series_id, event_type, component, creditor, measurement, series_nam...
+dbl (1): source_id
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Look at what we have</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ids_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,130,763
+Columns: 5
+$ geography_id   &lt;chr&gt; "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG",…
+$ series_id      &lt;chr&gt; "DT.DXR.DPPG.CD", "DT.NFL.DECT.CD", "DT.NFL.DECT.CD", "…
+$ counterpart_id &lt;chr&gt; "915", "915", "915", "915", "915", "915", "915", "915",…
+$ year           &lt;dbl&gt; 2014, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2…
+$ value          &lt;dbl&gt; 0, 66174000, 94274000, 50937000, 73861000, 64935000, 42…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ids_metadata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 22
+Columns: 10
+$ series_id           &lt;chr&gt; "DT.IXA.DPPG.CD.CG", "DT.IXA.OFFT.CD", "DT.IXA.PRV…
+$ event_type          &lt;chr&gt; "arrears", "arrears", "arrears", "arrears", "arrea…
+$ component           &lt;chr&gt; "interest", "interest", "interest", "principal", "…
+$ creditor            &lt;chr&gt; "all", "official", "private", "official", "private…
+$ measurement         &lt;chr&gt; "flow", "flow", "flow", "flow", "flow", "flow", "f…
+$ series_name         &lt;chr&gt; "Net change in interest arrears (current US$)", "I…
+$ source_id           &lt;dbl&gt; 81, 81, 81, 81, 81, 81, 81, 81, 81, 81, 81, 81, 81…
+$ source_name         &lt;chr&gt; "International Debt Statistics: DSSI", "Internatio…
+$ source_note         &lt;chr&gt; "Net change in interest arrears is the variation i…
+$ source_organization &lt;chr&gt; "World Bank, International Debt Statistics.", "Wor…</code></pre>
+</div>
+</div>
+</section>
+<section id="getting-imf-weo-data" class="level3" data-number="8.6.2">
+<h3 data-number="8.6.2" class="anchored" data-anchor-id="getting-imf-weo-data"><span class="header-section-number">8.6.2</span> Getting IMF WEO Data</h3>
+<p>Now let’s add some macroeconomic context:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List available WEO series</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">weo_list_series</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 44 × 3
+   series_code series_name                                      units           
+   &lt;chr&gt;       &lt;chr&gt;                                            &lt;chr&gt;           
+ 1 BCA         Current account balance                          U.S. dollars    
+ 2 BCA_NGDPD   Current account balance                          Percent of GDP  
+ 3 GGR         General government revenue                       National curren…
+ 4 GGR_NGDP    General government revenue                       Percent of GDP  
+ 5 GGSB        General government structural balance            National curren…
+ 6 GGSB_NPGDP  General government structural balance            Percent of pote…
+ 7 GGX         General government total expenditure             National curren…
+ 8 GGXCNL      General government net lending/borrowing         National curren…
+ 9 GGXCNL_NGDP General government net lending/borrowing         Percent of GDP  
+10 GGXONLB     General government primary net lending/borrowing National curren…
+# ℹ 34 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get GDP data for all countries</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>gdp_data <span class="ot">&lt;-</span> <span class="fu">weo_get</span>(</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">series =</span> <span class="fu">c</span>(</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NGDPD"</span>,        <span class="co"># Nominal GDP in USD</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NGDP_RPCH"</span>     <span class="co"># Real GDP growth</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get all countries - we'll filter later</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">countries =</span> <span class="fu">weo_list_countries</span>()<span class="sc">$</span>country_code,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">start_year =</span> <span class="dv">2000</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Available series: NGDP_R, NGDP_RPCH, NGDP, NGDPD, PPPGDP, NGDP_D, NGDPRPC, NGDPRPPPPC, NGDPPC, NGDPDPC, PPPPC, PPPSH, PPPEX, NID_NGDP, NGSD_NGDP, PCPI, PCPIPCH, PCPIE, PCPIEPCH, TM_RPCH, TMG_RPCH, TX_RPCH, TXG_RPCH, LP, GGR, GGR_NGDP, GGX, GGX_NGDP, GGXCNL, GGXCNL_NGDP, GGXONLB, GGXONLB_NGDP, GGXWDG, GGXWDG_NGDP, NGDP_FY, BCA, BCA_NGDPD, LUR, GGXWDN, GGXWDN_NGDP, LE, GGSB, GGSB_NPGDP, NGAP_NPGDP</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Requested series: NGDPD, NGDP_RPCH</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Filtered series: NGDPD, NGDP_RPCH</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(gdp_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 11,567
+Columns: 7
+$ country_name &lt;chr&gt; "Aruba", "Aruba", "Aruba", "Aruba", "Aruba", "Aruba", "Ar…
+$ country_code &lt;chr&gt; "ABW", "ABW", "ABW", "ABW", "ABW", "ABW", "ABW", "ABW", "…
+$ series_name  &lt;chr&gt; "Gross domestic product, current prices", "Gross domestic…
+$ units        &lt;chr&gt; "U.S. dollars", "U.S. dollars", "U.S. dollars", "U.S. dol…
+$ series_code  &lt;chr&gt; "NGDPD", "NGDPD", "NGDPD", "NGDPD", "NGDPD", "NGDPD", "NG…
+$ year         &lt;int&gt; 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 200…
+$ value        &lt;dbl&gt; 1.873, 1.896, 1.962, 2.044, 2.255, 2.360, 2.470, 2.678, 2…</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-join-types" class="level3" data-number="8.6.3">
+<h3 data-number="8.6.3" class="anchored" data-anchor-id="understanding-join-types"><span class="header-section-number">8.6.3</span> Understanding Join Types</h3>
+<p>Before we combine our data, let’s understand the four main types of joins:</p>
+<ol type="1">
+<li><strong>Inner Join</strong>: Keep only rows that match in both datasets</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example with small datasets</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>country_debt <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">country =</span> <span class="fu">c</span>(<span class="st">"Angola"</span>, <span class="st">"Ghana"</span>, <span class="st">"Kenya"</span>),</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">debt_stock =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>country_debt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  country debt_stock
+  &lt;chr&gt;        &lt;dbl&gt;
+1 Angola         100
+2 Ghana          200
+3 Kenya          300</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>country_gdp <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">country =</span> <span class="fu">c</span>(<span class="st">"Angola"</span>, <span class="st">"Ghana"</span>, <span class="st">"Zambia"</span>),</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">gdp =</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">2000</span>, <span class="dv">3000</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>country_gdp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  country   gdp
+  &lt;chr&gt;   &lt;dbl&gt;
+1 Angola   1000
+2 Ghana    2000
+3 Zambia   3000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inner join - only Angola and Ghana appear</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>country_debt <span class="sc">|&gt;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(country_gdp, <span class="at">by =</span> <span class="st">"country"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  country debt_stock   gdp
+  &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;
+1 Angola         100  1000
+2 Ghana          200  2000</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li><strong>Left Join</strong>: Keep all rows from left dataset, match where possible from right</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Left join - Kenya appears with NA for gdp</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>country_debt <span class="sc">|&gt;</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(country_gdp, <span class="at">by =</span> <span class="st">"country"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  country debt_stock   gdp
+  &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;
+1 Angola         100  1000
+2 Ghana          200  2000
+3 Kenya          300    NA</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li><strong>Right Join</strong>: Keep all rows from right dataset, match where possible from left</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Right join - Zambia appears with NA for debt_stock</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>country_debt <span class="sc">|&gt;</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(country_gdp, <span class="at">by =</span> <span class="st">"country"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  country debt_stock   gdp
+  &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;
+1 Angola         100  1000
+2 Ghana          200  2000
+3 Zambia          NA  3000</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li><strong>Full Join</strong>: Keep all rows from both datasets</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full join - all countries appear, with NAs where no match</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>country_debt <span class="sc">|&gt;</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(country_gdp, <span class="at">by =</span> <span class="st">"country"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  country debt_stock   gdp
+  &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;
+1 Angola         100  1000
+2 Ghana          200  2000
+3 Kenya          300    NA
+4 Zambia          NA  3000</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Choosing Join Types
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Use <code>inner_join()</code> when you only want complete cases</li>
+<li>Use <code>left_join()</code> to keep all your primary data</li>
+<li>Use <code>right_join()</code> rarely (just use left_join with datasets reversed)</li>
+<li>Use <code>full_join()</code> to see what might be missing</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="practice-exercise-basic-joins" class="level3" data-number="8.6.4">
+<h3 data-number="8.6.4" class="anchored" data-anchor-id="practice-exercise-basic-joins"><span class="header-section-number">8.6.4</span> Practice Exercise: Basic Joins</h3>
+<p>Let’s practice with some GCDF data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get total commitments by country</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>country_totals <span class="ot">&lt;-</span> <span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(recommended_for_aggregates <span class="sc">==</span> <span class="st">"Yes"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country_name,iso3c) <span class="sc">|&gt;</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_commitments =</span> <span class="fu">sum</span>(amount_constant_usd_2021, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'country_name'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>country_totals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 153 × 3
+   country_name      iso3c total_commitments
+   &lt;chr&gt;             &lt;chr&gt;             &lt;dbl&gt;
+ 1 Afghanistan       AFG          587689317.
+ 2 Africa, regional  &lt;NA&gt;        5507076256.
+ 3 Albania           ALB          128497599.
+ 4 Algeria           DZA          310574109.
+ 5 America, regional &lt;NA&gt;         410036891.
+ 6 Angola            AGO        65104946269.
+ 7 Antigua &amp; Barbuda ATG          534626006.
+ 8 Argentina         ARG       138750987557.
+ 9 Armenia           ARM          105655950.
+10 Asia, regional    &lt;NA&gt;         518936052.
+# ℹ 143 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get GDP data for comparison</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>gdp_totals <span class="ot">&lt;-</span> gdp_data <span class="sc">|&gt;</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    series_code <span class="sc">==</span> <span class="st">"NGDPD"</span>,  <span class="co"># Nominal GDP</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    year <span class="sc">==</span> <span class="dv">2021</span>             <span class="co"># Latest year</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(country_code, <span class="at">gdp =</span> value)</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>gdp_totals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 194 × 2
+   country_code     gdp
+   &lt;chr&gt;          &lt;dbl&gt;
+ 1 ABW             3.10
+ 2 AFG            14.3 
+ 3 AGO            84.4 
+ 4 ALB            18.0 
+ 5 AND             3.32
+ 6 ARE           415.  
+ 7 ARG           486.  
+ 8 ARM            13.9 
+ 9 ATG             1.60
+10 AUS          1658.  
+# ℹ 184 more rows</code></pre>
+</div>
+</div>
+<p>Your turn: Try different joins</p>
+<ol type="1">
+<li><p><strong>Inner join</strong> - which countries have both commitment and GDP data?</p></li>
+<li><p><strong>Left join</strong> - keep all countries with GCDF commitments</p></li>
+<li><p><strong>Full join</strong> - see which countries are missing from each source</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Joining by a common key
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What variable in each dataset is the same? Look at the documentation (e.g.&nbsp;run <code>?left_join()</code>) to figure out how to connect the two datasets.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="integrating-debt-data" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="integrating-debt-data"><span class="header-section-number">8.7</span> Integrating Debt Data</h2>
+<p>Now let’s work with our real analysis datasets:</p>
+<section id="step-1-standardize-country-information" class="level3" data-number="8.7.1">
+<h3 data-number="8.7.1" class="anchored" data-anchor-id="step-1-standardize-country-information"><span class="header-section-number">8.7.1</span> Step 1: Standardize Country Information</h3>
+<p>First, we need consistent country identifiers:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardize IDS data</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>ids_clean <span class="ot">&lt;-</span> ids_data <span class="sc">|&gt;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add ISO3C codes</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">iso3c =</span> <span class="fu">countrycode</span>(</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">sourcevar =</span> geography_id,</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">origin =</span> <span class="st">"iso3c"</span>,</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">destination =</span> <span class="st">"iso3c"</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add standardized names</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">country_name =</span> <span class="fu">countrycode</span>(</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">sourcevar =</span> iso3c,</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">origin =</span> <span class="st">"iso3c"</span>,</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">destination =</span> <span class="st">"country.name"</span></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `iso3c = countrycode(sourcevar = geography_id, origin = "iso3c",
+  destination = "iso3c")`.
+Caused by warning:
+! Some values were not matched unambiguously: EAP, ECA, IDA, IDX, LAC, LDC, LIC, LMC, LMY, MIC, MNA, SAS, SSA, UMC, XKX</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>ids_clean <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,130,763
+Columns: 7
+$ geography_id   &lt;chr&gt; "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG",…
+$ series_id      &lt;chr&gt; "DT.DXR.DPPG.CD", "DT.NFL.DECT.CD", "DT.NFL.DECT.CD", "…
+$ counterpart_id &lt;chr&gt; "915", "915", "915", "915", "915", "915", "915", "915",…
+$ year           &lt;dbl&gt; 2014, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2…
+$ value          &lt;dbl&gt; 0, 66174000, 94274000, 50937000, 73861000, 64935000, 42…
+$ iso3c          &lt;chr&gt; "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG",…
+$ country_name   &lt;chr&gt; "Afghanistan", "Afghanistan", "Afghanistan", "Afghanist…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardize WEO data</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>weo_clean <span class="ot">&lt;-</span> gdp_data <span class="sc">|&gt;</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add ISO3C codes - WEO uses ISO3C already</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">iso3c =</span> country_code,</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add standardized names</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">country_name =</span> <span class="fu">countrycode</span>(</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">sourcevar =</span> iso3c,</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">origin =</span> <span class="st">"iso3c"</span>,</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">destination =</span> <span class="st">"country.name"</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `country_name = countrycode(sourcevar = iso3c, origin = "iso3c",
+  destination = "country.name")`.
+Caused by warning:
+! Some values were not matched unambiguously: UVK, WBG</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>weo_clean <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 11,567
+Columns: 8
+$ country_name &lt;chr&gt; "Aruba", "Aruba", "Aruba", "Aruba", "Aruba", "Aruba", "Ar…
+$ country_code &lt;chr&gt; "ABW", "ABW", "ABW", "ABW", "ABW", "ABW", "ABW", "ABW", "…
+$ series_name  &lt;chr&gt; "Gross domestic product, current prices", "Gross domestic…
+$ units        &lt;chr&gt; "U.S. dollars", "U.S. dollars", "U.S. dollars", "U.S. dol…
+$ series_code  &lt;chr&gt; "NGDPD", "NGDPD", "NGDPD", "NGDPD", "NGDPD", "NGDPD", "NG…
+$ year         &lt;int&gt; 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 200…
+$ value        &lt;dbl&gt; 1.873, 1.896, 1.962, 2.044, 2.255, 2.360, 2.470, 2.678, 2…
+$ iso3c        &lt;chr&gt; "ABW", "ABW", "ABW", "ABW", "ABW", "ABW", "ABW", "ABW", "…</code></pre>
+</div>
+</div>
+</section>
+<section id="step-2-focus-on-key-variables" class="level3" data-number="8.7.2">
+<h3 data-number="8.7.2" class="anchored" data-anchor-id="step-2-focus-on-key-variables"><span class="header-section-number">8.7.2</span> Step 2: Focus on Key Variables</h3>
+<p>Let’s look at debt rescheduling:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get rescheduling data from IDS</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>rescheduling <span class="ot">&lt;-</span> ids_clean <span class="sc">|&gt;</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Total amount rescheduled</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    series_id <span class="sc">==</span> <span class="st">"DT.TXR.DPPG.CD"</span>,</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Only Chinese debt</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    counterpart_id <span class="sc">==</span> <span class="st">"730"</span>,</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Focus on recent years</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>    year <span class="sc">&gt;=</span> <span class="dv">2015</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Get GCDF rescheduling cases and identify DSSI cases</span></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>gcdf_rescheduling <span class="ot">&lt;-</span> <span class="fu">get_gcdf3_dataset</span>() <span class="sc">|&gt;</span></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>    flow_type <span class="sc">==</span> <span class="st">"Debt rescheduling"</span>,</span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>    recommended_for_aggregates <span class="sc">==</span> <span class="st">"Yes"</span></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">is_dssi =</span> <span class="fu">str_detect</span>(description, <span class="st">"DSSI"</span>)</span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Look at the mix of DSSI vs other reschedulings</span></span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>gcdf_rescheduling <span class="sc">|&gt;</span></span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(is_dssi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  is_dssi     n
+  &lt;lgl&gt;   &lt;int&gt;
+1 FALSE     127
+2 TRUE       76</code></pre>
+</div>
+</div>
+</section>
+<section id="step-3-create-combined-analysis" class="level3" data-number="8.7.3">
+<h3 data-number="8.7.3" class="anchored" data-anchor-id="step-3-create-combined-analysis"><span class="header-section-number">8.7.3</span> Step 3: Create Combined Analysis</h3>
+<p>Now we can start comparing sources:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get GCDF rescheduling counts by country-year</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>gcdf_counts <span class="ot">&lt;-</span> gcdf_rescheduling <span class="sc">|&gt;</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country_name, commitment_year, is_dssi) <span class="sc">|&gt;</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">rescheduling_count =</span> <span class="fu">n</span>(),</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Make counts by type</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> is_dssi,</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> rescheduling_count,</span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_fill =</span> <span class="dv">0</span>,</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">"gcdf_count_"</span></span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine with IDS amounts</span></span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>rescheduling_comparison <span class="ot">&lt;-</span> gcdf_counts <span class="sc">|&gt;</span></span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">|&gt;</span></span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(</span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>    rescheduling <span class="sc">|&gt;</span></span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">distinct</span>(</span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a>        country_name,</span>
+<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a>        year,</span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">ids_amount =</span> value</span>
+<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> <span class="fu">c</span>(</span>
+<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a>      <span class="st">"country_name"</span> <span class="ot">=</span> <span class="st">"country_name"</span>,</span>
+<span id="cb48-28"><a href="#cb48-28" aria-hidden="true" tabindex="-1"></a>      <span class="st">"commitment_year"</span> <span class="ot">=</span> <span class="st">"year"</span></span>
+<span id="cb48-29"><a href="#cb48-29" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb48-30"><a href="#cb48-30" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb48-31"><a href="#cb48-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-32"><a href="#cb48-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the results</span></span>
+<span id="cb48-33"><a href="#cb48-33" aria-hidden="true" tabindex="-1"></a>rescheduling_comparison <span class="sc">|&gt;</span></span>
+<span id="cb48-34"><a href="#cb48-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ids_amount)) <span class="sc">|&gt;</span></span>
+<span id="cb48-35"><a href="#cb48-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(commitment_year <span class="sc">&gt;=</span> <span class="dv">2015</span>) <span class="sc">|&gt;</span></span>
+<span id="cb48-36"><a href="#cb48-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(ids_amount))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 45 × 5
+   country_name      commitment_year gcdf_count_FALSE gcdf_count_TRUE ids_amount
+   &lt;chr&gt;                       &lt;dbl&gt;            &lt;int&gt;           &lt;int&gt;      &lt;dbl&gt;
+ 1 Angola                       2021                1               1 706480000 
+ 2 Angola                       2020                2               1 417506000 
+ 3 Zambia                       2021                0               1 396636083.
+ 4 Congo - Brazzavi…            2018                1               0 348614000 
+ 5 Kenya                        2021                0               4 260013515.
+ 6 Pakistan                     2020                0              15 211145714.
+ 7 Congo - Brazzavi…            2021                0               4 172200897.
+ 8 Zambia                       2020                1               1 136449665.
+ 9 Cameroon                     2021                0               1  93865480.
+10 Tanzania                     2021                0               1  91867983.
+# ℹ 35 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First create summary data</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>rescheduling_summary <span class="ot">&lt;-</span> gcdf_rescheduling <span class="sc">|&gt;</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get annual counts by DSSI vs non-DSSI</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(commitment_year, is_dssi) <span class="sc">|&gt;</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Make DSSI labels more readable</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">rescheduling_type =</span> <span class="fu">if_else</span>(</span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>      is_dssi,</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>      <span class="st">"DSSI Rescheduling"</span>,</span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Other Rescheduling"</span></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Create visualization</span></span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a>  rescheduling_summary <span class="sc">|&gt;</span></span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(commitment_year <span class="sc">&gt;=</span> <span class="dv">2015</span>)</span>
+<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(</span>
+<span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb50-25"><a href="#cb50-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> commitment_year,</span>
+<span id="cb50-26"><a href="#cb50-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> count,</span>
+<span id="cb50-27"><a href="#cb50-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> rescheduling_type</span>
+<span id="cb50-28"><a href="#cb50-28" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb50-29"><a href="#cb50-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="st">"stack"</span></span>
+<span id="cb50-30"><a href="#cb50-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb50-31"><a href="#cb50-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="sc">+</span></span>
+<span id="cb50-32"><a href="#cb50-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb50-33"><a href="#cb50-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Debt Rescheduling Cases by Type"</span>,</span>
+<span id="cb50-34"><a href="#cb50-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"DSSI vs Other Reschedulings (2015-2021)"</span>,</span>
+<span id="cb50-35"><a href="#cb50-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb50-36"><a href="#cb50-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of Cases"</span>,</span>
+<span id="cb50-37"><a href="#cb50-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="cn">NULL</span></span>
+<span id="cb50-38"><a href="#cb50-38" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb50-39"><a href="#cb50-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_4_in_class_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="practice-exercise-exploring-rescheduling-patterns" class="level3" data-number="8.7.4">
+<h3 data-number="8.7.4" class="anchored" data-anchor-id="practice-exercise-exploring-rescheduling-patterns"><span class="header-section-number">8.7.4</span> Practice Exercise: Exploring Rescheduling Patterns</h3>
+<p>Your turn! Try these exercises:</p>
+<ol type="1">
+<li>Analyze DSSI participation:</li>
+</ol>
+<ul>
+<li>Which countries had DSSI reschedulings?</li>
+<li>How does this compare to eligible countries?</li>
+<li>What patterns do you see by region?</li>
+</ul>
+<ol start="2" type="1">
+<li>Compare with IDS reporting:</li>
+</ol>
+<ul>
+<li>Do countries with more GCDF reschedulings show larger IDS amounts?</li>
+<li>Are there systematic differences by region or income group?</li>
+<li>What might explain any discrepancies?</li>
+</ul>
+<ol start="3" type="1">
+<li>Add economic context:</li>
+</ol>
+<ul>
+<li>Use WEO data to add GDP context</li>
+<li>Calculate rescheduling amounts as % of GDP</li>
+<li>Look for patterns in timing relative to growth rates</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Analysis Tips
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Start by looking at simple counts and patterns</li>
+<li>Add complexity gradually</li>
+<li>Document unexpected findings</li>
+<li>Consider what patterns might mean for data collection</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="setting-up-the-capstone-project" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="setting-up-the-capstone-project"><span class="header-section-number">8.8</span> Setting Up the Capstone Project</h2>
+<section id="project-structure" class="level3" data-number="8.8.1">
+<h3 data-number="8.8.1" class="anchored" data-anchor-id="project-structure"><span class="header-section-number">8.8.1</span> Project Structure</h3>
+<p>The capstone project will explore Chinese overseas lending data using multiple sources:</p>
+<ol type="1">
+<li><strong>Core Data Sources</strong>
+<ul>
+<li>GCDF 3.0 Database</li>
+<li>World Bank IDS</li>
+<li>IMF WEO</li>
+<li>Other sources you identify</li>
+</ul></li>
+<li><strong>Key Questions</strong>
+<ul>
+<li>How do GCDF and IDS data compare?</li>
+<li>What patterns emerge in debt distress?</li>
+<li>How does economic context matter?</li>
+<li>What stories deserve deeper investigation?</li>
+</ul></li>
+<li><strong>Output Options</strong>
+<ul>
+<li>Blog post</li>
+<li>Policy brief</li>
+<li>Interactive dashboard</li>
+<li>Automated report system</li>
+<li>Your creative ideas!</li>
+</ul></li>
+</ol>
+</section>
+<section id="next-weeks-schedule" class="level3" data-number="8.8.2">
+<h3 data-number="8.8.2" class="anchored" data-anchor-id="next-weeks-schedule"><span class="header-section-number">8.8.2</span> Next Week’s Schedule</h3>
+<p><strong>Morning Session (9:30-11:00)</strong> - Storytelling with Data workshop - Project planning - Team formation</p>
+<p><strong>Midday (11:30-3:00)</strong> - Optional work session - One-on-one consultations - Team collaboration time</p>
+<p><strong>Afternoon Session (3:00-4:30)</strong> - Project development - Peer feedback - Planning next steps</p>
+</section>
+<section id="this-weeks-preparation" class="level3" data-number="8.8.3">
+<h3 data-number="8.8.3" class="anchored" data-anchor-id="this-weeks-preparation"><span class="header-section-number">8.8.3</span> This Week’s Preparation</h3>
+<ol type="1">
+<li><strong>Explore the Data</strong>
+<ul>
+<li>Try different integration approaches</li>
+<li>Look for interesting patterns</li>
+<li>Document questions that arise</li>
+</ul></li>
+<li><strong>Consider Output Format</strong>
+<ul>
+<li>What would be most useful?</li>
+<li>Who is your audience?</li>
+<li>What story do you want to tell?</li>
+</ul></li>
+<li><strong>Optional: Other Projects</strong>
+<ul>
+<li>If you have other data to work with</li>
+<li>Different questions to explore</li>
+<li>Alternative output formats</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="resources-for-data-integration" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="resources-for-data-integration"><span class="header-section-number">8.9</span> Resources for Data Integration</h2>
+<section id="essential-references" class="level3" data-number="8.9.1">
+<h3 data-number="8.9.1" class="anchored" data-anchor-id="essential-references"><span class="header-section-number">8.9.1</span> Essential References</h3>
+<ol type="1">
+<li><strong>R for Data Science Chapters</strong>
+<ul>
+<li><a href="https://r4ds.hadley.nz/data-import">Data Import</a></li>
+<li><a href="https://r4ds.hadley.nz/data-tidy">Data Tidying</a></li>
+<li><a href="https://r4ds.hadley.nz/joins">Joins</a></li>
+</ul></li>
+<li>Notable Data Resources
+<ul>
+<li><a href="https://vincentarelbundock.github.io/WDI/">WDI vignette</a></li>
+<li><a href="https://github.com/christophergandrud/imfr">imfr examples</a></li>
+<li><a href="https://github.com/owid">Our World in Data GitHub</a></li>
+</ul></li>
+</ol>
+</section>
+<section id="additional-learning" class="level3" data-number="8.9.2">
+<h3 data-number="8.9.2" class="anchored" data-anchor-id="additional-learning"><span class="header-section-number">8.9.2</span> Additional Learning</h3>
+<ol type="1">
+<li><strong>Data Integration Concepts</strong>
+<ul>
+<li><a href="https://r4ds.hadley.nz/joins">Relational Data chapter</a></li>
+<li><a href="https://db.rstudio.com/databases">Database Concepts in R</a></li>
+<li><a href="https://style.tidyverse.org/joins">Best Practices for Joins</a></li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="wrapping-up" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="wrapping-up"><span class="header-section-number">8.10</span> Wrapping Up</h2>
+<section id="key-takeaways" class="level3" data-number="8.10.1">
+<h3 data-number="8.10.1" class="anchored" data-anchor-id="key-takeaways"><span class="header-section-number">8.10.1</span> Key Takeaways</h3>
+<ol type="1">
+<li><strong>Data Integration Power</strong>
+<ul>
+<li>Combining sources reveals new insights</li>
+<li>Standardization is crucial</li>
+<li>Documentation matters</li>
+</ul></li>
+<li><strong>Join Mechanics</strong>
+<ul>
+<li>Different joins for different needs</li>
+<li>Always check results</li>
+<li>Consider what missing data means</li>
+</ul></li>
+<li><strong>Project Preparation</strong>
+<ul>
+<li>Start exploring now</li>
+<li>Think about storytelling</li>
+<li>Consider your audience</li>
+</ul></li>
+</ol>
+</section>
+<section id="next-steps" class="level3" data-number="8.10.2">
+<h3 data-number="8.10.2" class="anchored" data-anchor-id="next-steps"><span class="header-section-number">8.10.2</span> Next Steps</h3>
+<ol type="1">
+<li><strong>This Week</strong>
+<ul>
+<li>Explore the data</li>
+<li>Try different combinations</li>
+<li>Document interesting findings</li>
+</ul></li>
+<li><strong>Next Wednesday</strong>
+<ul>
+<li>Bring your discoveries</li>
+<li>Come with questions</li>
+<li>Be ready to collaborate</li>
+</ul></li>
+</ol>
+<p>Remember: The goal is to create something useful for your work while practicing your new R skills!</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
