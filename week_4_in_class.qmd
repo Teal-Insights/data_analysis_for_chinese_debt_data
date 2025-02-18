@@ -148,8 +148,8 @@ First, let's get the IDS debt distress data from GitHub:
 
 ```{r}
 # URLs for IDS data
-ids_data_url <- "https://raw.githubusercontent.com/Teal-Insights/ids_2024_explorations/main/data/ids_debt_distress_data.csv"
-ids_metadata_url <- "https://raw.githubusercontent.com/Teal-Insights/ids_2024_explorations/main/data/ids_debt_distress_metadata.csv"
+ids_data_url <- "https://raw.githubusercontent.com/Teal-Insights/ids_2024_explorations/refs/heads/main/data/ids_debt_distress_data.csv"
+ids_metadata_url <- "https://raw.githubusercontent.com/Teal-Insights/ids_2024_explorations/refs/heads/main/data/ids_debt_distress_metadata.csv"
 
 # Import data
 ids_data <- read_csv(ids_data_url)

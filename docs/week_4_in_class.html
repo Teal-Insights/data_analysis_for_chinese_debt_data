@@ -489,13 +489,13 @@ Why This Matters for TUFF Analysis
 <p>First, let’s get the IDS debt distress data from GitHub:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># URLs for IDS data</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ids_data_url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/Teal-Insights/ids_2024_explorations/main/data/ids_debt_distress_data.csv"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>ids_metadata_url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/Teal-Insights/ids_2024_explorations/main/data/ids_debt_distress_metadata.csv"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ids_data_url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/Teal-Insights/ids_2024_explorations/refs/heads/main/data/ids_debt_distress_data.csv"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>ids_metadata_url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/Teal-Insights/ids_2024_explorations/refs/heads/main/data/ids_debt_distress_metadata.csv"</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Import data</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>ids_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(ids_data_url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Rows: 1130763 Columns: 5
+<pre><code>Rows: 1241272 Columns: 5
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (3): geography_id, series_id, counterpart_id
@@ -518,7 +518,7 @@ dbl (1): source_id
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Look at what we have</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ids_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 1,130,763
+<pre><code>Rows: 1,241,272
 Columns: 5
 $ geography_id   &lt;chr&gt; "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG",…
 $ series_id      &lt;chr&gt; "DT.DXR.DPPG.CD", "DT.NFL.DECT.CD", "DT.NFL.DECT.CD", "…
@@ -825,7 +825,7 @@ Caused by warning:
 </div>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>ids_clean <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 1,130,763
+<pre><code>Rows: 1,241,272
 Columns: 7
 $ geography_id   &lt;chr&gt; "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG",…
 $ series_id      &lt;chr&gt; "DT.DXR.DPPG.CD", "DT.NFL.DECT.CD", "DT.NFL.DECT.CD", "…
