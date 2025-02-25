@@ -1,0 +1,108 @@
+# Midday Work Session (11:30-3:00)
+
+## Session Overview
+
+This midday work session is your opportunity to apply what you've learned during the morning workshop to your own data and create visualizations for your capstone project. This is a dedicated time for implementation, troubleshooting, and refinement with support available as needed.
+
+## Session Structure
+
+- **Individual Implementation Time**: Apply the CLEAR framework principles to your own data
+- **One-on-One Consultations**: Teal and John will be available to help with technical challenges and design questions
+- **Peer Collaboration**: Feel free to collaborate with your colleagues on common challenges
+
+## Resources Available
+
+- AidData reports for reference (digital copies)
+- Reference cheat sheets for ggplot2 and the tidyverse
+- Code examples from morning session
+- CLEAR framework checklist
+
+## Working Guidelines
+
+1. **Start with a clear story**: What is the key insight you want to communicate?
+2. **Choose the right chart type**: Consider what comparison will best highlight your insight
+3. **Build incrementally**: Start with a basic version, then enhance step by step
+4. **Test with colleagues**: Get quick feedback as you work
+5. **Document your process**: Keep track of your code and design decisions
+
+## Implementation Plan
+
+To make the most of this work session, consider following this implementation plan:
+
+### Data Preparation (30 min)
+- Identify the specific dataset you'll be working with
+- Filter for the relevant subset of data
+- Transform data into the appropriate format for your visualization
+- Explore the data to confirm your key insights
+
+### Basic Visualization (30 min)
+- Create a simple version of your chosen chart type
+- Focus on getting the basic structure right
+- Ensure your data is displaying correctly
+
+### Enhancement (1 hour)
+- Apply the CLEAR framework principles:
+  - Add strategic color highlighting
+  - Refine chart type if needed
+  - Create explanatory title and subtitle
+  - Consider your audience needs
+  - Add proper references
+- Implement annotations and highlights
+- Apply AidData styling
+
+### 4. Refinement & Feedback (30 min)
+- Get feedback from colleagues or instructors
+- Make adjustments based on feedback
+- Test your visualization with someone unfamiliar with the data
+
+## Technical Support Available
+
+During this session, you can get help with:
+
+- Data preparation and transformation
+- Chart selection and implementation
+- Design refinement
+- Code troubleshooting
+- Integration with your broader analysis
+
+If you need assistance, sign up on the whiteboard for a one-on-one consultation.
+
+## Common Visualization Scenarios
+
+Here are some common visualization scenarios for Chinese development finance data that you might consider for your capstone:
+
+### Temporal Patterns
+- Changes in lending volumes over time
+- Evolution of sectoral focus
+- Before/after comparisons of policy shifts
+
+### Geographic Distribution
+- Regional concentration of lending
+- Country-level comparisons
+- Spatial patterns and strategic focus
+
+### Compositional Analysis
+- ODA-like vs. OOF-like composition
+- Sectoral breakdown
+- Loan vs. grant proportions
+
+### Financial Terms Analysis
+- Interest rate comparisons
+- Maturity structure
+- Collateralization patterns
+
+### Relational Insights
+- Correlation between factors (e.g., resources and lending)
+- Relationship between economic indicators and finance
+- Comparison to other creditors
+
+## Preparing for the Afternoon Session
+
+As you work on your visualizations, keep in mind that you'll be presenting them during the afternoon session. Prepare to discuss:
+
+1. The key insight your visualization communicates
+2. How you applied the CLEAR framework principles
+3. What technical or design challenges you encountered
+4. How you might further refine your visualization
+
+This will help structure your work during this session and ensure you

@@ -24,13 +24,11 @@ book:
         - week_4_pre_class.qmd
         - week_4_in_class.qmd
     
-    - part: "Part 2: Further Resources"
+    - part: "Part 2: Capstone"
       chapters:
-        - part_2_resources.qmd
-
-
-    - summary.qmd
-    - references.qmd
+        - capstone_storytelling_w_data.qmd
+        - capstone_midday.qmd
+        - capstone_afternoon.qmd
 
 bibliography: references.bib
 

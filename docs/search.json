@@ -1113,13 +1113,344 @@
     ]
   },
   {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "10  Summary",
+    "objectID": "capstone_storytelling_w_data.html",
+    "href": "capstone_storytelling_w_data.html",
+    "title": "9  Storytelling with Data Workshop (9:30-11:00)",
     "section": "",
-    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "text": "9.1 Workshop Overview\nThis 90-minute workshop teaches practical techniques for creating compelling data visualizations that tell clear stories about Chinese development finance. Designed for those with just 4 weeks of R experience, we’ll focus on analyzing AidData’s house style, identifying effective storytelling techniques, and applying these principles to your own capstone projects.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Summary</span>"
+      "Part 2: Capstone",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Storytelling with Data Workshop (9:30-11:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_storytelling_w_data.html#day-plan-overview",
+    "href": "capstone_storytelling_w_data.html#day-plan-overview",
+    "title": "9  Storytelling with Data Workshop (9:30-11:00)",
+    "section": "9.2 Day Plan Overview",
+    "text": "9.2 Day Plan Overview\nToday is our capstone workshop where we’ll put everything you’ve learned over the past 4 weeks into practice:\n\nMorning Session (9:30-11:00): This storytelling with data workshop will teach you core principles for creating effective visualizations that communicate clear insights about Chinese development finance\nMidday Work Session (11:30-3:00): You’ll have time to apply these principles to your own data, with one-on-one support available to help overcome technical challenges\nAfternoon Session (3:00-4:30): We’ll reconvene to share our visualizations, provide peer feedback, and polish them into publication-ready graphics\n\nBy the end of today, you’ll have created compelling, publication-quality visualizations based on the AidData Loan Performance project data that effectively communicate key insights following professional design principles.",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Storytelling with Data Workshop (9:30-11:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_storytelling_w_data.html#setup",
+    "href": "capstone_storytelling_w_data.html#setup",
+    "title": "9  Storytelling with Data Workshop (9:30-11:00)",
+    "section": "9.3 Setup",
+    "text": "9.3 Setup\n\n9.3.1 1. Create a New Quarto Document\n# File → New File → Quarto Document\n# Save as \"data_storytelling_workshop.qmd\" in your week_5/R folder\nAdd this YAML header to your document:\n---\ntitle: \"Storytelling with Data Workshop\"\nauthor: \"Your Name\"\nformat: \n  html:\n    embed-resources: true\n  pdf: default\n---\n\n\n9.3.2 2. Load Required Packages\nInstall new packages:\npak::pkg_install(\n  c(\n    \"ggrepel\",\n    \"patchwork\",\n    \"ggtext\",\n    \"sf\",\n    \"rnaturalearth\",\n    \"rnaturalearthdata\"\n  )\n)\n\n# Core packages\nlibrary(tidyverse)      # For data manipulation and visualization\nlibrary(ggtext)         # For formatted text in plots\nlibrary(ggrepel)        # For non-overlapping text labels\n\n# AidData packages\nlibrary(chinadevfin3)   # For GCDF 3.0 data\nlibrary(aiddataviz)     # For AidData themes and colors\n\n# For maps\nlibrary(sf)             # For working with spatial data\nlibrary(rnaturalearth)  # For world map data\n\n# Optional packages for specific chart types\nlibrary(patchwork)      # For combining multiple plots",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Storytelling with Data Workshop (9:30-11:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_storytelling_w_data.html#learning-objectives",
+    "href": "capstone_storytelling_w_data.html#learning-objectives",
+    "title": "9  Storytelling with Data Workshop (9:30-11:00)",
+    "section": "9.4 Learning Objectives",
+    "text": "9.4 Learning Objectives\nBy the end of this workshop, you will be able to:\n\nIdentify effective storytelling techniques in AidData visualizations\nApply the CLEAR framework to evaluate and create compelling visualizations\nMaster 3-4 go-to chart types that effectively communicate development finance insights\nCreate publication-ready visualizations for your capstone project",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Storytelling with Data Workshop (9:30-11:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_storytelling_w_data.html#workshop-structure-90-minutes",
+    "href": "capstone_storytelling_w_data.html#workshop-structure-90-minutes",
+    "title": "9  Storytelling with Data Workshop (9:30-11:00)",
+    "section": "9.5 Workshop Structure (90 minutes)",
+    "text": "9.5 Workshop Structure (90 minutes)\n\n9.5.1 Part 1: From Data to Story (15 minutes)\n\nExploratory vs. explanatory visualization\nThe CLEAR framework introduction\nIntroduction to AidData’s house style and aiddataviz package with John Custer\n\n\n\n9.5.2 Part 2: Visual Storytelling in Practice (30 minutes)\n\nSmall group analysis of recent AidData reports\nEvaluating visualizations using the CLEAR checklist\nGroup discussion of effective techniques\n\n\n\n9.5.3 Part 3: Application to Capstone Projects (35 minutes)\n\nPlanning your capstone visualizations\nChoosing the right chart types for your story\nInitial sketching and feedback\n\n\n\n9.5.4 Part 4: Wrap-up and Day Plan (10 minutes)\n\nKey takeaways\nCapstone project roadmap\nSchedule for midday work and afternoon session",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Storytelling with Data Workshop (9:30-11:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_storytelling_w_data.html#data-preparation",
+    "href": "capstone_storytelling_w_data.html#data-preparation",
+    "title": "9  Storytelling with Data Workshop (9:30-11:00)",
+    "section": "9.6 Data Preparation",
+    "text": "9.6 Data Preparation\nLet’s prepare some data we’ll use for our examples:\n\n# Yearly Chinese development finance flows\ngcdf_yearly &lt;- get_gcdf3_dataset() |&gt;\n  filter(recommended_for_aggregates == \"Yes\") |&gt;\n  group_by(commitment_year) |&gt;\n  summarize(\n    commitments_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,\n    .groups = \"drop\"\n  )\n\n# Top recipient countries\ntop_recipients &lt;- get_gcdf3_dataset() |&gt;\n  filter(recommended_for_aggregates == \"Yes\") |&gt;\n  group_by(country_name) |&gt;\n  summarize(\n    total_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,\n    .groups = \"drop\"\n  ) |&gt;\n  slice_max(order_by = total_bn, n = 10)\n\n# Calculate average for reference\navg_value &lt;- mean(top_recipients$total_bn)\n\n# Country-level data for map\ncountry_totals_map &lt;- get_gcdf3_dataset() |&gt;\n  filter(recommended_for_aggregates == \"Yes\") |&gt;\n  group_by(country_name, iso3c) |&gt;\n  summarize(\n    total_bn = sum(amount_constant_usd_2021, na.rm = TRUE) / 1e9,\n    .groups = \"drop\"\n  )",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Storytelling with Data Workshop (9:30-11:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_storytelling_w_data.html#the-clear-framework",
+    "href": "capstone_storytelling_w_data.html#the-clear-framework",
+    "title": "9  Storytelling with Data Workshop (9:30-11:00)",
+    "section": "9.7 The CLEAR Framework",
+    "text": "9.7 The CLEAR Framework\nThe CLEAR framework, from Matt Harrison’s “Effective Visualization: Exploiting Matplotlib & Pandas,” provides a systematic approach to creating effective visualizations:\nColor: Use color strategically and sparingly\n\nUse color to highlight what’s important\nAlways use scale_color_aiddata() and scale_fill_aiddata() or or manually add AidData colors using scale_*_manual()\nAidData’s primary colors (Wren Twilight, Spirit Gold, Silver, etc.) are built into the aiddataviz package\nKeep background elements in neutral tones\n\nLimited types of visualizations\n\nMaster a few chart types rather than trying everything\nBar charts for comparisons\nLine charts for trends\nMaps for geographic patterns\nAvoid pie charts, 3D charts, and other complex visualizations\n\nExplanatory titles and subtitles\n\nTitles should state the conclusion, not just describe the data\nSubtitles provide context or methodology\nUse annotations to explain key points directly on the chart\n\nAudience targeting\n\nConsider what your audience needs to know\nMatch visualization complexity to audience expertise\nFocus on actionable insights for policymakers\n\nReferences\n\nAlways cite data sources\nInclude methodology notes when appropriate\nBe transparent about limitations",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Storytelling with Data Workshop (9:30-11:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_storytelling_w_data.html#simple-checklist-for-better-visualizations",
+    "href": "capstone_storytelling_w_data.html#simple-checklist-for-better-visualizations",
+    "title": "9  Storytelling with Data Workshop (9:30-11:00)",
+    "section": "9.8 Simple Checklist for Better Visualizations",
+    "text": "9.8 Simple Checklist for Better Visualizations\n\nIs my main message in the title?\nHave I removed all unnecessary elements?\nAm I using AidData’s color palette via scale_color_aiddata(), scale_fill_aiddata(), or using scale_*_manual() and adding AidData colors?\nAm I using theme_aiddata() for consistent styling?\nDoes color highlight only what’s important?\nAre axes and units clear?\nIs the source clearly cited?\nWould this make sense to someone seeing it for the first time?",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Storytelling with Data Workshop (9:30-11:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_storytelling_w_data.html#go-to-visualizations-with-real-data",
+    "href": "capstone_storytelling_w_data.html#go-to-visualizations-with-real-data",
+    "title": "9  Storytelling with Data Workshop (9:30-11:00)",
+    "section": "9.9 Go-To Visualizations with Real Data",
+    "text": "9.9 Go-To Visualizations with Real Data\n\n9.9.1 1. The Enhanced Time Series\nPerfect for: Annual lending trends, project completions over time, sectoral shifts\nStarting with a basic plot of Chinese lending over time:\n\n# Basic plot - starting point\nggplot(gcdf_yearly, aes(x = commitment_year, y = commitments_bn)) +\n  geom_col() +\n  labs(\n    title = \"Chinese Development Finance Over Time\",\n    x = \"Year\",\n    y = \"Commitments (USD Billions)\"\n  )\n\n\n\n\n\n\n\n\nTransforming into a story-driven visualization:\n\n# Enhanced version\nggplot(gcdf_yearly, aes(x = commitment_year, y = commitments_bn)) +\n  geom_col(fill = aiddata_colors$gray70) +\n  # Highlight important years\n  geom_col(\n    data = gcdf_yearly |&gt; filter(commitment_year &gt;= 2008 & commitment_year &lt;= 2010),\n    fill = aiddata_colors$wren_twilight\n  ) +\n  # Add Global Financial Crisis annotation with arrow\n  geom_vline(\n    xintercept = 2008.5,\n    linetype = \"dashed\",\n    color = aiddata_colors$gray50\n  ) +\n  # Add explanatory text with arrow\n  annotate(\n    \"text\",\n    x = 2006,\n    y = 130,\n    label = \"Global \\nFinancial Crisis\",\n    family = \"Roboto\",\n    color = aiddata_colors$gray50,\n    size = 3.5\n  ) +\n  annotate(\n    \"curve\",\n    x = 2006, \n    y = 120,\n    xend = 2008.4, \n    yend = 100,\n    arrow = arrow(length = unit(0.2, \"cm\")),\n    curvature = -0.3,\n    color = aiddata_colors$gray30\n  ) +\n  # Clean up axes and formatting\n  scale_y_continuous(\n    labels = scales::label_dollar(suffix = \"B\"),\n    limits = c(0, max(gcdf_yearly$commitments_bn) * 1.1)\n  ) +\n  # Add story-driven title and proper labels\n  labs(\n    title = \"Chinese lending spiked after the Global Financial Crisis\",\n    subtitle = \"Redeploying capital from treasuries & supporting demand for Chinese overcapacity industries\",\n    x = NULL,\n    y = \"Commitments (Constant 2021 USD, Billions)\",\n    caption = \"Source: AidData's Global Chinese Development Finance Dataset, Version 3.0\"\n  ) +\n  # Apply AidData theme for consistent styling\n  theme_aiddata()\n\n\n\n\n\n\n\n\nKey improvements that align with the CLEAR framework:\n\nColor: Strategic use of color to highlight the 2008-2010 period following the crisis\nLimited visualization: Simple bar chart that clearly shows the pattern of lending over time\nExplanatory title: “Chinese lending spiked after the Global Financial Crisis” tells the story\nAudience-appropriate: Subtitle explains economic context that policymakers would find relevant\nReferences: Clear source attribution showing where the data comes from\n\n\n\n9.9.2 2. The Comparison Bar Chart\nPerfect for: Country rankings, sectoral differences, before/after changes\nStarting with basic country comparison:\n\n# Basic plot - starting point\nggplot(top_recipients, aes(x = total_bn, y = country_name)) +\n  geom_col() +\n  labs(\n    title = \"Top Recipients of Chinese Finance\",\n    x = \"Total Commitments (USD Billions)\",\n    y = NULL\n  )\n\n\n\n\n\n\n\n\nTransforming into a story-driven visualization:\n\n# Enhanced version\n# First calculate average for comparison\navg_value &lt;- mean(top_recipients$total_bn)\n\nggplot(top_recipients, aes(x = total_bn, y = fct_reorder(country_name, total_bn))) +\n  # Add bars\n  geom_col(fill = aiddata_colors$gray70) +\n  # Highlight top country\n  geom_col(\n    data = top_recipients |&gt; filter(country_name == \"Russia\"),\n    fill = aiddata_colors$spirit_gold\n  ) +\n  # Add direct labels\n  geom_text(\n    aes(label = scales::dollar(total_bn, suffix = \"B\", accuracy = 1)),\n    hjust = -0.1,\n    family = \"Roboto\",\n    color = aiddata_colors$gray30,\n    size = 3\n  ) +\n  # Add average line (on top of bars)\n  geom_vline(\n    xintercept = avg_value,\n    linetype = \"dashed\",\n    color = aiddata_colors$gray50\n  ) +\n  # Extend x-axis to fit labels\n  scale_x_continuous(\n    labels = scales::label_dollar(suffix = \"B\"),\n    limits = c(0, max(top_recipients$total_bn) * 1.2)\n  ) +\n  # Add story-driven title and proper labels\n  labs(\n    title = \"Russia receives significantly more Chinese finance than other countries\",\n    subtitle = \"5 large oil & gas related transactions make up more than 50% of top recipients' lending\",\n    x = \"Total Commitments (Constant 2021 USD, Billions)\",\n    y = NULL,\n    caption = \"Source: AidData's Global Chinese Development Finance Dataset, Version 3.0\"\n  ) +\n  # Add annotation for average\n  annotate(\n    \"text\",\n    x = avg_value + 5,\n    y = 2,\n    label = paste0(\"Top 10 average: $\", round(avg_value, 1), \"B\"),\n    hjust = -0.1,\n    family = \"Roboto\",\n    color = aiddata_colors$gray30,\n    size = 3.5\n  ) +\n  # Apply AidData theme\n  theme_aiddata() +\n  # Additional customizations (can be combined with theme_aiddata)\n  theme(\n    panel.grid.major.y = element_blank()\n  )\n\n\n\n\n\n\n\n\nKey improvements that align with the CLEAR framework:\n\nColor: Strategic highlight of Russia as the top recipient, with other countries in neutral gray\nLimited visualization: Simple horizontal bar chart that clearly shows the ranking\nExplanatory title: “Russia receives significantly more Chinese finance than other countries” states the conclusion\nAudience-appropriate: Subtitle highlights key pattern about sector concentration\nReferences: Clear source citation and context for the average calculation\n\n\n\n9.9.3 3. The Geographic Pattern Map\nPerfect for: Showing spatial distribution of lending, regional focus, geographic shifts\nStarting with preparing map data:\n\n# Get world map\nworld &lt;- rnaturalearth::ne_countries(scale = \"medium\", returnclass = \"sf\")\n\n# Join lending data to map\nmap_data &lt;- world |&gt;\n  left_join(country_totals_map, by = c(\"iso_a3\" = \"iso3c\"))\n\n# Create clear breaks for legend that properly capture all values\nbreaks &lt;- c(0, 1, 10, 50, 100, 175)  # Ensure the top value captures Russia at ~$169B\nlabels &lt;- c(\"&lt; $1B\", \"$1-10B\", \"$10-50B\", \"$50-100B\", \"&gt; $100B\")\n\n# Create a version with binned categories for better visualization\nmap_data &lt;- map_data |&gt;\n  mutate(\n    lending_category = cut(\n      total_bn, \n      breaks = breaks,\n      labels = labels,\n      include.lowest = TRUE\n    )\n  )\n\nCreating a story-driven map visualization:\n\n# Enhanced map visualization\nggplot() +\n  # Base map layer\n  geom_sf(\n    data = map_data,\n    aes(fill = lending_category),\n    color = \"white\",\n    size = 0.1\n  ) +\n  # Use the AidData color palette for sequential data\n  scale_fill_manual(\n    values = c(\n      \"&lt; $1B\" = \"#f7f7f7\",\n      \"$1-10B\" = \"#d9d9d9\",\n      \"$10-50B\" = \"#bdbdbd\", \n      \"$50-100B\" = \"#737373\",\n      \"&gt; $100B\" = unname(aiddata_colors$wren_twilight)\n    ),\n    na.value = \"#f7f7f7\",\n    name = \"Total Chinese Financing\"\n  ) +\n  # Improve the map projection and appearance\n  coord_sf(crs = st_crs(\"+proj=robin\"), datum = NA) +\n  # Add story-driven title and proper labels with line break\n  labs(\n    title = \"Chinese lending focuses on resource-rich countries&lt;br&gt;and strategic partners\",\n    subtitle = \"Russia, Argentina, Venezuela, and Pakistan account for largest volumes of financing\",\n    caption = \"Source: AidData's Global Chinese Development Finance Dataset, Version 3.0\"\n  ) +\n  # Apply AidData theme with map modifications\n  theme_aiddata() +\n  theme(\n    panel.grid = element_blank(),\n    axis.text = element_blank(),\n    axis.ticks = element_blank(),\n    legend.position = \"bottom\",\n    legend.direction = \"horizontal\",\n    legend.key.width = unit(1, \"cm\")\n  )\n\n\n\n\n\n\n\n\nKey improvements that align with the CLEAR framework:\n\nColor: Strategic use of color intensity to show lending concentration\nLimited visualization: Simple choropleth map that clearly shows geographic patterns\nExplanatory title: “Chinese lending focuses on resource-rich countries and strategic partners” highlights the key pattern\nAudience-appropriate: Shows global distribution at a glance\nReferences: Clear source attribution",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Storytelling with Data Workshop (9:30-11:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_storytelling_w_data.html#when-to-consult-the-communications-team",
+    "href": "capstone_storytelling_w_data.html#when-to-consult-the-communications-team",
+    "title": "9  Storytelling with Data Workshop (9:30-11:00)",
+    "section": "9.10 When to Consult the Communications Team",
+    "text": "9.10 When to Consult the Communications Team\nAidData’s communications team has extensive experience with data visualization and is an invaluable resource. Consider reaching out when:\n\nCreating visualizations for external audiences\nWorking on high-profile publications\nDeveloping complex visualizations (maps, networks, interactive tools)\nNeeding guidance on AidData’s visual identity\nWanting feedback on draft visualizations\n\nThe communications team can help with:\n\nDesign refinement\nColor selection\nLayout optimization\nAudience considerations\nPublication requirements",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Storytelling with Data Workshop (9:30-11:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_storytelling_w_data.html#important-note-on-chart-improvement",
+    "href": "capstone_storytelling_w_data.html#important-note-on-chart-improvement",
+    "title": "9  Storytelling with Data Workshop (9:30-11:00)",
+    "section": "9.11 Important Note on Chart Improvement",
+    "text": "9.11 Important Note on Chart Improvement\nThe charts we’ve created today are good starting points, but they aren’t perfect. You should use your domain expertise and the skills you’ve learned in this course to identify how they could be improved. For example:\n\nWould different year groupings better tell the story in the time series chart?\nShould we filter for specific flow types to show different patterns?\nAre there additional annotations that would make the insights clearer?\nCould alternative chart types better convey certain relationships?\n\nRemember, effective visualization is an iterative process. Use your expertise about Chinese development finance to refine these approaches for your specific analysis needs.",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Storytelling with Data Workshop (9:30-11:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_storytelling_w_data.html#aiddata-reports-analysis-exercise-30-minutes",
+    "href": "capstone_storytelling_w_data.html#aiddata-reports-analysis-exercise-30-minutes",
+    "title": "9  Storytelling with Data Workshop (9:30-11:00)",
+    "section": "9.12 AidData Reports Analysis Exercise (30 minutes)",
+    "text": "9.12 AidData Reports Analysis Exercise (30 minutes)\n\n9.12.1 Exercise Structure:\n\nForm small groups (2-3 people)\nEach group analyzes visualizations from one report\nUse the CLEAR checklist to evaluate effectiveness\nIdentify storytelling techniques and house style elements\nPresent key findings to the full group\n\n\n\n9.12.2 Materials:\n\nBelt and Road Reboot\nPower Playbook\nCLEAR evaluation checklist (provided)\nAnalysis worksheet (provided)\n\n\n\n9.12.3 CLEAR Evaluation Checklist:\nFor each visualization, rate how effectively it employs each CLEAR element:\nColor\n\nUses color strategically to highlight key points\nUses AidData’s official color palette\nMaintains consistent color choices throughout the report\nIs likely colorblind-friendly\nKeeps most elements in neutral tones\n\nLimited Chart Types\n\nUses an appropriate chart type for the data\nAvoids unnecessary complexity\nMakes the comparison or pattern immediately clear\nIs consistent with other visualizations in the report\n\nExplanatory Elements\n\nTitle communicates the main finding or message\nSubtitle provides necessary context\nUses annotations to explain key points\nAxes and labels are clear and concise\n\nAudience Targeting\n\nComplexity matches intended audience\nProvides necessary context for understanding\nFocuses on actionable insights\nAvoids jargon or explains technical terms\n\nReferences\n\nIncludes clear source information\nNotes any important methodological points\nAcknowledges limitations if appropriate\nCredits data or design sources\n\n\n\n9.12.4 Analysis Worksheet:\nFor each visualization, answer:\n\nWhat story is this visualization telling?\nWho is the intended audience?\nWhat chart type is used and why is it effective (or not)?\nHow does it use annotations, highlights, or other narrative techniques?\nWhat elements of AidData’s house style are evident?\nHow could this visualization be improved?\nWhat techniques from this could you apply to your capstone?",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Storytelling with Data Workshop (9:30-11:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_storytelling_w_data.html#capstone-planning-exercise-35-minutes",
+    "href": "capstone_storytelling_w_data.html#capstone-planning-exercise-35-minutes",
+    "title": "9  Storytelling with Data Workshop (9:30-11:00)",
+    "section": "9.13 Capstone Planning Exercise (35 minutes)",
+    "text": "9.13 Capstone Planning Exercise (35 minutes)\n\n9.13.1 Exercise Structure:\n\nIndividual planning time (15 minutes)\nPair sharing and feedback (10 minutes)\nRefinement and next steps (10 minutes)\n\n\n\n9.13.2 Individual Planning (15 minutes):\n\nDefine your capstone data story:\n\nWhat is the key insight or message?\nWho is your audience?\nWhat action should they take based on your visualization?\n\nChoose appropriate visualization types:\n\nWhat comparison are you showing?\nWhich of our go-to charts would work best?\nWhat adaptations might you need?\n\nSketch your visualization:\n\nWhat will be the title?\nWhat elements need highlighting?\nWhat annotations or context are needed?\n\n\n\n\n9.13.3 Pair Sharing (10 minutes):\n\nExchange plans with a partner\nProvide constructive feedback using CLEAR framework\nSuggest refinements or alternative approaches\n\n\n\n9.13.4 Refinement (10 minutes):\n\nIncorporate feedback into your plan\nIdentify specific technical needs for implementation\nCreate a task list for the midday work session",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Storytelling with Data Workshop (9:30-11:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_storytelling_w_data.html#full-day-capstone-roadmap",
+    "href": "capstone_storytelling_w_data.html#full-day-capstone-roadmap",
+    "title": "9  Storytelling with Data Workshop (9:30-11:00)",
+    "section": "9.14 Full-Day Capstone Roadmap",
+    "text": "9.14 Full-Day Capstone Roadmap\n\n9.14.1 Morning Session (9:30-11:00)\n\nLearning storytelling principles\nAnalyzing effective visualizations\nPlanning capstone projects\n\n\n\n9.14.2 Midday Work Session (11:30-3:00)\n\nIndividual implementation time\nOne-on-one consultations with instructors\nWork on technical implementation\nApply CLEAR principles to your visualizations\n\n\n\n9.14.3 Afternoon Session (3:00-4:30)\n\nPresent draft visualizations\nPeer critique and refinement\nTechnical troubleshooting\nFinal polishing for publication-ready results\n\n\n\n9.14.4 Key Milestones:\n\nBy end of morning: Have a clear plan and sketch\nBy mid-afternoon: Have working draft visualization(s)\nBy end of day: Have polished, publication-ready visualization(s)",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Storytelling with Data Workshop (9:30-11:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_storytelling_w_data.html#resources-for-further-learning",
+    "href": "capstone_storytelling_w_data.html#resources-for-further-learning",
+    "title": "9  Storytelling with Data Workshop (9:30-11:00)",
+    "section": "9.15 Resources for Further Learning",
+    "text": "9.15 Resources for Further Learning\n\n9.15.1 AidData-Specific Resources\n\nAidData’s Style Guide\n\nAvailable from John Custer and the communications team\nOfficial guidance on visual identity\nColor palettes and typography\n\nRecent AidData Reports\n\nBelt and Road Reboot\nPower Playbook\nExcellent examples of effective data storytelling\n\n\n\n\n9.15.2 Data Visualization Books and Resources\n\n“Storytelling with Data” by Cole Nussbaumer Knaflic\n\nPractical techniques for data visualization\nEmphasis on simplicity and focus\n\nCedric Scherer’s 2-Day Workshop Materials\n\nFree comprehensive resource: Graphic Design with ggplot2\nAdvanced techniques for publication-quality graphics\n\nAlbert Rapp’s Online Course\n\nInsightful Data Visualizations for Uncreative R Users\nExcellent paid resource for presentation-ready chart styles and techniques",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Storytelling with Data Workshop (9:30-11:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_storytelling_w_data.html#key-takeaways",
+    "href": "capstone_storytelling_w_data.html#key-takeaways",
+    "title": "9  Storytelling with Data Workshop (9:30-11:00)",
+    "section": "9.16 Key Takeaways",
+    "text": "9.16 Key Takeaways\n\nStart with the story, not the chart\n\nKnow what message you want to convey\nChoose visualization based on that message\n\nApply the CLEAR framework\n\nColor strategically\nLimit chart types\nUse explanatory titles\nTarget your audience\nInclude references\n\nMaster a few chart types deeply\n\nEnhanced time series\nComparison bar charts\nGeographic pattern maps\n\nCollaborate with communications\n\nThey’re a valuable resource\nEspecially for external-facing work\n\n\nRemember, effective data visualization isn’t about fancy techniques—it’s about clear communication that drives action.",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Storytelling with Data Workshop (9:30-11:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_storytelling_w_data.html#next-steps-afternoon-work-session",
+    "href": "capstone_storytelling_w_data.html#next-steps-afternoon-work-session",
+    "title": "9  Storytelling with Data Workshop (9:30-11:00)",
+    "section": "9.17 Next Steps: Afternoon Work Session",
+    "text": "9.17 Next Steps: Afternoon Work Session\nDuring our midday work session (11:30-3:00), you’ll have the opportunity to:\n\nApply these principles to your own data\nGet one-on-one feedback\nRefine visualizations for specific use cases\nCollaborate with peers on visualization challenges\n\nBring your data and visualization ideas, and we’ll work together to transform them into compelling stories!",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Storytelling with Data Workshop (9:30-11:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_midday.html",
+    "href": "capstone_midday.html",
+    "title": "10  Midday Work Session (11:30-3:00)",
+    "section": "",
+    "text": "10.1 Session Overview\nThis midday work session is your opportunity to apply what you’ve learned during the morning workshop to your own data and create visualizations for your capstone project. This is a dedicated time for implementation, troubleshooting, and refinement with support available as needed.",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Midday Work Session (11:30-3:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_midday.html#session-structure",
+    "href": "capstone_midday.html#session-structure",
+    "title": "10  Midday Work Session (11:30-3:00)",
+    "section": "10.2 Session Structure",
+    "text": "10.2 Session Structure\n\nIndividual Implementation Time: Apply the CLEAR framework principles to your own data\nOne-on-One Consultations: Teal and John will be available to help with technical challenges and design questions\nPeer Collaboration: Feel free to collaborate with your colleagues on common challenges",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Midday Work Session (11:30-3:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_midday.html#resources-available",
+    "href": "capstone_midday.html#resources-available",
+    "title": "10  Midday Work Session (11:30-3:00)",
+    "section": "10.3 Resources Available",
+    "text": "10.3 Resources Available\n\nAidData reports for reference (digital copies)\nReference cheat sheets for ggplot2 and the tidyverse\nCode examples from morning session\nCLEAR framework checklist",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Midday Work Session (11:30-3:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_midday.html#working-guidelines",
+    "href": "capstone_midday.html#working-guidelines",
+    "title": "10  Midday Work Session (11:30-3:00)",
+    "section": "10.4 Working Guidelines",
+    "text": "10.4 Working Guidelines\n\nStart with a clear story: What is the key insight you want to communicate?\nChoose the right chart type: Consider what comparison will best highlight your insight\nBuild incrementally: Start with a basic version, then enhance step by step\nTest with colleagues: Get quick feedback as you work\nDocument your process: Keep track of your code and design decisions",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Midday Work Session (11:30-3:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_midday.html#implementation-plan",
+    "href": "capstone_midday.html#implementation-plan",
+    "title": "10  Midday Work Session (11:30-3:00)",
+    "section": "10.5 Implementation Plan",
+    "text": "10.5 Implementation Plan\nTo make the most of this work session, consider following this implementation plan:\n\n10.5.1 Data Preparation (30 min)\n\nIdentify the specific dataset you’ll be working with\nFilter for the relevant subset of data\nTransform data into the appropriate format for your visualization\nExplore the data to confirm your key insights\n\n\n\n10.5.2 Basic Visualization (30 min)\n\nCreate a simple version of your chosen chart type\nFocus on getting the basic structure right\nEnsure your data is displaying correctly\n\n\n\n10.5.3 Enhancement (1 hour)\n\nApply the CLEAR framework principles:\n\nAdd strategic color highlighting\nRefine chart type if needed\nCreate explanatory title and subtitle\nConsider your audience needs\nAdd proper references\n\nImplement annotations and highlights\nApply AidData styling\n\n\n\n10.5.4 4. Refinement & Feedback (30 min)\n\nGet feedback from colleagues or instructors\nMake adjustments based on feedback\nTest your visualization with someone unfamiliar with the data",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Midday Work Session (11:30-3:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_midday.html#technical-support-available",
+    "href": "capstone_midday.html#technical-support-available",
+    "title": "10  Midday Work Session (11:30-3:00)",
+    "section": "10.6 Technical Support Available",
+    "text": "10.6 Technical Support Available\nDuring this session, you can get help with:\n\nData preparation and transformation\nChart selection and implementation\nDesign refinement\nCode troubleshooting\nIntegration with your broader analysis\n\nIf you need assistance, sign up on the whiteboard for a one-on-one consultation.",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Midday Work Session (11:30-3:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_midday.html#common-visualization-scenarios",
+    "href": "capstone_midday.html#common-visualization-scenarios",
+    "title": "10  Midday Work Session (11:30-3:00)",
+    "section": "10.7 Common Visualization Scenarios",
+    "text": "10.7 Common Visualization Scenarios\nHere are some common visualization scenarios for Chinese development finance data that you might consider for your capstone:\n\n10.7.1 Temporal Patterns\n\nChanges in lending volumes over time\nEvolution of sectoral focus\nBefore/after comparisons of policy shifts\n\n\n\n10.7.2 Geographic Distribution\n\nRegional concentration of lending\nCountry-level comparisons\nSpatial patterns and strategic focus\n\n\n\n10.7.3 Compositional Analysis\n\nODA-like vs. OOF-like composition\nSectoral breakdown\nLoan vs. grant proportions\n\n\n\n10.7.4 Financial Terms Analysis\n\nInterest rate comparisons\nMaturity structure\nCollateralization patterns\n\n\n\n10.7.5 Relational Insights\n\nCorrelation between factors (e.g., resources and lending)\nRelationship between economic indicators and finance\nComparison to other creditors",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Midday Work Session (11:30-3:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_midday.html#preparing-for-the-afternoon-session",
+    "href": "capstone_midday.html#preparing-for-the-afternoon-session",
+    "title": "10  Midday Work Session (11:30-3:00)",
+    "section": "10.8 Preparing for the Afternoon Session",
+    "text": "10.8 Preparing for the Afternoon Session\nAs you work on your visualizations, keep in mind that you’ll be presenting them during the afternoon session. Prepare to discuss:\n\nThe key insight your visualization communicates\nHow you applied the CLEAR framework principles\nWhat technical or design challenges you encountered\nHow you might further refine your visualization\n\nThis will help structure your work during this session and ensure you",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Midday Work Session (11:30-3:00)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_afternoon.html",
+    "href": "capstone_afternoon.html",
+    "title": "11  Afternoon Session: Finalization and Presentations (3:00-4:30)",
+    "section": "",
+    "text": "11.1 Session Structure (90 minutes)",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Afternoon Session: Finalization and Presentations (3:00-4:30)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_afternoon.html#session-structure-90-minutes",
+    "href": "capstone_afternoon.html#session-structure-90-minutes",
+    "title": "11  Afternoon Session: Finalization and Presentations (3:00-4:30)",
+    "section": "",
+    "text": "11.1.1 Presentation of Draft Visualizations (45 min)\n\nEach person/team will have 3-5 minutes to present their visualization(s)\nBrief feedback after each presentation\nFocus on both content (the story) and execution (the design)\n\n\n\n11.1.2 Peer Critique Workshop (20 min)\n\nWork in pairs/trios to provide detailed feedback\nUse the CLEAR framework checklist to structure your feedback\nProvide specific suggestions for improvement\n\n\n\n11.1.3 Technical Troubleshooting & Final Polishing (20 min)\n\nAddress any remaining technical challenges\nApply final polish to your visualizations\nPrepare for inclusion in reports or presentations\n\n\n\n11.1.4 Wrap-up & Next Steps (5 min)\n\nSummarize key learnings from the day\nDiscuss how to apply these skills to your ongoing projects\nResources for continued learning",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Afternoon Session: Finalization and Presentations (3:00-4:30)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_afternoon.html#presentation-guidelines",
+    "href": "capstone_afternoon.html#presentation-guidelines",
+    "title": "11  Afternoon Session: Finalization and Presentations (3:00-4:30)",
+    "section": "11.2 Presentation Guidelines",
+    "text": "11.2 Presentation Guidelines\nWhen presenting your visualization, be sure to cover:\n\nThe Story: What key insight does your visualization communicate?\nThe Audience: Who is this visualization designed for?\nThe Process: How did you decide on this chart type and design?\nThe Challenges: What technical or design challenges did you overcome?\nNext Steps: How could you further refine this visualization?",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Afternoon Session: Finalization and Presentations (3:00-4:30)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_afternoon.html#evaluation-criteria",
+    "href": "capstone_afternoon.html#evaluation-criteria",
+    "title": "11  Afternoon Session: Finalization and Presentations (3:00-4:30)",
+    "section": "11.3 Evaluation Criteria",
+    "text": "11.3 Evaluation Criteria\nYour final visualizations will be evaluated based on:\n\nStory clarity: Is the main insight clearly communicated?\nTechnical execution: Is the code efficient and well-structured?\nVisual design: Does it follow AidData’s style guidelines?\nAudience appropriateness: Is it suited for the intended audience?",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Afternoon Session: Finalization and Presentations (3:00-4:30)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_afternoon.html#resources-for-further-learning",
+    "href": "capstone_afternoon.html#resources-for-further-learning",
+    "title": "11  Afternoon Session: Finalization and Presentations (3:00-4:30)",
+    "section": "11.4 Resources for Further Learning",
+    "text": "11.4 Resources for Further Learning\n\n11.4.1 AidData-Specific Resources\n\nAidData’s Style Guide\n\nAvailable from John Custer and the communications team\nOfficial guidance on visual identity\nColor palettes and typography\n\nRecent AidData Reports\n\nBelt and Road Reboot\nPower Playbook\nExcellent examples of effective data storytelling\n\n\n\n\n11.4.2 Data Visualization Books and Resources\n\n“Storytelling with Data” by Cole Nussbaumer Knaflic\n\nPractical techniques for data visualization\nEmphasis on simplicity and focus\n\nCedric Scherer’s 2-Day Workshop Materials\n\nFree comprehensive resource: Graphic Design with ggplot2\nAdvanced techniques for publication-quality graphics\n\nAlbert Rapp’s Online Course\n\nInsightful Data Visualizations for Uncreative R Users\nExcellent paid resource for presentation-ready chart styles and techniques",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Afternoon Session: Finalization and Presentations (3:00-4:30)</span>"
+    ]
+  },
+  {
+    "objectID": "capstone_afternoon.html#appendix-clear-framework-feedback-form",
+    "href": "capstone_afternoon.html#appendix-clear-framework-feedback-form",
+    "title": "11  Afternoon Session: Finalization and Presentations (3:00-4:30)",
+    "section": "11.5 Appendix: CLEAR Framework Feedback Form",
+    "text": "11.5 Appendix: CLEAR Framework Feedback Form\n\n11.5.1 Visualization Feedback Form\nVisualization Title: ______________________________\nCreator(s): ______________________________\nColor:\n\nStrengths: ______________________________\nSuggestions: ______________________________\n\nLimited Chart Types:\n\nStrengths: ______________________________\nSuggestions: ______________________________\n\nExplanatory Elements:\n\nStrengths: ______________________________\nSuggestions: ______________________________\n\nAudience Targeting:\n\nStrengths: ______________________________\nSuggestions: ______________________________\n\nReferences:\n\nStrengths: ______________________________\nSuggestions: ______________________________\n\nOverall Assessment:\n\nWhat works well: ______________________________\nOpportunities for improvement: ______________________________\nOne key suggestion: ______________________________",
+    "crumbs": [
+      "Part 2: Capstone",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Afternoon Session: Finalization and Presentations (3:00-4:30)</span>"
     ]
   }
 ]

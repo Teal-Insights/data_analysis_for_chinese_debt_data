@@ -1,0 +1,107 @@
+# Afternoon Session: Finalization and Presentations (3:00-4:30)
+
+## Session Structure (90 minutes)
+
+### Presentation of Draft Visualizations (45 min)
+- Each person/team will have 3-5 minutes to present their visualization(s)
+- Brief feedback after each presentation
+- Focus on both content (the story) and execution (the design)
+
+### Peer Critique Workshop (20 min)
+- Work in pairs/trios to provide detailed feedback
+- Use the CLEAR framework checklist to structure your feedback
+- Provide specific suggestions for improvement
+
+### Technical Troubleshooting & Final Polishing (20 min)
+- Address any remaining technical challenges
+- Apply final polish to your visualizations
+- Prepare for inclusion in reports or presentations
+
+### Wrap-up & Next Steps (5 min)
+- Summarize key learnings from the day
+- Discuss how to apply these skills to your ongoing projects
+- Resources for continued learning
+
+## Presentation Guidelines
+
+When presenting your visualization, be sure to cover:
+
+1. **The Story**: What key insight does your visualization communicate?
+2. **The Audience**: Who is this visualization designed for?
+3. **The Process**: How did you decide on this chart type and design?
+4. **The Challenges**: What technical or design challenges did you overcome?
+5. **Next Steps**: How could you further refine this visualization?
+
+## Evaluation Criteria
+
+Your final visualizations will be evaluated based on:
+
+- **Story clarity**: Is the main insight clearly communicated?
+- **Technical execution**: Is the code efficient and well-structured?
+- **Visual design**: Does it follow AidData's style guidelines?
+- **Audience appropriateness**: Is it suited for the intended audience?
+
+## Resources for Further Learning
+
+### AidData-Specific Resources
+1. **AidData's Style Guide**
+   - Available from John Custer and the communications team
+   - Official guidance on visual identity
+   - Color palettes and typography
+
+2. **Recent AidData Reports**
+   - [Belt and Road Reboot](https://www.aiddata.org/publications/belt-and-road-reboot)
+   - [Power Playbook](https://www.aiddata.org/publications/power-playbook-beijings-bid-to-secure-overseas-transition-minerals)
+   - Excellent examples of effective data storytelling
+
+### Data Visualization Books and Resources
+1. **"Storytelling with Data" by Cole Nussbaumer Knaflic**
+   - Practical techniques for data visualization
+   - Emphasis on simplicity and focus
+
+2. **Cedric Scherer's 2-Day Workshop Materials**
+   - Free comprehensive resource: [Graphic Design with ggplot2](https://www.cedricscherer.com/2022/08/09/2-day-workshop-on-graphic-design-with-ggplot2-at-rstudioconf-2022/)
+   - Advanced techniques for publication-quality graphics
+
+3. **Albert Rapp's Online Course**
+   - [Insightful Data Visualizations for Uncreative R Users](https://arapp.thinkific.com/courses/insightful-data-visualizations-for-uncreative-r-users)
+   - Excellent paid resource for presentation-ready chart styles and techniques
+
+## Appendix: CLEAR Framework Feedback Form
+
+### Visualization Feedback Form
+
+**Visualization Title**: ______________________________
+
+**Creator(s)**: ______________________________
+
+**C**olor:
+
+- Strengths: ______________________________
+- Suggestions: ______________________________
+
+**L**imited Chart Types:
+
+- Strengths: ______________________________
+- Suggestions: ______________________________
+
+**E**xplanatory Elements:
+
+- Strengths: ______________________________
+- Suggestions: ______________________________
+
+**A**udience Targeting:
+
+- Strengths: ______________________________
+- Suggestions: ______________________________
+
+**R**eferences:
+
+- Strengths: ______________________________
+- Suggestions: ______________________________
+
+**Overall Assessment**:
+
+- What works well: ______________________________
+- Opportunities for improvement: ______________________________
+- One key suggestion: ______________________________
